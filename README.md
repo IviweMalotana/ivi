@@ -31,6 +31,29 @@ assets.
 | [`assets/business-cards.html`](assets/business-cards.html) | Three business-card designs, print-ready (front & back) |
 | [`assets/one-pager.html`](assets/one-pager.html) | One-page capabilities sheet to send before a call |
 | [`assets/brand-hub.html`](assets/brand-hub.html) | A single-page visual summary of the whole brand |
+| [`docs/index.html`](docs/index.html) | **The live website** (same as the brand hub) — served by GitHub Pages |
+
+## Hosting the site (GitHub Pages) — one-time setup
+
+The website lives in [`docs/index.html`](docs/index.html) and is ready to publish. To turn it on:
+
+1. On GitHub, open this repo → **Settings** → **Pages**.
+2. Under **Build and deployment → Source**, choose **Deploy from a branch**.
+3. **Branch:** select `claude/personal-brand-automation-ai-mnl7o0` · **Folder:** `/docs` → **Save**.
+4. Wait ~1 minute. Your site goes live at:
+
+   **`https://iviwemalotana.github.io/ivi/`**
+
+That's it — every push to that branch's `docs/` folder updates the site automatically. The
+`.nojekyll` file is already in place so GitHub serves the HTML as-is.
+
+**Notes**
+- When you later merge this to your `main` branch, you can switch the Pages source to `main` /
+  `/docs` and the same URL keeps working.
+- **Custom domain:** once you buy `ivimalotana.com`, add it under Settings → Pages → Custom
+  domain, and point a CNAME at `iviwemalotana.github.io`. Then update the links on your business
+  cards and LinkedIn.
+- To edit the site, change `assets/brand-hub.html`, copy it to `docs/index.html`, and push.
 
 ## The 30-second version
 

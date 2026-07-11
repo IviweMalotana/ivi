@@ -132,6 +132,34 @@ end-to-end.
 
 ---
 
+## Case Study 6 — An AI-native delivery practice (how I ship fast, and right)
+
+**The operating system behind everything above** — how I deliver more, faster, and with fewer
+defects than a traditional consultant or agency.
+
+**What Ivi built and runs:**
+- **A multi-agent software factory.** I orchestrate a fleet of AI coding agents — **Claude Code,
+  OpenAI Codex and Cowork** — through a disciplined, multi-phase pipeline (understand → spec →
+  plan → build → test → review → ship), each agent pointed at the phase it's strongest at, with a
+  **human approval gate at every step.**
+- **End-to-end testing with Playwright.** Real user journeys are driven and verified before
+  anything ships — so automations don't just demo, they hold up in production.
+- **A real design system.** I founded a token-based design system — typography, reusable
+  components, decision rules, banned patterns, pre-commit checks — so every screen is consistent
+  and maintainable, not stitched together.
+- **Mobile-first engineering.** I built a reusable desktop→mobile conversion practice for
+  React/Tailwind, so what I deliver works on every device, not just the demo laptop.
+- **Self-healing operations.** An observability + AI-ops console that monitors the platform and
+  runs an automated fix pipeline — the system watching and repairing itself.
+- **A flagship no-code page builder** — group admins compose branded pages from blocks, with a
+  legacy-HTML importer covered by byte-identity round-trip tests and XSS-sanitised rendering.
+
+**Why it matters to you.** It's the ultimate proof of the pitch: *I automate my own work.* Your
+automation lands faster, costs less to build, and actually works — because it was tested, designed
+and shipped by a practice that is itself automated.
+
+---
+
 ## The proof "wall" (for the site / one-pager)
 
 Numbers and facts you can state plainly, because they're true:
@@ -141,6 +169,10 @@ Numbers and facts you can state plainly, because they're true:
 - **A full production platform** — multi-tenant, isolated, monitored, built and shipped end to end.
 - **253-test suite** — guarding a live tax & accounts engine.
 - **3 sectors shipped** — finance, insurance, and compliance/RegTech.
+- **AI-native delivery** — orchestrates Claude Code, OpenAI Codex & Cowork through a human-gated
+  pipeline, Playwright-tested end to end.
+- **Design-systemed & mobile-first** — a token-based design system and a reusable desktop→mobile
+  practice behind every screen.
 - **1st** — stood up a fintech's first fraud & AML process from scratch.
 - **BSc Electrical & Computer Engineering, UCT** — an engineer, not just an operator.
 

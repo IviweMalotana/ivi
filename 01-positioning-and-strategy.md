@@ -49,6 +49,14 @@ guarding live tax calculations, proper tenant isolation, disaster recovery and m
 commercialised as a real venture. When you say "I'll automate that," you can actually hand over
 working software. That converts sceptical buyers.
 
+**(d) You are AI-native — you automate your own delivery.**
+You don't just talk about AI; you build *with* it. You orchestrate a fleet of AI coding agents —
+**Claude Code, OpenAI Codex and Cowork** — through a structured, human-gated pipeline (plan →
+build → test → review), verify real user journeys **end-to-end with Playwright**, and ship on a
+**token-based design system** with **mobile-first engineering**. This is the meta-flex: you
+automate your *own* work, so clients get more automation, faster and cheaper — and it holds up in
+production because it was tested and designed, not hacked together.
+
 **The synthesis:** *"An engineer-operator who has already automated the money, the risk and the
 paperwork in finance, insurance and compliance — and can prove it with shipped product."*
 

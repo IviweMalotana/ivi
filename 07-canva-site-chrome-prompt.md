@@ -93,6 +93,16 @@ Heading: Three sectors. One pattern.
 - INSURANCE — Claims intake & triage, document extraction, fraud-signal detection, underwriting
   copilots, and policyholder AI assistants.
 
+[HOW I BUILD — four short items in a row or cards]
+Heading: An AI-native delivery practice.
+Intro: I don't just consult on AI — I run my own delivery on it, so you get more automation,
+shipped faster, and it actually works.
+- MULTI-AGENT ORCHESTRATION — I run a fleet of AI coding agents (Claude Code, OpenAI Codex,
+  Cowork) through a disciplined, human-gated pipeline.
+- END-TO-END TESTED — Playwright drives the real user flows before anything ships.
+- A REAL DESIGN SYSTEM — token-based typography, components and rules, so every screen is consistent.
+- MOBILE-FIRST — a reusable desktop→mobile practice; it works on every device, not just the demo laptop.
+
 [ABOUT]
 Heading: An engineer who learned to run the business.
 Text: BSc in Electrical & Computer Engineering — but for four years I've been the person companies
