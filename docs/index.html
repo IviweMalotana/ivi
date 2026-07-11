@@ -1,6 +1,11 @@
-<title>Ivi Malotana — AI &amp; Automation Specialist</title>
-<meta name="description" content="Ivi Malotana — AI &amp; Automation Specialist. I find where your business is losing time and money in its own processes, and build the AI and automation that stops the bleed. Finance, insurance and legal operations.">
+<!doctype html>
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ivi Malotana — AI &amp; Automation Specialist</title>
+<meta name="description" content="Ivi Malotana — AI &amp; Automation Specialist. I find where your business is losing time and money in its own processes and build the AI and automation that stops the bleed. Finance, insurance and legal operations.">
+<meta property="og:title" content="Ivi Malotana — AI &amp; Automation Specialist">
+<meta property="og:description" content="I find the friction. I build the fix. See the opportunity. Automate the outcome.">
+<meta property="og:type" content="website">
 <style>
   :root {
     --paper: #ffffff;
@@ -114,6 +119,18 @@
   .bcard h3 { margin: 0 0 8px; font-size: 15px; font-weight: 500; letter-spacing: -.005em; }
   .bcard p { margin: 0; font-size: 13.5px; color: var(--slate); }
 
+  /* experience */
+  .exp { display: flex; flex-direction: column; margin-top: 36px; }
+  .exp-item { display: grid; grid-template-columns: 210px 1fr; gap: 28px; padding: 22px 0;
+    border-top: 1px solid var(--hair); }
+  .exp-when { font-size: 13px; color: var(--slate-2); font-variant-numeric: tabular-nums; }
+  .exp-when span { display: block; color: var(--ink); font-weight: 500; margin-top: 3px; letter-spacing: .02em; }
+  .exp-body .role { font-size: 16px; font-weight: 500; letter-spacing: -.005em; }
+  .exp-body p { margin: 6px 0 0; color: var(--slate); font-size: 14px; max-width: 64ch; }
+  .creds { margin-top: 34px; padding-top: 20px; border-top: 1px solid var(--hair);
+    font-size: 14px; color: var(--slate); }
+  .creds b { color: var(--ink); font-weight: 500; }
+
   /* footer */
   footer { border-top: 1px solid var(--hair); padding: 46px 0 70px; }
   .foot-grid { display: flex; flex-wrap: wrap; gap: 8px 40px; align-items: baseline; }
@@ -124,7 +141,8 @@
 
   @media (max-width: 760px) {
     .ladder, .proof, .build-grid { grid-template-columns: 1fr 1fr; }
-    .sectors { grid-template-columns: 1fr; }
+    .sectors, .exp-item { grid-template-columns: 1fr; }
+    .exp-item { gap: 8px; }
   }
   @media (max-width: 460px) {
     .ladder, .proof, .build-grid { grid-template-columns: 1fr; }
@@ -134,7 +152,7 @@
 <div class="wrap">
 
   <section class="hero">
-    <p class="eyebrow">Brand Hub</p>
+    <p class="eyebrow">Cape Town · Gauteng · Working worldwide</p>
     <h1 class="name">Ivi Malotana</h1>
     <p class="role">AI &amp; Automation Specialist</p>
     <p class="sig">See the opportunity. Automate the outcome.</p>
@@ -249,6 +267,59 @@
       conversation with the CFO in the same afternoon.</p>
     <p class="muted">I don't sell "AI." I find the friction that's costing you money and I build the
       thing that stops it — working software you own.</p>
+  </section>
+
+  <section class="sec-pad">
+    <p class="eyebrow">Experience</p>
+    <h2 class="title">The track record behind the pitch.</h2>
+    <div class="exp">
+      <div class="exp-item">
+        <div class="exp-when">2026 · Featured build<span>Emerald Path · Dixon AI</span></div>
+        <div class="exp-body">
+          <div class="role">Founder-builder — AI &amp; Automation</div>
+          <p>Built a multi-tenant, white-label UK accountancy platform end to end — FRS-102 statutory
+            accounts, iXBRL, Corporation Tax, VAT &amp; Self-Assessment engines, live AML, Companies
+            House and Xero/Sage — AI-assisted, human-approved, and commercialised as a venture.</p>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-when">Jul 2023 — Present<span>bOnline · UK</span></div>
+        <div class="exp-body">
+          <div class="role">Product Owner — Payments, Billing, Fraud &amp; AI</div>
+          <p>Scaled billing 7× with no added headcount; built the direct-debit failure system and
+            credit-control funnel; stood up the company's first fraud &amp; AML process; shipped an AI
+            receptionist and led an AI chatbot to 60% resolution.</p>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-when">Dec 2022 — Jul 2023<span>LifeCheq</span></div>
+        <div class="exp-body">
+          <div class="role">Product Analyst — Insurance &amp; Fintech</div>
+          <p>Supported insurance and financial products across the full delivery lifecycle;
+            redesigned budgeting and financial-tracking experiences for SMEs.</p>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-when">Sep 2021 — May 2022<span>1Nebula</span></div>
+        <div class="exp-body">
+          <div class="role">Product Owner / Engineer</div>
+          <p>Delivered a .NET C# CRM on Azure across 12 sprints — REST APIs, Azure DevOps, SQL and
+            Power BI. Solved a two-year reporting roadblock in two weeks.</p>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-when">Jan 2021 — Jan 2022<span>Phaphama SEDI</span></div>
+        <div class="exp-body">
+          <div class="role">Business Consultant</div>
+          <p>Digitised SME operations and built business plans and digital strategies that secured
+            funding and sustained businesses through COVID-19.</p>
+        </div>
+      </div>
+    </div>
+    <div class="creds">
+      <b>Education &amp; credentials</b> — BSc Electrical &amp; Computer Engineering, University of
+      Cape Town · Microsoft Azure Fundamentals
+    </div>
   </section>
 
   <footer id="book">
