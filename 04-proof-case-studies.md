@@ -39,7 +39,8 @@ collections or reactive fraud handling, this is the exact machine I've built bef
 ## Case Study 2 — Emerald Path: automating an entire accountancy back office
 
 **Sector:** Accountancy / Compliance / RegTech
-**Role:** Founder-builder (commercialised as a 50/50 venture)
+**Role:** AI & Automation Engineer / Founder-builder — Dixon AI (Apr 2026 – present; commercialised
+as a 50/50 venture)
 
 **Context.** UK accountancy practices spend enormous manual effort turning a client's books into
 statutory accounts, tax returns and compliance evidence — repetitive, deadline-bound,
