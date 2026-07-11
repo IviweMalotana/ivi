@@ -1,10 +1,12 @@
 <title>Ivi Malotana — Capabilities One-Pager</title>
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
   :root {
     --paper: #ffffff; --panel: #f7f8f9; --mist: #f2f3f4; --hair: #e5e6e8;
     --ink: #14151a; --slate: #6a6f75; --slate-2: #888d93;
-    --serif: ui-serif, Georgia, "Times New Roman", serif;
-    --sans: "Helvetica Neue", Inter, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+    --serif: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    --sans: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   }
   @media (prefers-color-scheme: dark) {
     :root { --paper:#101113; --panel:#17181b; --mist:#1a1c1f; --hair:#2a2c30;
@@ -32,7 +34,7 @@
   header.top .contact b { color: var(--ink); font-weight: 500; }
   .tnum { font-variant-numeric: tabular-nums; }
 
-  .sig { font-family: var(--serif); font-style: italic; font-size: 22px; margin: 28px 0 0; text-wrap: balance; }
+  .sig { font-family: var(--sans); font-weight: 600; font-size: 22px; letter-spacing: -.015em; margin: 28px 0 0; text-wrap: balance; }
   .lead { color: var(--slate); font-size: 15px; margin: 14px 0 0; max-width: 66ch; }
 
   .row { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 36px; }
@@ -61,7 +63,7 @@
 
   footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--hair);
     display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
-  footer .call { font-family: var(--serif); font-style: italic; font-size: 16px; }
+  footer .call { font-family: var(--sans); font-weight: 600; font-size: 16px; letter-spacing: -.01em; }
   footer .site { font-size: 13px; color: var(--slate); }
 
   @media (max-width: 680px) {
