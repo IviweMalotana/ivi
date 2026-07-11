@@ -10,21 +10,21 @@
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
   :root {
-    --paper: #ffffff;
-    --panel: #fafafb;
-    --mist: #f4f5f6;
-    --hair: #e6e7e9;
-    --ink: #131417;
-    --slate: #6c7176;
-    --slate-2: #8b9096;
-    --graphite: #2b2d31;
+    --paper: #f4f1ea;
+    --panel: #efebe2;
+    --mist: #ebe6dc;
+    --hair: #e0dace;
+    --ink: #2a2620;
+    --slate: #7a7167;
+    --slate-2: #8b8174;
+    --graphite: #3a342c;
     --serif: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
     --sans: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   }
   /* Single light theme — always a white background with black & grey text */
   :root[data-theme="light"] {
-    --paper:#fff; --panel:#fafafb; --mist:#f4f5f6; --hair:#e6e7e9;
-    --ink:#131417; --slate:#6c7176; --slate-2:#8b9096; --graphite:#2b2d31;
+    --paper:#f4f1ea; --panel:#efebe2; --mist:#ebe6dc; --hair:#e0dace;
+    --ink:#2a2620; --slate:#7a7167; --slate-2:#8b8174; --graphite:#3a342c;
   }
 
   * { box-sizing: border-box; }
@@ -34,21 +34,21 @@
   }
   .wrap { max-width: 940px; margin: 0 auto; padding: 0 28px; }
   .eyebrow {
-    font-size: 11.5px; letter-spacing: .3em; text-transform: uppercase; color: var(--slate-2);
+    font-size: 12px; letter-spacing: .2em; text-transform: lowercase; color: var(--slate-2);
     margin: 0;
   }
   section { border-top: 1px solid var(--hair); }
   section:first-of-type { border-top: none; }
 
   /* hero */
-  .hero { padding: 90px 0 72px; }
+  .hero { padding: 116px 0 88px; }
   .hero .name {
-    font-weight: 300; letter-spacing: .18em; text-transform: uppercase;
-    font-size: clamp(26px, 6vw, 44px); margin: 20px 0 0; text-wrap: balance;
+    font-weight: 400; letter-spacing: -.02em; text-transform: lowercase;
+    font-size: clamp(32px, 6.5vw, 52px); margin: 22px 0 0; text-wrap: balance;
   }
   .hero .role {
-    font-size: 12px; letter-spacing: .28em; text-transform: uppercase; color: var(--slate);
-    margin: 18px 0 0;
+    font-size: 12px; letter-spacing: .2em; text-transform: lowercase; color: var(--slate);
+    margin: 20px 0 0;
   }
   .hero .sig {
     font-family: var(--sans); font-weight: 500; font-size: clamp(22px, 4vw, 32px);
@@ -58,25 +58,25 @@
     max-width: 62ch; color: var(--slate); font-size: 17px; margin: 26px 0 0;
   }
   .hero .cta {
-    display: inline-flex; align-items: center; gap: 10px; margin-top: 36px;
-    padding: 13px 22px; border: 1px solid var(--ink); border-radius: 40px;
-    color: var(--ink); text-decoration: none; font-size: 14px; letter-spacing: .02em;
-    transition: background .18s, color .18s;
+    display: inline-flex; align-items: center; gap: 10px; margin-top: 40px;
+    padding: 15px 28px; border: 1px solid var(--ink); border-radius: 2px;
+    color: var(--ink); text-decoration: none; font-size: 13px; letter-spacing: .04em;
+    text-transform: lowercase; transition: background .18s, color .18s;
   }
   .hero .cta:hover { background: var(--ink); color: var(--paper); }
 
-  .sec-pad { padding: 64px 0; }
+  .sec-pad { padding: 76px 0; }
   h2.title {
-    font-weight: 400; font-size: clamp(21px, 3vw, 27px); letter-spacing: -.01em;
-    margin: 14px 0 0; text-wrap: balance;
+    font-weight: 400; font-size: clamp(22px, 3vw, 29px); letter-spacing: -.02em;
+    text-transform: lowercase; margin: 14px 0 0; text-wrap: balance;
   }
   .sec-intro { color: var(--slate); max-width: 60ch; margin: 14px 0 0; }
 
   /* offer ladder */
   .ladder { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin-top: 40px;
-    background: var(--hair); border: 1px solid var(--hair); border-radius: 12px; overflow: hidden; }
+    background: var(--hair); border: 1px solid var(--hair); border-radius: 4px; overflow: hidden; }
   .rung { background: var(--paper); padding: 24px 22px; display: flex; flex-direction: column; gap: 8px; }
-  .rung .step { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--slate-2);
+  .rung .step { font-size: 11px; letter-spacing: .12em; text-transform: lowercase; color: var(--slate-2);
     font-variant-numeric: tabular-nums; }
   .rung h3 { margin: 2px 0 0; font-size: 16px; font-weight: 500; letter-spacing: -.005em; }
   .rung p { margin: 0; font-size: 13.5px; color: var(--slate); }
@@ -84,14 +84,14 @@
 
   /* proof wall */
   .proof { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 40px;
-    background: var(--hair); border: 1px solid var(--hair); border-radius: 12px; overflow: hidden; }
+    background: var(--hair); border: 1px solid var(--hair); border-radius: 4px; overflow: hidden; }
   .stat { background: var(--paper); padding: 28px 24px; }
   .stat .n { font-size: 34px; font-weight: 300; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
   .stat .l { font-size: 13px; color: var(--slate); margin-top: 8px; max-width: 26ch; }
 
   /* sectors */
   .sectors { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; }
-  .sector h3 { margin: 0 0 10px; font-size: 15px; letter-spacing: .14em; text-transform: uppercase; }
+  .sector h3 { margin: 0 0 10px; font-size: 16px; letter-spacing: .02em; text-transform: lowercase; }
   .sector p { margin: 0; color: var(--slate); font-size: 14px; }
   .sector .rule { width: 28px; height: 2px; background: var(--ink); margin-bottom: 16px; }
 
@@ -102,12 +102,12 @@
 
   /* how I build */
   .pipe { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 36px;
-    font-size: 13px; letter-spacing: .16em; text-transform: uppercase; }
-  .pstep { color: var(--ink); border: 1px solid var(--hair); border-radius: 40px; padding: 8px 16px; }
+    font-size: 13px; letter-spacing: .1em; text-transform: lowercase; }
+  .pstep { color: var(--ink); border: 1px solid var(--hair); border-radius: 2px; padding: 8px 16px; }
   .parr { color: var(--slate-2); }
   .pgate { text-transform: none; letter-spacing: 0; color: var(--slate); font-size: 13px; }
   .build-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin-top: 28px;
-    background: var(--hair); border: 1px solid var(--hair); border-radius: 12px; overflow: hidden; }
+    background: var(--hair); border: 1px solid var(--hair); border-radius: 4px; overflow: hidden; }
   .bcard { background: var(--paper); padding: 24px 22px; }
   .bcard h3 { margin: 0 0 8px; font-size: 15px; font-weight: 500; letter-spacing: -.005em; }
   .bcard p { margin: 0; font-size: 13.5px; color: var(--slate); }
@@ -126,7 +126,7 @@
 
   /* scope band */
   .scope { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; margin-top: 40px;
-    background: var(--hair); border: 1px solid var(--hair); border-radius: 12px; overflow: hidden; }
+    background: var(--hair); border: 1px solid var(--hair); border-radius: 4px; overflow: hidden; }
   .scope .s { background: var(--paper); padding: 26px 16px; text-align: center; }
   .scope .n { font-size: 32px; font-weight: 300; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
   .scope .l { font-size: 12px; color: var(--slate); margin-top: 6px; }
@@ -139,13 +139,13 @@
 
   /* selected work */
   .work-list { display: flex; flex-direction: column; gap: 12px; margin-top: 40px; }
-  .work-item { border: 1px solid var(--hair); border-radius: 12px; background: var(--paper); overflow: hidden; }
+  .work-item { border: 1px solid var(--hair); border-radius: 4px; background: var(--paper); overflow: hidden; }
   .work-item summary { list-style: none; cursor: pointer; padding: 20px 24px; display: flex;
     align-items: center; gap: 16px; }
   .work-item summary::-webkit-details-marker { display: none; }
   .work-item summary .wt { font-size: 16px; font-weight: 500; letter-spacing: -.01em; flex: 1; }
-  .work-item summary .wtag { font-size: 11px; color: var(--slate-2); letter-spacing: .06em;
-    text-transform: uppercase; white-space: nowrap; }
+  .work-item summary .wtag { font-size: 11px; color: var(--slate-2); letter-spacing: .08em;
+    text-transform: lowercase; white-space: nowrap; }
   .work-item summary .plus { color: var(--slate-2); font-size: 22px; line-height: 1; transition: transform .2s; }
   .work-item[open] summary .plus { transform: rotate(45deg); }
   .work-body { padding: 4px 24px 26px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px 32px; }
@@ -155,14 +155,14 @@
   .work-col p { margin: 0; font-size: 13.5px; color: var(--slate); }
   .work-skills { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 7px; }
   .work-skills .k { font-size: 11.5px; color: var(--slate); background: var(--mist);
-    border: 1px solid var(--hair); padding: 4px 10px; border-radius: 40px; }
+    border: 1px solid var(--hair); padding: 4px 10px; border-radius: 2px; }
 
   /* footer */
   footer { border-top: 1px solid var(--hair); padding: 46px 0 70px; }
   .foot-grid { display: flex; flex-wrap: wrap; gap: 8px 40px; align-items: baseline; }
   .foot-grid a, .foot-grid span { color: var(--slate); text-decoration: none; font-size: 14px; }
   .foot-grid a:hover { color: var(--ink); }
-  .foot-name { font-weight: 300; letter-spacing: .16em; text-transform: uppercase; color: var(--ink) !important; font-size: 15px !important; }
+  .foot-name { font-weight: 400; letter-spacing: -.01em; text-transform: lowercase; color: var(--ink) !important; font-size: 16px !important; }
   .tnum { font-variant-numeric: tabular-nums; }
 
   @media (max-width: 760px) {

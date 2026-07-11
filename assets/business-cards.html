@@ -3,25 +3,25 @@
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
   :root {
-    --paper: #ffffff;
-    --ink: #131417;
-    --mist: #f5f5f6;
-    --hair: #e4e5e7;
-    --slate: #71767c;
-    --graphite: #2b2d31;
+    --paper: #f6f3ec;
+    --ink: #2a2620;
+    --mist: #ebe6dc;
+    --hair: #e0dace;
+    --slate: #7a7167;
+    --graphite: #3a342c;
     /* studio backdrop (adapts to theme; cards stay white paper) */
-    --stage: #f3f4f6;
-    --stage-2: #ffffff;
-    --stage-text: #1a1b1e;
-    --stage-sub: #6c7176;
+    --stage: #e8e3d8;
+    --stage-2: #f4f1ea;
+    --stage-text: #2a2620;
+    --stage-sub: #8b8174;
     --card-shadow: 0 1px 2px rgba(19,20,23,.06), 0 18px 40px -18px rgba(19,20,23,.28);
     --serif: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
     --sans: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   }
   /* Single light theme — always a near-white backdrop */
   :root[data-theme="light"] {
-    --stage: #f3f4f6; --stage-2: #ffffff; --stage-text: #1a1b1e; --stage-sub: #6c7176;
-    --card-shadow: 0 1px 2px rgba(19,20,23,.06), 0 18px 40px -18px rgba(19,20,23,.28);
+    --stage: #e8e3d8; --stage-2: #f4f1ea; --stage-text: #2a2620; --stage-sub: #8b8174;
+    --card-shadow: 0 1px 2px rgba(42,38,32,.06), 0 18px 40px -18px rgba(42,38,32,.24);
   }
 
   * { box-sizing: border-box; }
@@ -83,10 +83,10 @@
   .card * { line-height: 1.35; }
 
   .name-lg {
-    font-weight: 300; letter-spacing: .16em; text-transform: uppercase;
+    font-weight: 400; letter-spacing: -.01em; text-transform: lowercase;
   }
   .role {
-    font-size: 10.5px; letter-spacing: .26em; text-transform: uppercase;
+    font-size: 10.5px; letter-spacing: .18em; text-transform: lowercase;
     color: var(--slate);
   }
   .sig {
