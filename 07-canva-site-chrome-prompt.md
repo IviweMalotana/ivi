@@ -114,7 +114,7 @@ thing that stops it — working software you own.
 [FOOTER / CONTACT]
 Heading (italic serif): See the opportunity. Automate the outcome.
 Ivi Malotana · AI & Automation Specialist
-Email: iivii.malotana@gmail.com   Phone: +27 74 265 1467
+Email: iivii.malotana@gmail.com
 LinkedIn: linkedin.com/in/iviwe-malotana   ·   Cape Town / Gauteng, South Africa
 Make the email a mailto: link and the LinkedIn a real link.
 
