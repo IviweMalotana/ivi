@@ -21,19 +21,10 @@
     --serif: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
     --sans: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --paper: #0f1012; --panel: #16171a; --mist: #191b1e; --hair: #2a2c30;
-      --ink: #f3f4f5; --slate: #9ca1a7; --slate-2: #7c8188; --graphite: #d7d9dc;
-    }
-  }
+  /* Single light theme — always a white background with black & grey text */
   :root[data-theme="light"] {
     --paper:#fff; --panel:#fafafb; --mist:#f4f5f6; --hair:#e6e7e9;
     --ink:#131417; --slate:#6c7176; --slate-2:#8b9096; --graphite:#2b2d31;
-  }
-  :root[data-theme="dark"] {
-    --paper:#0f1012; --panel:#16171a; --mist:#191b1e; --hair:#2a2c30;
-    --ink:#f3f4f5; --slate:#9ca1a7; --slate-2:#7c8188; --graphite:#d7d9dc;
   }
 
   * { box-sizing: border-box; }

@@ -10,30 +10,18 @@
     --slate: #71767c;
     --graphite: #2b2d31;
     /* studio backdrop (adapts to theme; cards stay white paper) */
-    --stage: #eceded;
-    --stage-2: #e3e4e6;
+    --stage: #f3f4f6;
+    --stage-2: #ffffff;
     --stage-text: #1a1b1e;
     --stage-sub: #6c7176;
     --card-shadow: 0 1px 2px rgba(19,20,23,.06), 0 18px 40px -18px rgba(19,20,23,.28);
     --serif: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
     --sans: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --stage: #17181b;
-      --stage-2: #202124;
-      --stage-text: #f3f4f5;
-      --stage-sub: #9a9fa5;
-      --card-shadow: 0 1px 2px rgba(0,0,0,.4), 0 26px 55px -20px rgba(0,0,0,.7);
-    }
-  }
+  /* Single light theme — always a near-white backdrop */
   :root[data-theme="light"] {
-    --stage: #eceded; --stage-2: #e3e4e6; --stage-text: #1a1b1e; --stage-sub: #6c7176;
+    --stage: #f3f4f6; --stage-2: #ffffff; --stage-text: #1a1b1e; --stage-sub: #6c7176;
     --card-shadow: 0 1px 2px rgba(19,20,23,.06), 0 18px 40px -18px rgba(19,20,23,.28);
-  }
-  :root[data-theme="dark"] {
-    --stage: #17181b; --stage-2: #202124; --stage-text: #f3f4f5; --stage-sub: #9a9fa5;
-    --card-shadow: 0 1px 2px rgba(0,0,0,.4), 0 26px 55px -20px rgba(0,0,0,.7);
   }
 
   * { box-sizing: border-box; }
