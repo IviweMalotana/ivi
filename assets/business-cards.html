@@ -1,0 +1,340 @@
+<title>Ivi Malotana — Business Card Designs</title>
+<style>
+  :root {
+    --paper: #ffffff;
+    --ink: #131417;
+    --mist: #f5f5f6;
+    --hair: #e4e5e7;
+    --slate: #71767c;
+    --graphite: #2b2d31;
+    /* studio backdrop (adapts to theme; cards stay white paper) */
+    --stage: #eceded;
+    --stage-2: #e3e4e6;
+    --stage-text: #1a1b1e;
+    --stage-sub: #6c7176;
+    --card-shadow: 0 1px 2px rgba(19,20,23,.06), 0 18px 40px -18px rgba(19,20,23,.28);
+    --serif: ui-serif, Georgia, "Times New Roman", serif;
+    --sans: "Helvetica Neue", Inter, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --stage: #17181b;
+      --stage-2: #202124;
+      --stage-text: #f3f4f5;
+      --stage-sub: #9a9fa5;
+      --card-shadow: 0 1px 2px rgba(0,0,0,.4), 0 26px 55px -20px rgba(0,0,0,.7);
+    }
+  }
+  :root[data-theme="light"] {
+    --stage: #eceded; --stage-2: #e3e4e6; --stage-text: #1a1b1e; --stage-sub: #6c7176;
+    --card-shadow: 0 1px 2px rgba(19,20,23,.06), 0 18px 40px -18px rgba(19,20,23,.28);
+  }
+  :root[data-theme="dark"] {
+    --stage: #17181b; --stage-2: #202124; --stage-text: #f3f4f5; --stage-sub: #9a9fa5;
+    --card-shadow: 0 1px 2px rgba(0,0,0,.4), 0 26px 55px -20px rgba(0,0,0,.7);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: var(--sans);
+    color: var(--stage-text);
+    background:
+      radial-gradient(120% 100% at 50% 0%, var(--stage-2) 0%, var(--stage) 60%);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+  }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 72px 28px 96px; }
+
+  header.masthead { margin-bottom: 56px; }
+  .eyebrow {
+    font-size: 12px; letter-spacing: .32em; text-transform: uppercase;
+    color: var(--stage-sub); margin: 0 0 18px;
+  }
+  header.masthead h1 {
+    font-weight: 300; font-size: clamp(30px, 5vw, 46px); margin: 0;
+    letter-spacing: -.01em; text-wrap: balance; color: var(--stage-text);
+  }
+  header.masthead p {
+    max-width: 60ch; color: var(--stage-sub); font-size: 16px;
+    margin: 16px 0 0;
+  }
+
+  .design { margin-top: 64px; }
+  .design-head {
+    display: flex; align-items: baseline; gap: 14px;
+    border-bottom: 1px solid color-mix(in srgb, var(--stage-sub) 30%, transparent);
+    padding-bottom: 14px; margin-bottom: 30px; flex-wrap: wrap;
+  }
+  .design-num {
+    font-size: 12px; letter-spacing: .2em; color: var(--stage-sub);
+    font-variant-numeric: tabular-nums;
+  }
+  .design-name { font-size: 19px; font-weight: 500; letter-spacing: -.01em; }
+  .design-note { font-size: 14px; color: var(--stage-sub); margin-left: auto; }
+
+  .pair {
+    display: flex; flex-wrap: wrap; gap: 30px; align-items: flex-start;
+  }
+  .card-slot { display: flex; flex-direction: column; gap: 10px; }
+  .slot-label {
+    font-size: 11px; letter-spacing: .22em; text-transform: uppercase;
+    color: var(--stage-sub);
+  }
+
+  /* --- the card object: 85mm x 55mm ratio --- */
+  .card {
+    width: 396px; height: 256px; border-radius: 5px;
+    background: var(--paper); color: var(--ink);
+    box-shadow: var(--card-shadow);
+    position: relative; overflow: hidden;
+    font-family: var(--sans);
+  }
+  .card * { line-height: 1.35; }
+
+  .name-lg {
+    font-weight: 300; letter-spacing: .16em; text-transform: uppercase;
+  }
+  .role {
+    font-size: 10.5px; letter-spacing: .26em; text-transform: uppercase;
+    color: var(--slate);
+  }
+  .sig {
+    font-family: var(--serif); font-style: italic; color: var(--ink);
+  }
+  .hair { background: var(--hair); }
+  .mono {
+    font-weight: 300; letter-spacing: .04em; color: var(--ink);
+  }
+  .contact { font-size: 10.5px; color: var(--slate); letter-spacing: .01em; }
+  .contact b { color: var(--ink); font-weight: 500; }
+  .tnum { font-variant-numeric: tabular-nums; }
+
+  /* ============ DESIGN 1 — THE WORDMARK ============ */
+  .d1-front { padding: 0; display: grid; grid-template-rows: 1fr auto; }
+  .d1-front .top {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; gap: 14px; padding: 30px 24px 0;
+  }
+  .d1-front .name-lg { font-size: 24px; }
+  .d1-front .rule { width: 34px; height: 1px; }
+  .d1-front .foot {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 16px 22px; border-top: 1px solid var(--hair);
+    font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--slate);
+  }
+  .d1-back {
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    padding: 34px; background: var(--paper);
+  }
+  .d1-back .sig { font-size: 21px; letter-spacing: .01em; }
+  .d1-back .sig .b { display: block; }
+
+  /* ============ DESIGN 2 — THE STATEMENT ============ */
+  .d2-front { padding: 30px 30px 26px; display: flex; flex-direction: column; height: 100%; }
+  .d2-front .name-lg { font-size: 15px; }
+  .d2-front .role { margin-top: 6px; }
+  .d2-front .hero {
+    margin-top: auto; font-family: var(--serif); font-style: italic;
+    font-size: 25px; letter-spacing: .005em; color: var(--ink); line-height: 1.25;
+    max-width: 15ch;
+  }
+  .d2-front .contact { margin-top: 22px; display: flex; gap: 18px; flex-wrap: wrap; }
+  .d2-back {
+    background: var(--mist); display: flex; align-items: center; justify-content: center;
+  }
+  .d2-back .mono { font-size: 74px; }
+  .d2-back .dot { color: var(--slate); }
+
+  /* ============ DESIGN 3 — THE INDEX ============ */
+  .d3-front { padding: 28px 30px; display: grid; grid-template-rows: auto 1fr auto; height: 100%; }
+  .d3-front .head { display: flex; justify-content: space-between; align-items: flex-start; }
+  .d3-front .name-lg { font-size: 16px; }
+  .d3-front .role { margin-top: 6px; }
+  .d3-front .mono-sm { font-weight: 300; font-size: 22px; letter-spacing: .02em; }
+  .d3-front .sectors {
+    align-self: center; display: flex; gap: 10px; align-items: center;
+    font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--ink);
+  }
+  .d3-front .sectors span { color: var(--hair); }
+  .d3-front .grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4px 24px;
+    border-top: 1px solid var(--hair); padding-top: 14px;
+  }
+  .d3-back {
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    padding: 30px;
+  }
+  .d3-back .stack { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .d3-back .name-lg { font-size: 15px; }
+  .d3-back .sig { font-size: 13px; }
+  .d3-back .rule { width: 26px; height: 1px; }
+
+  /* print / spec note */
+  .spec {
+    margin-top: 80px; background: color-mix(in srgb, var(--stage-2) 70%, var(--paper));
+    border: 1px solid color-mix(in srgb, var(--stage-sub) 24%, transparent);
+    border-radius: 12px; padding: 30px 32px;
+  }
+  .spec h2 { margin: 0 0 4px; font-weight: 500; font-size: 18px; letter-spacing: -.01em; }
+  .spec .sub { color: var(--stage-sub); font-size: 14px; margin: 0 0 22px; }
+  .spec dl {
+    display: grid; grid-template-columns: 160px 1fr; gap: 12px 24px; margin: 0;
+    font-size: 14px;
+  }
+  .spec dt { color: var(--stage-text); font-weight: 500; }
+  .spec dd { margin: 0; color: var(--stage-sub); }
+  .spec dd b { color: var(--stage-text); font-weight: 500; }
+  .swatches { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
+  .sw { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--stage-sub); }
+  .chip { width: 20px; height: 20px; border-radius: 5px; border: 1px solid color-mix(in srgb, var(--stage-sub) 30%, transparent); }
+
+  @media (max-width: 520px) {
+    .card { width: 320px; height: 207px; }
+    .d1-front .name-lg { font-size: 20px; }
+    .d2-front .hero, .d1-back .sig { font-size: 20px; }
+    .d2-back .mono { font-size: 58px; }
+    .spec dl { grid-template-columns: 1fr; gap: 4px 0; }
+    .spec dt { margin-top: 12px; }
+  }
+</style>
+
+<div class="wrap">
+  <header class="masthead">
+    <p class="eyebrow">Ivi Malotana · Brand Kit</p>
+    <h1>Business cards — three clean directions</h1>
+    <p>All three share one system: white paper, ink black, light-grey hairlines, and a lot of
+      breathing room. No colour — the premium is in the restraint. Pick the one that feels most
+      you; front and back are shown for each.</p>
+  </header>
+
+  <!-- ================= DESIGN 1 ================= -->
+  <section class="design">
+    <div class="design-head">
+      <span class="design-num">01</span>
+      <span class="design-name">The Wordmark</span>
+      <span class="design-note">Most minimal. The name is the whole design.</span>
+    </div>
+    <div class="pair">
+      <div class="card-slot">
+        <span class="slot-label">Front</span>
+        <div class="card d1-front">
+          <div class="top">
+            <div class="name-lg">Ivi Malotana</div>
+            <div class="rule hair"></div>
+            <div class="role">AI &amp; Automation Specialist</div>
+          </div>
+          <div class="foot">
+            <span>Cape Town · Gauteng</span>
+            <span>ivimalotana.com</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-slot">
+        <span class="slot-label">Back</span>
+        <div class="card d1-back">
+          <div class="sig">
+            <span class="b">See the opportunity.</span>
+            <span class="b">Automate the outcome.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= DESIGN 2 ================= -->
+  <section class="design">
+    <div class="design-head">
+      <span class="design-num">02</span>
+      <span class="design-name">The Statement</span>
+      <span class="design-note">Your signature line as the hero. Confident, editorial.</span>
+    </div>
+    <div class="pair">
+      <div class="card-slot">
+        <span class="slot-label">Front</span>
+        <div class="card d2-front">
+          <div class="name-lg">Ivi Malotana</div>
+          <div class="role">AI &amp; Automation Specialist</div>
+          <div class="hero">I find the friction. I build the fix.</div>
+          <div class="contact">
+            <span><b>iivii.malotana@gmail.com</b></span>
+            <span class="tnum">+27 74 265 1467</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-slot">
+        <span class="slot-label">Back</span>
+        <div class="card d2-back">
+          <div class="mono">im<span class="dot">.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= DESIGN 3 ================= -->
+  <section class="design">
+    <div class="design-head">
+      <span class="design-num">03</span>
+      <span class="design-name">The Index</span>
+      <span class="design-note">Structured. Puts your three sectors on the card.</span>
+    </div>
+    <div class="pair">
+      <div class="card-slot">
+        <span class="slot-label">Front</span>
+        <div class="card d3-front">
+          <div class="head">
+            <div>
+              <div class="name-lg">Ivi Malotana</div>
+              <div class="role">AI &amp; Automation Specialist</div>
+            </div>
+            <div class="mono-sm">im.</div>
+          </div>
+          <div class="sectors">Law <span>/</span> Finance <span>/</span> Insurance</div>
+          <div class="grid">
+            <div class="contact"><b>Email</b><br>iivii.malotana@gmail.com</div>
+            <div class="contact"><b>Phone</b><br><span class="tnum">+27 74 265 1467</span></div>
+            <div class="contact"><b>Web</b><br>ivimalotana.com</div>
+            <div class="contact"><b>LinkedIn</b><br>in/iviwe-malotana</div>
+          </div>
+        </div>
+      </div>
+      <div class="card-slot">
+        <span class="slot-label">Back</span>
+        <div class="card d3-back">
+          <div class="stack">
+            <div class="name-lg">Ivi Malotana</div>
+            <div class="rule hair"></div>
+            <div class="sig">See the opportunity. Automate the outcome.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SPEC ================= -->
+  <section class="spec">
+    <h2>Print &amp; production notes</h2>
+    <p class="sub">Hand any of these to a printer with the following.</p>
+    <dl>
+      <dt>Trim size</dt>
+      <dd><b>85 × 55 mm</b> (UK / international standard). US alternative: 3.5 × 2 in.</dd>
+      <dt>Bleed</dt>
+      <dd>Add <b>3 mm bleed</b> on all sides → artboard 91 × 61 mm. Keep text 4 mm inside the trim.</dd>
+      <dt>Stock</dt>
+      <dd>Uncoated or soft-touch matte, <b>350–400 gsm</b>. Matte suits the minimal look; avoid gloss.</dd>
+      <dt>Finish (optional)</dt>
+      <dd>Blind deboss or spot-matte on the name/monogram reads expensive on white without adding colour.</dd>
+      <dt>Colour</dt>
+      <dd>True black text — spec as <b>rich black</b> (e.g. C40 M30 Y30 K100) for depth, not flat K100.</dd>
+      <dt>Files</dt>
+      <dd>Supply <b>vector PDF</b> (outlined type) at 300 dpi. This HTML is the visual reference to hand a designer.</dd>
+    </dl>
+    <div class="swatches">
+      <div class="sw"><span class="chip" style="background:#131417"></span> Ink #131417</div>
+      <div class="sw"><span class="chip" style="background:#ffffff"></span> Paper #FFFFFF</div>
+      <div class="sw"><span class="chip" style="background:#f5f5f6"></span> Mist #F5F5F6</div>
+      <div class="sw"><span class="chip" style="background:#e4e5e7"></span> Hairline #E4E5E7</div>
+      <div class="sw"><span class="chip" style="background:#71767c"></span> Slate #71767C</div>
+    </div>
+  </section>
+</div>
