@@ -44,10 +44,10 @@ the core of your premium.
 You are not *claiming* you could work in these sectors. You have shipped in them.
 
 **(c) You build the whole thing, not a slide about it.**
-1,886 commits. 124 pull requests. A 253-test regression suite guarding tax calculations. A
-multi-tenant platform with proper tenant isolation, disaster recovery and monitoring. When you
-say "I'll automate that," you can actually hand over working software. That converts sceptical
-buyers.
+A whole white-label platform, built and shipped end to end — with a 253-test regression suite
+guarding live tax calculations, proper tenant isolation, disaster recovery and monitoring, and
+commercialised as a real venture. When you say "I'll automate that," you can actually hand over
+working software. That converts sceptical buyers.
 
 **The synthesis:** *"An engineer-operator who has already automated the money, the risk and the
 paperwork in finance, insurance and compliance — and can prove it with shipped product."*

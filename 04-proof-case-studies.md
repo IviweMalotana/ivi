@@ -138,7 +138,7 @@ Numbers and facts you can state plainly, because they're true:
 
 - **7×** — billing capacity scaled at a UK fintech.
 - **60%** — AI chatbot resolution rate (led a team of 5).
-- **1,886 commits · 124 pull requests** — on a production multi-tenant AWS platform.
+- **A full production platform** — multi-tenant, isolated, monitored, built and shipped end to end.
 - **253-test suite** — guarding a live tax & accounts engine.
 - **3 sectors shipped** — finance, insurance, and compliance/RegTech.
 - **1st** — stood up a fintech's first fraud & AML process from scratch.

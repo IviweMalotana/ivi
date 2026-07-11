@@ -22,6 +22,7 @@ assets.
 | 4 | [`04-proof-case-studies.md`](04-proof-case-studies.md) | Your real work rewritten as buyer-facing case studies | Prove it. Attach to proposals, put on the site. |
 | 5 | [`05-launch-plan-90-day.md`](05-launch-plan-90-day.md) | Week-by-week launch plan | Actually go live. |
 | 6 | [`06-content-and-outreach.md`](06-content-and-outreach.md) | LinkedIn rewrite, content calendar, outreach scripts | Fill the pipeline. |
+| 7 | [`07-canva-site-chrome-prompt.md`](07-canva-site-chrome-prompt.md) | Copy-paste prompt for a Chrome AI agent to build & publish your Canva site | Get the site live on `ivi-m.my.canva.site`. |
 
 ## Visual assets (open in a browser / print)
 
