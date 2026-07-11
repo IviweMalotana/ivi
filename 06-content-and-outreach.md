@@ -94,6 +94,8 @@ Software Development.
   itself.*"
 - "I scaled a company's billing 7× without adding a single person. Here's the boring truth of
   how."
+- "'Ivi, we can't automate this — it needs human intervention.' Six weeks later that accountant
+  had six extra hours a week. Here's what we did."
 
 **The signature format — "Automation Teardown":** pick one common process in a sector, break down
 each manual step and what it costs, then show the automated version and the annual saving. Ship

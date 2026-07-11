@@ -2,7 +2,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ivi Malotana — AI &amp; Automation Specialist</title>
-<meta name="description" content="Ivi Malotana — AI &amp; Automation Specialist. I find where your business is losing time and money in its own processes and build the AI and automation that stops the bleed. Finance, insurance and legal operations.">
+<meta name="description" content="Ivi Malotana — AI &amp; Automation Specialist. Transforming business operations for 5+ years. I find where your business is losing time and money in its own processes and build the AI and automation that stops the bleed.">
 <meta property="og:title" content="Ivi Malotana — AI &amp; Automation Specialist">
 <meta property="og:description" content="I find the friction. I build the fix. See the opportunity. Automate the outcome.">
 <meta property="og:type" content="website">
@@ -131,6 +131,39 @@
     font-size: 14px; color: var(--slate); }
   .creds b { color: var(--ink); font-weight: 500; }
 
+  /* scope band */
+  .scope { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; margin-top: 40px;
+    background: var(--hair); border: 1px solid var(--hair); border-radius: 12px; overflow: hidden; }
+  .scope .s { background: var(--paper); padding: 26px 16px; text-align: center; }
+  .scope .n { font-size: 32px; font-weight: 300; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+  .scope .l { font-size: 12px; color: var(--slate); margin-top: 6px; }
+
+  /* pull quote */
+  .quote blockquote { margin: 0; }
+  .quote .q { font-family: var(--serif); font-style: italic; font-size: clamp(23px, 4vw, 36px);
+    line-height: 1.3; letter-spacing: -.005em; text-wrap: balance; max-width: 22ch; margin: 0; }
+  .quote .a { margin: 22px 0 0; font-size: 15px; color: var(--slate); max-width: 54ch; }
+
+  /* selected work */
+  .work-list { display: flex; flex-direction: column; gap: 12px; margin-top: 40px; }
+  .work-item { border: 1px solid var(--hair); border-radius: 12px; background: var(--paper); overflow: hidden; }
+  .work-item summary { list-style: none; cursor: pointer; padding: 20px 24px; display: flex;
+    align-items: center; gap: 16px; }
+  .work-item summary::-webkit-details-marker { display: none; }
+  .work-item summary .wt { font-size: 16px; font-weight: 500; letter-spacing: -.01em; flex: 1; }
+  .work-item summary .wtag { font-size: 11px; color: var(--slate-2); letter-spacing: .06em;
+    text-transform: uppercase; white-space: nowrap; }
+  .work-item summary .plus { color: var(--slate-2); font-size: 22px; line-height: 1; transition: transform .2s; }
+  .work-item[open] summary .plus { transform: rotate(45deg); }
+  .work-body { padding: 4px 24px 26px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px 32px; }
+  .work-body .take { grid-column: 1 / -1; font-family: var(--serif); font-style: italic;
+    font-size: 17px; color: var(--ink); border-left: 2px solid var(--ink); padding-left: 16px; margin: 0; }
+  .work-col h4 { margin: 0 0 6px; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--slate-2); }
+  .work-col p { margin: 0; font-size: 13.5px; color: var(--slate); }
+  .work-skills { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 7px; }
+  .work-skills .k { font-size: 11.5px; color: var(--slate); background: var(--mist);
+    border: 1px solid var(--hair); padding: 4px 10px; border-radius: 40px; }
+
   /* footer */
   footer { border-top: 1px solid var(--hair); padding: 46px 0 70px; }
   .foot-grid { display: flex; flex-wrap: wrap; gap: 8px 40px; align-items: baseline; }
@@ -141,18 +174,19 @@
 
   @media (max-width: 760px) {
     .ladder, .proof, .build-grid { grid-template-columns: 1fr 1fr; }
-    .sectors, .exp-item { grid-template-columns: 1fr; }
+    .sectors, .exp-item, .work-body { grid-template-columns: 1fr; }
+    .scope { grid-template-columns: repeat(3, 1fr); }
     .exp-item { gap: 8px; }
   }
   @media (max-width: 460px) {
-    .ladder, .proof, .build-grid { grid-template-columns: 1fr; }
+    .ladder, .proof, .build-grid, .scope { grid-template-columns: 1fr; }
   }
 </style>
 
 <div class="wrap">
 
   <section class="hero">
-    <p class="eyebrow">Cape Town · Gauteng · Working worldwide</p>
+    <p class="eyebrow">Transforming business operations for 5+ years</p>
     <h1 class="name">Ivi Malotana</h1>
     <p class="role">AI &amp; Automation Specialist</p>
     <p class="sig">See the opportunity. Automate the outcome.</p>
@@ -160,6 +194,29 @@
       own processes, and build the AI and automation that stops the bleed. An engineer who learned
       to run the business — with the shipped work to prove it.</p>
     <a class="cta" href="#book">Book an Automation Opportunity Scan →</a>
+  </section>
+
+  <section class="sec-pad">
+    <p class="eyebrow">The footprint</p>
+    <h2 class="title">Five years spotting what a business can automate — across all of it.</h2>
+    <p class="sec-intro">Not one team, one tool or one department. I've worked end to end across the
+      org chart and the tech stack — which is exactly why I see the automation opportunities others
+      walk past.</p>
+    <div class="scope">
+      <div class="s"><div class="n">40+</div><div class="l">Projects delivered</div></div>
+      <div class="s"><div class="n">15</div><div class="l">Departments</div></div>
+      <div class="s"><div class="n">09</div><div class="l">Teams led or created</div></div>
+      <div class="s"><div class="n">03</div><div class="l">Tech stacks</div></div>
+      <div class="s"><div class="n">03</div><div class="l">CRM systems integrated</div></div>
+    </div>
+  </section>
+
+  <section class="quote sec-pad">
+    <blockquote>
+      <p class="q">"Ivi, we can't automate this. It needs human intervention."</p>
+      <p class="a">— what teams tell me right before I automate it. That "impossible" accountant now
+        has six extra hours, every week.</p>
+    </blockquote>
   </section>
 
   <section class="sec-pad">
@@ -258,6 +315,96 @@
     </div>
   </section>
 
+  <section class="sec-pad">
+    <p class="eyebrow">Selected work</p>
+    <h2 class="title">Proof, project by project.</h2>
+    <p class="sec-intro">A cross-section of what "see the opportunity, automate the outcome" looks
+      like in practice — from enterprise platforms to a roadside salon. Tap any one to open it.</p>
+    <div class="work-list">
+
+      <details class="work-item">
+        <summary><span class="wt">Built an HR &amp; ATS platform from scratch in 6 months</span><span class="wtag">Product Ownership</span><span class="plus">+</span></summary>
+        <div class="work-body">
+          <p class="take">"The HR team thought they needed a new vendor. I showed them they needed their own platform."</p>
+          <div class="work-col"><h4>The challenge</h4><p>Every job post, edit and application ran through a third-party tool (BambooHR) that dictated how hiring worked. The team was managing its talent around someone else's system.</p></div>
+          <div class="work-col"><h4>What I built</h4><p>Three phases: a branded internal <b>Xebec Job Board</b> for instant control of posts; the <b>Xebec ATS</b>, an end-to-end pipeline from "Apply" to onboarding with automated notifications, interviews and audit trails; and an embedded <b>Power BI</b> dashboard for live hiring velocity, drop-offs and recruiter performance.</p></div>
+          <div class="work-skills"><span class="k">Product Ownership</span><span class="k">UX/UI · Figma</span><span class="k">C# .NET + Blazor</span><span class="k">Azure SQL · MSSQL</span><span class="k">Power BI</span><span class="k">Agile Delivery</span></div>
+        </div>
+      </details>
+
+      <details class="work-item">
+        <summary><span class="wt">Solved a 2-year integration problem in 1 week</span><span class="wtag">Debugging &amp; Leadership</span><span class="plus">+</span></summary>
+        <div class="work-body">
+          <p class="take">"Complacency costs more than complexity."</p>
+          <div class="work-col"><h4>The challenge</h4><p>Power BI dashboards were embedded in the company's web app, but changing a filter never updated the visuals. For two years everyone worked around it — people had started treating broken as normal.</p></div>
+          <div class="work-col"><h4>What I did</h4><p>Led a small cross-functional team (backend developer, Power BI engineer, QA) to rebuild the integration pipeline with dynamic query parameterization, so live web filters fed straight into Power BI datasets. Within one week it worked seamlessly.</p></div>
+          <div class="work-skills"><span class="k">Root-Cause Analysis</span><span class="k">Power BI Embedded</span><span class="k">Query Parameterization</span><span class="k">REST API Design</span><span class="k">Team Leadership</span></div>
+        </div>
+      </details>
+
+      <details class="work-item">
+        <summary><span class="wt">The first time I saw the power of automation</span><span class="wtag">Power Automate</span><span class="plus">+</span></summary>
+        <div class="work-body">
+          <p class="take">"Automation doesn't just make work faster. It makes work reliable."</p>
+          <div class="work-col"><h4>The challenge</h4><p>Supplier invoices arrived everywhere — sometimes to IT, sometimes to Finance. Each had to be found, downloaded, renamed and filed by hand. Missed emails meant missed invoices, delayed payments and stalled operations.</p></div>
+          <div class="work-col"><h4>What I built</h4><p>A Power Automate flow that centralised every invoice into one inbox, auto-extracted attachments, renamed files by supplier and date, filed them in the right SharePoint folder, and alerted IT and Finance the moment one arrived.</p></div>
+          <div class="work-skills"><span class="k">Power Automate</span><span class="k">SharePoint Integration</span><span class="k">Process Governance</span><span class="k">Cross-Department Collaboration</span><span class="k">Systems Thinking</span></div>
+        </div>
+      </details>
+
+      <details class="work-item">
+        <summary><span class="wt">A simple FAQ redesign that cut support tickets</span><span class="wtag">Mobile Banking · UX</span><span class="plus">+</span></summary>
+        <div class="work-body">
+          <p class="take">"Clarity and simplicity is the most underrated form of innovation."</p>
+          <div class="work-col"><h4>The challenge</h4><p>Support tickets were climbing — the same questions about limits, card freezes and fees. The answers were already in the FAQ, but endless scrolling had turned the FAQ itself into the problem.</p></div>
+          <div class="work-col"><h4>What I shipped</h4><p>A single-select "radio" FAQ component for the mobile banking app — customers pick one category at a time (Payments, Cards, Security, Fees). A simpler system that respected attention and scaled customer service by design.</p></div>
+          <div class="work-skills"><span class="k">UX/UI Design</span><span class="k">Information Architecture</span><span class="k">Data-Driven Iteration</span><span class="k">CX Optimization</span><span class="k">Mobile Performance</span></div>
+        </div>
+      </details>
+
+      <details class="work-item">
+        <summary><span class="wt">Designing for the one-person business</span><span class="wtag">Old Mutual · SME Product</span><span class="plus">+</span></summary>
+        <div class="work-body">
+          <p class="take">"When businesses understand their numbers, they stop surviving and start thriving."</p>
+          <div class="work-col"><h4>The challenge</h4><p>Old Mutual wanted a platform to help South African small-business owners — freelancers, vendors, roadside traders — understand their money, track performance and stay tax-compliant. Most tools are built for teams; this had to work for a team of one.</p></div>
+          <div class="work-col"><h4>What I designed</h4><p>Five persona-driven journeys capturing income, expenses and performance; contextual learning moments (tax tips, VAT, funding); simple profit-and-cash-flow dashboards; and micro-education loops that taught owners about their business as they tracked it.</p></div>
+          <div class="work-skills"><span class="k">Persona &amp; UX Research</span><span class="k">Financial Product Design</span><span class="k">Data Visualization</span><span class="k">Inclusive Product Strategy</span><span class="k">Behavioural Design</span></div>
+        </div>
+      </details>
+
+      <details class="work-item">
+        <summary><span class="wt">Helping young South Africans understand money</span><span class="wtag">Financial Literacy</span><span class="plus">+</span></summary>
+        <div class="work-body">
+          <p class="take">"The best financial tools teach by translation."</p>
+          <div class="work-col"><h4>The challenge</h4><p>Most financial tools assumed users already understood tax, insurance and investment. For young users the barrier wasn't literacy — it was access and relatability. The job wasn't to teach finance; it was to translate it.</p></div>
+          <div class="work-col"><h4>What I designed</h4><p>The experience and data logic for a guided Financial Needs Analysis tool — a plain-language question flow ("What do you earn?", "Who depends on you?", "What's your next goal?"), a personalised dashboard of short/medium/long-term goals, and compliant summaries an advisor could use in consultation.</p></div>
+          <div class="work-skills"><span class="k">Financial-Literacy Product</span><span class="k">Dynamic Logic &amp; Data Mapping</span><span class="k">UX Journey Design</span><span class="k">Behaviour Modelling</span><span class="k">Stakeholder Collaboration</span></div>
+        </div>
+      </details>
+
+      <details class="work-item">
+        <summary><span class="wt">Turning a township salon into a profitable, scalable business</span><span class="wtag">Grassroots Consulting</span><span class="plus">+</span></summary>
+        <div class="work-body">
+          <p class="take">"Operational excellence isn't only for big companies."</p>
+          <div class="work-col"><h4>The challenge</h4><p>A township salon running on instinct rather than numbers — no clear view of margins, supplier costs or what was actually driving profit.</p></div>
+          <div class="work-col"><h4>What I did</h4><p>Business-process reengineering, financial-literacy coaching for the owner, supplier and margin optimization, and hands-on operational strategy — turning a local hustle into a business that could grow.</p></div>
+          <div class="work-skills"><span class="k">Process Reengineering</span><span class="k">Financial-Literacy Coaching</span><span class="k">Margin Optimization</span><span class="k">Operational Strategy</span><span class="k">Grassroots Consulting</span></div>
+        </div>
+      </details>
+
+      <details class="work-item">
+        <summary><span class="wt">Predicting wildfires with IoT &amp; machine learning</span><span class="wtag">UCT Engineering · Research</span><span class="plus">+</span></summary>
+        <div class="work-body">
+          <p class="take">"Prediction is the foundation of prevention — whether it's wildfires, workflows or wasted resources."</p>
+          <div class="work-col"><h4>The challenge</h4><p>Turn raw environmental sensor data into an early warning — an engineering-thesis problem of defining the system, capturing the data and training a model that scales.</p></div>
+          <div class="work-col"><h4>What I built</h4><p>An IoT system on Raspberry Pi sensor networks feeding binomial-regression models trained in Python — data engineering and applied experimentation to predict environmental risk before it becomes damage.</p></div>
+          <div class="work-skills"><span class="k">Machine Learning</span><span class="k">IoT System Design</span><span class="k">Raspberry Pi · Sensors</span><span class="k">Python</span><span class="k">Applied Research</span></div>
+        </div>
+      </details>
+
+    </div>
+  </section>
+
   <section class="sec-pad about">
     <p class="eyebrow">About</p>
     <h2 class="title">An engineer who learned to run the business.</h2>
@@ -317,8 +464,9 @@
       </div>
     </div>
     <div class="creds">
-      <b>Education &amp; credentials</b> — BSc Electrical &amp; Computer Engineering, University of
-      Cape Town · Microsoft Azure Fundamentals
+      <b>Education</b> — BSc Electrical &amp; Computer Engineering, University of Cape Town · National
+      Senior Certificate, Queenstown Girls' High School (prefect). &nbsp;<b>Certification</b> —
+      Microsoft Azure Fundamentals.
     </div>
   </section>
 

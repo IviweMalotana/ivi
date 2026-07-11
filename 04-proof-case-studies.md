@@ -160,6 +160,44 @@ and shipped by a practice that is itself automated.
 
 ---
 
+## Selected work — the portfolio case studies (from your site)
+
+Eight signature projects, each with its one-line takeaway and the skills it demonstrates. These
+live on the site as expandable cards; use them individually as LinkedIn posts too.
+
+1. **Built an HR & ATS platform from scratch in 6 months** *(1Nebula — Product Ownership)*
+   → *"The HR team thought they needed a new vendor. I showed them they needed their own
+   platform."* Xebec Job Board → Xebec ATS (apply→onboarding, automated notifications & audit
+   trails) → embedded Power BI HR dashboard. *C# .NET + Blazor, Azure SQL/MSSQL, Power BI, Figma,
+   Agile.*
+2. **Solved a 2-year integration problem in 1 week** *(Debugging & Leadership)* → *"Complacency
+   costs more than complexity."* Led a cross-functional team to rebuild an embedded Power BI
+   pipeline with dynamic query parameterization. *Root-cause analysis, REST APIs, team leadership.*
+3. **The first time I saw the power of automation** *(Power Automate)* → *"Automation doesn't just
+   make work faster. It makes work reliable."* Centralised supplier invoices, auto-extracted,
+   renamed and filed to SharePoint with IT/Finance alerts. *Power Automate, SharePoint, process
+   governance.*
+4. **A simple FAQ redesign that cut support tickets** *(Mobile Banking — UX)* → *"Clarity and
+   simplicity is the most underrated form of innovation."* A single-select "radio" FAQ that scaled
+   support by design. *UX/UI, information architecture, data-driven iteration.*
+5. **Designing for the one-person business** *(Old Mutual — SME Product)* → *"When businesses
+   understand their numbers, they stop surviving and start thriving."* Five persona journeys,
+   contextual tax/VAT learning, profit dashboards, micro-education loops. *Persona research,
+   financial product design, data viz.*
+6. **Helping young South Africans understand money** *(Financial Literacy)* → *"The best financial
+   tools teach by translation."* A guided Financial Needs Analysis tool: plain-language question
+   flow, personalised goals dashboard, advisor-ready summaries. *Dynamic logic, UX journey design,
+   compliance collaboration.*
+7. **Turning a township salon into a profitable, scalable business** *(Grassroots Consulting)* →
+   *"Operational excellence isn't only for big companies."* Process reengineering, financial-
+   literacy coaching, supplier & margin optimization. *Operational strategy, business consulting.*
+8. **Predicting wildfires with IoT & ML** *(UCT Engineering — Research)* → *"Prediction is the
+   foundation of prevention — whether it's wildfires, workflows or wasted resources."* Raspberry Pi
+   sensor networks → binomial-regression models in Python. *Machine learning, IoT, data
+   engineering.*
+
+---
+
 ## The proof "wall" (for the site / one-pager)
 
 Numbers and facts you can state plainly, because they're true:
@@ -168,6 +206,8 @@ Numbers and facts you can state plainly, because they're true:
 - **60%** — AI chatbot resolution rate (led a team of 5).
 - **A full production platform** — multi-tenant, isolated, monitored, built and shipped end to end.
 - **253-test suite** — guarding a live tax & accounts engine.
+- **5+ years · 40+ projects · 15 departments · 9 teams · 3 tech stacks · 3 CRMs** — automating
+  across the whole business, not one corner of it.
 - **3 sectors shipped** — finance, insurance, and compliance/RegTech.
 - **AI-native delivery** — orchestrates Claude Code, OpenAI Codex & Cowork through a human-gated
   pipeline, Playwright-tested end to end.

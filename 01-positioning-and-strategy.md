@@ -75,6 +75,15 @@ and how it shows up:
 | Makes bold moves quietly, then everyone catches up | You lead with proof and outcomes, let the work be the flex. |
 | Unmistakably herself | One name. **Ivi Malotana.** Not "Ivi Malotana Consulting Solutions Ltd." Just the name. |
 
+**Your signature brand device** — the objection you've heard a hundred times, flipped:
+
+> *"Ivi, we can't automate this. It needs human intervention."*
+> — what teams say right before you automate it. (That "impossible" accountant now has six extra
+> hours a week.)
+
+Put it on the site, in decks, in talks. It names the objection and demolishes it in one breath —
+and it proves the positioning: you find automation where everyone else swears there isn't any.
+
 **Brand voice rules:**
 - Speak in outcomes and money, not features. "I cut your failed-payment losses," not "I
   implement a retry orchestration layer."
