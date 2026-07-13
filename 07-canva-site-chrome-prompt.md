@@ -115,7 +115,7 @@ thing that stops it — working software you own.
 Heading (italic serif): See the opportunity. Automate the outcome.
 Ivi Malotana · AI & Automation Specialist
 Email: iivii.malotana@gmail.com
-LinkedIn: linkedin.com/in/iviwe-malotana   ·   Cape Town / Gauteng, South Africa
+LinkedIn: linkedin.com/in/iviwe-malotana   ·   Cape Town, South Africa
 Make the email a mailto: link and the LinkedIn a real link.
 
 === STEP 4: CLEAN UP ===

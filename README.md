@@ -65,5 +65,5 @@ That's it — every push to that branch's `docs/` folder updates the site automa
 
 ---
 
-*Brand: Ivi Malotana · AI & Automation Specialist · Cape Town / Gauteng, South Africa ·
+*Brand: Ivi Malotana · AI & Automation Specialist · Cape Town, South Africa ·
 iivii.malotana@gmail.com*
