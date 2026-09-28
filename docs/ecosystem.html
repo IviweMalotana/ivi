@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ivi — The Ecosystem</title>
-<meta name="description" content="How one operator ships AI projects at team-scale velocity. Jira, requirements sign-off, Claude Code agents, tests, release notes — the full loop, walkable.">
+<title>Ivi. The Ecosystem</title>
+<meta name="description" content="How one operator ships an AI project end to end. Jira, Gherkin sign-off, Claude Code agents, tests, release notes. The full loop, walkable.">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
@@ -683,7 +683,7 @@
 <!-- ─── Topbar ────────────────────────────────────────────────────── -->
 <header class="topbar">
   <div class="topbar-inner">
-    <div class="logo"><b>ivi</b> — <em>ecosystem walkthrough</em></div>
+    <div class="logo"><b>ivi</b> · <em>ecosystem walkthrough</em></div>
     <nav class="nav" id="nav">
       <button data-stage="0" class="active"><span class="step-num">01</span>Overview</button>
       <button data-stage="1"><span class="step-num">02</span>Projects</button>
@@ -706,41 +706,39 @@
 <section class="stage active" data-stage="0">
   <div class="cover">
     <div class="lead">
-      <p class="eyebrow">A working demo — click through it</p>
-      <h1 class="headline">How one operator ships an AI project at team-scale velocity.</h1>
-      <p>You wanted to see the machine, not read about it. So this is the machine. Every stage is
-        clickable — a Jira project, its tickets, the requirements on a ticket, the Claude Code
-        agents attached to it, the dev branch, the tests, and the release note that comes out the
-        other end. Written in one file so you can host it yourself and poke at it.</p>
-      <p>The workflow shown is real: it is what runs on my own projects, and what I will set up on
-        yours in week one. The models depicted (Opus / Sonnet / Haiku) are the same routing I use
-        in production — the expensive model plans, the mid-tier builds, the cheap one runs the loop
-        and reports back.</p>
+      <p class="eyebrow">A working demo. Click through it.</p>
+      <h1 class="headline">The whole machine, in one file. Walk through it.</h1>
+      <p>This is what you'd be hiring. Every stage below is clickable. A Jira project. Its tickets. The
+        Gherkin scenarios a human signs off. The Claude Code agents attached. The dev branch. The tests.
+        The release note. One file, so you can host it yourself and poke at it.</p>
+      <p>The workflow is real. It runs on my own projects today, and it is what will run on yours in
+        week one. The model routing (Opus, Sonnet, Haiku) is the same routing I use in production.
+        The expensive model plans. The mid-tier builds. The cheap one runs the loop and reports back.</p>
       <div class="cta-row">
         <a class="btn" href="#" onclick="go(1); return false;">Start the walkthrough →</a>
         <a class="btn ghost" href="mailto:iivii.malotana@gmail.com">Talk to me directly</a>
       </div>
       <div class="stat-strip">
-        <div class="stat"><div class="n">1,886</div><div class="l">Commits shipped as one operator, last 3 months</div></div>
-        <div class="stat"><div class="n">124</div><div class="l">PRs merged through the pipeline below</div></div>
-        <div class="stat"><div class="n">40+</div><div class="l">Concurrent worktrees at peak — parallel streams</div></div>
-        <div class="stat"><div class="n">10</div><div class="l">Stages, each with an explicit human gate</div></div>
+        <div class="stat"><div class="n">Day 10</div><div class="l">A working slice live on staging. Clickable, from your inbox.</div></div>
+        <div class="stat"><div class="n">90 sec</div><div class="l">To read your Friday status. Never longer, never five pages.</div></div>
+        <div class="stat"><div class="n">0</div><div class="l">Release-note surprises. What ships is what you signed.</div></div>
+        <div class="stat"><div class="n">1 trail</div><div class="l">Story, Gherkin, test, release note. One line per requirement.</div></div>
       </div>
     </div>
 
     <aside class="cover-map">
       <h3>The 10-stage pipeline</h3>
       <ul class="flow-list">
-        <li><span class="num">01</span><span class="lbl">Understand the ask</span><span class="who">Client + me</span></li>
+        <li><span class="num">01</span><span class="lbl">Understand the ask</span><span class="who">You + me</span></li>
         <li><span class="num">02</span><span class="lbl">Write the user story + Gherkin</span><span class="who">Me · BDD spec</span></li>
-        <li><span class="num">03</span><span class="lbl">Sign-off gate</span><span class="who">Client — the gate</span></li>
+        <li><span class="num">03</span><span class="lbl">Sign-off gate</span><span class="who">You. The gate.</span></li>
         <li><span class="num">04</span><span class="lbl">Plan the work</span><span class="who">Planner agent (Opus)</span></li>
         <li><span class="num">05</span><span class="lbl">Build the slice</span><span class="who">Builder agent (Sonnet)</span></li>
         <li><span class="num">06</span><span class="lbl">Write &amp; run tests</span><span class="who">Test agent (Opus → Haiku)</span></li>
         <li><span class="num">07</span><span class="lbl">Adversarial audit</span><span class="who">Review agent (Opus)</span></li>
-        <li><span class="num">08</span><span class="lbl">Open PR</span><span class="who">Me — I write the description</span></li>
+        <li><span class="num">08</span><span class="lbl">Open PR</span><span class="who">Me. I write the description.</span></li>
         <li><span class="num">09</span><span class="lbl">Deploy to staging</span><span class="who">CI + acceptance run</span></li>
-        <li><span class="num">10</span><span class="lbl">Verify against the spec</span><span class="who">Client — the closing gate</span></li>
+        <li><span class="num">10</span><span class="lbl">Verify against the spec</span><span class="who">You. The closing gate.</span></li>
       </ul>
     </aside>
   </div>
@@ -752,14 +750,14 @@
 <section class="stage" data-stage="1">
   <p class="eyebrow">02 · Projects</p>
   <h1 class="headline">Every stream of work is its own project.</h1>
-  <p class="subhead">Jira software projects — one per stream, so a spec collision cannot spread and a
-    stalled ticket has one place to live. Click a project to open its board.</p>
+  <p class="subhead">Jira software projects. One per stream. A spec collision in one cannot spread
+    to the others, and a stalled ticket has one place to live. Click a project to open its board.</p>
 
   <div class="grid-projects" id="projects">
     <div class="project active" data-project="AIP">
       <div class="key">AIP · Software</div>
       <h3>AI Product</h3>
-      <p>The founder-facing product itself — agents, evals, chat surfaces, the LLM gateway.</p>
+      <p>The founder-facing product. Agents, evals, chat surfaces, the LLM gateway.</p>
       <div class="foot">
         <span><b>28</b> Active</span>
         <span><b>4</b> In review</span>
@@ -790,10 +788,10 @@
 
   <div class="rule"></div>
   <p class="subhead" style="max-width:70ch;">
-    <b style="color:var(--ink);font-weight:500;">Why three not one.</b> If the AI product's build breaks the eval
-    harness's build, one ticket carrying the mess would freeze everything. Splitting the projects
-    keeps each stream shippable independently, and each has its own automation rules — the ones
-    for OPS are stricter (any red test blocks the merge; the others allow a documented exception).
+    <b style="color:var(--ink);font-weight:500;">Why three, not one.</b> A single project holding
+    every stream freezes when the AI product's build breaks the eval harness's build. Split them,
+    and each ships on its own clock. Each has its own automation rules. OPS is strictest: any red
+    test blocks the merge. The others allow a documented exception.
   </p>
   <div class="cta-row" style="margin-top:32px;">
     <a class="btn" href="#" onclick="go(2); return false;">Open the AI Product board →</a>
@@ -805,10 +803,10 @@
 <!-- ═══════════════════════════════════════════════════════════════════ -->
 <section class="stage" data-stage="2">
   <p class="eyebrow">03 · Board · Project AIP</p>
-  <h1 class="headline">Tickets move left to right — every arrow triggers something.</h1>
-  <p class="subhead">Six columns. A ticket does not go into <i>In Dev</i> until requirements are
-    signed off, and it does not leave <i>Testing</i> until Playwright, unit and regression suites
-    all pass. Click any ticket to open it.</p>
+  <h1 class="headline">Tickets move left to right. Every arrow triggers something.</h1>
+  <p class="subhead">Six columns. A ticket does not reach <i>In Dev</i> until you sign off the
+    Gherkin. It does not leave <i>Testing</i> until Playwright, unit and regression are all green.
+    Click any ticket to open it.</p>
 
   <div class="board-head">
     <div class="selector">Board · <b>AIP · AI Product</b> · Sprint 12 · <b>28 open</b></div>
@@ -827,9 +825,9 @@
 
   <div class="auto-lane">
     <h3>Automation rules on this board</h3>
-    <p>These rules run silently — a status change is the trigger; a Claude Code agent is the actor.
-      Every rule is auditable, revertable, and posts back to the ticket with a comment so the
-      human trail stays intact.</p>
+    <p>These rules run silently. A status change is the trigger. A Claude Code agent is the actor.
+      Every rule is auditable and revertable. Every one posts back to the ticket with a comment
+      so the human trail stays intact.</p>
     <div class="rules">
       <div class="rule-card">
         <p class="when">When</p>
@@ -858,7 +856,7 @@
       <div class="rule-card">
         <p class="when">When</p>
         <p class="trigger">tests: green · PR: ready</p>
-        <p class="then">Adversarial code review — what would make this break in staging?</p>
+        <p class="then">Adversarial code review. What would make this break in staging?</p>
         <span class="agent opus">reviewer · opus 4.7</span>
       </div>
       <div class="rule-card">
@@ -877,8 +875,8 @@
 <section class="stage" data-stage="3">
   <p class="eyebrow">04 · Ticket · AIP-142</p>
   <h1 class="headline">The ticket is the contract.</h1>
-  <p class="subhead">Every ticket carries a user story and a <code style="font-family:var(--mono);font-size:12px;background:var(--card);padding:1px 5px;">.feature</code> file — Cucumber / BDD, plain Gherkin.
-    That <code style="font-family:var(--mono);font-size:12px;background:var(--card);padding:1px 5px;">.feature</code> file is what the client signs off, and it is literally what cucumber-js runs on every PR — the spec and the test are the same document.</p>
+  <p class="subhead">Every ticket carries a user story and a <code style="font-family:var(--mono);font-size:12px;background:var(--card);padding:1px 5px;">.feature</code> file. Cucumber, BDD, plain Gherkin.
+    You sign the <code style="font-family:var(--mono);font-size:12px;background:var(--card);padding:1px 5px;">.feature</code> file, and cucumber-js runs the same file on every PR. The spec and the test are the same document.</p>
 
   <div class="ticket-shell">
     <article class="ticket">
@@ -904,7 +902,7 @@
            <span class="gk">so that</span> nothing leaves my desk that I cannot defend to a client.</p>
       </div>
 
-      <p class="section-h">Acceptance criteria · Gherkin — <code style="font-family:var(--mono);font-size:11px;background:var(--card);padding:1px 5px;">cite-every-line.feature</code></p>
+      <p class="section-h">Acceptance criteria · Gherkin · <code style="font-family:var(--mono);font-size:11px;background:var(--card);padding:1px 5px;">cite-every-line.feature</code></p>
       <div class="feature-file">
         <div class="ff-head">
           <span><b>features/cite-every-line.feature</b> · runs on every PR via cucumber-js + Playwright</span>
@@ -994,15 +992,15 @@
           <div>
             <p class="who">Ivi Malotana <span class="tag">author</span></p>
             <p class="when">Mon 14:02</p>
-            <p class="body">Draft requirements up. Flagged REQ-3 for you specifically — do you want rewrites to feed the next generation as few-shot, or should we start with a plain audit log and revisit? Both work; the first compounds faster.</p>
+            <p class="body">Draft scenarios up. Flagged REQ-3 for you. Do you want reviewer rewrites to feed the next generation as few-shot, or start with a plain audit log and revisit? Both work; the first compounds faster.</p>
           </div>
         </div>
         <div class="msg reject">
           <div class="av client">JT</div>
           <div>
-            <p class="who">John T. — Founder <span class="tag bug">changes</span></p>
+            <p class="who">John T. · Founder <span class="tag bug">changes</span></p>
             <p class="when">Mon 15:41</p>
-            <p class="body">REQ-1 needs to be per-sentence not per-paragraph. The model gets away with a lot when the audit unit is a paragraph. Also — quarantine, don't hide. If the model wants to say something we can't source, I want to see what it wanted to say.</p>
+            <p class="body">REQ-1 needs to be per-sentence, not per-paragraph. The model gets away with a lot when the audit unit is a paragraph. Also, quarantine. Don't hide. If the model wants to say something we can't source, I want to see what it wanted to say.</p>
           </div>
         </div>
         <div class="msg">
@@ -1010,15 +1008,15 @@
           <div>
             <p class="who">Ivi Malotana</p>
             <p class="when">Mon 16:12</p>
-            <p class="body">Both landed. REQ-1 is now per-sentence, REQ-2 quarantines to a "for review" tray with the reason (low confidence, no source, disallowed claim). REQ-3 goes with option A — rewrites feed as few-shot, with a kill switch if it drifts. REQ-4 is new, at your request — hard send-block on citation-count = 0.</p>
+            <p class="body">Both landed. REQ-1 is now per-sentence. REQ-2 quarantines to a "for review" tray with the reason (low confidence, no source, disallowed claim). REQ-3 goes with option A: rewrites feed as few-shot, with a kill switch if it drifts. REQ-4 is new, at your request: a hard send-block on citation-count = 0.</p>
           </div>
         </div>
         <div class="msg accept">
           <div class="av client">JT</div>
           <div>
-            <p class="who">John T. — Founder <span class="tag story">signed off</span></p>
+            <p class="who">John T. · Founder <span class="tag story">signed off</span></p>
             <p class="when">Tue 09:18</p>
-            <p class="body">Signed off. Ship it. Update me when the "for review" tray is testable — I want to try to break it.</p>
+            <p class="body">Signed off. Ship it. Update me when the "for review" tray is testable. I want to try to break it.</p>
           </div>
         </div>
         <div class="msg">
@@ -1077,8 +1075,8 @@
         <h4>Human gates</h4>
         <div class="kv" style="grid-template-columns:1fr auto;">
           <div>.feature sign-off</div><div style="color:var(--ok);font-size:11px;letter-spacing:.08em;">✓ TUE</div>
-          <div>Staging acceptance</div><div style="color:var(--faint);font-size:11px;letter-spacing:.08em;">— pending</div>
-          <div>Release verification</div><div style="color:var(--faint);font-size:11px;letter-spacing:.08em;">— pending</div>
+          <div>Staging acceptance</div><div style="color:var(--faint);font-size:11px;letter-spacing:.08em;">· pending</div>
+          <div>Release verification</div><div style="color:var(--faint);font-size:11px;letter-spacing:.08em;">· pending</div>
         </div>
       </div>
 
@@ -1098,34 +1096,34 @@
 
   <div class="agents-intro">
     <div>
-      <p>Every ticket gets a small tree of agents attached to it — each is a Claude Code subagent
-        with a scoped tool set. The routing is deliberate: the model on each rung is chosen for
-        that rung's job, so you never spend Opus tokens where Haiku would answer, and never a
-        Haiku answer where the stakes need Opus.</p>
+      <p>Every ticket gets a small tree of agents. Each is a Claude Code subagent with a scoped
+        tool set. The routing is deliberate: the model on each rung matches that rung's job. You
+        never spend Opus tokens where Haiku would answer, and you never get a Haiku answer where
+        the stakes need Opus.</p>
       <ul>
-        <li><b>Opus 4.7</b> — plans the work, writes tests, does the adversarial review. Slow, careful, expensive.</li>
-        <li><b>Sonnet 5.5</b> — builds the slice, writes the release note, mid-loop code changes.</li>
-        <li><b>Haiku 4.5</b> — runs the test battery, watches CI, applies the tiny fixes it can be certain of.</li>
+        <li><b>Opus 4.7.</b> Plans the work, writes tests, runs the adversarial review. Slow and expensive on purpose.</li>
+        <li><b>Sonnet 5.5.</b> Builds the slice, writes the release note, handles the mid-loop code changes.</li>
+        <li><b>Haiku 4.5.</b> Runs the test battery, watches CI, applies the small fixes it can be certain of.</li>
       </ul>
-      <p style="margin-top:20px;">Every agent posts back to Jira. Every decision is a comment on the
-        ticket, so a human can read the whole trail without opening a terminal.</p>
+      <p style="margin-top:20px;">Every agent posts back to Jira. Every decision lands as a comment
+        on the ticket, so you can read the whole trail without opening a terminal.</p>
     </div>
     <div class="legend">
       <h4>Model routing</h4>
       <div class="row"><span class="badge-model opus">opus 4.7</span><span class="desc">Planning · tests · review</span></div>
       <div class="row"><span class="badge-model sonnet">sonnet 5.5</span><span class="desc">Build · release notes</span></div>
       <div class="row"><span class="badge-model haiku">haiku 4.5</span><span class="desc">Run · watch · patch</span></div>
-      <div class="row" style="margin-top:14px;color:var(--muted);font-size:12px;">Model ids are fixed in the subagent front-matter — the cheap one cannot silently escalate itself.</div>
+      <div class="row" style="margin-top:14px;color:var(--muted);font-size:12px;">Model ids are fixed in the subagent front-matter. The cheap one cannot silently escalate itself.</div>
     </div>
   </div>
 
   <div class="agent-tree">
-    <div class="tier-lbl">Trigger — status: signed-off</div>
+    <div class="tier-lbl">Trigger · status: signed-off</div>
     <div class="tier solo">
       <div class="agent-node">
         <div class="head"><span class="name">orchestrator</span><span class="badge-model opus">opus 4.7</span></div>
         <div class="role">reads the ticket · writes the .feature</div>
-        <div class="out">Output: <b>a Gherkin <code style="font-family:var(--mono);font-size:11px;background:var(--card);padding:0 4px;">.feature</code> file</b> — one Scenario per requirement, tagged @req-N, plus a numbered plan of files the builder is allowed to touch.</div>
+        <div class="out">Output: <b>a Gherkin <code style="font-family:var(--mono);font-size:11px;background:var(--card);padding:0 4px;">.feature</code> file.</b> One Scenario per requirement, tagged @req-N, plus a numbered plan of files the builder is allowed to touch.</div>
       </div>
     </div>
     <div class="arrow-row">↓</div>
@@ -1180,7 +1178,7 @@
       <div class="agent-node">
         <div class="head"><span class="name">release-writer</span><span class="badge-model sonnet">sonnet 5.5</span></div>
         <div class="role">writes the release note</div>
-        <div class="out">Assembles the release note from the ticket's <b>Gherkin scenarios diff</b>, not the commit messages — so the note reads as behavior changes (the Thens that changed), not code changes.</div>
+        <div class="out">Assembles the release note from the ticket's <b>Gherkin scenarios diff</b>, not the commit messages. The note reads as behaviour changes (the Thens that changed), not code changes.</div>
       </div>
     </div>
   </div>
@@ -1197,8 +1195,8 @@
   <p class="eyebrow">06 · Dev environment</p>
   <h1 class="headline">The dev branch is a diff you can read.</h1>
   <p class="subhead">Every commit is one plan-step. Every plan-step traces back to a REQ. If a diff
-    touches something not on the plan, the reviewer catches it — and the reviewer is a different
-    model to the builder, so they don't share blind spots.</p>
+    touches something not on the plan, the reviewer catches it. The reviewer runs a different model
+    to the builder, so they don't share blind spots.</p>
 
   <div class="dev-grid">
     <div class="panel">
@@ -1215,17 +1213,17 @@
         <ul class="commit-list">
           <li>
             <span class="sha">a1b2c3d</span>
-            <span>feat(citation): schema + citation-linker service — REQ-1</span>
+            <span>feat(citation): schema + citation-linker service · REQ-1</span>
             <span class="who">builder</span>
           </li>
           <li>
             <span class="sha">e4f5g6h</span>
-            <span>feat(quarantine): "for review" tray + confidence gate — REQ-2</span>
+            <span>feat(quarantine): "for review" tray + confidence gate · REQ-2</span>
             <span class="who">builder</span>
           </li>
           <li>
             <span class="sha">i7j8k9l</span>
-            <span>feat(reviewer): accept/reject/rewrite w/ decision log — REQ-3</span>
+            <span>feat(reviewer): accept/reject/rewrite w/ decision log · REQ-3</span>
             <span class="who">builder</span>
           </li>
           <li>
@@ -1236,7 +1234,7 @@
         </ul>
         <div class="rule"></div>
         <div style="font-size:12px;color:var(--muted);">
-          Draft PR <b style="color:var(--ink);">#418 · Cite every generated line</b> — auto-updated by the builder on each push.
+          Draft PR <b style="color:var(--ink);">#418 · Cite every generated line</b>. Auto-updated by the builder on each push.
         </div>
       </div>
     </div>
@@ -1278,10 +1276,10 @@
 <!-- ═══════════════════════════════════════════════════════════════════ -->
 <section class="stage" data-stage="6">
   <p class="eyebrow">07 · Testing</p>
-  <h1 class="headline">Three suites, one gate — nothing leaves this stage red.</h1>
-  <p class="subhead">Playwright covers the flows your customers touch. Unit tests cover the small
-    invariants. Regression re-runs a curated set of last quarter's bugs so we can prove they
-    stayed dead. All three keyed to a REQ so a red test names the requirement that failed.</p>
+  <h1 class="headline">Three suites. One gate. Nothing leaves this stage red.</h1>
+  <p class="subhead">Playwright drives the flows your customers touch. Unit tests hold the small
+    invariants. Regression re-runs last quarter's bugs so we can prove they stayed dead. Every
+    test is keyed to a REQ, so a red test names the requirement that failed.</p>
 
   <div class="test-grid">
     <div class="test-card">
@@ -1295,7 +1293,7 @@
         <li class="pass">@req-3 Reviewer decision → audit log + few-shot</li>
         <li class="pass">@req-3 Kill-switch drops the few-shot feed</li>
         <li class="pass">@req-4 Send blocked at citation-count = 0</li>
-        <li style="color:var(--faint);font-size:11.5px;">Step defs in steps/*.ts — one per Given/When/Then. A red step names the scenario, tag and REQ.</li>
+        <li style="color:var(--faint);font-size:11.5px;">Step defs in steps/*.ts. One per Given/When/Then. A red step names the scenario, its tag and its REQ.</li>
       </ul>
     </div>
 
@@ -1331,7 +1329,7 @@
 
   <div class="regression">
     <h3>What runs when</h3>
-    <p>Test cadence is auditable — you can read it, and you can change it.</p>
+    <p>Test cadence is auditable. Read it. Change it.</p>
     <table>
       <thead>
         <tr>
@@ -1347,7 +1345,7 @@
         <tr><td><span class="dot g"></span>Draft PR opens</td><td>Unit + Playwright (touched paths)</td><td>CI · Vercel Preview</td><td>Yes</td><td>runner (haiku)</td></tr>
         <tr><td><span class="dot g"></span>PR marked ready</td><td>Full Playwright + Regression</td><td>CI · Vercel Preview</td><td>Yes</td><td>runner (haiku)</td></tr>
         <tr><td><span class="dot g"></span>Nightly on main</td><td>Full battery + eval harness</td><td>CI · scheduled</td><td>Alerts on red</td><td>runner (haiku)</td></tr>
-        <tr><td><span class="dot y"></span>Manual on staging</td><td>Client acceptance run</td><td>Staging URL</td><td>N/A — human gate</td><td>Client</td></tr>
+        <tr><td><span class="dot y"></span>Manual on staging</td><td>Client acceptance run</td><td>Staging URL</td><td>N/A · human gate</td><td>You</td></tr>
       </tbody>
     </table>
   </div>
@@ -1363,9 +1361,10 @@
 <section class="stage" data-stage="7">
   <p class="eyebrow">08 · Release notes</p>
   <h1 class="headline">The release note is the requirements, in past tense.</h1>
-  <p class="subhead">Written from the ticket's <i>requirements diff</i>, not the commit messages —
-    because "what did the software start doing" is a different question to "what code changed".
-    A behavior change deserves a plain-English line, and a fix deserves the ticket it closes.</p>
+  <p class="subhead">Written from the ticket's <i>Gherkin scenarios diff</i>, not the commit
+    messages. "What did the software start doing" is a different question to "what code
+    changed". A behaviour change deserves a plain-English line. A fix deserves the ticket it
+    closes.</p>
 
   <div class="release">
     <div class="stamp">
@@ -1383,11 +1382,11 @@
     <div class="rel-block">
       <h4>What changed for your users</h4>
       <div class="qbox">
-        The generated proposal will now show a citation on hover for every sentence. If the model
-        can't source a sentence with high enough confidence, it doesn't hide it from you — it
-        moves it to a <b>"for review" tray</b> with the reason (no source · low confidence ·
-        disallowed claim), and you can accept, reject or rewrite it in one click. A proposal with
-        an un-cited sentence cannot leave the firm.
+        The generated proposal now shows a citation on hover for every sentence. If the model
+        can't source a sentence with high enough confidence, it does not hide it from you. It
+        moves it to a <b>"for review" tray</b> with the reason (no source, low confidence,
+        disallowed claim). You accept, reject or rewrite in one click. A proposal with an
+        uncited sentence cannot leave the firm.
       </div>
     </div>
 
@@ -1405,7 +1404,7 @@
       <h4>Migration notes</h4>
       <ul>
         <li>Non-breaking. A migration script backfills existing proposals with sentence-level citations from their prior paragraph-level ones (score = 0.6 minimum, otherwise quarantined).</li>
-        <li>The rewrite → few-shot loop is behind a kill switch — flip <code style="font-family:var(--mono);font-size:12px;background:var(--card);padding:1px 5px;">CITATION_REWRITE_FEEDBACK=0</code> to disable if it drifts.</li>
+        <li>The rewrite → few-shot loop is behind a kill switch. Flip <code style="font-family:var(--mono);font-size:12px;background:var(--card);padding:1px 5px;">CITATION_REWRITE_FEEDBACK=0</code> to disable it if it drifts.</li>
       </ul>
     </div>
 
@@ -1421,7 +1420,7 @@
     <div class="rel-block">
       <h4>Human trail</h4>
       <ul>
-        <li>Requirements signed off Tue 09:18 by John T. — 1 back-and-forth (per-sentence vs paragraph audit unit).</li>
+        <li>Scenarios signed off Tue 09:18 by John T. One round of back-and-forth (per-sentence vs paragraph audit unit).</li>
         <li>Adversarial review by <span class="badge-model opus">opus 4.7</span> found 3 issues; all fixed in commits <code style="font-family:var(--mono);font-size:11px;">e4f5g6h</code>–<code style="font-family:var(--mono);font-size:11px;">i7j8k9l</code>.</li>
         <li>Staging acceptance run passed at 08:52. Verified against REQs 1–4.</li>
       </ul>
@@ -1438,43 +1437,43 @@
 <!-- ═══════════════════════════════════════════════════════════════════ -->
 <section class="stage" data-stage="8">
   <p class="eyebrow">09 · Weekly cadence</p>
-  <h1 class="headline">One page a week. Written, not verbal.</h1>
-  <p class="subhead">The delivery cadence I run on every long-term engagement: a written status
-    every Friday. What shipped, what's next, what's blocked, plus a running decision log so you
-    can trust me to make trade-offs without micromanaging.</p>
+  <h1 class="headline">One page a week. In your inbox by Friday 10am.</h1>
+  <p class="subhead">The delivery cadence I run on every long-term engagement. A written status
+    every Friday. Shipped, next, blocked, plus a running decision log so you can trust me to make
+    trade-offs without micromanaging.</p>
 
   <div class="weekly">
     <div>
       <h3>What you'll get from me every week</h3>
       <ul>
-        <li><b style="color:var(--ink);font-weight:500;">Shipped</b> — tickets closed, with a one-line release note each.</li>
-        <li><b style="color:var(--ink);font-weight:500;">Next</b> — what I'm picking up on Monday and why it's next.</li>
-        <li><b style="color:var(--ink);font-weight:500;">Blocked</b> — anything I need from you, framed as a yes/no.</li>
-        <li><b style="color:var(--ink);font-weight:500;">Decisions</b> — trade-offs I made this week, so nothing is a surprise later.</li>
-        <li><b style="color:var(--ink);font-weight:500;">Numbers</b> — one graph of the metric you actually care about.</li>
+        <li><b style="color:var(--ink);font-weight:500;">Shipped.</b> Tickets closed, with a one-line release note each.</li>
+        <li><b style="color:var(--ink);font-weight:500;">Next.</b> What I'm picking up on Monday and why it's next.</li>
+        <li><b style="color:var(--ink);font-weight:500;">Blocked.</b> Anything I need from you, framed as a yes/no.</li>
+        <li><b style="color:var(--ink);font-weight:500;">Decisions.</b> Trade-offs I made this week, so nothing is a surprise later.</li>
+        <li><b style="color:var(--ink);font-weight:500;">Numbers.</b> One graph of the metric you care about.</li>
       </ul>
       <p style="margin-top:20px;">If a week is quiet, the status is short. If a week is loud, it is
-        one page still — not five. Reading it is not homework.</p>
+        one page still, never five. Reading it is not homework.</p>
     </div>
 
     <div class="status-card">
       <h5>Status · Week 3 · Fri 10:00 SAST</h5>
-      <p><b>Shipped.</b> v0.42.0 — every generated line now carries a source-document citation. Founder-flagged; landed Wed with the "for review" tray you asked to try to break. It survived.</p>
+      <p><b>Shipped.</b> v0.42.0. Every generated line now carries a source-document citation. Founder-flagged; landed Wed with the "for review" tray you asked to try to break. It survived.</p>
       <p><b>Next.</b> AIP-155 (batch export of proposals with citation trails). Blocked by nothing.</p>
       <p><b>Blocked.</b> Need your sign-off on the wording of the citation-count = 0 send-block. Two drafts attached.</p>
-      <p><b>Decision.</b> Chose <code style="font-family:var(--mono);font-size:11px;background:var(--card);padding:1px 5px;">0.6</code> for the quarantine threshold — walked the eval set from 0.4→0.8, 0.6 caught 94% of the hallucinations that shipped last month without flagging the safe cases.</p>
-      <p style="margin:0;color:var(--muted);"><b style="color:var(--ink);font-weight:500;">Numbers.</b> 4 tickets shipped · 0 regressions · 3 requirements pending sign-off · 46 test-runs green in a row.</p>
+      <p><b>Decision.</b> Chose <code style="font-family:var(--mono);font-size:11px;background:var(--card);padding:1px 5px;">0.6</code> for the quarantine threshold. Walked the eval set from 0.4 to 0.8; 0.6 caught 94% of last month's hallucinations without flagging the safe cases.</p>
+      <p style="margin:0;color:var(--muted);"><b style="color:var(--ink);font-weight:500;">Numbers.</b> 4 tickets shipped · 0 regressions · 3 scenarios pending sign-off · 46 test-runs green in a row.</p>
     </div>
   </div>
 
   <div class="close-band">
-    <p class="eyebrow">A working demo, not a slide</p>
+    <p class="eyebrow">A working demo. Not a slide.</p>
     <h2>This is the machine you'd be hiring. It's already running.</h2>
-    <p>Week one, I'd point it at your first stream — a written scope you sign off, a slice
-      shipping to staging by end of week two, and one of these status notes on Friday. Then we
+    <p>Week one, I point it at your first stream. A written scope you sign off. A slice shipping
+      to staging by the end of week two. One of these status notes on Friday. From there we
       iterate on the parts you want tuned.</p>
     <div class="cta-row">
-      <a class="btn" href="mailto:iivii.malotana@gmail.com?subject=AI%20project%20—%20let%27s%20scope%20week%201">Email me — let's scope week one</a>
+      <a class="btn" href="mailto:iivii.malotana@gmail.com?subject=AI%20project%20scope%20week%201">Email me. Let's scope week one.</a>
       <a class="btn ghost" href="#" onclick="go(0); return false;">Back to the overview</a>
     </div>
   </div>
