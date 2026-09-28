@@ -336,6 +336,69 @@
   .req.rej .state { color: var(--err); }
   .req.pend .state { color: var(--warn); }
 
+  /* ─── User story + Gherkin (.feature file) ────────────────────────── */
+  .user-story {
+    background: var(--card-warm); border-left: 3px solid var(--ink);
+    padding: 16px 20px; margin: 0 0 8px;
+  }
+  .user-story .st-h {
+    font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--faint); margin: 0 0 6px;
+  }
+  .user-story p { font-size: 14.5px; margin: 0; line-height: 1.55; }
+  .user-story p b { font-weight: 500; color: var(--ink); }
+  .user-story p .gk {
+    font-family: var(--mono); font-size: 12.5px;
+    color: var(--muted); margin-right: 6px;
+  }
+
+  .feature-file {
+    font-family: var(--mono); font-size: 12.5px; line-height: 1.65;
+    background: #fafaf8; border: 1px solid var(--border);
+    padding: 0; margin: 8px 0 0;
+    overflow-x: auto;
+  }
+  .feature-file .ff-head {
+    padding: 8px 14px; border-bottom: 1px solid var(--border);
+    background: var(--card); color: var(--muted);
+    font-size: 11px; letter-spacing: 0.06em;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .feature-file .ff-head b { color: var(--ink); font-weight: 500; }
+  .feature-file .ff-body { padding: 14px 16px 16px; }
+  .feature-file .ff-line { display: block; padding: 1px 0; white-space: pre-wrap; }
+  .feature-file .kw { color: #4a2f6a; font-weight: 500; }        /* Feature, Scenario, Background */
+  .feature-file .gv { color: #1e4a6a; font-weight: 500; }        /* Given / When / Then / And */
+  .feature-file .tag { color: #2f5a3a; background: transparent; padding: 0; letter-spacing: 0; text-transform: none; font-size: 12.5px; }
+  .feature-file .cmt { color: var(--faint); font-style: italic; }
+  .feature-file .quote { color: var(--warn); }
+  .feature-file .indent { padding-left: 24px; }
+  .feature-file .indent-2 { padding-left: 40px; }
+
+  .scenario-block { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border); }
+  .scenario-block:first-of-type { margin-top: 0; padding-top: 0; border-top: 0; }
+  .scenario-head {
+    display: grid; grid-template-columns: 24px 1fr auto; gap: 12px;
+    align-items: baseline; margin-bottom: 4px;
+  }
+  .scenario-head .box {
+    width: 16px; height: 16px; border: 1px solid var(--ink);
+    display: inline-flex; align-items: center; justify-content: center;
+    margin-top: 3px; font-size: 11px; background: #fff;
+  }
+  .scenario-block.acc .scenario-head .box { background: var(--ink); color: #fff; }
+  .scenario-block.acc .scenario-head .state { color: var(--ok); }
+  .scenario-block.pend .scenario-head .state { color: var(--warn); }
+  .scenario-head .title { font-size: 13.5px; font-weight: 500; }
+  .scenario-head .title .req-key {
+    font-family: var(--mono); font-size: 11px; color: var(--muted);
+    letter-spacing: 0.04em; margin-right: 8px;
+  }
+  .scenario-head .state {
+    font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--muted);
+  }
+
   .thread { margin-top: 8px; }
   .msg {
     padding: 14px 0; border-top: 1px solid var(--border);
@@ -669,7 +732,7 @@
       <h3>The 10-stage pipeline</h3>
       <ul class="flow-list">
         <li><span class="num">01</span><span class="lbl">Understand the ask</span><span class="who">Client + me</span></li>
-        <li><span class="num">02</span><span class="lbl">Write the spec</span><span class="who">Me</span></li>
+        <li><span class="num">02</span><span class="lbl">Write the user story + Gherkin</span><span class="who">Me · BDD spec</span></li>
         <li><span class="num">03</span><span class="lbl">Sign-off gate</span><span class="who">Client — the gate</span></li>
         <li><span class="num">04</span><span class="lbl">Plan the work</span><span class="who">Planner agent (Opus)</span></li>
         <li><span class="num">05</span><span class="lbl">Build the slice</span><span class="who">Builder agent (Sonnet)</span></li>
@@ -771,19 +834,19 @@
       <div class="rule-card">
         <p class="when">When</p>
         <p class="trigger">status: Backlog → Refinement</p>
-        <p class="then">Draft acceptance criteria from the ticket description; attach as a checklist.</p>
+        <p class="then">Draft the user story + Gherkin scenarios (Given/When/Then) from the ticket description; attach as a <code style="font-family:var(--mono);font-size:11px;background:var(--card);padding:1px 5px;">.feature</code> file.</p>
         <span class="agent opus">planner · opus 4.7</span>
       </div>
       <div class="rule-card">
         <p class="when">When</p>
-        <p class="trigger">requirements: signed off</p>
-        <p class="then">Create the feature branch, scaffold the slice, open a draft PR linked to the ticket.</p>
+        <p class="trigger">scenarios: signed off</p>
+        <p class="then">Create the feature branch, scaffold the slice, open a draft PR linked to the ticket and the <code style="font-family:var(--mono);font-size:11px;background:var(--card);padding:1px 5px;">.feature</code> file.</p>
         <span class="agent sonnet">builder · sonnet 5.5</span>
       </div>
       <div class="rule-card">
         <p class="when">When</p>
         <p class="trigger">PR opened by builder</p>
-        <p class="then">Write Playwright + unit tests against the acceptance criteria. Fail loudly if a criterion is un-testable.</p>
+        <p class="then">Write cucumber-js step defs + Playwright bindings for every Given/When/Then. Fail loudly if a scenario is un-testable.</p>
         <span class="agent opus">test-author · opus 4.7</span>
       </div>
       <div class="rule-card">
@@ -814,8 +877,8 @@
 <section class="stage" data-stage="3">
   <p class="eyebrow">04 · Ticket · AIP-142</p>
   <h1 class="headline">The ticket is the contract.</h1>
-  <p class="subhead">The requirements below are what got signed off, and what the tests will assert.
-    Nothing ships without a Given / When / Then a human accepted.</p>
+  <p class="subhead">Every ticket carries a user story and a <code style="font-family:var(--mono);font-size:12px;background:var(--card);padding:1px 5px;">.feature</code> file — Cucumber / BDD, plain Gherkin.
+    That <code style="font-family:var(--mono);font-size:12px;background:var(--card);padding:1px 5px;">.feature</code> file is what the client signs off, and it is literally what cucumber-js runs on every PR — the spec and the test are the same document.</p>
 
   <div class="ticket-shell">
     <article class="ticket">
@@ -833,41 +896,96 @@
         <div class="pip">Done</div>
       </div>
 
-      <p class="section-h">Requirements — signed off 2 days ago</p>
-      <ul class="req-list">
-        <li class="req acc">
-          <span class="box">✓</span>
-          <div class="txt">
-            <b>REQ-1 · Every generated sentence cites at least one source paragraph.</b>
-            <div class="gwt">Given a generated proposal, When any sentence exits the model, Then a source_id resolving to a real paragraph must be attached; the UI shows the citation on hover.</div>
+      <p class="section-h">User story</p>
+      <div class="user-story">
+        <p class="st-h">Cucumber / BDD · signed off 2 days ago</p>
+        <p><span class="gk">As</span> a <b>reviewer at the firm</b>,<br>
+           <span class="gk">I want</span> every generated line to be traceable to a real source,<br>
+           <span class="gk">so that</span> nothing leaves my desk that I cannot defend to a client.</p>
+      </div>
+
+      <p class="section-h">Acceptance criteria · Gherkin — <code style="font-family:var(--mono);font-size:11px;background:var(--card);padding:1px 5px;">cite-every-line.feature</code></p>
+      <div class="feature-file">
+        <div class="ff-head">
+          <span><b>features/cite-every-line.feature</b> · runs on every PR via cucumber-js + Playwright</span>
+          <span>4 scenarios · 3 signed off</span>
+        </div>
+        <div class="ff-body">
+<span class="ff-line"><span class="tag">@AIP-142 @founder-flagged @trust</span></span>
+<span class="ff-line"><span class="kw">Feature:</span> Cite every generated line back to a source</span>
+<span class="ff-line indent"><span class="cmt"># As a reviewer at the firm, I want every generated line to be traceable</span></span>
+<span class="ff-line indent"><span class="cmt"># to a real source, so that nothing leaves my desk that I cannot defend.</span></span>
+<span class="ff-line"> </span>
+<span class="ff-line indent"><span class="kw">Background:</span></span>
+<span class="ff-line indent-2"><span class="gv">Given</span> a proposal has been generated for client <span class="quote">"Acme Ltd"</span></span>
+<span class="ff-line indent-2"><span class="gv">And</span> the source library contains the firm's reference paragraphs</span>
+
+          <div class="scenario-block acc">
+            <div class="scenario-head">
+              <span class="box">✓</span>
+              <div class="title"><span class="req-key">REQ-1</span>Every generated sentence cites at least one source paragraph</div>
+              <span class="state">Accepted</span>
+            </div>
+<span class="ff-line"><span class="tag">@req-1 @must</span></span>
+<span class="ff-line indent"><span class="kw">Scenario:</span> Every generated sentence carries a source_id</span>
+<span class="ff-line indent-2"><span class="gv">Given</span> the generated proposal contains <span class="quote">N</span> sentences</span>
+<span class="ff-line indent-2"><span class="gv">When</span> I open the proposal in the reviewer</span>
+<span class="ff-line indent-2"><span class="gv">Then</span> every sentence has at least one <span class="quote">source_id</span> attached</span>
+<span class="ff-line indent-2"><span class="gv">And</span> each <span class="quote">source_id</span> resolves to a real paragraph in the library</span>
+<span class="ff-line indent-2"><span class="gv">And</span> hovering the sentence reveals the citation card</span>
           </div>
-          <div class="state">Accepted</div>
-        </li>
-        <li class="req acc">
-          <span class="box">✓</span>
-          <div class="txt">
-            <b>REQ-2 · A sentence with no confident source is quarantined, not hidden.</b>
-            <div class="gwt">Given the model would emit an uncited sentence, When confidence &lt; 0.6, Then the sentence appears in a "for review" tray with a reason, not in the client-facing draft.</div>
+
+          <div class="scenario-block acc">
+            <div class="scenario-head">
+              <span class="box">✓</span>
+              <div class="title"><span class="req-key">REQ-2</span>Low-confidence sentences are quarantined, not hidden</div>
+              <span class="state">Accepted</span>
+            </div>
+<span class="ff-line"><span class="tag">@req-2 @quarantine</span></span>
+<span class="ff-line indent"><span class="kw">Scenario Outline:</span> Quarantine below the confidence threshold</span>
+<span class="ff-line indent-2"><span class="gv">Given</span> the model would emit a sentence with confidence <span class="quote">&lt;score&gt;</span></span>
+<span class="ff-line indent-2"><span class="gv">When</span> the citation-linker runs</span>
+<span class="ff-line indent-2"><span class="gv">Then</span> the sentence appears in the <span class="quote">"for review"</span> tray</span>
+<span class="ff-line indent-2"><span class="gv">And</span> the tray shows a reason: <span class="quote">&lt;reason&gt;</span></span>
+<span class="ff-line indent-2"><span class="gv">And</span> the sentence does NOT appear in the client-facing draft</span>
+<span class="ff-line indent-2"><span class="kw">Examples:</span></span>
+<span class="ff-line indent-2">  | score | reason              |</span>
+<span class="ff-line indent-2">  | 0.55  | low-confidence      |</span>
+<span class="ff-line indent-2">  | 0.00  | no-source           |</span>
+<span class="ff-line indent-2">  | 0.72  | disallowed-claim    |</span>
           </div>
-          <div class="state">Accepted</div>
-        </li>
-        <li class="req acc">
-          <span class="box">✓</span>
-          <div class="txt">
-            <b>REQ-3 · A reviewer can accept, reject or rewrite a quarantined sentence in one click.</b>
-            <div class="gwt">Given a quarantined sentence, When the reviewer chooses accept / reject / rewrite, Then the decision is logged with actor + timestamp, and rewrites feed the next generation as few-shot.</div>
+
+          <div class="scenario-block acc">
+            <div class="scenario-head">
+              <span class="box">✓</span>
+              <div class="title"><span class="req-key">REQ-3</span>Reviewer can accept, reject or rewrite in one click</div>
+              <span class="state">Accepted</span>
+            </div>
+<span class="ff-line"><span class="tag">@req-3 @reviewer-loop</span></span>
+<span class="ff-line indent"><span class="kw">Scenario:</span> A reviewer decision is logged and feeds the next generation</span>
+<span class="ff-line indent-2"><span class="gv">Given</span> a quarantined sentence in the tray</span>
+<span class="ff-line indent-2"><span class="gv">When</span> the reviewer clicks <span class="quote">"accept"</span>, <span class="quote">"reject"</span> or <span class="quote">"rewrite"</span></span>
+<span class="ff-line indent-2"><span class="gv">Then</span> the decision is written to the audit log with actor + timestamp</span>
+<span class="ff-line indent-2"><span class="gv">And</span> a rewrite is added to the few-shot pool for the next generation</span>
+<span class="ff-line indent-2"><span class="gv">But</span> if the kill-switch <span class="quote">CITATION_REWRITE_FEEDBACK=0</span> is set</span>
+<span class="ff-line indent-2"><span class="gv">Then</span> the rewrite is logged only, not fed forward</span>
           </div>
-          <div class="state">Accepted</div>
-        </li>
-        <li class="req pend">
-          <span class="box"></span>
-          <div class="txt">
-            <b>REQ-4 · Nothing leaves the firm without a citation-count &gt; 0.</b>
-            <div class="gwt">Given a proposal about to be sent to a client, When any sentence has 0 citations, Then send is blocked with a human-readable reason.</div>
+
+          <div class="scenario-block pend">
+            <div class="scenario-head">
+              <span class="box"></span>
+              <div class="title"><span class="req-key">REQ-4</span>Nothing leaves the firm without a citation-count &gt; 0</div>
+              <span class="state">Pending</span>
+            </div>
+<span class="ff-line"><span class="tag">@req-4 @send-gate @wip</span></span>
+<span class="ff-line indent"><span class="kw">Scenario:</span> Send is hard-blocked at citation-count = 0</span>
+<span class="ff-line indent-2"><span class="gv">Given</span> a proposal about to be sent to a client</span>
+<span class="ff-line indent-2"><span class="gv">When</span> any sentence in the proposal has zero citations</span>
+<span class="ff-line indent-2"><span class="gv">Then</span> the Send button is disabled</span>
+<span class="ff-line indent-2"><span class="gv">And</span> a human-readable reason is shown alongside the offending sentence</span>
           </div>
-          <div class="state">Pending</div>
-        </li>
-      </ul>
+        </div>
+      </div>
 
       <p class="section-h">Sign-off thread</p>
       <div class="thread">
@@ -958,7 +1076,7 @@
       <div class="attached-agent">
         <h4>Human gates</h4>
         <div class="kv" style="grid-template-columns:1fr auto;">
-          <div>Requirements sign-off</div><div style="color:var(--ok);font-size:11px;letter-spacing:.08em;">✓ TUE</div>
+          <div>.feature sign-off</div><div style="color:var(--ok);font-size:11px;letter-spacing:.08em;">✓ TUE</div>
           <div>Staging acceptance</div><div style="color:var(--faint);font-size:11px;letter-spacing:.08em;">— pending</div>
           <div>Release verification</div><div style="color:var(--faint);font-size:11px;letter-spacing:.08em;">— pending</div>
         </div>
@@ -1006,8 +1124,8 @@
     <div class="tier solo">
       <div class="agent-node">
         <div class="head"><span class="name">orchestrator</span><span class="badge-model opus">opus 4.7</span></div>
-        <div class="role">reads the ticket · plans the work</div>
-        <div class="out">Output: <b>a numbered plan</b>, one Given/When/Then per requirement, and a list of files it expects the builder to touch.</div>
+        <div class="role">reads the ticket · writes the .feature</div>
+        <div class="out">Output: <b>a Gherkin <code style="font-family:var(--mono);font-size:11px;background:var(--card);padding:0 4px;">.feature</code> file</b> — one Scenario per requirement, tagged @req-N, plus a numbered plan of files the builder is allowed to touch.</div>
       </div>
     </div>
     <div class="arrow-row">↓</div>
@@ -1021,8 +1139,8 @@
       </div>
       <div class="agent-node">
         <div class="head"><span class="name">test-author</span><span class="badge-model opus">opus 4.7</span></div>
-        <div class="role">writes the tests</div>
-        <div class="out">Output: Playwright specs + unit tests keyed to REQ-1..N. Fails loudly if a requirement is un-testable.</div>
+        <div class="role">binds Gherkin to code</div>
+        <div class="out">Output: cucumber-js step definitions (one per Given/When/Then), Playwright page-objects, and unit tests for the small invariants. Fails loudly if a scenario is un-bindable.</div>
       </div>
     </div>
     <div class="arrow-row">↓</div>
@@ -1062,7 +1180,7 @@
       <div class="agent-node">
         <div class="head"><span class="name">release-writer</span><span class="badge-model sonnet">sonnet 5.5</span></div>
         <div class="role">writes the release note</div>
-        <div class="out">Assembles the release note from the ticket's <b>requirements diff</b>, not the commit messages — so the note reads as behavior changes, not code changes.</div>
+        <div class="out">Assembles the release note from the ticket's <b>Gherkin scenarios diff</b>, not the commit messages — so the note reads as behavior changes (the Thens that changed), not code changes.</div>
       </div>
     </div>
   </div>
@@ -1167,18 +1285,17 @@
 
   <div class="test-grid">
     <div class="test-card">
-      <p class="kind">End-to-end</p>
-      <h3>Playwright</h3>
-      <p class="count"><b>14/14</b> <small>passing</small></p>
+      <p class="kind">End-to-end · Cucumber + Playwright</p>
+      <h3>.feature files</h3>
+      <p class="count"><b>14/14</b> <small>scenarios passing</small></p>
       <div class="bar"><div class="fill" style="width:100%;"></div></div>
       <ul class="list">
-        <li class="pass">citation appears on hover (REQ-1)</li>
-        <li class="pass">quarantined line lives in for-review tray (REQ-2)</li>
-        <li class="pass">accept/reject/rewrite logs actor + time (REQ-3)</li>
-        <li class="pass">send is blocked at citation-count = 0 (REQ-4)</li>
-        <li class="pass">reviewer rewrite feeds next generation as few-shot</li>
-        <li class="pass">reviewer kill-switch drops the few-shot feed</li>
-        <li style="color:var(--faint);font-size:11.5px;">+ 8 baseline flows unchanged</li>
+        <li class="pass">@req-1 Every sentence carries a source_id</li>
+        <li class="pass">@req-2 Quarantine at score &lt; 0.6 (3 examples)</li>
+        <li class="pass">@req-3 Reviewer decision → audit log + few-shot</li>
+        <li class="pass">@req-3 Kill-switch drops the few-shot feed</li>
+        <li class="pass">@req-4 Send blocked at citation-count = 0</li>
+        <li style="color:var(--faint);font-size:11.5px;">Step defs in steps/*.ts — one per Given/When/Then. A red step names the scenario, tag and REQ.</li>
       </ul>
     </div>
 
@@ -1275,12 +1392,12 @@
     </div>
 
     <div class="rel-block">
-      <h4>Requirements delivered</h4>
+      <h4>Scenarios delivered · from <code style="font-family:var(--mono);font-size:11px;background:var(--card);padding:1px 5px;">cite-every-line.feature</code></h4>
       <ul>
-        <li>Every generated sentence carries at least one source paragraph. <span class="ref">REQ-1 · AIP-142</span></li>
-        <li>Un-sourced sentences are quarantined, not silently dropped. <span class="ref">REQ-2 · AIP-142</span></li>
-        <li>Reviewers can accept, reject or rewrite in one click; every decision is logged with actor + timestamp; rewrites feed the next generation. <span class="ref">REQ-3 · AIP-142</span></li>
-        <li>Send is hard-blocked when citation-count is zero. <span class="ref">REQ-4 · AIP-142</span></li>
+        <li>@req-1 · Every generated sentence carries at least one source paragraph. <span class="ref">REQ-1 · AIP-142</span></li>
+        <li>@req-2 · Un-sourced sentences are quarantined, not silently dropped (3 examples: low-confidence, no-source, disallowed-claim). <span class="ref">REQ-2 · AIP-142</span></li>
+        <li>@req-3 · Reviewers can accept, reject or rewrite in one click; every decision is logged with actor + timestamp; rewrites feed the next generation; kill-switch respected. <span class="ref">REQ-3 · AIP-142</span></li>
+        <li>@req-4 · Send is hard-blocked when citation-count is zero. <span class="ref">REQ-4 · AIP-142</span></li>
       </ul>
     </div>
 
