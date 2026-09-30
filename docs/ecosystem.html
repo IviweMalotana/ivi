@@ -92,6 +92,60 @@
   }
   .qa-row .a b { color: var(--ink); font-weight: 500; }
 
+  /* ─── Scoping section (full-width, above the Q&A) ────── */
+  .scoping {
+    padding: 40px 0 32px;
+    border-bottom: 1px solid var(--border);
+  }
+  .scoping .heading {
+    font-family: var(--display); font-weight: 500;
+    font-size: 20px; color: var(--ink); letter-spacing: -0.005em;
+    margin: 0 0 6px;
+  }
+  .flow-caption {
+    font-size: 13px; color: var(--muted); margin: 0 0 18px;
+    max-width: 62ch;
+  }
+  .flow-diagram {
+    display: grid;
+    grid-template-columns: 1fr 20px 1fr 20px 1fr 20px 1fr 20px 1fr;
+    align-items: stretch; margin: 0 0 24px;
+  }
+  .flow-step {
+    padding: 14px 12px;
+    border: 1px solid var(--border);
+    background: var(--paper);
+    display: flex; flex-direction: column; gap: 6px;
+    min-width: 0;
+  }
+  .flow-step .actor {
+    font-family: var(--mono); font-size: 10px;
+    padding: 3px 7px; align-self: flex-start;
+    letter-spacing: 0.04em; text-transform: lowercase;
+  }
+  .flow-step .actor.you { background: var(--ink); color: #fff; }
+  .flow-step .actor.agent { background: var(--jira-blue-soft); color: var(--jira-blue); }
+  .flow-step .actor.system { background: var(--panel); color: var(--muted); }
+  .flow-step .title {
+    font-family: var(--display); font-weight: 500;
+    font-size: 15px; color: var(--ink); line-height: 1.25;
+    margin: 2px 0 0;
+  }
+  .flow-step .out { font-size: 11.5px; color: var(--muted); line-height: 1.5; margin: 2px 0 0; }
+  .flow-step .out code {
+    font-family: var(--mono); font-size: 10.5px;
+    background: var(--panel); padding: 1px 4px; color: var(--ink);
+  }
+  .flow-arrow {
+    align-self: center; text-align: center;
+    color: var(--faint); font-size: 16px; line-height: 1;
+  }
+  .example-lbl {
+    font-family: var(--mono); font-size: 10.5px;
+    color: var(--faint); letter-spacing: 0.04em;
+    text-transform: uppercase; margin: 4px 0 10px;
+  }
+
   /* Proof block under an answer */
   .proof { margin-top: 16px; padding-top: 14px; border-top: 1px dashed var(--border-2); }
   .plabel {
@@ -210,6 +264,11 @@
     .agents { grid-template-columns: 1fr; }
     .hero { padding: 48px 0 16px; }
     .qa { padding: 24px 0 48px; }
+    .flow-diagram {
+      grid-template-columns: 1fr;
+      grid-auto-rows: auto;
+    }
+    .flow-arrow { padding: 4px 0; align-self: center; }
   }
 </style>
 </head>
@@ -230,60 +289,88 @@
   <h1>How I scope, and where I've done it before.</h1>
 </section>
 
-<!-- ─── Q&A ──────────────────────────────────────── -->
+<!-- ─── Scoping diagram + example (full width) ───── -->
 <div class="wrap">
-  <div class="qa">
+  <section class="scoping">
+    <h3 class="heading">How an idea becomes signed work.</h3>
+    <p class="flow-caption">Read left to right. You show up twice. The rest is agents.</p>
 
-    <!-- SCOPING · from B -->
-
-    <div class="qa-row">
-      <div class="q">How do you take an idea from me?</div>
-      <div class="a">
-        <p>Whatever format you use: voice note, Slack thread, whiteboard photo, one-line email. The <code>intake</code> agent transcribes and OCRs it, extracts what/why/open-questions into a scratch doc. The <code>ticket-writer</code> agent then drafts a Jira story from it. You are not writing clean specs for me to work.</p>
+    <div class="flow-diagram">
+      <div class="flow-step">
+        <span class="actor you">you</span>
+        <h4 class="title">Send the idea.</h4>
+        <p class="out">Voice note, Slack thread, email, whiteboard photo. Any format.</p>
+      </div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-step">
+        <span class="actor agent">intake · sonnet</span>
+        <h4 class="title">Capture it.</h4>
+        <p class="out">Transcribes voice, OCRs images, pulls the shape into a scratch note.</p>
+      </div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-step">
+        <span class="actor agent">ticket-writer · opus</span>
+        <h4 class="title">Draft the ticket.</h4>
+        <p class="out">Turns the note into a Jira story with a <code>.feature</code> file attached.</p>
+      </div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-step">
+        <span class="actor you">you</span>
+        <h4 class="title">Sign it.</h4>
+        <p class="out">Read four bullets. Reply "signed" or edit. Two to five minutes.</p>
+      </div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-step">
+        <span class="actor system">build</span>
+        <h4 class="title">Build starts.</h4>
+        <p class="out">Spec, builder, tests and reviewer take over. You track it in Jira.</p>
       </div>
     </div>
 
-    <div class="qa-row">
-      <div class="q">What do you need me to sign?</div>
-      <div class="a">
-        <p>One Jira ticket per unit of work, with a <code>.feature</code> file attached. Cucumber, BDD, Gherkin. One Scenario per requirement, tagged @req-N. You read four to six bullets and reply "signed off" or edit them. Two to five minutes of your time.</p>
-        <div class="proof">
-          <p class="plabel">What you'd be signing</p>
-          <div class="jira-card">
-            <div class="jira-head">
-              <span class="type"><span class="dot"></span>Story</span>
-              <span class="key">AIP-142</span>
-              <span class="status">Refinement</span>
-            </div>
-            <div class="jira-body">
-              <p class="summary">Cite every generated line back to a source document</p>
-              <div class="field"><span class="lbl">Reporter</span><span>You</span></div>
-              <div class="field"><span class="lbl">Assignee</span><span>Ivi Malotana</span></div>
-              <div class="field"><span class="lbl">Priority</span><span>P1 · Founder-flagged</span></div>
-              <div class="field"><span class="lbl">Story points</span><span>5</span></div>
-              <div class="description">
-                <b>Description.</b> Reviewers cannot defend an uncited claim to a client. Every generated sentence needs to trace to a real source paragraph. Un-sourced sentences stay visible for review.
-                <ul>
-                  <li>REQ-1 · Every generated sentence carries a source_id.</li>
-                  <li>REQ-2 · Low-confidence sentences are quarantined to a "for review" tray.</li>
-                  <li>REQ-3 · A reviewer can accept, reject or rewrite in one click; logged.</li>
-                  <li>REQ-4 · Send is hard-blocked at citation-count = 0.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-<pre class="ff"><span class="tag">@AIP-142 @founder-flagged</span>
-<span class="kw">Feature:</span> Cite every generated line back to a source
-
-  <span class="tag">@req-1</span>
-  <span class="kw">Scenario:</span> Every sentence carries a source_id
-    <span class="gv">Given</span> the generated proposal contains N sentences
-    <span class="gv">When</span> I open the proposal in the reviewer
-    <span class="gv">Then</span> every sentence has at least one source_id
-    <span class="gv">And</span> hovering the sentence reveals the citation card</pre>
+    <p class="example-lbl">Example · what a signed ticket actually looks like</p>
+    <div class="jira-card">
+      <div class="jira-head">
+        <span class="type"><span class="dot"></span>Story</span>
+        <span class="key">AUTH-14</span>
+        <span class="status">Refinement</span>
+      </div>
+      <div class="jira-body">
+        <p class="summary">Log in with email and password</p>
+        <div class="field"><span class="lbl">Reporter</span><span>You</span></div>
+        <div class="field"><span class="lbl">Assignee</span><span>Ivi Malotana</span></div>
+        <div class="field"><span class="lbl">Story points</span><span>3</span></div>
+        <div class="description">
+          <b>Description.</b> A user has an account. They come back the next day and need to sign in.
+          <ul>
+            <li>REQ-1 · The right email and password signs the user in.</li>
+            <li>REQ-2 · A wrong password shows an error and does not sign them in.</li>
+            <li>REQ-3 · "Forgot password" sends a reset link to the email on file.</li>
+          </ul>
         </div>
       </div>
     </div>
+<pre class="ff"><span class="tag">@AUTH-14</span>
+<span class="kw">Feature:</span> Log in with email and password
+
+  <span class="tag">@req-1</span>
+  <span class="kw">Scenario:</span> Valid credentials sign the user in
+    <span class="gv">Given</span> I have an account with email "kim@acme.com"
+    <span class="gv">When</span> I enter my email and password
+    <span class="gv">Then</span> I am signed in
+    <span class="gv">And</span> I land on the dashboard
+
+  <span class="tag">@req-2</span>
+  <span class="kw">Scenario:</span> Wrong password shows an error
+    <span class="gv">Given</span> I have an account with email "kim@acme.com"
+    <span class="gv">When</span> I enter my email and the wrong password
+    <span class="gv">Then</span> I see "Email or password is incorrect"
+    <span class="gv">And</span> I am not signed in</pre>
+  </section>
+</div>
+
+<!-- ─── Q&A ──────────────────────────────────────── -->
+<div class="wrap">
+  <div class="qa">
 
     <div class="qa-row">
       <div class="q">What happens if I change my mind mid-build?</div>
