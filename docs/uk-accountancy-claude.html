@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ivi · AI for your firm</title>
-<meta name="description" content="AI lies. Here's how I stop it in a UK accountancy firm.">
+<title>Ivi · Your four projects, mapped</title>
+<meta name="description" content="Your four projects. Mapped to what I've built. And what I'd do in your firm.">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
 
@@ -59,74 +59,111 @@
   .top .right a { color: var(--muted); text-decoration: none; }
   .top .right a:hover { color: var(--ink); }
 
-  .hero { padding: 72px 0 28px; }
+  .hero { padding: 64px 0 24px; }
   h1 {
     font-family: var(--display); font-weight: 500;
-    font-size: clamp(36px, 5vw, 56px); letter-spacing: -0.02em;
-    margin: 0; line-height: 1.02; color: var(--ink);
-    max-width: 16ch; text-wrap: balance;
+    font-size: clamp(32px, 4.6vw, 48px); letter-spacing: -0.02em;
+    margin: 0; line-height: 1.05; color: var(--ink);
+    max-width: 20ch; text-wrap: balance;
   }
   .lede {
-    font-size: 16px; color: var(--muted); max-width: 56ch; margin: 22px 0 0;
+    font-size: 16px; color: var(--muted); max-width: 60ch; margin: 20px 0 0;
   }
   .lede b { color: var(--ink); font-weight: 500; }
 
-  section.band {
-    padding: 48px 0;
-    border-top: 1px solid var(--border);
+  /* Short-answer callout */
+  .short-answer {
+    margin: 28px 0 0;
+    padding: 20px 22px;
+    border: 1px solid var(--ink);
+    background: var(--paper);
   }
-  .section-head { margin: 0 0 20px; }
+  .short-answer .lbl {
+    font-family: var(--mono); font-size: 10.5px;
+    color: var(--muted); letter-spacing: 0.06em;
+    text-transform: uppercase; margin: 0 0 8px;
+  }
+  .short-answer h3 {
+    font-family: var(--display); font-weight: 500;
+    font-size: 20px; letter-spacing: -0.01em; margin: 0 0 8px; color: var(--ink);
+  }
+  .short-answer p { margin: 0; font-size: 14.5px; color: var(--ink-2); }
+
+  /* Section rhythm */
+  section.band { padding: 56px 0; border-top: 1px solid var(--border); }
+  section.band.warm { background: var(--panel); }
+  .section-head { margin: 0 0 24px; }
+  .section-eyebrow {
+    font-family: var(--mono); font-size: 10.5px;
+    color: var(--faint); letter-spacing: 0.06em;
+    text-transform: uppercase; margin: 0 0 6px;
+  }
   h2 {
     font-family: var(--display); font-weight: 500;
     font-size: 26px; letter-spacing: -0.01em; margin: 0;
     text-wrap: balance;
   }
-  .section-sub {
-    font-size: 14.5px; color: var(--muted); margin: 8px 0 0; max-width: 60ch;
-  }
 
-  /* ── ROI table ─────────────────────────────── */
-  .roi-table {
-    width: 100%; border-collapse: collapse;
-    margin: 12px 0 0;
-    font-size: 13.5px;
+  /* Project card (their ask → my proof → steps for them) */
+  .project {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: start;
   }
-  .roi-table thead th {
-    text-align: left; padding: 10px 12px;
-    font-size: 10.5px; letter-spacing: 0.08em;
-    text-transform: uppercase; color: var(--muted); font-weight: 500;
-    border-bottom: 1px solid var(--ink);
+  .col-h {
+    font-family: var(--mono); font-size: 10.5px;
+    color: var(--faint); letter-spacing: 0.06em;
+    text-transform: uppercase; margin: 0 0 8px;
   }
-  .roi-table thead th.n { text-align: right; }
-  .roi-table tbody td {
-    padding: 12px; border-bottom: 1px solid var(--border);
-    vertical-align: top;
+  .ask {
+    padding: 16px 18px;
+    background: var(--jira-bg);
+    border-left: 3px solid var(--jira-blue);
+    font-size: 13.5px; color: var(--jira-text);
+    line-height: 1.6; font-style: italic;
+    margin: 0 0 12px;
   }
-  .roi-table tbody td.n {
-    text-align: right; font-variant-numeric: tabular-nums; color: var(--ink);
-  }
-  .roi-table tbody td.rank {
-    font-family: var(--display); font-weight: 500; font-size: 14px;
-    color: var(--ink); width: 28px;
-  }
-  .roi-table .use { color: var(--ink); font-weight: 500; }
-  .pill {
-    display: inline-block; padding: 2px 8px;
-    font-size: 10.5px; letter-spacing: 0.04em; text-transform: uppercase;
-    font-weight: 500;
-  }
-  .pill.low { background: var(--ok-soft); color: var(--ok); }
-  .pill.med { background: var(--warn-soft); color: var(--warn); }
-  .pill.high { background: var(--err-soft); color: var(--err); }
-  .roi-total {
-    margin-top: 14px; font-size: 13px; color: var(--ink);
-    padding-top: 12px; border-top: 1px dashed var(--border-2);
-  }
-  .roi-total b { font-weight: 500; }
+  .col-ask p { margin: 0; color: var(--ink-2); font-size: 14px; }
 
-  /* ── SKILL.md card ────────────────────────── */
+  .built {
+    font-size: 14.5px; color: var(--ink-2); margin: 0 0 14px;
+  }
+  .built b { color: var(--ink); font-weight: 500; }
+
+  .steps {
+    list-style: none; padding: 0; margin: 6px 0 0;
+    counter-reset: step;
+  }
+  .steps li {
+    counter-increment: step;
+    position: relative;
+    padding: 8px 0 8px 32px;
+    font-size: 14px; color: var(--ink-2);
+    border-top: 1px solid var(--border);
+  }
+  .steps li:first-child { border-top: 0; padding-top: 0; }
+  .steps li::before {
+    content: counter(step);
+    position: absolute; left: 0; top: 8px;
+    width: 22px; height: 22px;
+    background: var(--ink); color: #fff;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-family: var(--display); font-size: 12px; font-weight: 500;
+  }
+  .steps li:first-child::before { top: 0; }
+  .steps li b { color: var(--ink); font-weight: 500; }
+
+  .timeline {
+    margin-top: 12px; padding-top: 10px; border-top: 1px dashed var(--border-2);
+    font-size: 12.5px; color: var(--muted);
+  }
+  .timeline b { color: var(--ink); font-weight: 500; }
+
+  /* SKILL.md card */
   .skill-card {
     border: 1px solid var(--border); background: var(--paper);
+    margin-top: 18px;
   }
   .skill-head {
     padding: 10px 14px; border-bottom: 1px solid var(--border);
@@ -140,20 +177,19 @@
     font-size: 10px; padding: 2px 6px; letter-spacing: 0.04em;
   }
   .skill-body {
-    padding: 16px 20px 20px;
+    padding: 14px 18px 18px;
     font-family: var(--mono); font-size: 12.5px; line-height: 1.7;
     color: var(--ink-2);
     white-space: pre-wrap;
     overflow-x: auto;
   }
   .skill-body .fm { color: var(--jira-text-mid); }
-  .skill-body .h1 { color: var(--ink); font-weight: 500; }
-  .skill-body .h2 { color: var(--ink); font-weight: 500; }
+  .skill-body .h1, .skill-body .h2 { color: var(--ink); font-weight: 500; }
   .skill-body .never { color: var(--err); }
   .skill-body .always { color: var(--ok); }
   .skill-body .code { color: var(--jira-blue); }
 
-  /* ── Gate diagram (fixed: minmax(0,1fr) equal columns) ── */
+  /* Guardrail diagram */
   .gate {
     display: grid;
     grid-template-columns:
@@ -188,20 +224,33 @@
     align-self: center; text-align: center;
     color: var(--faint); font-size: 16px; line-height: 1;
   }
-  .gate-note {
-    margin-top: 16px;
-    padding: 12px 14px;
-    background: var(--panel); border-left: 2px solid var(--ink);
-    font-size: 13.5px; color: var(--ink);
-  }
-  .gate-note b { font-weight: 500; }
 
-  /* ── Proof ─────────────────────────────────── */
-  .proof-list {
-    margin: 0; padding: 0; list-style: none;
+  /* Week plan */
+  .weeks {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+    margin-top: 16px;
   }
+  .week {
+    padding: 16px 16px;
+    border: 1px solid var(--border);
+    background: var(--paper);
+  }
+  .week .w-lbl {
+    font-family: var(--mono); font-size: 10.5px;
+    color: var(--jira-blue); letter-spacing: 0.06em;
+    text-transform: uppercase; margin: 0 0 6px;
+  }
+  .week h4 {
+    font-family: var(--display); font-weight: 500;
+    font-size: 15px; color: var(--ink); margin: 0 0 6px;
+    letter-spacing: -0.005em;
+  }
+  .week p { font-size: 13px; color: var(--muted); margin: 0; line-height: 1.55; }
+
+  /* Proof list */
+  .proof-list { margin: 0; padding: 0; list-style: none; }
   .proof-list li {
-    padding: 18px 0; border-top: 1px solid var(--border);
+    padding: 16px 0; border-top: 1px solid var(--border);
   }
   .proof-list li:first-child { border-top: 0; }
   .proof-list .client {
@@ -218,25 +267,11 @@
   }
 
   @media (max-width: 760px) {
-    .roi-table thead { display: none; }
-    .roi-table tbody td { display: block; padding: 4px 0; border-bottom: 0; }
-    .roi-table tbody tr {
-      display: block; padding: 14px 0;
-      border-bottom: 1px solid var(--border);
-    }
-    .roi-table tbody tr:first-child { padding-top: 0; }
-    .roi-table tbody td.n::before,
-    .roi-table tbody td.pill-cell::before {
-      content: attr(data-lbl) " · ";
-      color: var(--faint); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em;
-    }
-    .roi-table tbody td.rank { font-size: 20px; padding-bottom: 4px; }
-    .gate {
-      grid-template-columns: 1fr;
-      grid-auto-rows: auto;
-    }
+    .project { grid-template-columns: 1fr; gap: 16px; }
+    .gate { grid-template-columns: 1fr; grid-auto-rows: auto; }
     .gate-arrow { padding: 4px 0; align-self: center; }
-    .hero { padding: 48px 0 20px; }
+    .weeks { grid-template-columns: 1fr; }
+    .hero { padding: 40px 0 16px; }
     section.band { padding: 36px 0; }
   }
 </style>
@@ -245,112 +280,85 @@
 
 <header class="top">
   <div class="wrap top-inner">
-    <div class="brand">ivi · <em>AI for your firm</em></div>
+    <div class="brand">ivi · <em>your four projects, mapped</em></div>
     <div class="right">
       <a href="mailto:iivii.malotana@gmail.com">iivii.malotana@gmail.com</a>
     </div>
   </div>
 </header>
 
+<!-- Hero + short-answer callout -->
 <section class="wrap hero">
-  <h1>AI lies. Here's how I stop it.</h1>
-  <p class="lede">I built this for a UK accountancy firm called <b>Emerald Path</b>. Every AI line cites a source. Nothing goes to a client without a partner tapping "OK". Below: where I'd start in your firm. What I'd build first. How the guardrail works.</p>
-</section>
+  <h1>Your four projects. Mapped to what I've built.</h1>
+  <p class="lede">You asked which to prototype first. Short answer below, then a section per project showing what you asked for, what I've built that matches, and what I'd do in your firm step by step.</p>
 
-<!-- ── A · Where to start ─────────────────── -->
-<section class="band">
-  <div class="wrap">
-    <div class="section-head">
-      <h2>Where to start.</h2>
-      <p class="section-sub">Eight things I'd automate. Ranked by hours saved and how bad it would be if the AI got it wrong.</p>
-    </div>
-
-    <table class="roi-table">
-      <thead>
-        <tr>
-          <th></th>
-          <th>What it does</th>
-          <th class="n">Hrs / wk</th>
-          <th>How often</th>
-          <th>If wrong</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="rank">1</td>
-          <td class="use">Draft client emails (fees, missing info, replies)</td>
-          <td class="n" data-lbl="Hrs/wk">4.0</td>
-          <td class="pill-cell" data-lbl="How often"><span class="pill low">Daily</span></td>
-          <td class="pill-cell" data-lbl="If wrong"><span class="pill low">Small</span></td>
-        </tr>
-        <tr>
-          <td class="rank">2</td>
-          <td class="use">Draft engagement letters from client answers</td>
-          <td class="n" data-lbl="Hrs/wk">2.5</td>
-          <td class="pill-cell" data-lbl="How often"><span class="pill low">Weekly</span></td>
-          <td class="pill-cell" data-lbl="If wrong"><span class="pill low">Small</span></td>
-        </tr>
-        <tr>
-          <td class="rank">3</td>
-          <td class="use">Month-end commentary from a Xero P&amp;L</td>
-          <td class="n" data-lbl="Hrs/wk">3.0</td>
-          <td class="pill-cell" data-lbl="How often"><span class="pill med">Monthly</span></td>
-          <td class="pill-cell" data-lbl="If wrong"><span class="pill med">Medium</span></td>
-        </tr>
-        <tr>
-          <td class="rank">4</td>
-          <td class="use">Quarterly client review pre-read</td>
-          <td class="n" data-lbl="Hrs/wk">2.0</td>
-          <td class="pill-cell" data-lbl="How often"><span class="pill med">Quarterly</span></td>
-          <td class="pill-cell" data-lbl="If wrong"><span class="pill low">Small</span></td>
-        </tr>
-        <tr>
-          <td class="rank">5</td>
-          <td class="use">Partner-review notes on work papers</td>
-          <td class="n" data-lbl="Hrs/wk">2.5</td>
-          <td class="pill-cell" data-lbl="How often"><span class="pill low">Weekly</span></td>
-          <td class="pill-cell" data-lbl="If wrong"><span class="pill med">Medium</span></td>
-        </tr>
-        <tr>
-          <td class="rank">6</td>
-          <td class="use">Sort bank transactions with your chart of accounts</td>
-          <td class="n" data-lbl="Hrs/wk">2.0</td>
-          <td class="pill-cell" data-lbl="How often"><span class="pill low">Weekly</span></td>
-          <td class="pill-cell" data-lbl="If wrong"><span class="pill med">Medium</span></td>
-        </tr>
-        <tr>
-          <td class="rank">7</td>
-          <td class="use">VAT sanity check before filing</td>
-          <td class="n" data-lbl="Hrs/wk">1.0</td>
-          <td class="pill-cell" data-lbl="How often"><span class="pill med">Monthly</span></td>
-          <td class="pill-cell" data-lbl="If wrong"><span class="pill high">Big</span></td>
-        </tr>
-        <tr>
-          <td class="rank">8</td>
-          <td class="use">Companies House filing pre-check</td>
-          <td class="n" data-lbl="Hrs/wk">0.5</td>
-          <td class="pill-cell" data-lbl="How often"><span class="pill med">Monthly</span></td>
-          <td class="pill-cell" data-lbl="If wrong"><span class="pill high">Big</span></td>
-        </tr>
-      </tbody>
-    </table>
-
-    <p class="roi-total"><b>~17.5 hours saved a week</b> if all eight ship. I start with the small-risk ones. The big-risk ones sit behind the guardrail below.</p>
+  <div class="short-answer">
+    <p class="lbl">Short answer</p>
+    <h3>Prototype #2 first (AI + Xero reporting).</h3>
+    <p>You said you're particularly interested. My closest reference (Emerald Path, UK accountancy platform) already does this. By end of week 2, a first-draft management commentary lands in a partner's inbox, a real output your finance team can react to. Sections 1 and 3 build naturally from #2. Section 4 (discovery) runs in parallel from day 1.</p>
   </div>
 </section>
 
-<!-- ── B · What I'd build first ────────────── -->
+<!-- ── Project 1 · Internal knowledge hub ── -->
 <section class="band">
   <div class="wrap">
     <div class="section-head">
-      <h2>What I'd build first.</h2>
-      <p class="section-sub">A file in your repo. Any partner can read it. Below is the real thing.</p>
+      <p class="section-eyebrow">Project 1 of 4</p>
+      <h2>Internal knowledge hub.</h2>
+    </div>
+
+    <div class="project">
+      <div class="col-ask">
+        <p class="col-h">You said</p>
+        <div class="ask">"We have a growing library of SOPs, processes, company values, service standards, templates, onboarding information and internal documentation. We would like to create an effective AI-enabled internal knowledge system that our team can use."</div>
+      </div>
+
+      <div class="col-do">
+        <p class="col-h">What I've built + what I'd do</p>
+        <p class="built"><b>I've built this.</b> At Dixon AI I authored 6 production Claude Skills and 9 subagent definitions. A Skill is a scoped <code style="font-family:var(--mono);font-size:12px;background:var(--panel);padding:1px 5px;">.md</code> file the model reads before it works. Same pattern extends to your SOPs.</p>
+        <ol class="steps">
+          <li><b>Audit your docs.</b> Rank them by how often the team looks something up.</li>
+          <li><b>Convert the top 10 to Claude Skills.</b> One per topic (onboarding, VAT process, engagement-letter drafting).</li>
+          <li><b>Wire into Claude Code or Claude.ai.</b> Team asks in plain English. The answer cites the SOP row.</li>
+          <li><b>Handover.</b> Any partner can edit a Skill without me. It's plain text.</li>
+        </ol>
+        <p class="timeline"><b>Time.</b> 5-7 working days once your docs land in a shared folder.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Project 2 · AI + Xero (the priority) ── -->
+<section class="band warm">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="section-eyebrow">Project 2 of 4 · start here</p>
+      <h2>AI financial reporting + Xero.</h2>
+    </div>
+
+    <div class="project">
+      <div class="col-ask">
+        <p class="col-h">You said</p>
+        <div class="ask">"Prototype a reporting solution that combines financial data from Xero with Claude/AI... retrieving structured financial information from Xero; monthly and YTD variance analysis; identifying unusual movements; generating first-draft management commentary; KPI and trend analysis; feeding into management accounts or board reporting packs."</div>
+      </div>
+
+      <div class="col-do">
+        <p class="col-h">What I've built + what I'd do</p>
+        <p class="built"><b>I've built this.</b> Emerald Path, a UK accountancy platform I put together end to end in three months. Xero, Sage, HMRC MTD and Companies House integrations. AI gateway that drafts management commentary from a P&L export, every line tied to a source row. FRS-102 iXBRL engine at 100% tag coverage on the Xero demo company. <b>This is your closest reference on my CV.</b></p>
+        <ol class="steps">
+          <li><b>Xero OAuth + pull.</b> P&L, YTD, budget for one pilot client.</li>
+          <li><b>Variance analyzer.</b> Flag any line moving &gt; 15% or &gt; £5,000.</li>
+          <li><b>Commentary generator.</b> One sentence per flagged line, tagged with source row.</li>
+          <li><b>Structured output.</b> HTML or Markdown block that drops into your management accounts pack.</li>
+        </ol>
+        <p class="timeline"><b>Time.</b> Working prototype for one pilot client by end of week 2.</p>
+      </div>
     </div>
 
     <div class="skill-card">
       <div class="skill-head">
         <span class="file"><b>.claude/skills/month-end-commentary/SKILL.md</b></span>
-        <span class="tag">week 1</span>
+        <span class="tag">week 2</span>
       </div>
 <div class="skill-body"><span class="fm">---
 name: month-end-commentary
@@ -388,12 +396,69 @@ You draft a first pass. A partner reads it before it goes out.
   </div>
 </section>
 
-<!-- ── C · How I stop it being wrong ──────── -->
+<!-- ── Project 3 · Board decks ── -->
 <section class="band">
   <div class="wrap">
     <div class="section-head">
-      <h2>How I stop it being wrong.</h2>
-      <p class="section-sub">Every line cites a source. Nothing sends without a person tapping OK.</p>
+      <p class="section-eyebrow">Project 3 of 4</p>
+      <h2>Automated reporting and board decks.</h2>
+    </div>
+
+    <div class="project">
+      <div class="col-ask">
+        <p class="col-h">You said</p>
+        <div class="ask">"The objective is not generic AI-generated PowerPoint slides. We want consistent, professional outputs that follow our reporting methodology and brand, with our finance team reviewing and refining the final output."</div>
+      </div>
+
+      <div class="col-do">
+        <p class="col-h">What I've built + what I'd do</p>
+        <p class="built"><b>I've built this.</b> The Emerald Path pipeline outputs structured documents that follow the firm's own template, not a generic one. Finance team reviews before send. The same pattern extends to PowerPoint (python-pptx) or Google Slides.</p>
+        <ol class="steps">
+          <li><b>Fingerprint your template.</b> Fonts, colours, layouts, section order, house language.</li>
+          <li><b>Build the fill Skill.</b> Takes the variance + commentary from Project 2 and drops them into the right template slots.</li>
+          <li><b>Brand check.</b> Asserts no generic AI phrases. Enforces your section headings. Respects your voice guide.</li>
+          <li><b>Finance team reviews</b> in Slides or PPTX before it sends. Nothing autosend.</li>
+        </ol>
+        <p class="timeline"><b>Time.</b> 5 working days after Project 2's commentary works.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Project 4 · Explore ── -->
+<section class="band warm">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="section-eyebrow">Project 4 of 4 · runs in parallel from day 1</p>
+      <h2>Explore other AI opportunities.</h2>
+    </div>
+
+    <div class="project">
+      <div class="col-ask">
+        <p class="col-h">You said</p>
+        <div class="ask">"We would also like you to understand how our outsourced finance business operates and help us identify other high-value opportunities for AI and automation... client onboarding, month-end processes, financial review and QA, meeting preparation, action tracking, client queries, internal knowledge, proposals..."</div>
+      </div>
+
+      <div class="col-do">
+        <p class="col-h">What I've built + what I'd do</p>
+        <p class="built"><b>I've built this.</b> At Dixon AI I ran a 10-stage pipeline that turns founder ideas into shipped features. The first three days are always discovery, mapping every workflow and ranking by ROI.</p>
+        <ol class="steps">
+          <li><b>Three days shadowing.</b> One partner, one manager, one associate. Daily / weekly / monthly work mapped.</li>
+          <li><b>Rank every candidate</b> by hours saved × frequency × blast radius if wrong.</li>
+          <li><b>One page per use case.</b> What it does, hours saved, risk, order to build.</li>
+        </ol>
+        <p class="timeline"><b>Time.</b> Delivered by end of week 1, before I start the Project 2 build.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Guardrail (the reliability answer) ── -->
+<section class="band">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="section-eyebrow">The reliability question</p>
+      <h2>How I stop the AI being wrong on client work.</h2>
     </div>
 
     <div class="gate">
@@ -412,7 +477,7 @@ You draft a first pass. A partner reads it before it goes out.
       <div class="gate-step">
         <span class="k">3 · quarantine</span>
         <div class="t">Held for review.</div>
-        <div class="d">Not hidden. Partner sees what the AI wanted to say, and why it was held.</div>
+        <div class="d">Not hidden. Partner sees what the AI wanted to say and why it was held.</div>
       </div>
       <span class="gate-arrow">→</span>
       <div class="gate-step">
@@ -427,29 +492,57 @@ You draft a first pass. A partner reads it before it goes out.
         <div class="d">Locked on the server, not just the UI. No way around it.</div>
       </div>
     </div>
+  </div>
+</section>
 
-    <div class="gate-note">
-      <b>The rule.</b> If the AI can't source it, the AI can't say it. If it wants to say it anyway, the partner sees the attempt. Nothing about a client's numbers reaches a client without a person tapping OK.
+<!-- ── Week plan ── -->
+<section class="band warm">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="section-eyebrow">Weeks 1-3</p>
+      <h2>What lands, and when.</h2>
+    </div>
+
+    <div class="weeks">
+      <div class="week">
+        <p class="w-lbl">Week 1</p>
+        <h4>Discovery + first Skill</h4>
+        <p>3 days shadowing (partner, manager, associate). Delivered: ROI map of 6-10 use cases. First Skill wired for a pilot client.</p>
+      </div>
+      <div class="week">
+        <p class="w-lbl">Week 2</p>
+        <h4>Xero + commentary prototype</h4>
+        <p>Xero OAuth. Variance analyzer. Commentary generator with source-row citations. First draft in a partner's inbox by Friday.</p>
+      </div>
+      <div class="week">
+        <p class="w-lbl">Week 3</p>
+        <h4>Board deck + handover</h4>
+        <p>Fill Skill for your existing template. Brand check enforcer. Handover doc so the team can add Skills without me.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ── D · I've done this ────────────────── -->
+<!-- ── Proof ── -->
 <section class="band">
   <div class="wrap">
     <div class="section-head">
-      <h2>I've done this.</h2>
+      <p class="section-eyebrow">Proof</p>
+      <h2>Where I've done this before.</h2>
     </div>
 
     <ul class="proof-list">
       <li>
-        <div><span class="client">Emerald Path.</span><span class="about">UK accountancy platform. I built it in three months. AI gateway with sourced proposals through 20 rounds of QA. HMRC, Companies House, Xero, Sage. FRS-102 iXBRL at 100% tag coverage.</span></div>
+        <div><span class="client">Emerald Path.</span><span class="about">UK accountancy platform built end to end in three months. AI gateway with sourced proposals through 20 rounds of QA. HMRC MTD, Companies House, Xero, Sage. FRS-102 iXBRL at 100% tag coverage on the Xero demo company.</span></div>
       </li>
       <li>
-        <div><span class="client">Dixon AI.</span><span class="about">Six Claude Skills in production. Nine subagents. The skill above is the same shape. The .md files live in your repo. A partner can edit them without me.</span></div>
+        <div><span class="client">Dixon AI.</span><span class="about">Six production Claude Skills. Nine subagents. The month-end commentary Skill above is the same shape as the ones running there. The .md files live in your repo. A partner can edit them without me.</span></div>
       </li>
       <li>
-        <div><span class="client">bOnline.</span><span class="about">Three years running payments, billing, fraud and an AI chatbot at 60% resolution. Not accountancy, but the same instincts on what you let a model do near a client's money.</span></div>
+        <div><span class="client">bOnline (3 years, Product Owner).</span><span class="about">Payments, billing, fraud, AI chatbot. Scaled billing 7x. AI chatbot at 60% resolution leading a team of five.</span></div>
+      </li>
+      <li>
+        <div><span class="client">LifeCheq.</span><span class="about">Insurance and financial products in a regulated South African financial-services environment.</span></div>
       </li>
     </ul>
   </div>
