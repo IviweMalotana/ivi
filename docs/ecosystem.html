@@ -162,6 +162,39 @@
     padding-right: 8px;
   }
 
+  /* Numbered inline list (C4 tests) */
+  .qa-row .a ul { margin: 6px 0 0; padding-left: 18px; }
+  .qa-row .a li { margin: 3px 0; font-size: 14px; }
+  .qa-row .a .num {
+    font-family: var(--display); font-weight: 500;
+    color: var(--ink); font-variant-numeric: tabular-nums;
+  }
+
+  /* Agent roster grid (D1 proof) */
+  .agents {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;
+  }
+  .ag {
+    padding: 12px 14px; background: var(--paper); border: 1px solid var(--border);
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .ag .top-row {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 8px;
+  }
+  .ag .name {
+    font-family: var(--mono); font-size: 12.5px;
+    color: var(--jira-blue); font-weight: 500;
+  }
+  .ag .model {
+    font-family: var(--mono); font-size: 10px; padding: 2px 6px;
+    background: var(--jira-blue-soft); color: var(--jira-blue);
+    letter-spacing: 0.02em;
+  }
+  .ag .model.opus   { background: #EAE0F0; color: #5A2C7A; }
+  .ag .model.sonnet { background: #DEEBFF; color: #0747A6; }
+  .ag .model.haiku  { background: #E3FCEF; color: #006644; }
+  .ag .job { font-size: 12px; color: var(--muted); }
+
   footer {
     padding: 24px 0; border-top: 1px solid var(--border);
     display: flex; justify-content: space-between;
@@ -174,6 +207,7 @@
     .qa-row { grid-template-columns: 1fr; gap: 8px; }
     .qa-row .q { font-size: 16px; }
     .jira-body .field { grid-template-columns: 1fr; gap: 2px; }
+    .agents { grid-template-columns: 1fr; }
     .hero { padding: 48px 0 16px; }
     .qa { padding: 24px 0 48px; }
   }
@@ -265,7 +299,132 @@
       </div>
     </div>
 
-    <!-- PROOF · from G, no eyebrow -->
+    <!-- TRUST & VISIBILITY -->
+
+    <div class="qa-row">
+      <div class="q">How do I know you're on track without asking?</div>
+      <div class="a">
+        <p>Three surfaces, always current. The Jira board (live). The staging URL (updated on every PR). The Friday note (in writing, one page). If you want zero meetings that is fine. The trail is the record.</p>
+      </div>
+    </div>
+
+    <div class="qa-row">
+      <div class="q">How do you handle bad news?</div>
+      <div class="a">
+        <p>The moment I know. Not on Friday. If a REQ turns out to be impossible or a deadline is going to slip, you get a Slack message and a proposed re-plan the same day, framed as a yes/no.</p>
+      </div>
+    </div>
+
+    <div class="qa-row">
+      <div class="q">How do I know an AI output is trustworthy?</div>
+      <div class="a">
+        <p>Every generated line cites its source. Anything below a confidence threshold is quarantined to a review tray with the reason. This is the pattern I built at Emerald Path (UK accountancy AI gateway, 20 rounds of QA, citations grounded).</p>
+      </div>
+    </div>
+
+    <div class="qa-row">
+      <div class="q">Do you write tests?</div>
+      <div class="a">
+        <p>Yes, three suites, all keyed to a REQ so a red test names the requirement that failed.</p>
+        <ul>
+          <li><b class="num">1</b>. Cucumber + Playwright for the user flows.</li>
+          <li><b class="num">2</b>. Vitest for the small invariants.</li>
+          <li><b class="num">3</b>. Regression pull from last quarter's bugs.</li>
+        </ul>
+        <p class="m" style="margin-top:8px;">A test is never disabled to "make it pass". A flake is investigated as if it were real, once.</p>
+      </div>
+    </div>
+
+    <!-- AGENTS & MODELS -->
+
+    <div class="qa-row">
+      <div class="q">How many agents run on a ticket?</div>
+      <div class="a">
+        <p>Eight. Each is a Claude Code subagent with a scoped tool set. Model ids are fixed in the subagent front-matter, so the cheap one cannot silently escalate to the expensive one.</p>
+        <div class="proof">
+          <p class="plabel">The roster</p>
+          <div class="agents">
+            <div class="ag"><div class="top-row"><span class="name">intake</span><span class="model sonnet">sonnet 5.5</span></div><div class="job">Captures your idea into a working note.</div></div>
+            <div class="ag"><div class="top-row"><span class="name">ticket-writer</span><span class="model opus">opus 4.7</span></div><div class="job">Drafts the Jira story with Gherkin criteria.</div></div>
+            <div class="ag"><div class="top-row"><span class="name">spec-writer</span><span class="model opus">opus 4.7</span></div><div class="job">Turns the ticket into a .feature file.</div></div>
+            <div class="ag"><div class="top-row"><span class="name">test-planner</span><span class="model opus">opus 4.7</span></div><div class="job">Generates step defs and Playwright bindings.</div></div>
+            <div class="ag"><div class="top-row"><span class="name">builder</span><span class="model sonnet">sonnet 5.5</span></div><div class="job">Writes the code, one commit per plan-step.</div></div>
+            <div class="ag"><div class="top-row"><span class="name">test-runner</span><span class="model haiku">haiku 4.5</span></div><div class="job">Runs every suite, posts pass/fail to the PR.</div></div>
+            <div class="ag"><div class="top-row"><span class="name">reviewer</span><span class="model opus">opus 4.7</span></div><div class="job">Adversarial audit. Blocks merge if it breaks.</div></div>
+            <div class="ag"><div class="top-row"><span class="name">release-writer</span><span class="model sonnet">sonnet 5.5</span></div><div class="job">Drafts release note from the scenarios diff.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="qa-row">
+      <div class="q">Why per-agent model routing?</div>
+      <div class="a">
+        <p>Opus for planning, tests, review. Sonnet for build and release notes. Haiku for the loop and small fixes. You never spend Opus tokens where Haiku would answer, and you never get a Haiku answer where the stakes need Opus.</p>
+      </div>
+    </div>
+
+    <div class="qa-row">
+      <div class="q">Who reviews the code the AI writes?</div>
+      <div class="a">
+        <p>A different model to the one that wrote it. The <code>builder</code> is Sonnet 5.5; the <code>reviewer</code> is Opus 4.7. Different training, different blind spots. The reviewer blocks merge on any finding with a real failure scenario.</p>
+      </div>
+    </div>
+
+    <!-- CONTINUITY & OWNERSHIP -->
+
+    <div class="qa-row">
+      <div class="q">What if you disappear tomorrow?</div>
+      <div class="a">
+        <p>Three things survive without me. First, the agents live in <code>your/repo/.claude/agents/*.md</code>; another Claude Code operator can pick them up. Second, the <code>.feature</code> files are the spec, in your repo. Third, Jira has the full trail: every requirement, every decision, every review comment.</p>
+      </div>
+    </div>
+
+    <div class="qa-row">
+      <div class="q">Who owns the code and the agents?</div>
+      <div class="a">
+        <p>You. All IP is yours from day one, in your repo, under your license. I do not retain any part of it. The subagent files are plain markdown; you can read and modify them without me.</p>
+      </div>
+    </div>
+
+    <div class="qa-row">
+      <div class="q">Can your agents run without you?</div>
+      <div class="a">
+        <p>Yes. They are triggered by Jira status changes and GitHub events. Once wired, an intern or your own senior dev can move a ticket through the pipeline. My job over time is to make myself less necessary, not more.</p>
+      </div>
+    </div>
+
+    <!-- COST OF HIRING ME -->
+
+    <div class="qa-row">
+      <div class="q">How much of your time do I need per week?</div>
+      <div class="a">
+        <p>Roughly 45 minutes if nothing is on fire. Ticket sign-offs (two to five minutes each, batch on Monday), Friday note (90 seconds), one 30-minute call if you want it. Zero-meeting weeks are fine.</p>
+      </div>
+    </div>
+
+    <div class="qa-row">
+      <div class="q">What do you need me to buy?</div>
+      <div class="a">
+        <p>A Jira Software seat (about $8/mo). A Claude API key on your Anthropic account (you set the cap). GitHub you likely already have. That is the whole stack. Agents run against your keys, on your billing, so you see every token.</p>
+      </div>
+    </div>
+
+    <div class="qa-row">
+      <div class="q">How available are you?</div>
+      <div class="a">
+        <p>Cape Town (SAST, UTC+2). I overlap with EU mornings and US mid-afternoon. Response within 4 working hours on weekdays. Slack DMs and Jira mentions are equal priority. I do not answer at 2am, and I do not pretend to.</p>
+      </div>
+    </div>
+
+    <div class="qa-row">
+      <div class="q">What is out of scope for you?</div>
+      <div class="a">
+        <p>Design systems (I use your tokens or an open one). SEO strategy. Paid ads. Anything requiring a legal or accounting sign-off in a country I do not practice in. If you ask me to do these, I say no and refer you.</p>
+      </div>
+    </div>
+
+    <!-- PROOF -->
 
     <div class="qa-row">
       <div class="q">Have you built AI systems in production?</div>
