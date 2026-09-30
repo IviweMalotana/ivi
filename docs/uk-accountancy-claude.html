@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ivi · Your four projects, mapped</title>
-<meta name="description" content="Your four projects. Mapped to what I've built. And what I'd do in your firm.">
+<meta name="description" content="Your four projects, mapped to what I've built. Plus how the UK accountancy platform I built end-to-end actually works.">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
 
@@ -27,10 +27,7 @@
 
     --ok:   #216E4E;
     --ok-soft:  #E3FCEF;
-    --warn: #8F6E1F;
-    --warn-soft: #FFF7E0;
     --err:  #A33A3A;
-    --err-soft: #FDECEC;
 
     --body:    "Inter", "Helvetica Neue", Arial, sans-serif;
     --display: "Space Grotesk", "Inter", "Helvetica Neue", Arial, sans-serif;
@@ -71,7 +68,6 @@
   }
   .lede b { color: var(--ink); font-weight: 500; }
 
-  /* Short-answer callout */
   .short-answer {
     margin: 28px 0 0;
     padding: 20px 22px;
@@ -89,7 +85,6 @@
   }
   .short-answer p { margin: 0; font-size: 14.5px; color: var(--ink-2); }
 
-  /* Section rhythm */
   section.band { padding: 56px 0; border-top: 1px solid var(--border); }
   section.band.warm { background: var(--panel); }
   .section-head { margin: 0 0 24px; }
@@ -103,8 +98,70 @@
     font-size: 26px; letter-spacing: -0.01em; margin: 0;
     text-wrap: balance;
   }
+  .section-intro {
+    font-size: 15px; color: var(--muted); margin: 10px 0 0; max-width: 62ch;
+  }
+  .section-intro b { color: var(--ink); font-weight: 500; }
 
-  /* Project card (their ask → my proof → steps for them) */
+  /* Emerald Path walkthrough phases */
+  .phases { margin-top: 20px; }
+  .phase {
+    display: grid; grid-template-columns: 60px 1fr;
+    gap: 20px; padding: 22px 0;
+    border-top: 1px solid var(--border);
+    align-items: start;
+  }
+  .phase:first-child { border-top: 0; padding-top: 4px; }
+  .phase .n {
+    font-family: var(--display); font-weight: 500; font-size: 32px;
+    color: var(--ink); letter-spacing: -0.02em; line-height: 1;
+    padding-top: 4px;
+  }
+  .phase h3 {
+    font-family: var(--display); font-weight: 500;
+    font-size: 18px; color: var(--ink); margin: 0 0 6px; letter-spacing: -0.005em;
+  }
+  .phase p { font-size: 14px; color: var(--ink-2); margin: 0 0 10px; line-height: 1.6; }
+  .phase p b { color: var(--ink); font-weight: 500; }
+  .badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+  .badge {
+    font-family: var(--mono); font-size: 10.5px;
+    padding: 3px 8px; background: var(--jira-blue-soft); color: var(--jira-blue);
+    letter-spacing: 0.02em;
+  }
+
+  /* Tech stack list */
+  .stack { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px 32px; margin-top: 12px; }
+  .stack-group h4 {
+    font-family: var(--mono); font-size: 10.5px;
+    color: var(--faint); letter-spacing: 0.08em;
+    text-transform: uppercase; margin: 0 0 8px; font-weight: 500;
+  }
+  .stack-group p { margin: 0; font-size: 13.5px; color: var(--ink-2); line-height: 1.65; }
+  .stack-group b { color: var(--ink); font-weight: 500; }
+
+  /* Precautions list */
+  .safe { margin: 8px 0 0; padding: 0; list-style: none; }
+  .safe li {
+    padding: 12px 0 12px 32px;
+    position: relative;
+    border-top: 1px solid var(--border);
+    font-size: 14px; color: var(--ink-2);
+    line-height: 1.55;
+  }
+  .safe li:first-child { border-top: 0; }
+  .safe li::before {
+    content: "✓";
+    position: absolute; left: 0; top: 12px;
+    width: 22px; height: 22px;
+    background: var(--ok); color: #fff;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 500;
+  }
+  .safe li:first-child::before { top: 0; }
+  .safe li b { color: var(--ink); font-weight: 500; }
+
+  /* Project mapping cards */
   .project {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -124,8 +181,6 @@
     line-height: 1.6; font-style: italic;
     margin: 0 0 12px;
   }
-  .col-ask p { margin: 0; color: var(--ink-2); font-size: 14px; }
-
   .built {
     font-size: 14.5px; color: var(--ink-2); margin: 0 0 14px;
   }
@@ -161,10 +216,7 @@
   .timeline b { color: var(--ink); font-weight: 500; }
 
   /* SKILL.md card */
-  .skill-card {
-    border: 1px solid var(--border); background: var(--paper);
-    margin-top: 18px;
-  }
+  .skill-card { border: 1px solid var(--border); background: var(--paper); margin-top: 18px; }
   .skill-head {
     padding: 10px 14px; border-bottom: 1px solid var(--border);
     background: var(--jira-bg);
@@ -172,16 +224,11 @@
     font-family: var(--mono); font-size: 11.5px; color: var(--jira-text-mid);
   }
   .skill-head .file b { color: var(--jira-text); font-weight: 500; }
-  .skill-head .tag {
-    background: var(--jira-blue-soft); color: var(--jira-blue);
-    font-size: 10px; padding: 2px 6px; letter-spacing: 0.04em;
-  }
+  .skill-head .tag { background: var(--jira-blue-soft); color: var(--jira-blue); font-size: 10px; padding: 2px 6px; letter-spacing: 0.04em; }
   .skill-body {
     padding: 14px 18px 18px;
     font-family: var(--mono); font-size: 12.5px; line-height: 1.7;
-    color: var(--ink-2);
-    white-space: pre-wrap;
-    overflow-x: auto;
+    color: var(--ink-2); white-space: pre-wrap; overflow-x: auto;
   }
   .skill-body .fm { color: var(--jira-text-mid); }
   .skill-body .h1, .skill-body .h2 { color: var(--ink); font-weight: 500; }
@@ -193,19 +240,13 @@
   .gate {
     display: grid;
     grid-template-columns:
-      minmax(0, 1fr) 20px
-      minmax(0, 1fr) 20px
-      minmax(0, 1fr) 20px
-      minmax(0, 1fr) 20px
-      minmax(0, 1fr);
+      minmax(0, 1fr) 20px minmax(0, 1fr) 20px
+      minmax(0, 1fr) 20px minmax(0, 1fr) 20px minmax(0, 1fr);
     gap: 0; margin: 12px 0 0;
   }
   .gate-step {
-    padding: 14px 12px;
-    border: 1px solid var(--border);
-    background: var(--paper);
-    display: flex; flex-direction: column; gap: 6px;
-    min-width: 0;
+    padding: 14px 12px; border: 1px solid var(--border); background: var(--paper);
+    display: flex; flex-direction: column; gap: 6px; min-width: 0;
   }
   .gate-step .k {
     font-family: var(--mono); font-size: 10px;
@@ -215,26 +256,15 @@
   }
   .gate-step .k.gate-k { background: var(--ink); color: #fff; }
   .gate-step .t {
-    font-family: var(--display); font-weight: 500;
-    font-size: 14px; color: var(--ink); line-height: 1.25;
-    margin: 2px 0 0;
+    font-family: var(--display); font-weight: 500; font-size: 14px;
+    color: var(--ink); line-height: 1.25; margin: 2px 0 0;
   }
   .gate-step .d { font-size: 12px; color: var(--muted); margin: 2px 0 0; line-height: 1.5; }
-  .gate-arrow {
-    align-self: center; text-align: center;
-    color: var(--faint); font-size: 16px; line-height: 1;
-  }
+  .gate-arrow { align-self: center; text-align: center; color: var(--faint); font-size: 16px; line-height: 1; }
 
   /* Week plan */
-  .weeks {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
-    margin-top: 16px;
-  }
-  .week {
-    padding: 16px 16px;
-    border: 1px solid var(--border);
-    background: var(--paper);
-  }
+  .weeks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 16px; }
+  .week { padding: 16px 16px; border: 1px solid var(--border); background: var(--paper); }
   .week .w-lbl {
     font-family: var(--mono); font-size: 10.5px;
     color: var(--jira-blue); letter-spacing: 0.06em;
@@ -242,16 +272,12 @@
   }
   .week h4 {
     font-family: var(--display); font-weight: 500;
-    font-size: 15px; color: var(--ink); margin: 0 0 6px;
-    letter-spacing: -0.005em;
+    font-size: 15px; color: var(--ink); margin: 0 0 6px; letter-spacing: -0.005em;
   }
   .week p { font-size: 13px; color: var(--muted); margin: 0; line-height: 1.55; }
 
-  /* Proof list */
   .proof-list { margin: 0; padding: 0; list-style: none; }
-  .proof-list li {
-    padding: 16px 0; border-top: 1px solid var(--border);
-  }
+  .proof-list li { padding: 16px 0; border-top: 1px solid var(--border); }
   .proof-list li:first-child { border-top: 0; }
   .proof-list .client {
     font-family: var(--display); font-weight: 500;
@@ -268,6 +294,9 @@
 
   @media (max-width: 760px) {
     .project { grid-template-columns: 1fr; gap: 16px; }
+    .stack { grid-template-columns: 1fr; }
+    .phase { grid-template-columns: 48px 1fr; gap: 14px; }
+    .phase .n { font-size: 24px; }
     .gate { grid-template-columns: 1fr; grid-auto-rows: auto; }
     .gate-arrow { padding: 4px 0; align-self: center; }
     .weeks { grid-template-columns: 1fr; }
@@ -290,17 +319,160 @@
 <!-- Hero + short-answer callout -->
 <section class="wrap hero">
   <h1>Your four projects. Mapped to what I've built.</h1>
-  <p class="lede">You asked which to prototype first. Short answer below, then a section per project showing what you asked for, what I've built that matches, and what I'd do in your firm step by step.</p>
+  <p class="lede">You asked which to prototype first. Short answer below. Then the UK accountancy platform I built end to end, explained in plain English. Then a section per project showing what you asked for, my matched proof, and what I'd do in your firm.</p>
 
   <div class="short-answer">
     <p class="lbl">Short answer</p>
     <h3>Prototype #2 first (AI + Xero reporting).</h3>
-    <p>You said you're particularly interested. My closest reference (Emerald Path, UK accountancy platform) already does this. By end of week 2, a first-draft management commentary lands in a partner's inbox, a real output your finance team can react to. Sections 1 and 3 build naturally from #2. Section 4 (discovery) runs in parallel from day 1.</p>
+    <p>You said you're particularly interested. My closest reference (Emerald Path, a UK accountancy platform I built end to end) already pulls Xero, categorises transactions with grounded AI, and produces reports. By end of week 2 you'd have a first-draft management commentary landing in a partner's inbox, a real output your team can react to. Projects 1 and 3 build off #2. Project 4 (discovery) runs in parallel from day 1.</p>
   </div>
 </section>
 
-<!-- ── Project 1 · Internal knowledge hub ── -->
+<!-- ═══════════════════════════════════════════════
+     Emerald Path walkthrough (the system I built)
+═══════════════════════════════════════════════ -->
 <section class="band">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="section-eyebrow">The system I built · Emerald Path</p>
+      <h2>Here's the UK accountancy platform I built end to end. In plain English.</h2>
+      <p class="section-intro"><b>Emerald Path</b> is a white-label UK accountancy platform I built in three months. It runs a firm's whole practice: sign up a firm, onboard their client, pull the client's data, do the work, produce and file the year-end. Same shape you need.</p>
+    </div>
+
+    <div class="phases">
+      <div class="phase">
+        <div class="n">1</div>
+        <div>
+          <h3>The firm signs up. A tenant auto-bootstraps.</h3>
+          <p>A new firm creates an account. Behind the scenes: a per-firm Postgres schema is created, row-level security switches on, an authorizer starts gating every API call by membership. All traffic is fronted by AWS WAF. Point-in-time restore and CloudTrail are on from minute one. <b>The firm is isolated from every other firm on the platform, three layers deep.</b></p>
+          <div class="badges">
+            <span class="badge">AWS Cognito</span>
+            <span class="badge">Aurora Postgres</span>
+            <span class="badge">Row-level security</span>
+            <span class="badge">AWS WAF</span>
+            <span class="badge">SAM / CloudFormation</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase">
+        <div class="n">2</div>
+        <div>
+          <h3>The firm onboards a client.</h3>
+          <p>They enter a company name. <b>Companies House (via Inform Direct) pulls the company:</b> directors, share structure, filing history. <b>SmartSearch runs the AML check</b> in the background. <b>Adobe Sign or DocuSign sends the engagement letter</b> for signature. Billing kicks in on the firm's subscription with a partner revenue-share ledger keeping settlement clean.</p>
+          <div class="badges">
+            <span class="badge">Companies House API</span>
+            <span class="badge">Inform Direct</span>
+            <span class="badge">SmartSearch AML</span>
+            <span class="badge">Adobe Sign</span>
+            <span class="badge">DocuSign</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase">
+        <div class="n">3</div>
+        <div>
+          <h3>The client's accounts data flows in.</h3>
+          <p><b>Xero, Sage or QuickBooks connect via OAuth</b> (frontend-callback pattern so keys never touch a shared server). Bank transactions land continuously. <b>The AI gateway categorises each transaction</b> against the firm's chart of accounts and proposes journals. Every AI proposal cites the source transaction row. <b>A partner reviews before anything books.</b></p>
+          <div class="badges">
+            <span class="badge">Xero API</span>
+            <span class="badge">Sage API</span>
+            <span class="badge">QuickBooks API</span>
+            <span class="badge">Claude (grounded citations)</span>
+            <span class="badge">Python + AWS Lambda</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase">
+        <div class="n">4</div>
+        <div>
+          <h3>Year-end. Statutory accounts, VAT, corporation tax, filed.</h3>
+          <p>The <b>FRS-102 statutory accounts engine</b> builds full accounts from the bookkeeping. The <b>iXBRL tagger reaches 100% coverage on the Xero demo company</b> (deterministic, chart-of-accounts driven, not AI-guessed). <b>CT600 corporation tax computes</b>. <b>VAT flows through HMRC MTD</b> (tested against agent, individual and org sandbox users first). <b>Croner-i</b> is wired in for tax law reference. Filed to HMRC and Companies House.</p>
+          <div class="badges">
+            <span class="badge">FRS-102 engine</span>
+            <span class="badge">iXBRL @ 100%</span>
+            <span class="badge">CT600</span>
+            <span class="badge">HMRC MTD</span>
+            <span class="badge">Companies House filing</span>
+            <span class="badge">Croner-i</span>
+            <span class="badge">IRIS Elements handoff</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     Tech stack (what it was built with)
+═══════════════════════════════════════════════ -->
+<section class="band warm">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="section-eyebrow">Tech stack</p>
+      <h2>What it was built with.</h2>
+      <p class="section-intro">Boring on purpose. Every choice is a serverless-first, low-ops decision so one operator can run the whole thing without an infra team.</p>
+    </div>
+
+    <div class="stack">
+      <div class="stack-group">
+        <h4>Frontend</h4>
+        <p><b>React + TypeScript + Tailwind + Vite.</b> Mobile-responsive design system with tokens, decision tables and pre-commit checks. No-code page builder for firm-branded pages (draft / publish / version history).</p>
+      </div>
+      <div class="stack-group">
+        <h4>Backend</h4>
+        <p><b>Python 3.12 on AWS Lambda.</b> REST APIs, webhooks, event-driven pipelines on DynamoDB streams. C# .NET for interop where inherited.</p>
+      </div>
+      <div class="stack-group">
+        <h4>Data</h4>
+        <p><b>Aurora PostgreSQL + DynamoDB.</b> Per-tenant Postgres schemas with row-level security. Point-in-time restore on Aurora. DynamoDB pagination corrected across every query/scan site.</p>
+      </div>
+      <div class="stack-group">
+        <h4>Infra</h4>
+        <p><b>AWS Serverless.</b> Lambda, Aurora, DynamoDB, Cognito, S3, CloudFront, WAF, CloudTrail, SES. SAM / CloudFormation IaC. eu-west-2. Dev, staging, production, plus satellite dev environments.</p>
+      </div>
+      <div class="stack-group">
+        <h4>AI</h4>
+        <p><b>Claude Code, Claude Cowork, OpenAI Codex.</b> LLM gateway with grounded citation-backed generation. Per-phase model routing (Opus plans, Sonnet builds, Haiku runs). Six custom Claude Skills. Nine subagent definitions.</p>
+      </div>
+      <div class="stack-group">
+        <h4>Integrations shipped</h4>
+        <p>Xero, Sage, QuickBooks, HMRC MTD, Companies House, Inform Direct, IRIS Elements, Croner-i, SmartSearch AML, Adobe Sign, DocuSign, Freshdesk, Sumsub, GitHub OAuth, Cognito.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     Precautions (how it stays safe)
+═══════════════════════════════════════════════ -->
+<section class="band">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="section-eyebrow">Precautions built in</p>
+      <h2>How it stays safe.</h2>
+      <p class="section-intro">You're an outsourced finance firm. Data confidentiality is not optional. These are already in Emerald Path today.</p>
+    </div>
+
+    <ul class="safe">
+      <li><b>Three-layer tenant isolation.</b> Per-firm Postgres schema + row-level security + an authorizer that gates every API call by firm membership. Verified by E2E tests on every PR.</li>
+      <li><b>AWS WAF fronting the API.</b> Blocks the obvious classes (SQLi, XSS attempts, bad bots) before they reach the app.</li>
+      <li><b>Point-in-time restore on Aurora + CloudTrail on the account.</b> Rollback to any second in the last 35 days. Every action logged with actor + timestamp.</li>
+      <li><b>Password reset hardened against brute force and code enumeration.</b> Full BRD written before the code. Public writeup.</li>
+      <li><b>XSS sanitisation on all user-authored content</b> (pages, notes, ticket comments). Byte-identity HTML round-trip tests catch regressions in the sanitiser.</li>
+      <li><b>API Gateway throttled with 429 retry and batching.</b> Prevents a runaway job from taking down the account.</li>
+      <li><b>Every AI-generated line cites its source row.</b> Nothing client-facing sends without a partner tapping OK. See the guardrail below.</li>
+      <li><b>Production database backups + tenant-isolation audit</b> packaged as a reusable Claude Skill so a partner (or another dev) can run them without me.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     Project 1 · Internal knowledge hub (FIXED: bOnline chatbot)
+═══════════════════════════════════════════════ -->
+<section class="band warm">
   <div class="wrap">
     <div class="section-head">
       <p class="section-eyebrow">Project 1 of 4</p>
@@ -315,21 +487,23 @@
 
       <div class="col-do">
         <p class="col-h">What I've built + what I'd do</p>
-        <p class="built"><b>I've built this.</b> At Dixon AI I authored 6 production Claude Skills and 9 subagent definitions. A Skill is a scoped <code style="font-family:var(--mono);font-size:12px;background:var(--panel);padding:1px 5px;">.md</code> file the model reads before it works. Same pattern extends to your SOPs.</p>
+        <p class="built"><b>I've built this.</b> At <b>bOnline I led a team of five taking an AI chatbot to a 60% resolution rate</b> on live customer traffic. Same knowledge-base-plus-Claude pattern applies to your team's questions. I also authored six production Claude Skills and nine subagents at Dixon AI, so your SOPs can each become a scoped Skill any partner can edit.</p>
         <ol class="steps">
-          <li><b>Audit your docs.</b> Rank them by how often the team looks something up.</li>
-          <li><b>Convert the top 10 to Claude Skills.</b> One per topic (onboarding, VAT process, engagement-letter drafting).</li>
-          <li><b>Wire into Claude Code or Claude.ai.</b> Team asks in plain English. The answer cites the SOP row.</li>
-          <li><b>Handover.</b> Any partner can edit a Skill without me. It's plain text.</li>
+          <li><b>Ingest your library.</b> SOPs, processes, values, service standards, templates, onboarding docs. One shared folder, one index.</li>
+          <li><b>Build the chatbot on Claude</b> with tools scoped to your knowledge base. Every answer cites the SOP paragraph it came from.</li>
+          <li><b>Wire it into where your team already works</b> (Slack, Teams, or a Claude.ai surface). No new app to learn.</li>
+          <li><b>Track deflection.</b> Same metric I used at bOnline. Iterate on the top-10 unanswered questions weekly.</li>
         </ol>
-        <p class="timeline"><b>Time.</b> 5-7 working days once your docs land in a shared folder.</p>
+        <p class="timeline"><b>Time.</b> 5-7 working days once your library lands in a shared folder.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── Project 2 · AI + Xero (the priority) ── -->
-<section class="band warm">
+<!-- ═══════════════════════════════════════════════
+     Project 2 · AI + Xero (start here)
+═══════════════════════════════════════════════ -->
+<section class="band">
   <div class="wrap">
     <div class="section-head">
       <p class="section-eyebrow">Project 2 of 4 · start here</p>
@@ -344,11 +518,11 @@
 
       <div class="col-do">
         <p class="col-h">What I've built + what I'd do</p>
-        <p class="built"><b>I've built this.</b> Emerald Path, a UK accountancy platform I put together end to end in three months. Xero, Sage, HMRC MTD and Companies House integrations. AI gateway that drafts management commentary from a P&L export, every line tied to a source row. FRS-102 iXBRL engine at 100% tag coverage on the Xero demo company. <b>This is your closest reference on my CV.</b></p>
+        <p class="built"><b>I've built this.</b> Emerald Path (the platform walked through above) already pulls Xero via OAuth, categorises transactions with Claude, and produces structured reports for month-end and year-end. <b>This is your closest reference on my CV.</b></p>
         <ol class="steps">
-          <li><b>Xero OAuth + pull.</b> P&L, YTD, budget for one pilot client.</li>
+          <li><b>Xero OAuth + pull.</b> P&amp;L, YTD, budget for one pilot client.</li>
           <li><b>Variance analyzer.</b> Flag any line moving &gt; 15% or &gt; £5,000.</li>
-          <li><b>Commentary generator.</b> One sentence per flagged line, tagged with source row.</li>
+          <li><b>Commentary generator.</b> One sentence per flagged line, tagged with the source row.</li>
           <li><b>Structured output.</b> HTML or Markdown block that drops into your management accounts pack.</li>
         </ol>
         <p class="timeline"><b>Time.</b> Working prototype for one pilot client by end of week 2.</p>
@@ -396,8 +570,10 @@ You draft a first pass. A partner reads it before it goes out.
   </div>
 </section>
 
-<!-- ── Project 3 · Board decks ── -->
-<section class="band">
+<!-- ═══════════════════════════════════════════════
+     Project 3 · Automated reporting and board decks
+═══════════════════════════════════════════════ -->
+<section class="band warm">
   <div class="wrap">
     <div class="section-head">
       <p class="section-eyebrow">Project 3 of 4</p>
@@ -412,11 +588,11 @@ You draft a first pass. A partner reads it before it goes out.
 
       <div class="col-do">
         <p class="col-h">What I've built + what I'd do</p>
-        <p class="built"><b>I've built this.</b> The Emerald Path pipeline outputs structured documents that follow the firm's own template, not a generic one. Finance team reviews before send. The same pattern extends to PowerPoint (python-pptx) or Google Slides.</p>
+        <p class="built"><b>I've built this.</b> Emerald Path's reporting outputs follow the firm's own template, not a generic one. FRS-102 accounts, iXBRL tags, CT600 tax comps all produced in the firm's format. Same pattern extends to PowerPoint (python-pptx) or Google Slides for board decks.</p>
         <ol class="steps">
           <li><b>Fingerprint your template.</b> Fonts, colours, layouts, section order, house language.</li>
           <li><b>Build the fill Skill.</b> Takes the variance + commentary from Project 2 and drops them into the right template slots.</li>
-          <li><b>Brand check.</b> Asserts no generic AI phrases. Enforces your section headings. Respects your voice guide.</li>
+          <li><b>Brand check.</b> Blocks generic AI phrases. Enforces your section headings. Respects your voice guide.</li>
           <li><b>Finance team reviews</b> in Slides or PPTX before it sends. Nothing autosend.</li>
         </ol>
         <p class="timeline"><b>Time.</b> 5 working days after Project 2's commentary works.</p>
@@ -425,8 +601,10 @@ You draft a first pass. A partner reads it before it goes out.
   </div>
 </section>
 
-<!-- ── Project 4 · Explore ── -->
-<section class="band warm">
+<!-- ═══════════════════════════════════════════════
+     Project 4 · Explore
+═══════════════════════════════════════════════ -->
+<section class="band">
   <div class="wrap">
     <div class="section-head">
       <p class="section-eyebrow">Project 4 of 4 · runs in parallel from day 1</p>
@@ -441,7 +619,7 @@ You draft a first pass. A partner reads it before it goes out.
 
       <div class="col-do">
         <p class="col-h">What I've built + what I'd do</p>
-        <p class="built"><b>I've built this.</b> At Dixon AI I ran a 10-stage pipeline that turns founder ideas into shipped features. The first three days are always discovery, mapping every workflow and ranking by ROI.</p>
+        <p class="built"><b>I've built this.</b> At Dixon AI I ran a 10-stage pipeline that turns founder ideas into shipped features. The first three days are always discovery: mapping every workflow and ranking by ROI. Same approach applied to your firm.</p>
         <ol class="steps">
           <li><b>Three days shadowing.</b> One partner, one manager, one associate. Daily / weekly / monthly work mapped.</li>
           <li><b>Rank every candidate</b> by hours saved × frequency × blast radius if wrong.</li>
@@ -453,8 +631,10 @@ You draft a first pass. A partner reads it before it goes out.
   </div>
 </section>
 
-<!-- ── Guardrail (the reliability answer) ── -->
-<section class="band">
+<!-- ═══════════════════════════════════════════════
+     Reliability guardrail
+═══════════════════════════════════════════════ -->
+<section class="band warm">
   <div class="wrap">
     <div class="section-head">
       <p class="section-eyebrow">The reliability question</p>
@@ -495,8 +675,10 @@ You draft a first pass. A partner reads it before it goes out.
   </div>
 </section>
 
-<!-- ── Week plan ── -->
-<section class="band warm">
+<!-- ═══════════════════════════════════════════════
+     Weeks 1-3 plan
+═══════════════════════════════════════════════ -->
+<section class="band">
   <div class="wrap">
     <div class="section-head">
       <p class="section-eyebrow">Weeks 1-3</p>
@@ -523,8 +705,10 @@ You draft a first pass. A partner reads it before it goes out.
   </div>
 </section>
 
-<!-- ── Proof ── -->
-<section class="band">
+<!-- ═══════════════════════════════════════════════
+     Proof
+═══════════════════════════════════════════════ -->
+<section class="band warm">
   <div class="wrap">
     <div class="section-head">
       <p class="section-eyebrow">Proof</p>
@@ -532,18 +716,10 @@ You draft a first pass. A partner reads it before it goes out.
     </div>
 
     <ul class="proof-list">
-      <li>
-        <div><span class="client">Emerald Path.</span><span class="about">UK accountancy platform built end to end in three months. AI gateway with sourced proposals through 20 rounds of QA. HMRC MTD, Companies House, Xero, Sage. FRS-102 iXBRL at 100% tag coverage on the Xero demo company.</span></div>
-      </li>
-      <li>
-        <div><span class="client">Dixon AI.</span><span class="about">Six production Claude Skills. Nine subagents. The month-end commentary Skill above is the same shape as the ones running there. The .md files live in your repo. A partner can edit them without me.</span></div>
-      </li>
-      <li>
-        <div><span class="client">bOnline (3 years, Product Owner).</span><span class="about">Payments, billing, fraud, AI chatbot. Scaled billing 7x. AI chatbot at 60% resolution leading a team of five.</span></div>
-      </li>
-      <li>
-        <div><span class="client">LifeCheq.</span><span class="about">Insurance and financial products in a regulated South African financial-services environment.</span></div>
-      </li>
+      <li><div><span class="client">Emerald Path (Dixon AI).</span><span class="about">UK accountancy platform built end to end in three months. Xero, Sage, QuickBooks, HMRC MTD, Companies House, Inform Direct, Croner-i, SmartSearch AML, Adobe Sign, DocuSign. AI gateway with sourced proposals through 20 rounds of QA. FRS-102 iXBRL engine at 100% tag coverage on the Xero demo company.</span></div></li>
+      <li><div><span class="client">bOnline (3 years, Product Owner).</span><span class="about">Led team of five taking an AI chatbot to 60% resolution rate on live customer traffic. Also built the AI receptionist for inbound calls. Ran payments, billing, fraud, credit control end to end. Scaled billing capacity 7x. Introduced bOnline's first fraud, compliance and KYC frameworks.</span></div></li>
+      <li><div><span class="client">Dixon AI (in parallel with Emerald Path).</span><span class="about">Six production Claude Skills. Nine subagent definitions. 10-stage delivery pipeline. 40+ concurrent worktrees at peak. The .md files live in the repo. A partner can edit them without me.</span></div></li>
+      <li><div><span class="client">LifeCheq.</span><span class="about">Insurance and financial products, full SDLC in a regulated South African financial-services environment.</span></div></li>
     </ul>
   </div>
 </section>
