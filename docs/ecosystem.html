@@ -3,31 +3,38 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ivi. The Ecosystem</title>
-<meta name="description" content="How one operator ships an AI project end to end. Jira, Gherkin sign-off, Claude Code agents, tests, release notes. The full loop, walkable.">
+<title>Ivi · How I work</title>
+<meta name="description" content="From your voice note to a shipped feature. Every step, every agent, in one page.">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
 
   :root {
-    --paper:      #ffffff;
-    --cream:      #EFEDE9;
-    --card:       #EFEDE9;
-    --card-warm:  #F6F4F0;
-    --border:     #E4E0DC;
-    --border-strong: #C8C2BB;
-    --ink:        #2D2929;
-    --ink-pure:   #000000;
-    --muted:      #6B6664;
-    --faint:      #8B8580;
-    --accent:     #E0BEB1;
-    --accent-soft:#F3E7E1;
-    --ok:         #2f6f4f;
-    --warn:       #8a6a1f;
-    --err:        #7a2f2f;
+    --paper:   #ffffff;
+    --cream:   #F6F4F0;
+    --card:    #EFEDE9;
+    --border:  #E4E0DC;
+    --border-2:#C8C2BB;
+    --ink:     #2D2929;
+    --ink-pure:#000000;
+    --muted:   #6B6664;
+    --faint:   #8B8580;
 
-    --body: "Inter", "Helvetica Neue", Arial, sans-serif;
+    /* Jira palette (Atlassian brand blues) */
+    --jira-blue:      #0052CC;
+    --jira-blue-mid:  #2684FF;
+    --jira-blue-soft: #DEEBFF;
+    --jira-bg:        #F7F8FA;
+    --jira-border:    #DFE1E6;
+    --jira-text:      #172B4D;
+    --jira-text-mid:  #5E6C84;
+
+    --ok:   #216E4E;
+    --warn: #8F6E1F;
+    --err:  #A33A3A;
+
+    --body:    "Inter", "Helvetica Neue", Arial, sans-serif;
     --display: "Space Grotesk", "Inter", "Helvetica Neue", Arial, sans-serif;
-    --mono: "JetBrains Mono", ui-monospace, monospace;
+    --mono:    "JetBrains Mono", ui-monospace, monospace;
   }
 
   * { box-sizing: border-box; }
@@ -36,1625 +43,680 @@
     background: var(--paper);
     color: var(--ink);
     font-family: var(--body);
-    font-weight: 400;
     line-height: 1.55;
     -webkit-font-smoothing: antialiased;
   }
-  a { color: inherit; }
 
-  /* ─── Chrome ─────────────────────────────────────────────────────── */
-  .topbar {
-    position: sticky; top: 0; z-index: 40;
-    background: rgba(255,255,255,0.94);
-    backdrop-filter: saturate(1.2) blur(6px);
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+  /* ─── Header ─────────────────────────────────────────── */
+  header.top {
     border-bottom: 1px solid var(--border);
+    padding: 18px 0;
   }
-  .topbar-inner {
-    max-width: 1440px; margin: 0 auto; padding: 16px 28px;
-    display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+  .top-inner {
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
   }
-  .logo {
+  .brand {
     font-family: var(--display); font-weight: 500;
     font-size: 15px; letter-spacing: -0.01em;
-    text-transform: lowercase;
   }
-  .logo b { font-weight: 600; }
-  .logo em { font-style: normal; color: var(--muted); }
-  .nav { display: flex; gap: 4px; margin-left: auto; flex-wrap: wrap; }
-  .nav button {
-    background: transparent; border: 1px solid transparent;
-    padding: 8px 14px;
-    font-family: var(--body); font-size: 11px;
-    text-transform: uppercase; letter-spacing: 0.12em;
-    color: var(--muted); cursor: pointer;
-    transition: color .18s, border-color .18s;
+  .brand em { font-style: normal; color: var(--muted); }
+  .top .right {
+    margin-left: auto; display: flex; gap: 20px; align-items: center;
+    font-size: 12px; color: var(--muted);
   }
-  .nav button:hover { color: var(--ink); }
-  .nav button.active { color: var(--ink); border-color: var(--ink); }
-  .step-num {
-    display: inline-block; width: 18px; text-align: right;
-    color: var(--faint); font-variant-numeric: tabular-nums; margin-right: 6px;
-  }
-  .nav button.active .step-num { color: var(--ink); }
+  .top .right a { color: var(--muted); text-decoration: none; }
+  .top .right a:hover { color: var(--ink); }
 
-  /* ─── Wrap ────────────────────────────────────────────────────────── */
-  .wrap { max-width: 1440px; margin: 0 auto; padding: 0 28px; }
-  .stage { display: none; padding: 56px 0 88px; }
-  .stage.active { display: block; }
-
-  .eyebrow { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--faint); margin: 0; }
-  h1.headline {
+  /* ─── Hero ────────────────────────────────────────────── */
+  .hero { padding: 96px 0 64px; }
+  .eyebrow {
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--faint); margin: 0;
+  }
+  h1 {
     font-family: var(--display); font-weight: 500;
-    font-size: clamp(28px, 4vw, 44px); letter-spacing: -0.02em;
-    margin: 12px 0 0; text-wrap: balance;
-    line-height: 1.08;
+    font-size: clamp(32px, 5vw, 52px); letter-spacing: -0.02em;
+    margin: 12px 0 0; text-wrap: balance; line-height: 1.05;
   }
-  .subhead {
-    color: var(--muted); font-size: 16px; margin: 16px 0 0; max-width: 62ch;
+  .lede {
+    font-size: 17px; color: var(--muted); max-width: 60ch;
+    margin: 22px 0 0;
+  }
+  .lede b { color: var(--ink); font-weight: 500; }
+  .hero-jira {
+    display: inline-flex; align-items: center; gap: 8px;
+    margin-top: 28px; padding: 8px 12px;
+    background: var(--jira-bg); border: 1px solid var(--jira-border);
+    font-size: 12.5px; color: var(--jira-text);
+  }
+  .hero-jira svg { flex-shrink: 0; }
+  .hero-jira b { font-weight: 500; }
+
+  /* ─── Section rhythm ─────────────────────────────────── */
+  section.band {
+    padding: 72px 0;
+    border-top: 1px solid var(--border);
+  }
+  section.band.warm { background: var(--cream); }
+  h2.sec {
+    font-family: var(--display); font-weight: 500;
+    font-size: 28px; letter-spacing: -0.01em; margin: 8px 0 12px;
+    text-wrap: balance;
+  }
+  p.sec-lede { color: var(--muted); font-size: 15px; margin: 0 0 32px; max-width: 60ch; }
+
+  /* ─── Flow ─────────────────────────────────────────────
+     Single vertical timeline. Numbered rail on the left, step
+     on the right. Every step names the actor and the artefact.
+  ─────────────────────────────────────────────────────── */
+  .flow { display: flex; flex-direction: column; gap: 0; }
+  .step {
+    display: grid; grid-template-columns: 88px 1fr;
+    gap: 24px;
+    padding: 28px 0;
+    border-top: 1px solid var(--border);
+    position: relative;
+  }
+  .step:first-child { border-top: 0; }
+  .rail {
+    display: flex; flex-direction: column; align-items: center;
+    position: relative;
+  }
+  .rail .n {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: var(--paper); border: 1px solid var(--ink);
+    display: inline-flex; align-items: center; justify-content: center;
+    font-family: var(--display); font-weight: 500; font-size: 15px;
+    color: var(--ink);
+    z-index: 1;
+  }
+  .rail.human .n { background: var(--ink); color: #fff; }
+  .rail.agent .n { background: var(--jira-blue-soft); border-color: var(--jira-blue); color: var(--jira-blue); }
+  .step + .step .rail::before {
+    content: "";
+    position: absolute; top: -28px; left: 50%;
+    transform: translateX(-50%);
+    width: 1px; height: 28px; background: var(--border-2);
+  }
+  .rail .who {
+    font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); margin-top: 8px; text-align: center;
+  }
+  .step .body h3 {
+    font-family: var(--display); font-weight: 500;
+    font-size: 20px; letter-spacing: -0.005em; margin: 0 0 8px;
+  }
+  .step .body p {
+    color: var(--muted); font-size: 14.5px; margin: 0;
+    max-width: 62ch;
+  }
+  .step .body p + p { margin-top: 10px; }
+  .step .body .out {
+    font-size: 13px; color: var(--ink); margin-top: 14px;
+    padding: 10px 14px; background: var(--cream);
+    border-left: 2px solid var(--ink);
+  }
+  .step .body .out b { font-weight: 500; }
+  .step .body .agent-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: var(--mono); font-size: 11px;
+    padding: 3px 8px; background: var(--jira-blue-soft);
+    color: var(--jira-blue); margin: 12px 0 0;
+  }
+  .step .body .agent-tag .model {
+    color: var(--jira-text-mid); font-size: 10px;
+  }
+  .step.you .body .out { border-color: var(--jira-blue); }
+  .step.you .body .actor {
+    display: inline-block; font-size: 11px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--jira-blue); margin-bottom: 4px;
   }
 
-  /* ─── Buttons ─────────────────────────────────────────────────────── */
+  /* ─── Jira ticket mockup ──────────────────────────────── */
+  .jira-card {
+    background: var(--paper); border: 1px solid var(--jira-border);
+    margin-top: 18px;
+    font-size: 13px; color: var(--jira-text);
+    box-shadow: 0 1px 0 rgba(9,30,66,.06);
+  }
+  .jira-head {
+    display: flex; align-items: center; gap: 10px;
+    padding: 12px 16px; border-bottom: 1px solid var(--jira-border);
+    background: var(--jira-bg);
+  }
+  .jira-head .key {
+    font-family: var(--mono); font-size: 12px; color: var(--jira-text-mid);
+    letter-spacing: 0.04em;
+  }
+  .jira-head .type {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 11px; color: var(--jira-text-mid);
+    text-transform: uppercase; letter-spacing: 0.06em;
+  }
+  .jira-head .type .dot {
+    width: 12px; height: 12px; background: #4BADE8;
+    display: inline-block;
+  }
+  .jira-head .status {
+    margin-left: auto; padding: 3px 8px;
+    background: #E9F2FF; color: #0747A6;
+    font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase;
+    font-weight: 500;
+  }
+  .jira-body {
+    padding: 16px 20px 20px;
+  }
+  .jira-body .summary {
+    font-size: 17px; font-weight: 500; color: var(--jira-text);
+    margin: 0 0 14px;
+  }
+  .jira-body .field {
+    display: grid; grid-template-columns: 130px 1fr; gap: 10px;
+    padding: 6px 0; font-size: 12.5px;
+  }
+  .jira-body .field .lbl {
+    color: var(--jira-text-mid); text-transform: uppercase;
+    letter-spacing: 0.06em; font-size: 10.5px; padding-top: 3px;
+  }
+  .jira-body .field .val { color: var(--jira-text); }
+  .jira-body .description {
+    margin-top: 16px; padding-top: 16px;
+    border-top: 1px solid var(--jira-border);
+    font-size: 13px; color: var(--jira-text); line-height: 1.6;
+  }
+  .jira-body .description ul { margin: 8px 0 0; padding-left: 20px; }
+  .jira-body .description li { margin: 4px 0; }
+
+  /* ─── .feature block ──────────────────────────────────── */
+  .ff {
+    font-family: var(--mono); font-size: 12.5px; line-height: 1.65;
+    background: #FAFAF7; border: 1px solid var(--border);
+    padding: 14px 16px; margin: 18px 0 0;
+    overflow-x: auto;
+    white-space: pre-wrap;
+  }
+  .ff .kw { color: #5A2C7A; font-weight: 500; }
+  .ff .gv { color: var(--jira-blue); font-weight: 500; }
+  .ff .tag { color: var(--ok); }
+  .ff .indent { padding-left: 22px; }
+
+  /* ─── Agent roster ───────────────────────────────────── */
+  .roster {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;
+    margin-top: 20px;
+  }
+  .agent {
+    padding: 18px; background: var(--paper); border: 1px solid var(--border);
+  }
+  .agent .head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 6px;
+  }
+  .agent .name {
+    font-family: var(--mono); font-size: 13px; color: var(--jira-blue);
+    font-weight: 500;
+  }
+  .agent .model {
+    font-family: var(--mono); font-size: 10.5px;
+    padding: 2px 7px; background: var(--jira-blue-soft); color: var(--jira-blue);
+    letter-spacing: 0.02em;
+  }
+  .agent .model.opus   { background: #EAE0F0; color: #5A2C7A; }
+  .agent .model.sonnet { background: #DEEBFF; color: #0747A6; }
+  .agent .model.haiku  { background: #E3FCEF; color: #006644; }
+  .agent .job { font-size: 13px; color: var(--ink); font-weight: 500; margin: 2px 0 6px; }
+  .agent .about { font-size: 12.5px; color: var(--muted); margin: 0; line-height: 1.5; }
+  .agent .tools {
+    margin-top: 10px; font-family: var(--mono); font-size: 10.5px;
+    color: var(--faint); letter-spacing: 0.02em;
+  }
+  .agent .tools b { color: var(--muted); font-weight: 500; }
+
+  /* ─── Close ──────────────────────────────────────────── */
+  .close-band {
+    padding: 80px 0 100px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+  .close-band h2 {
+    font-family: var(--display); font-weight: 500;
+    font-size: clamp(24px, 3vw, 32px); letter-spacing: -0.015em;
+    max-width: 26ch; margin: 0 auto;
+  }
+  .close-band p { color: var(--muted); font-size: 15px; margin: 16px auto 26px; max-width: 52ch; }
   .btn {
     display: inline-flex; align-items: center; gap: 8px;
     background: var(--ink-pure); color: #fff;
     font-family: var(--body); font-size: 12px; font-weight: 500;
     text-transform: uppercase; letter-spacing: 0.08em;
-    padding: 13px 22px; border: 0; cursor: pointer;
-    text-decoration: none; transition: opacity .18s;
+    padding: 14px 22px; text-decoration: none; border: 0;
+    cursor: pointer; transition: opacity .18s;
   }
   .btn:hover { opacity: 0.85; }
-  .btn.ghost { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
+  .btn.ghost { background: transparent; color: var(--ink); border: 1px solid var(--ink); margin-left: 10px; }
   .btn.ghost:hover { background: var(--ink); color: #fff; opacity: 1; }
-  .btn.link {
-    background: transparent; color: var(--ink); padding: 0;
-    border-bottom: 1px solid currentColor; padding-bottom: 3px; font-size: 12px;
-  }
-  .btn.link:hover { color: var(--muted); border-color: var(--muted); }
-
-  .rule { height: 1px; background: var(--border); margin: 24px 0; }
-
-  /* ─── STAGE 0: Overview ───────────────────────────────────────────── */
-  .cover { display: grid; grid-template-columns: 1.15fr 1fr; gap: 64px; align-items: start; }
-  .cover .lead p { color: var(--muted); font-size: 15.5px; max-width: 56ch; margin: 20px 0 0; }
-  .cover .cta-row { margin-top: 36px; display: flex; gap: 12px; flex-wrap: wrap; }
-  .stat-strip {
-    margin-top: 56px;
-    display: grid; grid-template-columns: repeat(4, 1fr);
-    gap: 1px; background: var(--border); border: 1px solid var(--border);
-  }
-  .stat { background: var(--paper); padding: 24px 20px; }
-  .stat .n { font-family: var(--display); font-weight: 400; font-size: 34px; letter-spacing: -0.02em; }
-  .stat .l { font-size: 12.5px; color: var(--muted); margin-top: 6px; }
-
-  .cover-map {
-    background: var(--card-warm); border: 1px solid var(--border);
-    padding: 28px;
-  }
-  .cover-map h3 {
-    font-family: var(--display); font-weight: 500;
-    font-size: 15px; margin: 0 0 20px; letter-spacing: -0.005em;
-    text-transform: uppercase; letter-spacing: 0.1em;
-  }
-  .flow-list { list-style: none; margin: 0; padding: 0; }
-  .flow-list li {
-    display: grid; grid-template-columns: 40px 1fr auto; gap: 14px;
-    padding: 14px 0; border-top: 1px solid var(--border);
-    align-items: baseline;
-  }
-  .flow-list li:first-child { border-top: 0; }
-  .flow-list .num {
-    font-family: var(--mono); font-size: 11px;
-    color: var(--faint); font-variant-numeric: tabular-nums;
-  }
-  .flow-list .lbl { font-size: 14px; font-weight: 500; }
-  .flow-list .who { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
-  .flow-list li:hover { background: #fff; cursor: pointer; }
-
-  /* ─── STAGE 1: Jira projects ──────────────────────────────────────── */
-  .grid-projects {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
-    margin-top: 40px;
-  }
-  .project {
-    background: var(--paper); border: 1px solid var(--border);
-    padding: 24px;
-    display: flex; flex-direction: column; gap: 14px;
-    cursor: pointer; transition: border-color .18s, transform .18s;
-  }
-  .project:hover { border-color: var(--ink); }
-  .project.active { border-color: var(--ink); background: var(--card-warm); }
-  .project .key {
-    font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em;
-    color: var(--muted); text-transform: uppercase;
-  }
-  .project h3 {
-    font-family: var(--display); font-weight: 500; font-size: 20px;
-    letter-spacing: -0.01em; margin: 0;
-  }
-  .project p { color: var(--muted); font-size: 13px; margin: 0; }
-  .project .foot {
-    display: flex; gap: 14px; font-size: 11px; color: var(--faint);
-    margin-top: auto; padding-top: 12px; border-top: 1px solid var(--border);
-    letter-spacing: 0.06em; text-transform: uppercase;
-  }
-  .project .foot b { color: var(--ink); font-weight: 500; }
-
-  /* ─── STAGE 2: Board ──────────────────────────────────────────────── */
-  .board-head {
-    display: flex; justify-content: space-between; align-items: end; margin-top: 32px; gap: 20px; flex-wrap: wrap;
-  }
-  .board-head .selector {
-    font-family: var(--mono); font-size: 12px; color: var(--muted);
-  }
-  .board-head .selector b { color: var(--ink); font-weight: 500; }
-  .board-head .filters { display: flex; gap: 6px; }
-  .chip {
-    font-family: var(--body); font-size: 10.5px;
-    text-transform: uppercase; letter-spacing: 0.08em;
-    padding: 6px 10px; border: 1px solid var(--border); background: #fff;
-    cursor: pointer; color: var(--muted);
-  }
-  .chip:hover, .chip.active { border-color: var(--ink); color: var(--ink); }
-
-  .board {
-    margin-top: 24px;
-    display: grid; grid-template-columns: repeat(6, minmax(0, 1fr));
-    gap: 12px;
-    overflow-x: auto; padding-bottom: 4px;
-  }
-  .col { min-width: 200px; }
-  .col-head {
-    font-family: var(--body); font-size: 11px;
-    text-transform: uppercase; letter-spacing: 0.14em;
-    color: var(--muted);
-    padding: 10px 4px; display: flex; justify-content: space-between; align-items: center;
-    border-bottom: 1px solid var(--border);
-  }
-  .col-head .count {
-    font-family: var(--mono); font-variant-numeric: tabular-nums;
-    color: var(--faint); font-size: 11px;
-  }
-  .col-body { padding-top: 10px; display: flex; flex-direction: column; gap: 8px; min-height: 300px; }
-  .tk {
-    background: #fff; border: 1px solid var(--border); padding: 12px;
-    cursor: pointer; transition: border-color .18s, transform .18s;
-  }
-  .tk:hover { border-color: var(--ink); transform: translateY(-1px); }
-  .tk.selected { border-color: var(--ink); background: var(--card-warm); }
-  .tk.walkable { border-color: var(--ok); box-shadow: 0 0 0 1px var(--ok) inset; }
-  .tk.walkable:hover { border-color: var(--ok); }
-  .tk .tk-key {
-    font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em;
-    color: var(--faint); text-transform: uppercase;
-  }
-  .tk .tk-title { font-size: 13px; font-weight: 500; margin: 4px 0 8px; line-height: 1.35; }
-  .tk .tk-meta {
-    display: flex; gap: 8px; align-items: center; justify-content: space-between;
-    font-size: 10.5px; color: var(--muted);
-  }
-  .tag {
-    display: inline-block; font-size: 9.5px; padding: 2px 6px;
-    background: var(--card); color: var(--muted);
-    letter-spacing: 0.08em; text-transform: uppercase;
-  }
-  .tag.bug { background: #f3e0e0; color: #7a2f2f; }
-  .tag.spike { background: #f0eadb; color: #6a5a1f; }
-  .tag.story { background: #e5ede2; color: #2f5a3a; }
-  .tag.task { background: #e3e6ee; color: #2f3a6a; }
-  .assign {
-    width: 22px; height: 22px; border-radius: 50%;
-    background: var(--ink); color: #fff;
-    display: inline-flex; align-items: center; justify-content: center;
-    font-size: 9.5px; font-weight: 600; letter-spacing: 0;
-  }
-  .assign.bot { background: var(--accent); color: var(--ink); }
-
-  /* automation lane */
-  .auto-lane {
-    margin-top: 40px; background: var(--card-warm); border: 1px solid var(--border);
-    padding: 24px;
-  }
-  .auto-lane h3 {
-    font-family: var(--display); font-size: 14px; text-transform: uppercase;
-    letter-spacing: 0.12em; margin: 0 0 4px;
-  }
-  .auto-lane p { color: var(--muted); font-size: 13px; margin: 0 0 20px; max-width: 62ch; }
-  .rules {
-    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px;
-  }
-  .rule-card {
-    background: #fff; border: 1px solid var(--border); padding: 16px;
-  }
-  .rule-card .when {
-    font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--faint); margin: 0 0 4px;
-  }
-  .rule-card .trigger {
-    font-family: var(--mono); font-size: 11.5px; color: var(--muted);
-    margin: 0 0 12px;
-  }
-  .rule-card .then {
-    font-size: 13px; font-weight: 500; margin: 0 0 8px; line-height: 1.4;
-  }
-  .rule-card .agent {
-    display: inline-block; font-family: var(--mono); font-size: 10.5px;
-    padding: 3px 7px; background: var(--card); color: var(--ink);
-  }
-  .rule-card .agent.opus { background: #eae0f0; color: #4a2f6a; }
-  .rule-card .agent.sonnet { background: #dee7ec; color: #1e4a6a; }
-  .rule-card .agent.haiku { background: #e5efe5; color: #2f5a3a; }
-
-  /* ─── STAGE 3: Ticket detail ──────────────────────────────────────── */
-  .ticket-shell { display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; margin-top: 32px; }
-  .ticket .breadcrumb {
-    font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.06em;
-    margin: 0 0 12px;
-  }
-  .ticket h1 {
-    font-family: var(--display); font-weight: 500;
-    font-size: 26px; letter-spacing: -0.015em; margin: 0 0 6px;
-  }
-  .ticket .subtitle { color: var(--muted); font-size: 14px; margin: 0 0 24px; }
-
-  .status-pipe {
-    display: flex; gap: 0; margin: 20px 0 24px; overflow-x: auto;
-  }
-  .status-pipe .pip {
-    flex: 1; min-width: 96px;
-    padding: 8px 10px; border: 1px solid var(--border); border-right: 0;
-    background: #fff;
-    font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--muted); text-align: center;
-  }
-  .status-pipe .pip:last-child { border-right: 1px solid var(--border); }
-  .status-pipe .pip.done { background: var(--card); color: var(--ink); }
-  .status-pipe .pip.current { background: var(--ink); color: #fff; border-color: var(--ink); }
-
-  .section-h {
-    font-family: var(--body); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
-    color: var(--faint); margin: 26px 0 10px;
-  }
-  .req-list { list-style: none; padding: 0; margin: 0; }
-  .req {
-    display: grid; grid-template-columns: 24px 1fr 100px; gap: 14px;
-    padding: 12px 0; border-top: 1px solid var(--border);
-    align-items: start;
-  }
-  .req:first-child { border-top: 0; }
-  .req .box {
-    width: 16px; height: 16px; border: 1px solid var(--ink);
-    display: inline-flex; align-items: center; justify-content: center;
-    margin-top: 3px; font-size: 11px; background: #fff;
-  }
-  .req.acc .box { background: var(--ink); color: #fff; }
-  .req.rej .box { border-color: var(--err); color: var(--err); background: #fff; }
-  .req .txt { font-size: 14px; }
-  .req .txt .gwt { color: var(--muted); font-size: 12.5px; margin-top: 4px; }
-  .req .state {
-    font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase;
-    text-align: right; color: var(--muted);
-  }
-  .req.acc .state { color: var(--ok); }
-  .req.rej .state { color: var(--err); }
-  .req.pend .state { color: var(--warn); }
-
-  /* ─── User story + Gherkin (.feature file) ────────────────────────── */
-  .user-story {
-    background: var(--card-warm); border-left: 3px solid var(--ink);
-    padding: 16px 20px; margin: 0 0 8px;
-  }
-  .user-story .st-h {
-    font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase;
-    color: var(--faint); margin: 0 0 6px;
-  }
-  .user-story p { font-size: 14.5px; margin: 0; line-height: 1.55; }
-  .user-story p b { font-weight: 500; color: var(--ink); }
-  .user-story p .gk {
-    font-family: var(--mono); font-size: 12.5px;
-    color: var(--muted); margin-right: 6px;
-  }
-
-  .feature-file {
-    font-family: var(--mono); font-size: 12.5px; line-height: 1.65;
-    background: #fafaf8; border: 1px solid var(--border);
-    padding: 0; margin: 8px 0 0;
-    overflow-x: auto;
-  }
-  .feature-file .ff-head {
-    padding: 8px 14px; border-bottom: 1px solid var(--border);
-    background: var(--card); color: var(--muted);
-    font-size: 11px; letter-spacing: 0.06em;
-    display: flex; justify-content: space-between; align-items: center;
-  }
-  .feature-file .ff-head b { color: var(--ink); font-weight: 500; }
-  .feature-file .ff-body { padding: 14px 16px 16px; }
-  .feature-file .ff-line { display: block; padding: 1px 0; white-space: pre-wrap; }
-  .feature-file .kw { color: #4a2f6a; font-weight: 500; }        /* Feature, Scenario, Background */
-  .feature-file .gv { color: #1e4a6a; font-weight: 500; }        /* Given / When / Then / And */
-  .feature-file .tag { color: #2f5a3a; background: transparent; padding: 0; letter-spacing: 0; text-transform: none; font-size: 12.5px; }
-  .feature-file .cmt { color: var(--faint); font-style: italic; }
-  .feature-file .quote { color: var(--warn); }
-  .feature-file .indent { padding-left: 24px; }
-  .feature-file .indent-2 { padding-left: 40px; }
-
-  .scenario-block { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border); }
-  .scenario-block:first-of-type { margin-top: 0; padding-top: 0; border-top: 0; }
-  .scenario-head {
-    display: grid; grid-template-columns: 24px 1fr auto; gap: 12px;
-    align-items: baseline; margin-bottom: 4px;
-  }
-  .scenario-head .box {
-    width: 16px; height: 16px; border: 1px solid var(--ink);
-    display: inline-flex; align-items: center; justify-content: center;
-    margin-top: 3px; font-size: 11px; background: #fff;
-  }
-  .scenario-block.acc .scenario-head .box { background: var(--ink); color: #fff; }
-  .scenario-block.acc .scenario-head .state { color: var(--ok); }
-  .scenario-block.pend .scenario-head .state { color: var(--warn); }
-  .scenario-head .title { font-size: 13.5px; font-weight: 500; }
-  .scenario-head .title .req-key {
-    font-family: var(--mono); font-size: 11px; color: var(--muted);
-    letter-spacing: 0.04em; margin-right: 8px;
-  }
-  .scenario-head .state {
-    font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--muted);
-  }
-
-  .thread { margin-top: 8px; }
-  .msg {
-    padding: 14px 0; border-top: 1px solid var(--border);
-    display: grid; grid-template-columns: 28px 1fr; gap: 12px;
-  }
-  .msg:first-child { border-top: 0; }
-  .msg .av {
-    width: 26px; height: 26px; border-radius: 50%; background: var(--ink); color: #fff;
-    display: inline-flex; align-items: center; justify-content: center;
-    font-size: 10px; font-weight: 600;
-  }
-  .msg .av.client { background: #E0BEB1; color: var(--ink); }
-  .msg .av.bot { background: var(--card); color: var(--ink); border: 1px solid var(--border); }
-  .msg .who { font-size: 12px; font-weight: 500; margin: 0; }
-  .msg .when { font-size: 10.5px; color: var(--faint); margin: 1px 0 6px; letter-spacing: 0.04em; }
-  .msg .body { font-size: 13.5px; color: var(--ink); margin: 0; line-height: 1.5; }
-  .msg .body code {
-    font-family: var(--mono); font-size: 12px; background: var(--card); padding: 1px 5px;
-  }
-  .msg.reject { background: linear-gradient(90deg, #fbf3f3 0 3px, transparent 3px); padding-left: 12px; }
-  .msg.accept { background: linear-gradient(90deg, #edf5ef 0 3px, transparent 3px); padding-left: 12px; }
-
-  .sidepane {
-    background: var(--card-warm); border: 1px solid var(--border); padding: 24px;
-    position: sticky; top: 90px; align-self: start;
-  }
-  .kv { display: grid; grid-template-columns: 110px 1fr; gap: 6px 14px; font-size: 12.5px; }
-  .kv .k { color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; font-size: 10.5px; padding-top: 2px; }
-  .kv .v { color: var(--ink); }
-  .attached-agent {
-    margin-top: 22px; padding-top: 20px; border-top: 1px solid var(--border);
-  }
-  .attached-agent h4 {
-    font-family: var(--body); font-size: 11px; letter-spacing: 0.14em;
-    text-transform: uppercase; color: var(--faint); margin: 0 0 10px;
-  }
-  .mini-agent {
-    display: flex; gap: 10px; align-items: center; padding: 10px 12px;
-    background: #fff; border: 1px solid var(--border); margin-bottom: 6px;
-  }
-  .mini-agent .name { font-size: 12.5px; font-weight: 500; }
-  .mini-agent .role { font-size: 11px; color: var(--muted); margin-left: auto; }
-  .badge-model {
-    font-family: var(--mono); font-size: 10px; padding: 2px 6px;
-    background: var(--card); color: var(--ink); letter-spacing: 0.04em;
-  }
-  .badge-model.opus { background: #eae0f0; color: #4a2f6a; }
-  .badge-model.sonnet { background: #dee7ec; color: #1e4a6a; }
-  .badge-model.haiku { background: #e5efe5; color: #2f5a3a; }
-
-  /* ─── STAGE 4: Agents ─────────────────────────────────────────────── */
-  .agents-intro { display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; margin-top: 32px; align-items: start; }
-  .agents-intro p { color: var(--muted); font-size: 15px; margin: 12px 0 0; max-width: 60ch; }
-  .agents-intro ul { color: var(--muted); font-size: 13.5px; margin: 20px 0 0; padding: 0 0 0 18px; }
-  .agents-intro li { margin: 4px 0; }
-  .legend {
-    background: var(--card-warm); border: 1px solid var(--border); padding: 20px;
-  }
-  .legend h4 { font-family: var(--body); font-size: 11px; letter-spacing: 0.14em;
-    text-transform: uppercase; color: var(--faint); margin: 0 0 12px; }
-  .legend .row { display: flex; gap: 10px; align-items: center; margin: 8px 0; font-size: 13px; }
-  .legend .row .badge-model { font-size: 11px; }
-  .legend .row .desc { color: var(--muted); }
-
-  .agent-tree {
-    margin-top: 40px; padding: 32px 20px; background: var(--paper);
-    border: 1px solid var(--border);
-    overflow-x: auto;
-  }
-  .tier {
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
-    align-items: stretch; margin-bottom: 18px;
-  }
-  .tier.solo { grid-template-columns: 1fr; max-width: 320px; margin-inline: auto; }
-  .tier.two { grid-template-columns: repeat(2, 1fr); max-width: 640px; margin-inline: auto; }
-  .tier.three { grid-template-columns: repeat(3, 1fr); max-width: 960px; margin-inline: auto; }
-  .agent-node {
-    background: #fff; border: 1px solid var(--border);
-    padding: 16px; min-height: 100px;
-    display: flex; flex-direction: column; gap: 6px;
-  }
-  .agent-node .head {
-    display: flex; justify-content: space-between; align-items: baseline; gap: 8px;
-  }
-  .agent-node .name { font-size: 13.5px; font-weight: 500; letter-spacing: -0.005em; }
-  .agent-node .role { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
-  .agent-node .out { font-size: 11.5px; color: var(--muted); margin-top: 4px; }
-  .agent-node .out b { color: var(--ink); font-weight: 500; }
-  .tier-lbl {
-    font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase;
-    color: var(--faint); text-align: center; margin: 10px 0;
-  }
-  .arrow-row {
-    display: flex; justify-content: center; margin: 6px 0 6px;
-    color: var(--faint); font-size: 18px;
-  }
-
-  /* ─── STAGE 5: Dev env ────────────────────────────────────────────── */
-  .dev-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 32px; }
-  .panel {
-    background: #fff; border: 1px solid var(--border); padding: 0;
-  }
-  .panel .p-head {
-    padding: 14px 18px; border-bottom: 1px solid var(--border);
-    display: flex; justify-content: space-between; align-items: center;
-    font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted);
-  }
-  .panel .p-head .p-title { color: var(--ink); font-weight: 500; }
-  .panel .p-body { padding: 18px; }
-
-  .branch-row { display: flex; gap: 10px; align-items: center; }
-  .branch-tag {
-    font-family: var(--mono); font-size: 12px;
-    background: var(--card); padding: 4px 8px; color: var(--ink);
-  }
-  .commit-list { margin: 20px 0 0; padding: 0; list-style: none; }
-  .commit-list li {
-    display: grid; grid-template-columns: 84px 1fr auto; gap: 12px;
-    padding: 10px 0; border-top: 1px solid var(--border);
-    align-items: baseline; font-size: 13px;
-  }
-  .commit-list li:first-child { border-top: 0; }
-  .commit-list .sha {
-    font-family: var(--mono); font-size: 11.5px; color: var(--muted);
-    letter-spacing: 0.02em;
-  }
-  .commit-list .who { color: var(--faint); font-size: 11px; }
-
-  .diff {
-    font-family: var(--mono); font-size: 12px; line-height: 1.5;
-    white-space: pre; overflow-x: auto;
-    background: #fafaf8; padding: 16px; border: 1px solid var(--border);
-    margin: 0;
-  }
-  .diff .add { background: #e7f0e9; display: block; }
-  .diff .del { background: #f4e0e0; display: block; }
-  .diff .cx { color: var(--muted); }
-  .diff .hunk { color: var(--faint); }
-
-  /* ─── STAGE 6: Testing ────────────────────────────────────────────── */
-  .test-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 32px; }
-  .test-card {
-    background: #fff; border: 1px solid var(--border); padding: 22px;
-  }
-  .test-card .kind {
-    font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--muted);
-  }
-  .test-card h3 {
-    font-family: var(--display); font-weight: 500;
-    font-size: 20px; margin: 6px 0 8px; letter-spacing: -0.01em;
-  }
-  .test-card .count {
-    font-family: var(--display); font-weight: 400; font-size: 32px;
-    letter-spacing: -0.02em;
-  }
-  .test-card .count b { color: var(--ok); font-weight: 400; }
-  .test-card .count small { font-family: var(--body); font-size: 13px; color: var(--muted); margin-left: 6px; }
-  .test-card .bar {
-    height: 4px; background: var(--card); margin: 12px 0 8px;
-    display: grid; grid-template-columns: 1fr auto;
-  }
-  .test-card .bar .fill { background: var(--ok); height: 100%; }
-  .test-card .list {
-    margin: 14px 0 0; padding: 0; list-style: none;
-    font-size: 12.5px; font-family: var(--mono);
-  }
-  .test-card .list li { padding: 4px 0; color: var(--muted); }
-  .test-card .list .pass::before { content: "✓ "; color: var(--ok); }
-  .test-card .list .fail::before { content: "✗ "; color: var(--err); }
-
-  .regression {
-    margin-top: 32px; padding: 24px; background: var(--card-warm); border: 1px solid var(--border);
-  }
-  .regression h3 {
-    font-family: var(--display); font-weight: 500;
-    font-size: 16px; margin: 0 0 4px; letter-spacing: 0.08em; text-transform: uppercase;
-  }
-  .regression p { color: var(--muted); font-size: 13px; margin: 0 0 18px; }
-  .regression table { width: 100%; border-collapse: collapse; font-size: 13px; }
-  .regression th, .regression td {
-    text-align: left; padding: 10px 12px;
-    border-bottom: 1px solid var(--border);
-  }
-  .regression th {
-    font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted);
-    font-weight: 500;
-    border-bottom: 1px solid var(--ink);
-  }
-  .regression td .dot { display: inline-block; width: 8px; height: 8px; margin-right: 6px; vertical-align: middle; }
-  .regression td .dot.g { background: var(--ok); }
-  .regression td .dot.r { background: var(--err); }
-  .regression td .dot.y { background: var(--warn); }
-
-  /* ─── STAGE 7: Release notes ──────────────────────────────────────── */
-  .release {
-    margin-top: 32px; background: #fff; border: 1px solid var(--border); padding: 32px;
-    max-width: 820px;
-  }
-  .release .stamp {
-    font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em;
-    color: var(--muted); display: flex; gap: 20px;
-  }
-  .release h2 {
-    font-family: var(--display); font-weight: 500;
-    font-size: 26px; letter-spacing: -0.015em; margin: 8px 0 6px;
-  }
-  .release .tag-row { display: flex; gap: 8px; margin: 4px 0 22px; }
-  .rel-block { margin: 24px 0 0; }
-  .rel-block h4 {
-    font-family: var(--body); font-size: 11px; letter-spacing: 0.16em;
-    text-transform: uppercase; color: var(--faint); margin: 0 0 8px;
-  }
-  .rel-block ul { margin: 0; padding: 0 0 0 18px; }
-  .rel-block li { font-size: 13.5px; margin: 6px 0; color: var(--ink); }
-  .rel-block li .ref {
-    font-family: var(--mono); font-size: 11px; color: var(--muted); margin-left: 6px;
-  }
-  .rel-block .qbox {
-    background: var(--card-warm); border-left: 2px solid var(--ink);
-    padding: 14px 16px; margin: 8px 0; font-size: 13.5px;
-  }
-  .rel-block .qbox b { font-weight: 500; }
-
-  /* ─── STAGE 8: Cadence & close ────────────────────────────────────── */
-  .weekly {
-    margin-top: 32px; background: var(--card-warm); border: 1px solid var(--border); padding: 32px;
-    display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
-  }
-  .weekly h3 { font-family: var(--display); font-weight: 500; font-size: 20px; letter-spacing: -0.01em; margin: 0 0 12px; }
-  .weekly p, .weekly li { color: var(--muted); font-size: 13.5px; }
-  .weekly ul { padding: 0 0 0 18px; margin: 0; }
-  .weekly .status-card {
-    background: #fff; border: 1px solid var(--border); padding: 20px;
-    font-size: 13.5px;
-  }
-  .weekly .status-card h5 {
-    font-family: var(--body); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--muted); margin: 0 0 6px;
-  }
-  .weekly .status-card p { color: var(--ink); margin: 0 0 12px; }
-
-  .close-band {
-    margin-top: 72px; padding: 60px 0 0; border-top: 1px solid var(--border);
-    text-align: center;
-  }
-  .close-band h2 {
-    font-family: var(--display); font-weight: 500; font-size: clamp(24px, 3vw, 34px);
-    letter-spacing: -0.015em; margin: 0 auto; max-width: 22ch;
-  }
-  .close-band p { color: var(--muted); font-size: 15px; margin: 16px auto 26px; max-width: 52ch; }
-  .close-band .cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 
   footer {
-    margin-top: 60px; padding: 32px 0;
-    border-top: 1px solid var(--border);
-    color: var(--muted); font-size: 12px;
-    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+    padding: 28px 0; border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between; font-size: 12px; color: var(--muted);
+    flex-wrap: wrap; gap: 12px;
   }
 
-  /* ─── Responsive ──────────────────────────────────────────────────── */
-  @media (max-width: 980px) {
-    .cover, .agents-intro, .weekly, .ticket-shell, .dev-grid { grid-template-columns: 1fr; gap: 28px; }
-    .grid-projects { grid-template-columns: 1fr 1fr; }
-    .test-grid { grid-template-columns: 1fr; }
-    .rules { grid-template-columns: 1fr; }
-    .stat-strip { grid-template-columns: 1fr 1fr; }
-    .sidepane { position: static; }
-  }
-  @media (max-width: 620px) {
-    .grid-projects { grid-template-columns: 1fr; }
-    .board { grid-template-columns: repeat(6, 260px); }
-    .topbar-inner { padding: 12px 16px; }
-    .wrap { padding: 0 16px; }
-    .stat-strip { grid-template-columns: 1fr; }
-    .status-pipe { flex-wrap: nowrap; }
+  /* ─── Responsive ─────────────────────────────────────── */
+  @media (max-width: 720px) {
+    .step { grid-template-columns: 56px 1fr; gap: 16px; }
+    .rail .n { width: 32px; height: 32px; font-size: 13px; }
+    .roster { grid-template-columns: 1fr; }
+    .jira-body .field { grid-template-columns: 1fr; gap: 2px; }
+    .hero { padding: 56px 0 40px; }
+    section.band { padding: 48px 0; }
   }
 </style>
 </head>
 <body>
 
-<!-- ─── Topbar ────────────────────────────────────────────────────── -->
-<header class="topbar">
-  <div class="topbar-inner">
-    <div class="logo"><b>ivi</b> · <em>ecosystem walkthrough</em></div>
-    <nav class="nav" id="nav">
-      <button data-stage="0" class="active"><span class="step-num">01</span>Overview</button>
-      <button data-stage="1"><span class="step-num">02</span>Projects</button>
-      <button data-stage="2"><span class="step-num">03</span>Board</button>
-      <button data-stage="3"><span class="step-num">04</span>Ticket</button>
-      <button data-stage="4"><span class="step-num">05</span>Agents</button>
-      <button data-stage="5"><span class="step-num">06</span>Dev</button>
-      <button data-stage="6"><span class="step-num">07</span>Tests</button>
-      <button data-stage="7"><span class="step-num">08</span>Release</button>
-      <button data-stage="8"><span class="step-num">09</span>Cadence</button>
-    </nav>
+<!-- ─── Header ───────────────────────────────────── -->
+<header class="top">
+  <div class="wrap top-inner">
+    <div class="brand">ivi · <em>how I work</em></div>
+    <div class="right">
+      <a href="mailto:iivii.malotana@gmail.com">iivii.malotana@gmail.com</a>
+      <a href="./">Portfolio</a>
+    </div>
   </div>
 </header>
 
-<div class="wrap">
-
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<!--  STAGE 0 — OVERVIEW                                                 -->
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<section class="stage active" data-stage="0">
-  <div class="cover">
-    <div class="lead">
-      <p class="eyebrow">A working demo. Click through it.</p>
-      <h1 class="headline">The whole machine, in one file. Walk through it.</h1>
-      <p>This is what you'd be hiring. Every stage below is clickable. A Jira project. Its tickets. The
-        Gherkin scenarios a human signs off. The Claude Code agents attached. The dev branch. The tests.
-        The release note. One file, so you can host it yourself and poke at it.</p>
-      <p>The workflow is real. It runs on my own projects today, and it is what will run on yours in
-        week one. The model routing (Opus, Sonnet, Haiku) is the same routing I use in production.
-        The expensive model plans. The mid-tier builds. The cheap one runs the loop and reports back.</p>
-      <div class="cta-row">
-        <a class="btn" href="#" onclick="go(1); return false;">Start the walkthrough →</a>
-        <a class="btn ghost" href="mailto:iivii.malotana@gmail.com">Talk to me directly</a>
-      </div>
-      <div class="stat-strip">
-        <div class="stat"><div class="n">Day 10</div><div class="l">A working slice live on staging. Clickable, from your inbox.</div></div>
-        <div class="stat"><div class="n">90 sec</div><div class="l">To read your Friday status. Never longer, never five pages.</div></div>
-        <div class="stat"><div class="n">0</div><div class="l">Release-note surprises. What ships is what you signed.</div></div>
-        <div class="stat"><div class="n">1 trail</div><div class="l">Story, Gherkin, test, release note. One line per requirement.</div></div>
-      </div>
-    </div>
-
-    <aside class="cover-map">
-      <h3>The 10-stage pipeline</h3>
-      <ul class="flow-list">
-        <li><span class="num">01</span><span class="lbl">Understand the ask</span><span class="who">You + me</span></li>
-        <li><span class="num">02</span><span class="lbl">Write the user story + Gherkin</span><span class="who">Me · BDD spec</span></li>
-        <li><span class="num">03</span><span class="lbl">Sign-off gate</span><span class="who">You. The gate.</span></li>
-        <li><span class="num">04</span><span class="lbl">Plan the work</span><span class="who">Planner agent (Opus)</span></li>
-        <li><span class="num">05</span><span class="lbl">Build the slice</span><span class="who">Builder agent (Sonnet)</span></li>
-        <li><span class="num">06</span><span class="lbl">Write &amp; run tests</span><span class="who">Test agent (Opus → Haiku)</span></li>
-        <li><span class="num">07</span><span class="lbl">Adversarial audit</span><span class="who">Review agent (Opus)</span></li>
-        <li><span class="num">08</span><span class="lbl">Open PR</span><span class="who">Me. I write the description.</span></li>
-        <li><span class="num">09</span><span class="lbl">Deploy to staging</span><span class="who">CI + acceptance run</span></li>
-        <li><span class="num">10</span><span class="lbl">Verify against the spec</span><span class="who">You. The closing gate.</span></li>
-      </ul>
-    </aside>
+<!-- ─── Hero ─────────────────────────────────────── -->
+<section class="wrap hero">
+  <p class="eyebrow">How I work · one operator, AI projects</p>
+  <h1>From your voice note to a shipped feature. Every step in one page.</h1>
+  <p class="lede">You send me an idea. A few days later a working feature is live and you have a
+    one-line release note in your inbox that reads back to your original ask. This page shows
+    exactly what happens between. <b>Every ticket lives in Jira.</b> Every step names the agent
+    that runs it and the artefact it drops on the ticket.</p>
+  <div class="hero-jira">
+    <!-- Jira Software glyph — simplified -->
+    <svg width="18" height="18" viewBox="0 0 32 32" aria-hidden="true">
+      <defs>
+        <linearGradient id="jg1" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#0052CC"/>
+          <stop offset="1" stop-color="#2684FF"/>
+        </linearGradient>
+      </defs>
+      <path fill="url(#jg1)" d="M16 2 L28 14 L22 14 L16 8 L10 14 L4 14 Z"/>
+      <path fill="#2684FF" opacity=".6" d="M16 30 L4 18 L10 18 L16 24 L22 18 L28 18 Z"/>
+    </svg>
+    <b>Jira Software</b> · one project per stream · every step below writes back to the ticket
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<!--  STAGE 1 — JIRA PROJECTS                                            -->
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<section class="stage" data-stage="1">
-  <p class="eyebrow">02 · Projects</p>
-  <h1 class="headline">Every stream of work is its own project.</h1>
-  <p class="subhead">Jira software projects. One per stream. A spec collision in one cannot spread
-    to the others, and a stalled ticket has one place to live. Click a project to open its board.</p>
+<!-- ─── The Flow ─────────────────────────────────── -->
+<section class="band">
+  <div class="wrap">
+    <p class="eyebrow">The flow</p>
+    <h2 class="sec">Idea in. Feature out. One trail through Jira the whole way.</h2>
+    <p class="sec-lede">Read top to bottom. The blue circles are agents doing the work. The dark
+      circles are you (or me) at a human gate.</p>
 
-  <div class="grid-projects" id="projects">
-    <div class="project active" data-project="AIP">
-      <div class="key">AIP · Software</div>
-      <h3>AI Product</h3>
-      <p>The founder-facing product. Agents, evals, chat surfaces, the LLM gateway.</p>
-      <div class="foot">
-        <span><b>28</b> Active</span>
-        <span><b>4</b> In review</span>
-        <span><b>Sprint 12</b></span>
-      </div>
-    </div>
-    <div class="project" data-project="OPS">
-      <div class="key">OPS · Software</div>
-      <h3>Ops &amp; Infrastructure</h3>
-      <p>CI, deploys, secrets, observability, the self-healing pipeline that runs the rest.</p>
-      <div class="foot">
-        <span><b>11</b> Active</span>
-        <span><b>1</b> In review</span>
-        <span><b>Rolling</b></span>
-      </div>
-    </div>
-    <div class="project" data-project="DAT">
-      <div class="key">DAT · Software</div>
-      <h3>Data &amp; Evals</h3>
-      <p>Golden datasets, eval harnesses, agent scorecards, model-routing experiments.</p>
-      <div class="foot">
-        <span><b>7</b> Active</span>
-        <span><b>2</b> In review</span>
-        <span><b>Sprint 12</b></span>
-      </div>
-    </div>
-  </div>
+    <div class="flow">
 
-  <div class="rule"></div>
-  <p class="subhead" style="max-width:70ch;">
-    <b style="color:var(--ink);font-weight:500;">Why three, not one.</b> A single project holding
-    every stream freezes when the AI product's build breaks the eval harness's build. Split them,
-    and each ships on its own clock. Each has its own automation rules. OPS is strictest: any red
-    test blocks the merge. The others allow a documented exception.
-  </p>
-  <div class="cta-row" style="margin-top:32px;">
-    <a class="btn" href="#" onclick="go(2); return false;">Open the AI Product board →</a>
+      <!-- STEP 1 -->
+      <div class="step">
+        <div class="rail human">
+          <span class="n">1</span>
+          <span class="who">You</span>
+        </div>
+        <div class="body">
+          <h3>You send the idea. Any format.</h3>
+          <p>A voice note in Slack. A rambling email. A whiteboard photo. You are not paid to
+            write clean specs, so I do not need one from you.</p>
+          <div class="out"><b>What lands with me:</b> whatever you actually sent. Text, audio, image.</div>
+        </div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="step">
+        <div class="rail agent">
+          <span class="n">2</span>
+          <span class="who">Agent</span>
+        </div>
+        <div class="body">
+          <h3>The <code style="font-family:var(--mono);font-size:13px;background:var(--card);padding:1px 6px;">intake</code> agent captures the idea into a working note.</h3>
+          <p>Transcribes voice notes, OCRs the photo, pulls the shape of the request into a scratch
+            document with three sections: what you want, why, and the questions I need to ask before
+            I can write a ticket.</p>
+          <span class="agent-tag">intake · <span class="model">sonnet 5.5</span></span>
+          <div class="out"><b>Artefact:</b> a scratch note in Notion, linked to the eventual Jira epic. Not yet a ticket.</div>
+        </div>
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="step">
+        <div class="rail agent">
+          <span class="n">3</span>
+          <span class="who">Agent</span>
+        </div>
+        <div class="body">
+          <h3>The <code style="font-family:var(--mono);font-size:13px;background:var(--card);padding:1px 6px;">ticket-writer</code> agent drafts the Jira ticket.</h3>
+          <p>Turns the intake note into a proper Jira story: summary, description, acceptance
+            criteria as Given/When/Then, points estimate, blocking/linked issues. Assigns to me,
+            leaves the status in Refinement so nothing starts until you approve.</p>
+          <span class="agent-tag">ticket-writer · <span class="model">opus 4.7</span></span>
+
+          <!-- Jira ticket mockup -->
+          <div class="jira-card">
+            <div class="jira-head">
+              <span class="type"><span class="dot"></span>Story</span>
+              <span class="key">AIP-142</span>
+              <span class="status">Refinement</span>
+            </div>
+            <div class="jira-body">
+              <p class="summary">Cite every generated line back to a source document</p>
+              <div class="field"><span class="lbl">Reporter</span><span class="val">You</span></div>
+              <div class="field"><span class="lbl">Assignee</span><span class="val">Ivi Malotana</span></div>
+              <div class="field"><span class="lbl">Priority</span><span class="val">P1 · Founder-flagged</span></div>
+              <div class="field"><span class="lbl">Story points</span><span class="val">5</span></div>
+              <div class="field"><span class="lbl">Sprint</span><span class="val">Sprint 12</span></div>
+              <div class="description">
+                <b>Description.</b> Reviewers can't defend an uncited claim to a client. Every
+                generated sentence needs to trace to a real source paragraph, and un-sourced
+                sentences should be visible for review (not silently dropped).
+                <ul>
+                  <li>REQ-1 · Every generated sentence carries a source_id.</li>
+                  <li>REQ-2 · Low-confidence sentences are quarantined to a "for review" tray.</li>
+                  <li>REQ-3 · A reviewer can accept, reject or rewrite in one click; logged.</li>
+                  <li>REQ-4 · Send is hard-blocked at citation-count = 0.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 4 -->
+      <div class="step you">
+        <div class="rail human">
+          <span class="n">4</span>
+          <span class="who">You</span>
+        </div>
+        <div class="body">
+          <span class="actor">Human gate · validation</span>
+          <h3>You validate the ticket. Right here, in Jira.</h3>
+          <p>You get one link. You read four bullets. You reply with "yes", or you edit them.
+            REQ-1 was per-paragraph in the draft. You wanted per-sentence. You said so. The
+            ticket-writer agent picks up your comment, rewrites, and re-asks.</p>
+          <div class="out"><b>What you spend:</b> two to five minutes. The ticket does not leave
+            Refinement until you sign it off.</div>
+        </div>
+      </div>
+
+      <!-- STEP 5 -->
+      <div class="step">
+        <div class="rail agent">
+          <span class="n">5</span>
+          <span class="who">Agent</span>
+        </div>
+        <div class="body">
+          <h3>The <code style="font-family:var(--mono);font-size:13px;background:var(--card);padding:1px 6px;">spec-writer</code> agent turns the approved ticket into a <code style="font-family:var(--mono);font-size:13px;background:var(--card);padding:1px 6px;">.feature</code> file.</h3>
+          <p>Cucumber BDD, plain Gherkin. One Scenario per requirement, tagged with the REQ. This
+            file is the contract: it is what a human signs, and what cucumber-js runs on every PR.
+            The spec and the test are the same document.</p>
+          <span class="agent-tag">spec-writer · <span class="model">opus 4.7</span></span>
+
+          <div class="ff"><span class="tag">@AIP-142 @founder-flagged</span>
+<span class="kw">Feature:</span> Cite every generated line back to a source
+
+  <span class="tag">@req-1 @must</span>
+  <span class="kw">Scenario:</span> Every generated sentence carries a source_id
+    <span class="gv">Given</span> the generated proposal contains N sentences
+    <span class="gv">When</span> I open the proposal in the reviewer
+    <span class="gv">Then</span> every sentence has at least one source_id attached
+    <span class="gv">And</span> hovering the sentence reveals the citation card
+
+  <span class="tag">@req-4 @send-gate</span>
+  <span class="kw">Scenario:</span> Send is hard-blocked at citation-count = 0
+    <span class="gv">Given</span> a proposal about to be sent to a client
+    <span class="gv">When</span> any sentence in the proposal has zero citations
+    <span class="gv">Then</span> the Send button is disabled
+    <span class="gv">And</span> a human-readable reason is shown</div>
+        </div>
+      </div>
+
+      <!-- STEP 6 -->
+      <div class="step you">
+        <div class="rail human">
+          <span class="n">6</span>
+          <span class="who">You</span>
+        </div>
+        <div class="body">
+          <span class="actor">Human gate · sign-off</span>
+          <h3>You sign off the Gherkin. This is the contract.</h3>
+          <p>The status on the Jira ticket moves to <b>Signed off</b>. Automation fires. Nothing
+            gets built or tested against anything except these scenarios.</p>
+          <div class="out"><b>Cost of a wrong sign-off here:</b> low. Every requirement is one
+            sentence. If you missed something, you catch it in five minutes rather than five days.</div>
+        </div>
+      </div>
+
+      <!-- STEP 7 -->
+      <div class="step">
+        <div class="rail agent">
+          <span class="n">7</span>
+          <span class="who">Agent</span>
+        </div>
+        <div class="body">
+          <h3>The <code style="font-family:var(--mono);font-size:13px;background:var(--card);padding:1px 6px;">test-planner</code> agent generates the test plan from the Gherkin.</h3>
+          <p>Reads the <code style="font-family:var(--mono);font-size:12px;background:var(--card);padding:1px 5px;">.feature</code> file. Writes cucumber-js step definitions
+            (one per Given/When/Then), Playwright page-objects for the flows, Vitest units for
+            the small invariants, and a regression pull from last quarter's bugs. Attaches the
+            plan to the ticket.</p>
+          <span class="agent-tag">test-planner · <span class="model">opus 4.7</span></span>
+          <div class="out"><b>Artefact on the ticket:</b> a test plan naming every file it will
+            add, keyed to REQ-1..N. A requirement without a testable path fails this step loudly,
+            not silently.</div>
+        </div>
+      </div>
+
+      <!-- STEP 8 -->
+      <div class="step">
+        <div class="rail agent">
+          <span class="n">8</span>
+          <span class="who">Agent</span>
+        </div>
+        <div class="body">
+          <h3>The <code style="font-family:var(--mono);font-size:13px;background:var(--card);padding:1px 6px;">builder</code> agent writes the code.</h3>
+          <p>Creates the feature branch, scaffolds the slice, writes one commit per plan-step.
+            Refuses to touch files not on the plan. Opens a draft PR linked back to the Jira ticket
+            so the human trail stays intact.</p>
+          <span class="agent-tag">builder · <span class="model">sonnet 5.5</span></span>
+          <div class="out"><b>Artefact:</b> a draft PR against your repo, branch
+            <code style="font-family:var(--mono);font-size:12px;">feat/AIP-142-cite-every-line</code>, commits
+            keyed to REQ. Ticket status auto-moves to <b>In Dev</b>.</div>
+        </div>
+      </div>
+
+      <!-- STEP 9 -->
+      <div class="step">
+        <div class="rail agent">
+          <span class="n">9</span>
+          <span class="who">Agent</span>
+        </div>
+        <div class="body">
+          <h3>The <code style="font-family:var(--mono);font-size:13px;background:var(--card);padding:1px 6px;">test-runner</code> agent runs every suite.</h3>
+          <p>Cucumber + Playwright for the flows a user touches. Vitest for the small units.
+            Regression for last quarter's bugs so we can prove they stayed dead. A red test names
+            the failing scenario, its tag, and its REQ. Silent flakes cannot happen.</p>
+          <span class="agent-tag">test-runner · <span class="model">haiku 4.5</span></span>
+          <div class="out"><b>Artefact:</b> a pass/fail table posted as a Jira comment. Ticket
+            moves to <b>Testing</b>. Green everywhere means the reviewer wakes up.</div>
+        </div>
+      </div>
+
+      <!-- STEP 10 -->
+      <div class="step">
+        <div class="rail agent">
+          <span class="n">10</span>
+          <span class="who">Agent</span>
+        </div>
+        <div class="body">
+          <h3>The <code style="font-family:var(--mono);font-size:13px;background:var(--card);padding:1px 6px;">reviewer</code> agent runs an adversarial audit.</h3>
+          <p>Different model to the builder, so they don't share blind spots. Reads the diff
+            against the plan and the <code style="font-family:var(--mono);font-size:12px;">.feature</code> file. Asks: what would make this break
+            in staging? Posts findings as PR comments. Blocks merge on anything with a real
+            failure scenario.</p>
+          <span class="agent-tag">reviewer · <span class="model">opus 4.7</span></span>
+        </div>
+      </div>
+
+      <!-- STEP 11 -->
+      <div class="step">
+        <div class="rail agent">
+          <span class="n">11</span>
+          <span class="who">Agent</span>
+        </div>
+        <div class="body">
+          <h3>The <code style="font-family:var(--mono);font-size:13px;background:var(--card);padding:1px 6px;">release-writer</code> agent drafts the release note.</h3>
+          <p>Assembles the release note from the scenarios diff on the ticket, not the commit
+            messages. The note reads as behaviour changes: what the software started doing, in
+            plain English, one line per requirement.</p>
+          <span class="agent-tag">release-writer · <span class="model">sonnet 5.5</span></span>
+          <div class="out"><b>Artefact:</b> a one-page release note, attached to the ticket and
+            queued for the Friday digest.</div>
+        </div>
+      </div>
+
+      <!-- STEP 12 -->
+      <div class="step you">
+        <div class="rail human">
+          <span class="n">12</span>
+          <span class="who">You</span>
+        </div>
+        <div class="body">
+          <span class="actor">Human gate · verify</span>
+          <h3>You verify on staging. Ticket closes.</h3>
+          <p>You click the staging link. You try to break the feature. If it holds, you close the
+            ticket. What ships to production is what you signed the Gherkin for. No release-note
+            surprises.</p>
+          <div class="out"><b>Time from your voice note to this point:</b> typically five to
+            ten working days for a five-point story.</div>
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<!--  STAGE 2 — BOARD                                                    -->
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<section class="stage" data-stage="2">
-  <p class="eyebrow">03 · Board · Project AIP</p>
-  <h1 class="headline">Tickets move left to right. Every arrow triggers something.</h1>
-  <p class="subhead">Six columns. A ticket does not reach <i>In Dev</i> until you sign off the
-    Gherkin. It does not leave <i>Testing</i> until Playwright, unit and regression are all green.
-    The green-bordered ticket (<b>AIP-142</b>) is the walkable example in this demo. Click it to
-    open its detail page. Try the filter chips on the right.</p>
+<!-- ─── Agent roster ────────────────────────────── -->
+<section class="band warm">
+  <div class="wrap">
+    <p class="eyebrow">The agent roster</p>
+    <h2 class="sec">Six agents. Fixed model each. Cheap runs the loop, expensive runs the review.</h2>
+    <p class="sec-lede">Every agent is a Claude Code subagent with a scoped tool set. Model ids
+      are fixed in the subagent front-matter, so the cheap one cannot silently escalate itself.</p>
 
-  <div class="board-head">
-    <div class="selector">Board · <b>AIP · AI Product</b> · Sprint 12 · <b>28 open</b></div>
-    <div class="filters">
-      <span class="chip active">All</span>
-      <span class="chip">Story</span>
-      <span class="chip">Bug</span>
-      <span class="chip">Task</span>
-      <span class="chip">Mine</span>
-    </div>
-  </div>
-
-  <div class="board" id="board">
-    <!-- Populated by JS -->
-  </div>
-
-  <div class="auto-lane">
-    <h3>Automation rules on this board</h3>
-    <p>These rules run silently. A status change is the trigger. A Claude Code agent is the actor.
-      Every rule is auditable and revertable. Every one posts back to the ticket with a comment
-      so the human trail stays intact.</p>
-    <div class="rules">
-      <div class="rule-card">
-        <p class="when">When</p>
-        <p class="trigger">status: Backlog → Refinement</p>
-        <p class="then">Draft the user story + Gherkin scenarios (Given/When/Then) from the ticket description; attach as a <code style="font-family:var(--mono);font-size:11px;background:var(--card);padding:1px 5px;">.feature</code> file.</p>
-        <span class="agent opus">planner · opus 4.7</span>
-      </div>
-      <div class="rule-card">
-        <p class="when">When</p>
-        <p class="trigger">scenarios: signed off</p>
-        <p class="then">Create the feature branch, scaffold the slice, open a draft PR linked to the ticket and the <code style="font-family:var(--mono);font-size:11px;background:var(--card);padding:1px 5px;">.feature</code> file.</p>
-        <span class="agent sonnet">builder · sonnet 5.5</span>
-      </div>
-      <div class="rule-card">
-        <p class="when">When</p>
-        <p class="trigger">PR opened by builder</p>
-        <p class="then">Write cucumber-js step defs + Playwright bindings for every Given/When/Then. Fail loudly if a scenario is un-testable.</p>
-        <span class="agent opus">test-author · opus 4.7</span>
-      </div>
-      <div class="rule-card">
-        <p class="when">When</p>
-        <p class="trigger">tests: written · not yet run</p>
-        <p class="then">Run the whole battery in parallel; regression on a nightly commit.</p>
-        <span class="agent haiku">runner · haiku 4.5</span>
-      </div>
-      <div class="rule-card">
-        <p class="when">When</p>
-        <p class="trigger">tests: green · PR: ready</p>
-        <p class="then">Adversarial code review. What would make this break in staging?</p>
-        <span class="agent opus">reviewer · opus 4.7</span>
-      </div>
-      <div class="rule-card">
-        <p class="when">When</p>
-        <p class="trigger">status: Done</p>
-        <p class="then">Assemble release note from the ticket's requirements diff; queue for the weekly digest.</p>
-        <span class="agent sonnet">release-writer · sonnet 5.5</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<!--  STAGE 3 — TICKET DETAIL                                            -->
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<section class="stage" data-stage="3">
-  <p class="eyebrow">04 · Ticket · AIP-142</p>
-  <h1 class="headline">The ticket is the contract.</h1>
-  <p class="subhead">Every ticket carries a user story and a <code style="font-family:var(--mono);font-size:12px;background:var(--card);padding:1px 5px;">.feature</code> file. Cucumber, BDD, plain Gherkin.
-    You sign the <code style="font-family:var(--mono);font-size:12px;background:var(--card);padding:1px 5px;">.feature</code> file, and cucumber-js runs the same file on every PR. The spec and the test are the same document.</p>
-
-  <div class="ticket-shell">
-    <article class="ticket">
-      <p class="breadcrumb">AIP · AI Product / Sprint 12 / AIP-142</p>
-      <h1>Cite every generated line back to a source document</h1>
-      <p class="subtitle">Story · 5 points · Reported by client · Owned by <b>Ivi</b></p>
-
-      <div class="status-pipe">
-        <div class="pip done">Backlog</div>
-        <div class="pip done">Refinement</div>
-        <div class="pip done">Signed off</div>
-        <div class="pip current">In Dev</div>
-        <div class="pip">In Review</div>
-        <div class="pip">Testing</div>
-        <div class="pip">Done</div>
-      </div>
-
-      <p class="section-h">User story</p>
-      <div class="user-story">
-        <p class="st-h">Cucumber / BDD · signed off 2 days ago</p>
-        <p><span class="gk">As</span> a <b>reviewer at the firm</b>,<br>
-           <span class="gk">I want</span> every generated line to be traceable to a real source,<br>
-           <span class="gk">so that</span> nothing leaves my desk that I cannot defend to a client.</p>
-      </div>
-
-      <p class="section-h">Acceptance criteria · Gherkin · <code style="font-family:var(--mono);font-size:11px;background:var(--card);padding:1px 5px;">cite-every-line.feature</code></p>
-      <div class="feature-file">
-        <div class="ff-head">
-          <span><b>features/cite-every-line.feature</b> · runs on every PR via cucumber-js + Playwright</span>
-          <span>4 scenarios · 3 signed off</span>
+    <div class="roster">
+      <div class="agent">
+        <div class="head">
+          <span class="name">intake</span>
+          <span class="model sonnet">sonnet 5.5</span>
         </div>
-        <div class="ff-body">
-<span class="ff-line"><span class="tag">@AIP-142 @founder-flagged @trust</span></span>
-<span class="ff-line"><span class="kw">Feature:</span> Cite every generated line back to a source</span>
-<span class="ff-line indent"><span class="cmt"># As a reviewer at the firm, I want every generated line to be traceable</span></span>
-<span class="ff-line indent"><span class="cmt"># to a real source, so that nothing leaves my desk that I cannot defend.</span></span>
-<span class="ff-line"> </span>
-<span class="ff-line indent"><span class="kw">Background:</span></span>
-<span class="ff-line indent-2"><span class="gv">Given</span> a proposal has been generated for client <span class="quote">"Acme Ltd"</span></span>
-<span class="ff-line indent-2"><span class="gv">And</span> the source library contains the firm's reference paragraphs</span>
-
-          <div class="scenario-block acc">
-            <div class="scenario-head">
-              <span class="box">✓</span>
-              <div class="title"><span class="req-key">REQ-1</span>Every generated sentence cites at least one source paragraph</div>
-              <span class="state">Accepted</span>
-            </div>
-<span class="ff-line"><span class="tag">@req-1 @must</span></span>
-<span class="ff-line indent"><span class="kw">Scenario:</span> Every generated sentence carries a source_id</span>
-<span class="ff-line indent-2"><span class="gv">Given</span> the generated proposal contains <span class="quote">N</span> sentences</span>
-<span class="ff-line indent-2"><span class="gv">When</span> I open the proposal in the reviewer</span>
-<span class="ff-line indent-2"><span class="gv">Then</span> every sentence has at least one <span class="quote">source_id</span> attached</span>
-<span class="ff-line indent-2"><span class="gv">And</span> each <span class="quote">source_id</span> resolves to a real paragraph in the library</span>
-<span class="ff-line indent-2"><span class="gv">And</span> hovering the sentence reveals the citation card</span>
-          </div>
-
-          <div class="scenario-block acc">
-            <div class="scenario-head">
-              <span class="box">✓</span>
-              <div class="title"><span class="req-key">REQ-2</span>Low-confidence sentences are quarantined, not hidden</div>
-              <span class="state">Accepted</span>
-            </div>
-<span class="ff-line"><span class="tag">@req-2 @quarantine</span></span>
-<span class="ff-line indent"><span class="kw">Scenario Outline:</span> Quarantine below the confidence threshold</span>
-<span class="ff-line indent-2"><span class="gv">Given</span> the model would emit a sentence with confidence <span class="quote">&lt;score&gt;</span></span>
-<span class="ff-line indent-2"><span class="gv">When</span> the citation-linker runs</span>
-<span class="ff-line indent-2"><span class="gv">Then</span> the sentence appears in the <span class="quote">"for review"</span> tray</span>
-<span class="ff-line indent-2"><span class="gv">And</span> the tray shows a reason: <span class="quote">&lt;reason&gt;</span></span>
-<span class="ff-line indent-2"><span class="gv">And</span> the sentence does NOT appear in the client-facing draft</span>
-<span class="ff-line indent-2"><span class="kw">Examples:</span></span>
-<span class="ff-line indent-2">  | score | reason              |</span>
-<span class="ff-line indent-2">  | 0.55  | low-confidence      |</span>
-<span class="ff-line indent-2">  | 0.00  | no-source           |</span>
-<span class="ff-line indent-2">  | 0.72  | disallowed-claim    |</span>
-          </div>
-
-          <div class="scenario-block acc">
-            <div class="scenario-head">
-              <span class="box">✓</span>
-              <div class="title"><span class="req-key">REQ-3</span>Reviewer can accept, reject or rewrite in one click</div>
-              <span class="state">Accepted</span>
-            </div>
-<span class="ff-line"><span class="tag">@req-3 @reviewer-loop</span></span>
-<span class="ff-line indent"><span class="kw">Scenario:</span> A reviewer decision is logged and feeds the next generation</span>
-<span class="ff-line indent-2"><span class="gv">Given</span> a quarantined sentence in the tray</span>
-<span class="ff-line indent-2"><span class="gv">When</span> the reviewer clicks <span class="quote">"accept"</span>, <span class="quote">"reject"</span> or <span class="quote">"rewrite"</span></span>
-<span class="ff-line indent-2"><span class="gv">Then</span> the decision is written to the audit log with actor + timestamp</span>
-<span class="ff-line indent-2"><span class="gv">And</span> a rewrite is added to the few-shot pool for the next generation</span>
-<span class="ff-line indent-2"><span class="gv">But</span> if the kill-switch <span class="quote">CITATION_REWRITE_FEEDBACK=0</span> is set</span>
-<span class="ff-line indent-2"><span class="gv">Then</span> the rewrite is logged only, not fed forward</span>
-          </div>
-
-          <div class="scenario-block pend">
-            <div class="scenario-head">
-              <span class="box"></span>
-              <div class="title"><span class="req-key">REQ-4</span>Nothing leaves the firm without a citation-count &gt; 0</div>
-              <span class="state">Pending</span>
-            </div>
-<span class="ff-line"><span class="tag">@req-4 @send-gate @wip</span></span>
-<span class="ff-line indent"><span class="kw">Scenario:</span> Send is hard-blocked at citation-count = 0</span>
-<span class="ff-line indent-2"><span class="gv">Given</span> a proposal about to be sent to a client</span>
-<span class="ff-line indent-2"><span class="gv">When</span> any sentence in the proposal has zero citations</span>
-<span class="ff-line indent-2"><span class="gv">Then</span> the Send button is disabled</span>
-<span class="ff-line indent-2"><span class="gv">And</span> a human-readable reason is shown alongside the offending sentence</span>
-          </div>
-        </div>
+        <div class="job">Captures your idea into a working note.</div>
+        <p class="about">Transcribes voice, OCRs images, pulls out what/why and open questions.
+          Never writes a ticket alone.</p>
+        <div class="tools"><b>tools:</b> transcribe · read · web-fetch · write-scratch</div>
       </div>
-
-      <p class="section-h">Sign-off thread</p>
-      <div class="thread">
-        <div class="msg">
-          <div class="av">IV</div>
-          <div>
-            <p class="who">Ivi Malotana <span class="tag">author</span></p>
-            <p class="when">Mon 14:02</p>
-            <p class="body">Draft scenarios up. Flagged REQ-3 for you. Do you want reviewer rewrites to feed the next generation as few-shot, or start with a plain audit log and revisit? Both work; the first compounds faster.</p>
-          </div>
+      <div class="agent">
+        <div class="head">
+          <span class="name">ticket-writer</span>
+          <span class="model opus">opus 4.7</span>
         </div>
-        <div class="msg reject">
-          <div class="av client">JT</div>
-          <div>
-            <p class="who">John T. · Founder <span class="tag bug">changes</span></p>
-            <p class="when">Mon 15:41</p>
-            <p class="body">REQ-1 needs to be per-sentence, not per-paragraph. The model gets away with a lot when the audit unit is a paragraph. Also, quarantine. Don't hide. If the model wants to say something we can't source, I want to see what it wanted to say.</p>
-          </div>
-        </div>
-        <div class="msg">
-          <div class="av">IV</div>
-          <div>
-            <p class="who">Ivi Malotana</p>
-            <p class="when">Mon 16:12</p>
-            <p class="body">Both landed. REQ-1 is now per-sentence. REQ-2 quarantines to a "for review" tray with the reason (low confidence, no source, disallowed claim). REQ-3 goes with option A: rewrites feed as few-shot, with a kill switch if it drifts. REQ-4 is new, at your request: a hard send-block on citation-count = 0.</p>
-          </div>
-        </div>
-        <div class="msg accept">
-          <div class="av client">JT</div>
-          <div>
-            <p class="who">John T. · Founder <span class="tag story">signed off</span></p>
-            <p class="when">Tue 09:18</p>
-            <p class="body">Signed off. Ship it. Update me when the "for review" tray is testable. I want to try to break it.</p>
-          </div>
-        </div>
-        <div class="msg">
-          <div class="av bot">◆</div>
-          <div>
-            <p class="who">Automation <span class="badge-model sonnet">sonnet 5.5</span></p>
-            <p class="when">Tue 09:18 · triggered by <code>status: signed-off</code></p>
-            <p class="body">Branch <code>feat/AIP-142-cite-every-line</code> created. Draft PR #418 opened. Slice scaffolded: schema migration, citation-linker service, quarantine tray UI shell. Handing to <b>builder</b>.</p>
-          </div>
-        </div>
+        <div class="job">Drafts the Jira story, points it, assigns it.</div>
+        <p class="about">Writes summary + description + Given/When/Then acceptance criteria. Leaves
+          the status in Refinement so you validate before anything starts.</p>
+        <div class="tools"><b>tools:</b> jira-write · jira-read · read-scratch</div>
       </div>
-    </article>
-
-    <aside class="sidepane">
-      <div class="kv">
-        <div class="k">Type</div><div class="v">Story</div>
-        <div class="k">Priority</div><div class="v">P1 · Founder-flagged</div>
-        <div class="k">Sprint</div><div class="v">Sprint 12 · Day 3 of 10</div>
-        <div class="k">Reporter</div><div class="v">John T.</div>
-        <div class="k">Assignee</div><div class="v">Ivi Malotana</div>
-        <div class="k">Branch</div><div class="v" style="font-family:var(--mono);font-size:12px;">feat/AIP-142-<br>cite-every-line</div>
-        <div class="k">PR</div><div class="v">#418 · Draft</div>
-        <div class="k">Linked</div><div class="v">Blocks AIP-155 · Blocks AIP-160</div>
-      </div>
-
-      <div class="attached-agent">
-        <h4>Agents on this ticket</h4>
-        <div class="mini-agent">
-          <span class="name">planner</span>
-          <span class="badge-model opus">opus 4.7</span>
-          <span class="role">wrote plan</span>
+      <div class="agent">
+        <div class="head">
+          <span class="name">spec-writer</span>
+          <span class="model opus">opus 4.7</span>
         </div>
-        <div class="mini-agent">
+        <div class="job">Turns the ticket into a <code style="font-family:var(--mono);font-size:11px;background:var(--paper);padding:1px 5px;">.feature</code> file (Cucumber BDD).</div>
+        <p class="about">One Scenario per REQ, tagged. This file is the contract you sign, and it
+          is what runs on every PR. Spec and test are the same document.</p>
+        <div class="tools"><b>tools:</b> repo-write · jira-read · jira-comment</div>
+      </div>
+      <div class="agent">
+        <div class="head">
+          <span class="name">test-planner</span>
+          <span class="model opus">opus 4.7</span>
+        </div>
+        <div class="job">Generates step definitions, Playwright, units.</div>
+        <p class="about">Reads the Gherkin, writes the test plan and the bindings. Fails loudly
+          if any REQ is un-testable.</p>
+        <div class="tools"><b>tools:</b> repo-write · repo-read · jira-comment</div>
+      </div>
+      <div class="agent">
+        <div class="head">
           <span class="name">builder</span>
-          <span class="badge-model sonnet">sonnet 5.5</span>
-          <span class="role">building</span>
+          <span class="model sonnet">sonnet 5.5</span>
         </div>
-        <div class="mini-agent">
-          <span class="name">test-author</span>
-          <span class="badge-model opus">opus 4.7</span>
-          <span class="role">queued</span>
-        </div>
-        <div class="mini-agent">
+        <div class="job">Writes the code. One commit per plan-step.</div>
+        <p class="about">Refuses to touch files that are not on the plan. Opens a draft PR linked
+          to the ticket.</p>
+        <div class="tools"><b>tools:</b> repo-write · shell · git · pr-open</div>
+      </div>
+      <div class="agent">
+        <div class="head">
           <span class="name">test-runner</span>
-          <span class="badge-model haiku">haiku 4.5</span>
-          <span class="role">queued</span>
+          <span class="model haiku">haiku 4.5</span>
         </div>
-        <div class="mini-agent">
+        <div class="job">Runs every suite. Posts pass/fail to the PR.</div>
+        <p class="about">On a real fail, tags the builder back in. Never re-runs a test to "make it
+          pass". Never disables one.</p>
+        <div class="tools"><b>tools:</b> shell · ci-read · jira-comment · pr-comment</div>
+      </div>
+      <div class="agent">
+        <div class="head">
           <span class="name">reviewer</span>
-          <span class="badge-model opus">opus 4.7</span>
-          <span class="role">queued</span>
+          <span class="model opus">opus 4.7</span>
         </div>
+        <div class="job">Adversarial audit. Blocks merge if it breaks.</div>
+        <p class="about">Different model to the builder. Asks "what would make this break in
+          staging?" and posts findings as PR comments.</p>
+        <div class="tools"><b>tools:</b> repo-read · pr-review · pr-comment</div>
       </div>
-
-      <div class="attached-agent">
-        <h4>Human gates</h4>
-        <div class="kv" style="grid-template-columns:1fr auto;">
-          <div>.feature sign-off</div><div style="color:var(--ok);font-size:11px;letter-spacing:.08em;">✓ TUE</div>
-          <div>Staging acceptance</div><div style="color:var(--faint);font-size:11px;letter-spacing:.08em;">· pending</div>
-          <div>Release verification</div><div style="color:var(--faint);font-size:11px;letter-spacing:.08em;">· pending</div>
+      <div class="agent">
+        <div class="head">
+          <span class="name">release-writer</span>
+          <span class="model sonnet">sonnet 5.5</span>
         </div>
+        <div class="job">Drafts the release note from the scenarios diff.</div>
+        <p class="about">Reads changes as behaviour (the Thens that changed), not code. Queues for
+          the Friday digest.</p>
+        <div class="tools"><b>tools:</b> repo-read · jira-read · digest-write</div>
       </div>
-
-      <div style="margin-top:24px;">
-        <a class="btn" href="#" onclick="go(4); return false;">See the agent tree →</a>
-      </div>
-    </aside>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<!--  STAGE 4 — AGENTS                                                   -->
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<section class="stage" data-stage="4">
-  <p class="eyebrow">05 · Agents · Claude Code</p>
-  <h1 class="headline">The expensive model plans. The mid-tier builds. The cheap one runs the loop.</h1>
-
-  <div class="agents-intro">
-    <div>
-      <p>Every ticket gets a small tree of agents. Each is a Claude Code subagent with a scoped
-        tool set. The routing is deliberate: the model on each rung matches that rung's job. You
-        never spend Opus tokens where Haiku would answer, and you never get a Haiku answer where
-        the stakes need Opus.</p>
-      <ul>
-        <li><b>Opus 4.7.</b> Plans the work, writes tests, runs the adversarial review. Slow and expensive on purpose.</li>
-        <li><b>Sonnet 5.5.</b> Builds the slice, writes the release note, handles the mid-loop code changes.</li>
-        <li><b>Haiku 4.5.</b> Runs the test battery, watches CI, applies the small fixes it can be certain of.</li>
-      </ul>
-      <p style="margin-top:20px;">Every agent posts back to Jira. Every decision lands as a comment
-        on the ticket, so you can read the whole trail without opening a terminal.</p>
-    </div>
-    <div class="legend">
-      <h4>Model routing</h4>
-      <div class="row"><span class="badge-model opus">opus 4.7</span><span class="desc">Planning · tests · review</span></div>
-      <div class="row"><span class="badge-model sonnet">sonnet 5.5</span><span class="desc">Build · release notes</span></div>
-      <div class="row"><span class="badge-model haiku">haiku 4.5</span><span class="desc">Run · watch · patch</span></div>
-      <div class="row" style="margin-top:14px;color:var(--muted);font-size:12px;">Model ids are fixed in the subagent front-matter. The cheap one cannot silently escalate itself.</div>
-    </div>
-  </div>
-
-  <div class="agent-tree">
-    <div class="tier-lbl">Trigger · status: signed-off</div>
-    <div class="tier solo">
-      <div class="agent-node">
-        <div class="head"><span class="name">orchestrator</span><span class="badge-model opus">opus 4.7</span></div>
-        <div class="role">reads the ticket · writes the .feature</div>
-        <div class="out">Output: <b>a Gherkin <code style="font-family:var(--mono);font-size:11px;background:var(--card);padding:0 4px;">.feature</code> file.</b> One Scenario per requirement, tagged @req-N, plus a numbered plan of files the builder is allowed to touch.</div>
-      </div>
-    </div>
-    <div class="arrow-row">↓</div>
-
-    <div class="tier-lbl">Feeds → builders + test author, in parallel</div>
-    <div class="tier two">
-      <div class="agent-node">
-        <div class="head"><span class="name">builder</span><span class="badge-model sonnet">sonnet 5.5</span></div>
-        <div class="role">writes the code</div>
-        <div class="out">Output: a draft PR, one commit per plan-step. Refuses to touch files not on the plan.</div>
-      </div>
-      <div class="agent-node">
-        <div class="head"><span class="name">test-author</span><span class="badge-model opus">opus 4.7</span></div>
-        <div class="role">binds Gherkin to code</div>
-        <div class="out">Output: cucumber-js step definitions (one per Given/When/Then), Playwright page-objects, and unit tests for the small invariants. Fails loudly if a scenario is un-bindable.</div>
-      </div>
-    </div>
-    <div class="arrow-row">↓</div>
-
-    <div class="tier-lbl">Feeds → runner + patcher, tight loop</div>
-    <div class="tier three">
-      <div class="agent-node">
-        <div class="head"><span class="name">test-runner</span><span class="badge-model haiku">haiku 4.5</span></div>
-        <div class="role">runs everything</div>
-        <div class="out">Runs Playwright, unit, regression. Posts a table of pass/fail to the PR.</div>
-      </div>
-      <div class="agent-node">
-        <div class="head"><span class="name">patcher</span><span class="badge-model haiku">haiku 4.5</span></div>
-        <div class="role">fixes the trivial</div>
-        <div class="out">Applies deterministic fixes (import order, unused, formatting). Escalates anything else to builder.</div>
-      </div>
-      <div class="agent-node">
-        <div class="head"><span class="name">watcher</span><span class="badge-model haiku">haiku 4.5</span></div>
-        <div class="role">tails CI</div>
-        <div class="out">Watches the CI run for the PR. On a flake, re-runs once; on a real fail, calls builder back.</div>
-      </div>
-    </div>
-    <div class="arrow-row">↓</div>
-
-    <div class="tier-lbl">Feeds → reviewer, gates the merge</div>
-    <div class="tier solo">
-      <div class="agent-node">
-        <div class="head"><span class="name">reviewer</span><span class="badge-model opus">opus 4.7</span></div>
-        <div class="role">adversarial audit</div>
-        <div class="out">Reads the diff against the plan and the requirements. Asks "what would break this in staging?" and posts a numbered list of findings. Blocks merge on anything with a failure_scenario.</div>
-      </div>
-    </div>
-    <div class="arrow-row">↓</div>
-
-    <div class="tier-lbl">Merge → release-writer, produces the note</div>
-    <div class="tier solo">
-      <div class="agent-node">
-        <div class="head"><span class="name">release-writer</span><span class="badge-model sonnet">sonnet 5.5</span></div>
-        <div class="role">writes the release note</div>
-        <div class="out">Assembles the release note from the ticket's <b>Gherkin scenarios diff</b>, not the commit messages. The note reads as behaviour changes (the Thens that changed), not code changes.</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="cta-row" style="margin-top:32px;">
-    <a class="btn" href="#" onclick="go(5); return false;">See the branch the builder wrote →</a>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<!--  STAGE 5 — DEV                                                      -->
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<section class="stage" data-stage="5">
-  <p class="eyebrow">06 · Dev environment</p>
-  <h1 class="headline">The dev branch is a diff you can read.</h1>
-  <p class="subhead">Every commit is one plan-step. Every plan-step traces back to a REQ. If a diff
-    touches something not on the plan, the reviewer catches it. The reviewer runs a different model
-    to the builder, so they don't share blind spots.</p>
-
-  <div class="dev-grid">
-    <div class="panel">
-      <div class="p-head">
-        <span class="p-title">Branch · feat/AIP-142-cite-every-line</span>
-        <span>ahead of main by 4 commits</span>
-      </div>
-      <div class="p-body">
-        <div class="branch-row">
-          <span class="branch-tag">main</span>
-          <span style="color:var(--muted);font-size:12px;">→</span>
-          <span class="branch-tag">feat/AIP-142-cite-every-line</span>
-        </div>
-        <ul class="commit-list">
-          <li>
-            <span class="sha">a1b2c3d</span>
-            <span>feat(citation): schema + citation-linker service · REQ-1</span>
-            <span class="who">builder</span>
-          </li>
-          <li>
-            <span class="sha">e4f5g6h</span>
-            <span>feat(quarantine): "for review" tray + confidence gate · REQ-2</span>
-            <span class="who">builder</span>
-          </li>
-          <li>
-            <span class="sha">i7j8k9l</span>
-            <span>feat(reviewer): accept/reject/rewrite w/ decision log · REQ-3</span>
-            <span class="who">builder</span>
-          </li>
-          <li>
-            <span class="sha">m0n1o2p</span>
-            <span>chore: lint + import order</span>
-            <span class="who">patcher</span>
-          </li>
-        </ul>
-        <div class="rule"></div>
-        <div style="font-size:12px;color:var(--muted);">
-          Draft PR <b style="color:var(--ink);">#418 · Cite every generated line</b>. Auto-updated by the builder on each push.
-        </div>
-      </div>
-    </div>
-
-    <div class="panel">
-      <div class="p-head">
-        <span class="p-title">Diff · citation-linker.ts</span>
-        <span>REQ-1</span>
-      </div>
-      <div class="p-body" style="padding:0;">
-<pre class="diff"><span class="hunk">@@ src/ai/citation-linker.ts</span>
-<span class="del">- export function tagParagraph(p: string, sources: Src[]): Tagged {
--   return { text: p, source: sources[0]?.id ?? null };
-- }</span>
-<span class="add">+ /** Every sentence must resolve to at least one source_id.
-+  *  Below 0.6 confidence, the sentence is quarantined (see linker.quarantine). */
-+ export function tagSentences(p: string, sources: Src[]): Tagged[] {
-+   return splitSentences(p).map((s) =&gt; {
-+     const match = bestMatch(s, sources);
-+     return match.score &gt;= 0.6
-+       ? { text: s, source_id: match.id, score: match.score }
-+       : { text: s, source_id: null, score: match.score, quarantined: true };
-+   });
-+ }</span>
-<span class="cx">  export function bestMatch(s: string, sources: Src[]) {</span>
-<span class="cx">    // …</span>
-</pre>
-      </div>
-    </div>
-  </div>
-
-  <div class="cta-row" style="margin-top:32px;">
-    <a class="btn" href="#" onclick="go(6); return false;">Run the tests →</a>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<!--  STAGE 6 — TESTS                                                    -->
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<section class="stage" data-stage="6">
-  <p class="eyebrow">07 · Testing</p>
-  <h1 class="headline">Three suites. One gate. Nothing leaves this stage red.</h1>
-  <p class="subhead">Playwright drives the flows your customers touch. Unit tests hold the small
-    invariants. Regression re-runs last quarter's bugs so we can prove they stayed dead. Every
-    test is keyed to a REQ, so a red test names the requirement that failed.</p>
-
-  <div class="test-grid">
-    <div class="test-card">
-      <p class="kind">End-to-end · Cucumber + Playwright</p>
-      <h3>.feature files</h3>
-      <p class="count"><b>14/14</b> <small>scenarios passing</small></p>
-      <div class="bar"><div class="fill" style="width:100%;"></div></div>
-      <ul class="list">
-        <li class="pass">@req-1 Every sentence carries a source_id</li>
-        <li class="pass">@req-2 Quarantine at score &lt; 0.6 (3 examples)</li>
-        <li class="pass">@req-3 Reviewer decision → audit log + few-shot</li>
-        <li class="pass">@req-3 Kill-switch drops the few-shot feed</li>
-        <li class="pass">@req-4 Send blocked at citation-count = 0</li>
-        <li style="color:var(--faint);font-size:11.5px;">Step defs in steps/*.ts. One per Given/When/Then. A red step names the scenario, its tag and its REQ.</li>
-      </ul>
-    </div>
-
-    <div class="test-card">
-      <p class="kind">Unit</p>
-      <h3>Vitest</h3>
-      <p class="count"><b>146/146</b> <small>passing</small></p>
-      <div class="bar"><div class="fill" style="width:100%;"></div></div>
-      <ul class="list">
-        <li class="pass">splitSentences: handles ellipses, quotes, abbreviations</li>
-        <li class="pass">bestMatch: score in [0,1], monotonic w/ token overlap</li>
-        <li class="pass">tagSentences: quarantines below 0.6 threshold</li>
-        <li class="pass">quarantine tray: reason field is human-readable</li>
-        <li class="pass">decision log: actor + ts required, rejects null</li>
-        <li style="color:var(--faint);font-size:11.5px;">+ 141 baseline units unchanged</li>
-      </ul>
-    </div>
-
-    <div class="test-card">
-      <p class="kind">Regression</p>
-      <h3>Ghosts of bugs past</h3>
-      <p class="count"><b>52/52</b> <small>passing</small></p>
-      <div class="bar"><div class="fill" style="width:100%;"></div></div>
-      <ul class="list">
-        <li class="pass">AIP-91 · citation panel does not leak PII</li>
-        <li class="pass">AIP-77 · rewrite does not overwrite prior source</li>
-        <li class="pass">AIP-64 · quarantine tray survives page refresh</li>
-        <li class="pass">AIP-33 · send button re-enables after quarantine clears</li>
-        <li style="color:var(--faint);font-size:11.5px;">+ 48 more from the last two quarters</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="regression">
-    <h3>What runs when</h3>
-    <p>Test cadence is auditable. Read it. Change it.</p>
-    <table>
-      <thead>
-        <tr>
-          <th>Trigger</th>
-          <th>Suite</th>
-          <th>Where</th>
-          <th>Blocks merge?</th>
-          <th>Owner</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td><span class="dot g"></span>Every push to feature branch</td><td>Unit</td><td>CI · Vercel Preview</td><td>Yes</td><td>runner (haiku)</td></tr>
-        <tr><td><span class="dot g"></span>Draft PR opens</td><td>Unit + Playwright (touched paths)</td><td>CI · Vercel Preview</td><td>Yes</td><td>runner (haiku)</td></tr>
-        <tr><td><span class="dot g"></span>PR marked ready</td><td>Full Playwright + Regression</td><td>CI · Vercel Preview</td><td>Yes</td><td>runner (haiku)</td></tr>
-        <tr><td><span class="dot g"></span>Nightly on main</td><td>Full battery + eval harness</td><td>CI · scheduled</td><td>Alerts on red</td><td>runner (haiku)</td></tr>
-        <tr><td><span class="dot y"></span>Manual on staging</td><td>Client acceptance run</td><td>Staging URL</td><td>N/A · human gate</td><td>You</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="cta-row" style="margin-top:32px;">
-    <a class="btn" href="#" onclick="go(7); return false;">See the release note →</a>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<!--  STAGE 7 — RELEASE NOTES                                            -->
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<section class="stage" data-stage="7">
-  <p class="eyebrow">08 · Release notes</p>
-  <h1 class="headline">The release note is the requirements, in past tense.</h1>
-  <p class="subhead">Written from the ticket's <i>Gherkin scenarios diff</i>, not the commit
-    messages. "What did the software start doing" is a different question to "what code
-    changed". A behaviour change deserves a plain-English line. A fix deserves the ticket it
-    closes.</p>
-
-  <div class="release">
-    <div class="stamp">
-      <span>Release <b style="color:var(--ink);">v0.42.0</b></span>
-      <span>Shipped Wed 09:14 SAST</span>
-      <span>PR #418 → main</span>
-    </div>
-    <h2>Cite every generated line back to a source.</h2>
-    <div class="tag-row">
-      <span class="tag story">Story</span>
-      <span class="tag">Founder-flagged</span>
-      <span class="tag">Trust</span>
-    </div>
-
-    <div class="rel-block">
-      <h4>What changed for your users</h4>
-      <div class="qbox">
-        The generated proposal now shows a citation on hover for every sentence. If the model
-        can't source a sentence with high enough confidence, it does not hide it from you. It
-        moves it to a <b>"for review" tray</b> with the reason (no source, low confidence,
-        disallowed claim). You accept, reject or rewrite in one click. A proposal with an
-        uncited sentence cannot leave the firm.
-      </div>
-    </div>
-
-    <div class="rel-block">
-      <h4>Scenarios delivered · from <code style="font-family:var(--mono);font-size:11px;background:var(--card);padding:1px 5px;">cite-every-line.feature</code></h4>
-      <ul>
-        <li>@req-1 · Every generated sentence carries at least one source paragraph. <span class="ref">REQ-1 · AIP-142</span></li>
-        <li>@req-2 · Un-sourced sentences are quarantined, not silently dropped (3 examples: low-confidence, no-source, disallowed-claim). <span class="ref">REQ-2 · AIP-142</span></li>
-        <li>@req-3 · Reviewers can accept, reject or rewrite in one click; every decision is logged with actor + timestamp; rewrites feed the next generation; kill-switch respected. <span class="ref">REQ-3 · AIP-142</span></li>
-        <li>@req-4 · Send is hard-blocked when citation-count is zero. <span class="ref">REQ-4 · AIP-142</span></li>
-      </ul>
-    </div>
-
-    <div class="rel-block">
-      <h4>Migration notes</h4>
-      <ul>
-        <li>Non-breaking. A migration script backfills existing proposals with sentence-level citations from their prior paragraph-level ones (score = 0.6 minimum, otherwise quarantined).</li>
-        <li>The rewrite → few-shot loop is behind a kill switch. Flip <code style="font-family:var(--mono);font-size:12px;background:var(--card);padding:1px 5px;">CITATION_REWRITE_FEEDBACK=0</code> to disable it if it drifts.</li>
-      </ul>
-    </div>
-
-    <div class="rel-block">
-      <h4>Also in this release</h4>
-      <ul>
-        <li>Quarantine tray survives a page refresh (regression fix). <span class="ref">AIP-64</span></li>
-        <li>Send button re-enables after the quarantine tray is cleared. <span class="ref">AIP-33</span></li>
-        <li>Import order + formatting cleanups. <span class="ref">patcher</span></li>
-      </ul>
-    </div>
-
-    <div class="rel-block">
-      <h4>Human trail</h4>
-      <ul>
-        <li>Scenarios signed off Tue 09:18 by John T. One round of back-and-forth (per-sentence vs paragraph audit unit).</li>
-        <li>Adversarial review by <span class="badge-model opus">opus 4.7</span> found 3 issues; all fixed in commits <code style="font-family:var(--mono);font-size:11px;">e4f5g6h</code>–<code style="font-family:var(--mono);font-size:11px;">i7j8k9l</code>.</li>
-        <li>Staging acceptance run passed at 08:52. Verified against REQs 1–4.</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="cta-row" style="margin-top:32px;">
-    <a class="btn" href="#" onclick="go(8); return false;">See the weekly cadence →</a>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<!--  STAGE 8 — CADENCE & CLOSE                                          -->
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<section class="stage" data-stage="8">
-  <p class="eyebrow">09 · Weekly cadence</p>
-  <h1 class="headline">One page a week. In your inbox by Friday 10am.</h1>
-  <p class="subhead">The delivery cadence I run on every long-term engagement. A written status
-    every Friday. Shipped, next, blocked, plus a running decision log so you can trust me to make
-    trade-offs without micromanaging.</p>
-
-  <div class="weekly">
-    <div>
-      <h3>What you'll get from me every week</h3>
-      <ul>
-        <li><b style="color:var(--ink);font-weight:500;">Shipped.</b> Tickets closed, with a one-line release note each.</li>
-        <li><b style="color:var(--ink);font-weight:500;">Next.</b> What I'm picking up on Monday and why it's next.</li>
-        <li><b style="color:var(--ink);font-weight:500;">Blocked.</b> Anything I need from you, framed as a yes/no.</li>
-        <li><b style="color:var(--ink);font-weight:500;">Decisions.</b> Trade-offs I made this week, so nothing is a surprise later.</li>
-        <li><b style="color:var(--ink);font-weight:500;">Numbers.</b> One graph of the metric you care about.</li>
-      </ul>
-      <p style="margin-top:20px;">If a week is quiet, the status is short. If a week is loud, it is
-        one page still, never five. Reading it is not homework.</p>
-    </div>
-
-    <div class="status-card">
-      <h5>Status · Week 3 · Fri 10:00 SAST</h5>
-      <p><b>Shipped.</b> v0.42.0. Every generated line now carries a source-document citation. Founder-flagged; landed Wed with the "for review" tray you asked to try to break. It survived.</p>
-      <p><b>Next.</b> AIP-155 (batch export of proposals with citation trails). Blocked by nothing.</p>
-      <p><b>Blocked.</b> Need your sign-off on the wording of the citation-count = 0 send-block. Two drafts attached.</p>
-      <p><b>Decision.</b> Chose <code style="font-family:var(--mono);font-size:11px;background:var(--card);padding:1px 5px;">0.6</code> for the quarantine threshold. Walked the eval set from 0.4 to 0.8; 0.6 caught 94% of last month's hallucinations without flagging the safe cases.</p>
-      <p style="margin:0;color:var(--muted);"><b style="color:var(--ink);font-weight:500;">Numbers.</b> 4 tickets shipped · 0 regressions · 3 scenarios pending sign-off · 46 test-runs green in a row.</p>
-    </div>
-  </div>
-
-  <div class="close-band">
-    <p class="eyebrow">A working demo. Not a slide.</p>
-    <h2>This is the machine you'd be hiring. It's already running.</h2>
-    <p>Week one, I point it at your first stream. A written scope you sign off. A slice shipping
-      to staging by the end of week two. One of these status notes on Friday. From there we
-      iterate on the parts you want tuned.</p>
-    <div class="cta-row">
-      <a class="btn" href="mailto:iivii.malotana@gmail.com?subject=AI%20project%20scope%20week%201">Email me. Let's scope week one.</a>
-      <a class="btn ghost" href="#" onclick="go(0); return false;">Back to the overview</a>
     </div>
   </div>
 </section>
 
-<footer>
+<!-- ─── Close ──────────────────────────────────── -->
+<section class="close-band">
+  <div class="wrap">
+    <p class="eyebrow">If this is your kind of operator</p>
+    <h2>Week one, I point this at your first stream. A slice ships to staging by end of week two.</h2>
+    <p>From there we iterate on the parts you want tuned. Every agent is yours to keep; the
+      subagent files live in your repo, so the machine keeps running whether I'm at my desk or not.</p>
+    <a class="btn" href="mailto:iivii.malotana@gmail.com?subject=AI%20project%20week%201">Email me. Let's scope week one.</a>
+    <a class="btn ghost" href="./">See my portfolio</a>
+  </div>
+</section>
+
+<footer class="wrap">
   <div>© Ivi Malotana · Cape Town</div>
-  <div>ecosystem.html · a working prototype · not a slide deck</div>
+  <div>ecosystem.html · one file, no build step</div>
 </footer>
-
-</div>
-
-<script>
-  // ─── Stage router ─────────────────────────────────────────────────
-  function go(i) {
-    document.querySelectorAll('.stage').forEach((s, k) => s.classList.toggle('active', +s.dataset.stage === i));
-    document.querySelectorAll('.nav button').forEach(b => b.classList.toggle('active', +b.dataset.stage === i));
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-  document.getElementById('nav').addEventListener('click', (e) => {
-    const b = e.target.closest('button[data-stage]');
-    if (b) go(+b.dataset.stage);
-  });
-
-  // ─── Board content ────────────────────────────────────────────────
-  const TICKETS = {
-    'Backlog': [
-      { key: 'AIP-160', title: 'Batch export of proposals with citation trails', kind: 'story', who: 'IV', pts: 3 },
-      { key: 'AIP-158', title: 'Reviewer rewrite: undo within 10s', kind: 'task', who: 'IV', pts: 1 },
-      { key: 'AIP-155', title: 'Client-facing changelog page', kind: 'story', who: 'IV', pts: 2 },
-      { key: 'AIP-147', title: 'Rate-limit the "for review" tray to 200 rows', kind: 'task', who: 'IV', pts: 1 }
-    ],
-    'Refinement': [
-      { key: 'AIP-153', title: 'Search inside a source document from the citation panel', kind: 'story', who: 'IV', pts: 3 },
-      { key: 'AIP-149', title: 'Bug: Firefox draggable order in the tray', kind: 'bug', who: 'IV', pts: 2 }
-    ],
-    'In Dev': [
-      { key: 'AIP-142', title: 'Cite every generated line back to a source document', kind: 'story', who: '◆', pts: 5, hot: true },
-      { key: 'AIP-141', title: 'Add author + timestamp to the decision log', kind: 'task', who: '◆', pts: 2 }
-    ],
-    'In Review': [
-      { key: 'AIP-138', title: 'Quarantine tray: keyboard-only navigation', kind: 'story', who: '◆', pts: 3 }
-    ],
-    'Testing': [
-      { key: 'AIP-134', title: 'Confidence gate configurable per client', kind: 'task', who: '◆', pts: 3 },
-      { key: 'AIP-129', title: 'Bug: proposal export drops the citation column', kind: 'bug', who: 'IV', pts: 1 }
-    ],
-    'Done': [
-      { key: 'AIP-127', title: 'Citation hover-card design pass', kind: 'story', who: 'IV', pts: 2 },
-      { key: 'AIP-122', title: 'Bump model routing for planner → Opus 4.7', kind: 'task', who: 'IV', pts: 1 },
-      { key: 'AIP-118', title: 'Kill-switch env for the rewrite feedback loop', kind: 'task', who: 'IV', pts: 1 }
-    ]
-  };
-
-  // Render the board. Only the "hot" ticket (AIP-142) opens the fleshed-out
-  // detail view. Every other ticket flashes a small note explaining the demo
-  // uses AIP-142 as the walkable example.
-  const board = document.getElementById('board');
-  Object.entries(TICKETS).forEach(([col, tickets]) => {
-    const c = document.createElement('div');
-    c.className = 'col';
-    c.innerHTML = `<div class="col-head"><span>${col}</span><span class="count">${tickets.length}</span></div>`;
-    const body = document.createElement('div');
-    body.className = 'col-body';
-    tickets.forEach(t => {
-      const tk = document.createElement('div');
-      tk.className = 'tk' + (t.hot ? ' selected walkable' : '');
-      tk.dataset.kind = t.kind;
-      tk.dataset.who = t.who === '◆' ? 'bot' : t.who.toLowerCase();
-      tk.innerHTML = `
-        <div class="tk-key">${t.key}${t.hot ? ' · <span style="color:var(--ok);font-weight:500;">walk this one</span>' : ''}</div>
-        <div class="tk-title">${t.title}</div>
-        <div class="tk-meta">
-          <span class="tag ${t.kind}">${t.kind}</span>
-          <span style="font-family:var(--mono);font-size:10px;color:var(--faint);">${t.pts} pt</span>
-          <span class="assign${t.who === '◆' ? ' bot' : ''}">${t.who}</span>
-        </div>`;
-      tk.addEventListener('click', () => {
-        if (t.hot) { go(3); return; }
-        flash(`AIP-142 is the walkable one in this demo. The rest are on the board so you can see the shape of a real sprint.`);
-      });
-      body.appendChild(tk);
-    });
-    c.appendChild(body);
-    board.appendChild(c);
-  });
-
-  // Small toast for informational nudges.
-  function flash(msg) {
-    let t = document.getElementById('flash');
-    if (!t) {
-      t = document.createElement('div');
-      t.id = 'flash';
-      t.style.cssText = 'position:fixed;left:50%;bottom:32px;transform:translateX(-50%);background:#2D2929;color:#fff;padding:14px 22px;font-size:13px;letter-spacing:.02em;z-index:100;max-width:520px;line-height:1.5;box-shadow:0 6px 20px rgba(0,0,0,.15);opacity:0;transition:opacity .2s;';
-      document.body.appendChild(t);
-    }
-    t.textContent = msg;
-    requestAnimationFrame(() => { t.style.opacity = '1'; });
-    clearTimeout(t._timer);
-    t._timer = setTimeout(() => { t.style.opacity = '0'; }, 3200);
-  }
-
-  // Filter chips: actually filter the board by kind and by owner ("mine" = IV).
-  document.querySelectorAll('.filters .chip').forEach(c => {
-    c.addEventListener('click', () => {
-      document.querySelectorAll('.filters .chip').forEach(x => x.classList.remove('active'));
-      c.classList.add('active');
-      const label = c.textContent.trim().toLowerCase();
-      const tks = document.querySelectorAll('.tk');
-      let shown = 0;
-      tks.forEach(tk => {
-        const kind = tk.dataset.kind;
-        const who = tk.dataset.who;
-        const show =
-          label === 'all' ? true :
-          label === 'mine' ? who === 'iv' :
-          kind === label;
-        tk.style.display = show ? '' : 'none';
-        if (show) shown++;
-      });
-      // Update per-column counts to match the filter.
-      document.querySelectorAll('#board .col').forEach(col => {
-        const visible = col.querySelectorAll('.tk:not([style*="display: none"])').length;
-        const cnt = col.querySelector('.count');
-        if (cnt) cnt.textContent = visible;
-      });
-    });
-  });
-
-  // Projects card → open board.
-  document.querySelectorAll('#projects .project').forEach(p => {
-    p.addEventListener('click', () => go(2));
-  });
-
-  // Ticket status pipe: click a stage to advance/rewind the ticket. Live-updates
-  // the sidepane too so you can see the state actually change.
-  const pipe = document.querySelector('.status-pipe');
-  if (pipe) {
-    const pips = [...pipe.querySelectorAll('.pip')];
-    pips.forEach((pip, i) => {
-      pip.style.cursor = 'pointer';
-      pip.title = 'Click to move the ticket to this stage';
-      pip.addEventListener('click', () => {
-        pips.forEach((p2, j) => {
-          p2.classList.remove('done', 'current');
-          if (j < i) p2.classList.add('done');
-          if (j === i) p2.classList.add('current');
-        });
-        flash(`Status → ${pip.textContent.trim()}. Automation would post a comment on the ticket now.`);
-      });
-    });
-  }
-
-  // Requirement checkboxes: click to toggle accepted / pending.
-  document.querySelectorAll('.scenario-block').forEach(block => {
-    const box = block.querySelector('.scenario-head .box');
-    const state = block.querySelector('.scenario-head .state');
-    if (!box || !state) return;
-    box.style.cursor = 'pointer';
-    box.title = 'Click to toggle sign-off';
-    box.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const accepted = block.classList.contains('acc');
-      block.classList.toggle('acc', !accepted);
-      block.classList.toggle('pend', accepted);
-      box.textContent = accepted ? '' : '✓';
-      state.textContent = accepted ? 'Pending' : 'Accepted';
-    });
-  });
-
-  // Keyboard: ← / → to move between stages.
-  document.addEventListener('keydown', (e) => {
-    if (e.target.matches('input, textarea')) return;
-    const active = +document.querySelector('.stage.active').dataset.stage;
-    if (e.key === 'ArrowRight' && active < 8) go(active + 1);
-    if (e.key === 'ArrowLeft' && active > 0) go(active - 1);
-  });
-</script>
 
 </body>
 </html>
