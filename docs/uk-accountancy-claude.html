@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ivi · AI for your firm</title>
+<meta name="description" content="AI lies. Here's how I stop it in a UK accountancy firm.">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  :root {
+    --paper:    #ffffff;
+    --panel:    #f5f5f5;
+    --border:   #e5e5e5;
+    --border-2: #cccccc;
+    --ink:      #000000;
+    --ink-2:    #2D2929;
+    --muted:    #555555;
+    --faint:    #999999;
+
+    --jira-blue:      #0052CC;
+    --jira-blue-soft: #DEEBFF;
+    --jira-bg:        #F4F5F7;
+    --jira-border:    #DFE1E6;
+    --jira-text:      #172B4D;
+    --jira-text-mid:  #5E6C84;
+
+    --ok:   #216E4E;
+    --ok-soft:  #E3FCEF;
+    --warn: #8F6E1F;
+    --warn-soft: #FFF7E0;
+    --err:  #A33A3A;
+    --err-soft: #FDECEC;
+
+    --body:    "Inter", "Helvetica Neue", Arial, sans-serif;
+    --display: "Space Grotesk", "Inter", "Helvetica Neue", Arial, sans-serif;
+    --mono:    "JetBrains Mono", ui-monospace, monospace;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--paper);
+    color: var(--ink-2);
+    font-family: var(--body);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+
+  header.top { border-bottom: 1px solid var(--border); padding: 16px 0; }
+  .top-inner { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .brand {
+    font-family: var(--display); font-weight: 500;
+    font-size: 15px; letter-spacing: -0.01em; color: var(--ink);
+  }
+  .brand em { font-style: normal; color: var(--muted); }
+  .top .right { margin-left: auto; font-size: 12px; color: var(--muted); }
+  .top .right a { color: var(--muted); text-decoration: none; }
+  .top .right a:hover { color: var(--ink); }
+
+  .hero { padding: 72px 0 28px; }
+  h1 {
+    font-family: var(--display); font-weight: 500;
+    font-size: clamp(36px, 5vw, 56px); letter-spacing: -0.02em;
+    margin: 0; line-height: 1.02; color: var(--ink);
+    max-width: 16ch; text-wrap: balance;
+  }
+  .lede {
+    font-size: 16px; color: var(--muted); max-width: 56ch; margin: 22px 0 0;
+  }
+  .lede b { color: var(--ink); font-weight: 500; }
+
+  section.band {
+    padding: 48px 0;
+    border-top: 1px solid var(--border);
+  }
+  .section-head { margin: 0 0 20px; }
+  h2 {
+    font-family: var(--display); font-weight: 500;
+    font-size: 26px; letter-spacing: -0.01em; margin: 0;
+    text-wrap: balance;
+  }
+  .section-sub {
+    font-size: 14.5px; color: var(--muted); margin: 8px 0 0; max-width: 60ch;
+  }
+
+  /* ── ROI table ─────────────────────────────── */
+  .roi-table {
+    width: 100%; border-collapse: collapse;
+    margin: 12px 0 0;
+    font-size: 13.5px;
+  }
+  .roi-table thead th {
+    text-align: left; padding: 10px 12px;
+    font-size: 10.5px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--muted); font-weight: 500;
+    border-bottom: 1px solid var(--ink);
+  }
+  .roi-table thead th.n { text-align: right; }
+  .roi-table tbody td {
+    padding: 12px; border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  .roi-table tbody td.n {
+    text-align: right; font-variant-numeric: tabular-nums; color: var(--ink);
+  }
+  .roi-table tbody td.rank {
+    font-family: var(--display); font-weight: 500; font-size: 14px;
+    color: var(--ink); width: 28px;
+  }
+  .roi-table .use { color: var(--ink); font-weight: 500; }
+  .pill {
+    display: inline-block; padding: 2px 8px;
+    font-size: 10.5px; letter-spacing: 0.04em; text-transform: uppercase;
+    font-weight: 500;
+  }
+  .pill.low { background: var(--ok-soft); color: var(--ok); }
+  .pill.med { background: var(--warn-soft); color: var(--warn); }
+  .pill.high { background: var(--err-soft); color: var(--err); }
+  .roi-total {
+    margin-top: 14px; font-size: 13px; color: var(--ink);
+    padding-top: 12px; border-top: 1px dashed var(--border-2);
+  }
+  .roi-total b { font-weight: 500; }
+
+  /* ── SKILL.md card ────────────────────────── */
+  .skill-card {
+    border: 1px solid var(--border); background: var(--paper);
+  }
+  .skill-head {
+    padding: 10px 14px; border-bottom: 1px solid var(--border);
+    background: var(--jira-bg);
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: var(--mono); font-size: 11.5px; color: var(--jira-text-mid);
+  }
+  .skill-head .file b { color: var(--jira-text); font-weight: 500; }
+  .skill-head .tag {
+    background: var(--jira-blue-soft); color: var(--jira-blue);
+    font-size: 10px; padding: 2px 6px; letter-spacing: 0.04em;
+  }
+  .skill-body {
+    padding: 16px 20px 20px;
+    font-family: var(--mono); font-size: 12.5px; line-height: 1.7;
+    color: var(--ink-2);
+    white-space: pre-wrap;
+    overflow-x: auto;
+  }
+  .skill-body .fm { color: var(--jira-text-mid); }
+  .skill-body .h1 { color: var(--ink); font-weight: 500; }
+  .skill-body .h2 { color: var(--ink); font-weight: 500; }
+  .skill-body .never { color: var(--err); }
+  .skill-body .always { color: var(--ok); }
+  .skill-body .code { color: var(--jira-blue); }
+
+  /* ── Gate diagram (fixed: minmax(0,1fr) equal columns) ── */
+  .gate {
+    display: grid;
+    grid-template-columns:
+      minmax(0, 1fr) 20px
+      minmax(0, 1fr) 20px
+      minmax(0, 1fr) 20px
+      minmax(0, 1fr) 20px
+      minmax(0, 1fr);
+    gap: 0; margin: 12px 0 0;
+  }
+  .gate-step {
+    padding: 14px 12px;
+    border: 1px solid var(--border);
+    background: var(--paper);
+    display: flex; flex-direction: column; gap: 6px;
+    min-width: 0;
+  }
+  .gate-step .k {
+    font-family: var(--mono); font-size: 10px;
+    padding: 3px 7px; align-self: flex-start;
+    letter-spacing: 0.04em; text-transform: lowercase;
+    background: var(--jira-blue-soft); color: var(--jira-blue);
+  }
+  .gate-step .k.gate-k { background: var(--ink); color: #fff; }
+  .gate-step .t {
+    font-family: var(--display); font-weight: 500;
+    font-size: 14px; color: var(--ink); line-height: 1.25;
+    margin: 2px 0 0;
+  }
+  .gate-step .d { font-size: 12px; color: var(--muted); margin: 2px 0 0; line-height: 1.5; }
+  .gate-arrow {
+    align-self: center; text-align: center;
+    color: var(--faint); font-size: 16px; line-height: 1;
+  }
+  .gate-note {
+    margin-top: 16px;
+    padding: 12px 14px;
+    background: var(--panel); border-left: 2px solid var(--ink);
+    font-size: 13.5px; color: var(--ink);
+  }
+  .gate-note b { font-weight: 500; }
+
+  /* ── Proof ─────────────────────────────────── */
+  .proof-list {
+    margin: 0; padding: 0; list-style: none;
+  }
+  .proof-list li {
+    padding: 18px 0; border-top: 1px solid var(--border);
+  }
+  .proof-list li:first-child { border-top: 0; }
+  .proof-list .client {
+    font-family: var(--display); font-weight: 500;
+    font-size: 15px; color: var(--ink); margin-right: 8px;
+  }
+  .proof-list .about { font-size: 13.5px; color: var(--ink-2); }
+
+  footer {
+    padding: 24px 0; border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between;
+    font-size: 12px; color: var(--muted);
+    flex-wrap: wrap; gap: 12px;
+  }
+
+  @media (max-width: 760px) {
+    .roi-table thead { display: none; }
+    .roi-table tbody td { display: block; padding: 4px 0; border-bottom: 0; }
+    .roi-table tbody tr {
+      display: block; padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .roi-table tbody tr:first-child { padding-top: 0; }
+    .roi-table tbody td.n::before,
+    .roi-table tbody td.pill-cell::before {
+      content: attr(data-lbl) " · ";
+      color: var(--faint); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em;
+    }
+    .roi-table tbody td.rank { font-size: 20px; padding-bottom: 4px; }
+    .gate {
+      grid-template-columns: 1fr;
+      grid-auto-rows: auto;
+    }
+    .gate-arrow { padding: 4px 0; align-self: center; }
+    .hero { padding: 48px 0 20px; }
+    section.band { padding: 36px 0; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap top-inner">
+    <div class="brand">ivi · <em>AI for your firm</em></div>
+    <div class="right">
+      <a href="mailto:iivii.malotana@gmail.com">iivii.malotana@gmail.com</a>
+    </div>
+  </div>
+</header>
+
+<section class="wrap hero">
+  <h1>AI lies. Here's how I stop it.</h1>
+  <p class="lede">I built this for a UK accountancy firm called <b>Emerald Path</b>. Every AI line cites a source. Nothing goes to a client without a partner tapping "OK". Below: where I'd start in your firm. What I'd build first. How the guardrail works.</p>
+</section>
+
+<!-- ── A · Where to start ─────────────────── -->
+<section class="band">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Where to start.</h2>
+      <p class="section-sub">Eight things I'd automate. Ranked by hours saved and how bad it would be if the AI got it wrong.</p>
+    </div>
+
+    <table class="roi-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>What it does</th>
+          <th class="n">Hrs / wk</th>
+          <th>How often</th>
+          <th>If wrong</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="rank">1</td>
+          <td class="use">Draft client emails (fees, missing info, replies)</td>
+          <td class="n" data-lbl="Hrs/wk">4.0</td>
+          <td class="pill-cell" data-lbl="How often"><span class="pill low">Daily</span></td>
+          <td class="pill-cell" data-lbl="If wrong"><span class="pill low">Small</span></td>
+        </tr>
+        <tr>
+          <td class="rank">2</td>
+          <td class="use">Draft engagement letters from client answers</td>
+          <td class="n" data-lbl="Hrs/wk">2.5</td>
+          <td class="pill-cell" data-lbl="How often"><span class="pill low">Weekly</span></td>
+          <td class="pill-cell" data-lbl="If wrong"><span class="pill low">Small</span></td>
+        </tr>
+        <tr>
+          <td class="rank">3</td>
+          <td class="use">Month-end commentary from a Xero P&amp;L</td>
+          <td class="n" data-lbl="Hrs/wk">3.0</td>
+          <td class="pill-cell" data-lbl="How often"><span class="pill med">Monthly</span></td>
+          <td class="pill-cell" data-lbl="If wrong"><span class="pill med">Medium</span></td>
+        </tr>
+        <tr>
+          <td class="rank">4</td>
+          <td class="use">Quarterly client review pre-read</td>
+          <td class="n" data-lbl="Hrs/wk">2.0</td>
+          <td class="pill-cell" data-lbl="How often"><span class="pill med">Quarterly</span></td>
+          <td class="pill-cell" data-lbl="If wrong"><span class="pill low">Small</span></td>
+        </tr>
+        <tr>
+          <td class="rank">5</td>
+          <td class="use">Partner-review notes on work papers</td>
+          <td class="n" data-lbl="Hrs/wk">2.5</td>
+          <td class="pill-cell" data-lbl="How often"><span class="pill low">Weekly</span></td>
+          <td class="pill-cell" data-lbl="If wrong"><span class="pill med">Medium</span></td>
+        </tr>
+        <tr>
+          <td class="rank">6</td>
+          <td class="use">Sort bank transactions with your chart of accounts</td>
+          <td class="n" data-lbl="Hrs/wk">2.0</td>
+          <td class="pill-cell" data-lbl="How often"><span class="pill low">Weekly</span></td>
+          <td class="pill-cell" data-lbl="If wrong"><span class="pill med">Medium</span></td>
+        </tr>
+        <tr>
+          <td class="rank">7</td>
+          <td class="use">VAT sanity check before filing</td>
+          <td class="n" data-lbl="Hrs/wk">1.0</td>
+          <td class="pill-cell" data-lbl="How often"><span class="pill med">Monthly</span></td>
+          <td class="pill-cell" data-lbl="If wrong"><span class="pill high">Big</span></td>
+        </tr>
+        <tr>
+          <td class="rank">8</td>
+          <td class="use">Companies House filing pre-check</td>
+          <td class="n" data-lbl="Hrs/wk">0.5</td>
+          <td class="pill-cell" data-lbl="How often"><span class="pill med">Monthly</span></td>
+          <td class="pill-cell" data-lbl="If wrong"><span class="pill high">Big</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="roi-total"><b>~17.5 hours saved a week</b> if all eight ship. I start with the small-risk ones. The big-risk ones sit behind the guardrail below.</p>
+  </div>
+</section>
+
+<!-- ── B · What I'd build first ────────────── -->
+<section class="band">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>What I'd build first.</h2>
+      <p class="section-sub">A file in your repo. Any partner can read it. Below is the real thing.</p>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-head">
+        <span class="file"><b>.claude/skills/month-end-commentary/SKILL.md</b></span>
+        <span class="tag">week 1</span>
+      </div>
+<div class="skill-body"><span class="fm">---
+name: month-end-commentary
+description: Draft a month-end commentary from a Xero P&amp;L.
+             Every claim points back to a source row.
+---</span>
+
+<span class="h1"># Month-end commentary</span>
+
+You draft a first pass. A partner reads it before it goes out.
+<span class="never">Never send it yourself.</span>
+<span class="never">Never make up a number.</span>
+
+<span class="h2">## What you get</span>
+
+- The month's P&amp;L, exported from Xero.
+- The client's engagement letter (tells you their industry).
+- The firm's voice guide at <span class="code">/voice.md</span>.
+
+<span class="h2">## What you do</span>
+
+1. Read the P&amp;L. For any line that moved &gt; 15% or &gt; £5,000,
+   write ONE sentence about what changed. Tag it with the source row.
+2. Group the sentences under: Revenue, Gross margin, Overheads.
+3. Add an "outlook" line only if a trend runs three months.
+   Otherwise write <span class="code">"nothing to flag this month"</span>.
+4. Keep every source row visible. Partner clicks to check.
+
+<span class="h2">## What you never do</span>
+
+- Invent a reason ("customer wins in Q3") unless it's in the notes file.
+- Use "significantly" without a number next to it.
+- <span class="always">Send it.</span> Hand back to the partner. Leave the ticket in <span class="code">"For review"</span>.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── C · How I stop it being wrong ──────── -->
+<section class="band">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>How I stop it being wrong.</h2>
+      <p class="section-sub">Every line cites a source. Nothing sends without a person tapping OK.</p>
+    </div>
+
+    <div class="gate">
+      <div class="gate-step">
+        <span class="k">1 · cite</span>
+        <div class="t">Every line points to a source.</div>
+        <div class="d">"Margin down 4pt" must link back to a P&amp;L row. No source, no send.</div>
+      </div>
+      <span class="gate-arrow">→</span>
+      <div class="gate-step">
+        <span class="k">2 · score</span>
+        <div class="t">Confidence check.</div>
+        <div class="d">Anything the AI is unsure about gets a reason attached.</div>
+      </div>
+      <span class="gate-arrow">→</span>
+      <div class="gate-step">
+        <span class="k">3 · quarantine</span>
+        <div class="t">Held for review.</div>
+        <div class="d">Not hidden. Partner sees what the AI wanted to say, and why it was held.</div>
+      </div>
+      <span class="gate-arrow">→</span>
+      <div class="gate-step">
+        <span class="k gate-k">4 · human</span>
+        <div class="t">Partner taps OK.</div>
+        <div class="d">Accept, reject or rewrite. Every tap is logged.</div>
+      </div>
+      <span class="gate-arrow">→</span>
+      <div class="gate-step">
+        <span class="k">5 · send</span>
+        <div class="t">Send is locked if any line has no source.</div>
+        <div class="d">Locked on the server, not just the UI. No way around it.</div>
+      </div>
+    </div>
+
+    <div class="gate-note">
+      <b>The rule.</b> If the AI can't source it, the AI can't say it. If it wants to say it anyway, the partner sees the attempt. Nothing about a client's numbers reaches a client without a person tapping OK.
+    </div>
+  </div>
+</section>
+
+<!-- ── D · I've done this ────────────────── -->
+<section class="band">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>I've done this.</h2>
+    </div>
+
+    <ul class="proof-list">
+      <li>
+        <div><span class="client">Emerald Path.</span><span class="about">UK accountancy platform. I built it in three months. AI gateway with sourced proposals through 20 rounds of QA. HMRC, Companies House, Xero, Sage. FRS-102 iXBRL at 100% tag coverage.</span></div>
+      </li>
+      <li>
+        <div><span class="client">Dixon AI.</span><span class="about">Six Claude Skills in production. Nine subagents. The skill above is the same shape. The .md files live in your repo. A partner can edit them without me.</span></div>
+      </li>
+      <li>
+        <div><span class="client">bOnline.</span><span class="about">Three years running payments, billing, fraud and an AI chatbot at 60% resolution. Not accountancy, but the same instincts on what you let a model do near a client's money.</span></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<footer class="wrap">
+  <div>© Ivi Malotana · Cape Town</div>
+  <div>uk-accountancy-claude.html</div>
+</footer>
+
+</body>
+</html>
