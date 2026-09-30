@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ivi · Scope and proof</title>
-<meta name="description" content="How I take an idea to signed work, and where I have done this before.">
+<title>Ivi · How I work</title>
+<meta name="description" content="You send an idea. I ship the feature. Here's how, and where I've done it.">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
 
@@ -277,7 +277,7 @@
 <!-- ─── Header ───────────────────────────────────── -->
 <header class="top">
   <div class="wrap top-inner">
-    <div class="brand">ivi · <em>scope and proof</em></div>
+    <div class="brand">ivi · <em>how I work</em></div>
     <div class="right">
       <a href="mailto:iivii.malotana@gmail.com">iivii.malotana@gmail.com</a>
     </div>
@@ -286,32 +286,32 @@
 
 <!-- ─── Hero ─────────────────────────────────────── -->
 <section class="wrap hero">
-  <h1>How I scope, and where I've done it before.</h1>
+  <h1>How I work. Proof it works.</h1>
 </section>
 
 <!-- ─── Scoping diagram + example (full width) ───── -->
 <div class="wrap">
   <section class="scoping">
-    <h3 class="heading">How an idea becomes signed work.</h3>
-    <p class="flow-caption">Read left to right. You show up twice. The rest is agents.</p>
+    <h3 class="heading">From your idea to signed work.</h3>
+    <p class="flow-caption">Left to right. You show up twice. The rest is agents.</p>
 
     <div class="flow-diagram">
       <div class="flow-step">
         <span class="actor you">you</span>
         <h4 class="title">Send the idea.</h4>
-        <p class="out">Voice note, Slack thread, email, whiteboard photo. Any format.</p>
+        <p class="out">Voice note. Slack. Email. Photo of a whiteboard. Any format.</p>
       </div>
       <span class="flow-arrow">→</span>
       <div class="flow-step">
         <span class="actor agent">intake · sonnet</span>
         <h4 class="title">Capture it.</h4>
-        <p class="out">Transcribes voice, OCRs images, pulls the shape into a scratch note.</p>
+        <p class="out">Voice becomes text. Photos too. It all lands in one note.</p>
       </div>
       <span class="flow-arrow">→</span>
       <div class="flow-step">
         <span class="actor agent">ticket-writer · opus</span>
         <h4 class="title">Draft the ticket.</h4>
-        <p class="out">Turns the note into a Jira story with a <code>.feature</code> file attached.</p>
+        <p class="out">Turns the note into a Jira ticket with a <code>.feature</code> file.</p>
       </div>
       <span class="flow-arrow">→</span>
       <div class="flow-step">
@@ -323,11 +323,11 @@
       <div class="flow-step">
         <span class="actor system">build</span>
         <h4 class="title">Build starts.</h4>
-        <p class="out">Spec, builder, tests and reviewer take over. You track it in Jira.</p>
+        <p class="out">Agents take over. You watch it move in Jira.</p>
       </div>
     </div>
 
-    <p class="example-lbl">Example · what a signed ticket actually looks like</p>
+    <p class="example-lbl">Example · what you'd sign</p>
     <div class="jira-card">
       <div class="jira-head">
         <span class="type"><span class="dot"></span>Story</span>
@@ -340,11 +340,11 @@
         <div class="field"><span class="lbl">Assignee</span><span>Ivi Malotana</span></div>
         <div class="field"><span class="lbl">Story points</span><span>3</span></div>
         <div class="description">
-          <b>Description.</b> A user has an account. They come back the next day and need to sign in.
+          <b>Description.</b> A user has an account. They need to sign in.
           <ul>
-            <li>REQ-1 · The right email and password signs the user in.</li>
-            <li>REQ-2 · A wrong password shows an error and does not sign them in.</li>
-            <li>REQ-3 · "Forgot password" sends a reset link to the email on file.</li>
+            <li>REQ-1 · Right email and password signs them in.</li>
+            <li>REQ-2 · Wrong password shows an error.</li>
+            <li>REQ-3 · "Forgot password" sends a reset link.</li>
           </ul>
         </div>
       </div>
@@ -373,88 +373,88 @@
   <div class="qa">
 
     <div class="qa-row">
-      <div class="q">What happens if I change my mind mid-build?</div>
+      <div class="q">What if I change my mind?</div>
       <div class="a">
-        <p>Cheap before the Gherkin is signed. Expensive after. If a change lands after sign-off, I re-open the ticket, we amend the scenarios together, I re-quote the points. Nothing is silently absorbed.</p>
+        <p>Cheap before you sign. Expensive after. If you change your mind after sign-off, I re-open the ticket. We change the scenarios. I re-quote the points. Nothing sneaks through.</p>
       </div>
     </div>
 
     <div class="qa-row">
-      <div class="q">Who decides what goes next?</div>
+      <div class="q">Who decides what's next?</div>
       <div class="a">
-        <p>You do. I recommend an order every week with reasoning. You can always overrule. The Jira backlog is the source of truth. The "Next" line in the Friday note is my recommendation, not a decision.</p>
+        <p>You. I suggest an order every Friday. You can overrule. The Jira board is the truth.</p>
       </div>
     </div>
 
     <!-- TRUST & VISIBILITY -->
 
     <div class="qa-row">
-      <div class="q">How do I know you're on track without asking?</div>
+      <div class="q">How do I check on you without asking?</div>
       <div class="a">
-        <p>Three surfaces, always current. The Jira board (live). The staging URL (updated on every PR). The Friday note (in writing, one page). If you want zero meetings that is fine. The trail is the record.</p>
+        <p>Three places. The Jira board. The staging site. The Friday note. Zero meetings is fine.</p>
       </div>
     </div>
 
     <div class="qa-row">
       <div class="q">How do you handle bad news?</div>
       <div class="a">
-        <p>The moment I know. Not on Friday. If a REQ turns out to be impossible or a deadline is going to slip, you get a Slack message and a proposed re-plan the same day, framed as a yes/no.</p>
+        <p>The moment I know. Not Friday. A Slack message with a proposed fix, framed as yes or no.</p>
       </div>
     </div>
 
     <div class="qa-row">
-      <div class="q">How do I know an AI output is trustworthy?</div>
+      <div class="q">How do I trust the AI?</div>
       <div class="a">
-        <p>Every generated line cites its source. Anything below a confidence threshold is quarantined to a review tray with the reason. This is the pattern I built at Emerald Path (UK accountancy AI gateway, 20 rounds of QA, citations grounded).</p>
+        <p>Every AI line points back to its source. Anything the AI isn't sure about is held for you to review. Same pattern I built at Emerald Path.</p>
       </div>
     </div>
 
     <div class="qa-row">
       <div class="q">Do you write tests?</div>
       <div class="a">
-        <p>Yes, three suites, all keyed to a REQ so a red test names the requirement that failed.</p>
+        <p>Yes. Three kinds. A failing test names the requirement it broke.</p>
         <ul>
-          <li><b class="num">1</b>. Cucumber + Playwright for the user flows.</li>
-          <li><b class="num">2</b>. Vitest for the small invariants.</li>
-          <li><b class="num">3</b>. Regression pull from last quarter's bugs.</li>
+          <li><b class="num">1</b>. Cucumber + Playwright for user flows.</li>
+          <li><b class="num">2</b>. Vitest for small units.</li>
+          <li><b class="num">3</b>. Regression tests from last quarter's bugs.</li>
         </ul>
-        <p class="m" style="margin-top:8px;">A test is never disabled to "make it pass". A flake is investigated as if it were real, once.</p>
+        <p class="m" style="margin-top:8px;">A test is never turned off to pass. A flake is checked once, not skipped.</p>
       </div>
     </div>
 
     <!-- AGENTS & MODELS -->
 
     <div class="qa-row">
-      <div class="q">How many agents run on a ticket?</div>
+      <div class="q">How many agents work on a ticket?</div>
       <div class="a">
-        <p>Eight. Each is a Claude Code subagent with a scoped tool set. Model ids are fixed in the subagent front-matter, so the cheap one cannot silently escalate to the expensive one.</p>
+        <p>Eight. Each has one job and a small toolset. The cheap AI can't secretly use the expensive one.</p>
         <div class="proof">
           <p class="plabel">The roster</p>
           <div class="agents">
-            <div class="ag"><div class="top-row"><span class="name">intake</span><span class="model sonnet">sonnet 5.5</span></div><div class="job">Captures your idea into a working note.</div></div>
-            <div class="ag"><div class="top-row"><span class="name">ticket-writer</span><span class="model opus">opus 4.7</span></div><div class="job">Drafts the Jira story with Gherkin criteria.</div></div>
+            <div class="ag"><div class="top-row"><span class="name">intake</span><span class="model sonnet">sonnet 5.5</span></div><div class="job">Turns your idea into a note.</div></div>
+            <div class="ag"><div class="top-row"><span class="name">ticket-writer</span><span class="model opus">opus 4.7</span></div><div class="job">Turns the note into a Jira ticket.</div></div>
             <div class="ag"><div class="top-row"><span class="name">spec-writer</span><span class="model opus">opus 4.7</span></div><div class="job">Turns the ticket into a .feature file.</div></div>
-            <div class="ag"><div class="top-row"><span class="name">test-planner</span><span class="model opus">opus 4.7</span></div><div class="job">Generates step defs and Playwright bindings.</div></div>
-            <div class="ag"><div class="top-row"><span class="name">builder</span><span class="model sonnet">sonnet 5.5</span></div><div class="job">Writes the code, one commit per plan-step.</div></div>
-            <div class="ag"><div class="top-row"><span class="name">test-runner</span><span class="model haiku">haiku 4.5</span></div><div class="job">Runs every suite, posts pass/fail to the PR.</div></div>
-            <div class="ag"><div class="top-row"><span class="name">reviewer</span><span class="model opus">opus 4.7</span></div><div class="job">Adversarial audit. Blocks merge if it breaks.</div></div>
-            <div class="ag"><div class="top-row"><span class="name">release-writer</span><span class="model sonnet">sonnet 5.5</span></div><div class="job">Drafts release note from the scenarios diff.</div></div>
+            <div class="ag"><div class="top-row"><span class="name">test-planner</span><span class="model opus">opus 4.7</span></div><div class="job">Writes the test plan.</div></div>
+            <div class="ag"><div class="top-row"><span class="name">builder</span><span class="model sonnet">sonnet 5.5</span></div><div class="job">Writes the code.</div></div>
+            <div class="ag"><div class="top-row"><span class="name">test-runner</span><span class="model haiku">haiku 4.5</span></div><div class="job">Runs the tests. Posts results to the PR.</div></div>
+            <div class="ag"><div class="top-row"><span class="name">reviewer</span><span class="model opus">opus 4.7</span></div><div class="job">Reviews the code. Blocks merge if broken.</div></div>
+            <div class="ag"><div class="top-row"><span class="name">release-writer</span><span class="model sonnet">sonnet 5.5</span></div><div class="job">Writes the release note.</div></div>
           </div>
         </div>
       </div>
     </div>
 
     <div class="qa-row">
-      <div class="q">Why per-agent model routing?</div>
+      <div class="q">Why different AIs for different jobs?</div>
       <div class="a">
-        <p>Opus for planning, tests, review. Sonnet for build and release notes. Haiku for the loop and small fixes. You never spend Opus tokens where Haiku would answer, and you never get a Haiku answer where the stakes need Opus.</p>
+        <p>Opus plans and reviews. Sonnet builds. Haiku runs the loop. Cheap where cheap works. Expensive where it has to.</p>
       </div>
     </div>
 
     <div class="qa-row">
-      <div class="q">Who reviews the code the AI writes?</div>
+      <div class="q">Who reviews the AI's code?</div>
       <div class="a">
-        <p>A different model to the one that wrote it. The <code>builder</code> is Sonnet 5.5; the <code>reviewer</code> is Opus 4.7. Different training, different blind spots. The reviewer blocks merge on any finding with a real failure scenario.</p>
+        <p>A different AI to the one that wrote it. Different blind spots. If it finds a real bug, the merge is blocked.</p>
       </div>
     </div>
 
@@ -463,82 +463,82 @@
     <div class="qa-row">
       <div class="q">What if you disappear tomorrow?</div>
       <div class="a">
-        <p>Three things survive without me. First, the agents live in <code>your/repo/.claude/agents/*.md</code>; another Claude Code operator can pick them up. Second, the <code>.feature</code> files are the spec, in your repo. Third, Jira has the full trail: every requirement, every decision, every review comment.</p>
+        <p>Three things stay behind. The agents in your repo. The <code>.feature</code> files. Jira has the whole history. Another dev can pick it up.</p>
       </div>
     </div>
 
     <div class="qa-row">
-      <div class="q">Who owns the code and the agents?</div>
+      <div class="q">Who owns the code?</div>
       <div class="a">
-        <p>You. All IP is yours from day one, in your repo, under your license. I do not retain any part of it. The subagent files are plain markdown; you can read and modify them without me.</p>
+        <p>You. From day one. Your repo, your license. The agents are plain text files. Edit them without me.</p>
       </div>
     </div>
 
     <div class="qa-row">
-      <div class="q">Can your agents run without you?</div>
+      <div class="q">Can the agents run without you?</div>
       <div class="a">
-        <p>Yes. They are triggered by Jira status changes and GitHub events. Once wired, an intern or your own senior dev can move a ticket through the pipeline. My job over time is to make myself less necessary, not more.</p>
+        <p>Yes. They fire on Jira and GitHub events. Your team runs them. That's the point.</p>
       </div>
     </div>
 
     <!-- COST OF HIRING ME -->
 
     <div class="qa-row">
-      <div class="q">How much of your time do I need per week?</div>
+      <div class="q">How much of your time do I need?</div>
       <div class="a">
-        <p>Roughly 45 minutes if nothing is on fire. Ticket sign-offs (two to five minutes each, batch on Monday), Friday note (90 seconds), one 30-minute call if you want it. Zero-meeting weeks are fine.</p>
+        <p>About 45 minutes a week. Sign tickets on Monday (2-5 min each). Friday note (90 seconds). A 30-min call if you want. Zero meetings is also fine.</p>
       </div>
     </div>
 
     <div class="qa-row">
-      <div class="q">What do you need me to buy?</div>
+      <div class="q">What do you need to buy?</div>
       <div class="a">
-        <p>A Jira Software seat (about $8/mo). A Claude API key on your Anthropic account (you set the cap). GitHub you likely already have. That is the whole stack. Agents run against your keys, on your billing, so you see every token.</p>
+        <p>A Jira seat (~$8/mo). A Claude API key (you set the cap). GitHub. That's it. Agents run on your bill, so you see every token.</p>
       </div>
     </div>
 
     <div class="qa-row">
-      <div class="q">How available are you?</div>
+      <div class="q">When are you around?</div>
       <div class="a">
-        <p>Cape Town (SAST, UTC+2). I overlap with EU mornings and US mid-afternoon. Response within 4 working hours on weekdays. Slack DMs and Jira mentions are equal priority. I do not answer at 2am, and I do not pretend to.</p>
+        <p>Cape Town. UTC+2. Overlaps EU mornings and US afternoons. I reply within 4 hours on weekdays. I don't answer at 2am and I don't pretend to.</p>
       </div>
     </div>
 
     <div class="qa-row">
-      <div class="q">What is out of scope for you?</div>
+      <div class="q">What won't you do?</div>
       <div class="a">
-        <p>Design systems (I use your tokens or an open one). SEO strategy. Paid ads. Anything requiring a legal or accounting sign-off in a country I do not practice in. If you ask me to do these, I say no and refer you.</p>
+        <p>Design systems. SEO. Paid ads. Legal or accounting sign-offs I'm not qualified for. Ask me and I say no and point you to the right person.</p>
       </div>
     </div>
 
     <!-- PROOF -->
 
     <div class="qa-row">
-      <div class="q">Have you built AI systems in production?</div>
+      <div class="q">Have you built AI in production?</div>
       <div class="a">
-        <p><span class="client">Emerald Path.</span> Full multi-tenant UK accountancy platform end to end in three months. Includes an AI gateway with citation-grounded proposals through 20 rounds of QA. HMRC MTD, Companies House, Xero and Sage integrations. FRS-102 iXBRL engine hitting 100% tag coverage on the Xero demo company.</p>
+        <p><span class="client">Emerald Path.</span> I built the whole UK accountancy platform in three months. AI gateway with sourced proposals. 20 rounds of QA. HMRC, Companies House, Xero, Sage. FRS-102 iXBRL at 100% tag coverage.</p>
       </div>
     </div>
 
     <div class="qa-row">
-      <div class="q">Have you scoped and shipped alone before?</div>
+      <div class="q">Have you shipped alone?</div>
       <div class="a">
-        <p><span class="client">Dixon AI.</span> Ran the same 10-stage pipeline shown here, at scale. Six production Claude Skills authored. Nine subagent definitions. 40+ concurrent worktrees at peak. Wrote my own specs and acceptance criteria in a fast-changing founder-led environment.</p>
+        <p><span class="client">Dixon AI.</span> Ran the same pipeline shown above. Six Claude Skills. Nine subagents. 40+ worktrees running at once. Wrote my own specs in a fast-moving founder shop.</p>
       </div>
     </div>
 
     <div class="qa-row">
-      <div class="q">Have you run product on regulated systems?</div>
+      <div class="q">Have you worked on regulated systems?</div>
       <div class="a">
-        <p><span class="client">bOnline (3 years, Product Owner).</span> Payments, billing, fraud, credit control, AI chatbot. Scaled billing capacity 7x. Took the AI chatbot to 60% resolution leading a team of 5.</p>
-        <p><span class="client">LifeCheq.</span> Insurance and financial products, full SDLC in a regulated South African financial-services environment.</p>
+        <p><span class="client">bOnline (3 years, PO).</span> Payments, billing, fraud, AI chatbot. Scaled billing 7x. AI chatbot at 60% resolution.</p>
+        <p><span class="client">LifeCheq.</span> Insurance and financial products in a regulated South African shop.</p>
       </div>
     </div>
 
     <div class="qa-row">
       <div class="q">Can I see the code?</div>
       <div class="a">
-        <p>Some, under NDA. I will walk you through a live Emerald Path or Dixon AI screen on a call. I can hand you a sanitised subagent file and a sample <code>.feature</code> from either. Ask.</p>
+        <p>Some, under NDA. I'll walk you through a live Emerald Path or Dixon AI screen on a call. I can hand you a cleaned subagent file and a sample <code>.feature</code>. Ask.</p>
       </div>
     </div>
 
