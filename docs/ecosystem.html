@@ -1,0 +1,554 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ivi · Scope and proof</title>
+<meta name="description" content="How I take an idea to signed work, and where I have done this before.">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  :root {
+    /* Pure black and white. Nothing warm. */
+    --paper:    #ffffff;
+    --panel:    #f5f5f5;
+    --border:   #e5e5e5;
+    --border-2: #cccccc;
+    --ink:      #000000;
+    --ink-2:    #2D2929;
+    --muted:    #555555;
+    --faint:    #999999;
+
+    /* Jira for the ticket mockup + agent tags only. */
+    --jira-blue:      #0052CC;
+    --jira-blue-mid:  #2684FF;
+    --jira-blue-soft: #DEEBFF;
+    --jira-bg:        #F4F5F7;
+    --jira-border:    #DFE1E6;
+    --jira-text:      #172B4D;
+    --jira-text-mid:  #5E6C84;
+
+    --ok:  #216E4E;
+
+    --body:    "Inter", "Helvetica Neue", Arial, sans-serif;
+    --display: "Space Grotesk", "Inter", "Helvetica Neue", Arial, sans-serif;
+    --mono:    "JetBrains Mono", ui-monospace, monospace;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--paper);
+    color: var(--ink-2);
+    font-family: var(--body);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+
+  /* ─── Header ─────────────────────────────────────────── */
+  header.top { border-bottom: 1px solid var(--border); padding: 16px 0; }
+  .top-inner { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .brand {
+    font-family: var(--display); font-weight: 500;
+    font-size: 15px; letter-spacing: -0.01em; color: var(--ink);
+  }
+  .brand em { font-style: normal; color: var(--muted); }
+  .top .right { margin-left: auto; font-size: 12px; color: var(--muted); }
+  .top .right a { color: var(--muted); text-decoration: none; }
+  .top .right a:hover { color: var(--ink); }
+
+  /* ─── Hero ───────────────────────────────────────────── */
+  .hero { padding: 72px 0 24px; }
+  h1 {
+    font-family: var(--display); font-weight: 500;
+    font-size: clamp(28px, 4vw, 40px); letter-spacing: -0.02em;
+    margin: 0; line-height: 1.05; color: var(--ink);
+    max-width: 22ch; text-wrap: balance;
+  }
+
+  /* ─── Q&A rows ───────────────────────────────────────── */
+  .qa { padding: 40px 0 72px; display: flex; flex-direction: column; }
+  .qa-row {
+    display: grid; grid-template-columns: 220px 1fr;
+    gap: 40px; padding: 28px 0;
+    border-top: 1px solid var(--border);
+    align-items: start;
+  }
+  .qa-row:first-child { border-top: 0; }
+  .qa-row .q {
+    font-family: var(--body); font-weight: 500;
+    font-size: 15px; color: var(--ink); line-height: 1.4;
+    text-wrap: balance;
+  }
+  .qa-row .a { font-size: 14.5px; color: var(--ink-2); }
+  .qa-row .a p { margin: 0; }
+  .qa-row .a p + p { margin-top: 10px; }
+  .qa-row .a .m { color: var(--muted); }
+  .qa-row .a code {
+    font-family: var(--mono); font-size: 12.5px;
+    background: var(--panel); padding: 1px 6px;
+    color: var(--ink);
+  }
+  .qa-row .a b { color: var(--ink); font-weight: 500; }
+
+  /* ─── Scoping section (full-width, above the Q&A) ────── */
+  .scoping {
+    padding: 40px 0 32px;
+    border-bottom: 1px solid var(--border);
+  }
+  .scoping .heading {
+    font-family: var(--display); font-weight: 500;
+    font-size: 20px; color: var(--ink); letter-spacing: -0.005em;
+    margin: 0 0 6px;
+  }
+  .flow-caption {
+    font-size: 13px; color: var(--muted); margin: 0 0 18px;
+    max-width: 62ch;
+  }
+  .flow-diagram {
+    display: grid;
+    grid-template-columns: 1fr 20px 1fr 20px 1fr 20px 1fr 20px 1fr;
+    align-items: stretch; margin: 0 0 24px;
+  }
+  .flow-step {
+    padding: 14px 12px;
+    border: 1px solid var(--border);
+    background: var(--paper);
+    display: flex; flex-direction: column; gap: 6px;
+    min-width: 0;
+  }
+  .flow-step .actor {
+    font-family: var(--mono); font-size: 10px;
+    padding: 3px 7px; align-self: flex-start;
+    letter-spacing: 0.04em; text-transform: lowercase;
+  }
+  .flow-step .actor.you { background: var(--ink); color: #fff; }
+  .flow-step .actor.agent { background: var(--jira-blue-soft); color: var(--jira-blue); }
+  .flow-step .actor.system { background: var(--panel); color: var(--muted); }
+  .flow-step .title {
+    font-family: var(--display); font-weight: 500;
+    font-size: 15px; color: var(--ink); line-height: 1.25;
+    margin: 2px 0 0;
+  }
+  .flow-step .out { font-size: 11.5px; color: var(--muted); line-height: 1.5; margin: 2px 0 0; }
+  .flow-step .out code {
+    font-family: var(--mono); font-size: 10.5px;
+    background: var(--panel); padding: 1px 4px; color: var(--ink);
+  }
+  .flow-arrow {
+    align-self: center; text-align: center;
+    color: var(--faint); font-size: 16px; line-height: 1;
+  }
+  .example-lbl {
+    font-family: var(--mono); font-size: 10.5px;
+    color: var(--faint); letter-spacing: 0.04em;
+    text-transform: uppercase; margin: 4px 0 10px;
+  }
+
+  /* Proof block under an answer */
+  .proof { margin-top: 16px; padding-top: 14px; border-top: 1px dashed var(--border-2); }
+  .plabel {
+    font-family: var(--mono); font-size: 10.5px;
+    color: var(--faint); letter-spacing: 0.04em;
+    text-transform: uppercase; margin: 0 0 8px;
+  }
+
+  /* ─── Jira ticket card ───────────────────────────────── */
+  .jira-card {
+    background: var(--paper); border: 1px solid var(--jira-border);
+    font-size: 13px; color: var(--jira-text);
+    box-shadow: 0 1px 0 rgba(9,30,66,.06);
+  }
+  .jira-head {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 14px; border-bottom: 1px solid var(--jira-border);
+    background: var(--jira-bg);
+  }
+  .jira-head .type {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 10.5px; color: var(--jira-text-mid);
+    text-transform: uppercase; letter-spacing: 0.06em;
+  }
+  .jira-head .type .dot { width: 11px; height: 11px; background: #4BADE8; display: inline-block; }
+  .jira-head .key { font-family: var(--mono); font-size: 11.5px; color: var(--jira-text-mid); }
+  .jira-head .status {
+    margin-left: auto; padding: 3px 8px;
+    background: #E9F2FF; color: #0747A6;
+    font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 500;
+  }
+  .jira-body { padding: 14px 16px; }
+  .jira-body .summary {
+    font-size: 15px; font-weight: 500; color: var(--jira-text); margin: 0 0 10px;
+  }
+  .jira-body .field {
+    display: grid; grid-template-columns: 110px 1fr; gap: 6px;
+    font-size: 12px; padding: 3px 0;
+  }
+  .jira-body .field .lbl {
+    color: var(--jira-text-mid); font-size: 10.5px;
+    text-transform: uppercase; letter-spacing: 0.06em; padding-top: 2px;
+  }
+  .jira-body .description {
+    margin-top: 12px; padding-top: 12px;
+    border-top: 1px solid var(--jira-border);
+    font-size: 12.5px; color: var(--jira-text); line-height: 1.6;
+  }
+  .jira-body .description ul { margin: 6px 0 0; padding-left: 20px; }
+  .jira-body .description li { margin: 3px 0; }
+
+  /* ─── .feature snippet ───────────────────────────────── */
+  .ff {
+    font-family: var(--mono); font-size: 12.5px; line-height: 1.65;
+    background: var(--panel); border: 1px solid var(--border);
+    padding: 12px 14px; overflow-x: auto; white-space: pre-wrap;
+    margin: 10px 0 0; color: var(--ink);
+  }
+  .ff .kw { color: #5A2C7A; font-weight: 500; }
+  .ff .gv { color: var(--jira-blue); font-weight: 500; }
+  .ff .tag { color: var(--ok); }
+
+  /* Client name callout inside a proof answer */
+  .client {
+    display: inline-block;
+    font-family: var(--display); font-weight: 500;
+    font-size: 15px; color: var(--ink);
+    padding-right: 8px;
+  }
+
+  /* Numbered inline list (C4 tests) */
+  .qa-row .a ul { margin: 6px 0 0; padding-left: 18px; }
+  .qa-row .a li { margin: 3px 0; font-size: 14px; }
+  .qa-row .a .num {
+    font-family: var(--display); font-weight: 500;
+    color: var(--ink); font-variant-numeric: tabular-nums;
+  }
+
+  /* Agent roster grid (D1 proof) */
+  .agents {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;
+  }
+  .ag {
+    padding: 12px 14px; background: var(--paper); border: 1px solid var(--border);
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .ag .top-row {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 8px;
+  }
+  .ag .name {
+    font-family: var(--mono); font-size: 12.5px;
+    color: var(--jira-blue); font-weight: 500;
+  }
+  .ag .model {
+    font-family: var(--mono); font-size: 10px; padding: 2px 6px;
+    background: var(--jira-blue-soft); color: var(--jira-blue);
+    letter-spacing: 0.02em;
+  }
+  .ag .model.opus   { background: #EAE0F0; color: #5A2C7A; }
+  .ag .model.sonnet { background: #DEEBFF; color: #0747A6; }
+  .ag .model.haiku  { background: #E3FCEF; color: #006644; }
+  .ag .job { font-size: 12px; color: var(--muted); }
+
+  footer {
+    padding: 24px 0; border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between;
+    font-size: 12px; color: var(--muted);
+    flex-wrap: wrap; gap: 12px;
+  }
+
+  /* ─── Responsive ─────────────────────────────────────── */
+  @media (max-width: 760px) {
+    .qa-row { grid-template-columns: 1fr; gap: 8px; }
+    .qa-row .q { font-size: 16px; }
+    .jira-body .field { grid-template-columns: 1fr; gap: 2px; }
+    .agents { grid-template-columns: 1fr; }
+    .hero { padding: 48px 0 16px; }
+    .qa { padding: 24px 0 48px; }
+    .flow-diagram {
+      grid-template-columns: 1fr;
+      grid-auto-rows: auto;
+    }
+    .flow-arrow { padding: 4px 0; align-self: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── Header ───────────────────────────────────── -->
+<header class="top">
+  <div class="wrap top-inner">
+    <div class="brand">ivi · <em>scope and proof</em></div>
+    <div class="right">
+      <a href="mailto:iivii.malotana@gmail.com">iivii.malotana@gmail.com</a>
+    </div>
+  </div>
+</header>
+
+<!-- ─── Hero ─────────────────────────────────────── -->
+<section class="wrap hero">
+  <h1>How I scope, and where I've done it before.</h1>
+</section>
+
+<!-- ─── Scoping diagram + example (full width) ───── -->
+<div class="wrap">
+  <section class="scoping">
+    <h3 class="heading">How an idea becomes signed work.</h3>
+    <p class="flow-caption">Read left to right. You show up twice. The rest is agents.</p>
+
+    <div class="flow-diagram">
+      <div class="flow-step">
+        <span class="actor you">you</span>
+        <h4 class="title">Send the idea.</h4>
+        <p class="out">Voice note, Slack thread, email, whiteboard photo. Any format.</p>
+      </div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-step">
+        <span class="actor agent">intake · sonnet</span>
+        <h4 class="title">Capture it.</h4>
+        <p class="out">Transcribes voice, OCRs images, pulls the shape into a scratch note.</p>
+      </div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-step">
+        <span class="actor agent">ticket-writer · opus</span>
+        <h4 class="title">Draft the ticket.</h4>
+        <p class="out">Turns the note into a Jira story with a <code>.feature</code> file attached.</p>
+      </div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-step">
+        <span class="actor you">you</span>
+        <h4 class="title">Sign it.</h4>
+        <p class="out">Read four bullets. Reply "signed" or edit. Two to five minutes.</p>
+      </div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-step">
+        <span class="actor system">build</span>
+        <h4 class="title">Build starts.</h4>
+        <p class="out">Spec, builder, tests and reviewer take over. You track it in Jira.</p>
+      </div>
+    </div>
+
+    <p class="example-lbl">Example · what a signed ticket actually looks like</p>
+    <div class="jira-card">
+      <div class="jira-head">
+        <span class="type"><span class="dot"></span>Story</span>
+        <span class="key">AUTH-14</span>
+        <span class="status">Refinement</span>
+      </div>
+      <div class="jira-body">
+        <p class="summary">Log in with email and password</p>
+        <div class="field"><span class="lbl">Reporter</span><span>You</span></div>
+        <div class="field"><span class="lbl">Assignee</span><span>Ivi Malotana</span></div>
+        <div class="field"><span class="lbl">Story points</span><span>3</span></div>
+        <div class="description">
+          <b>Description.</b> A user has an account. They come back the next day and need to sign in.
+          <ul>
+            <li>REQ-1 · The right email and password signs the user in.</li>
+            <li>REQ-2 · A wrong password shows an error and does not sign them in.</li>
+            <li>REQ-3 · "Forgot password" sends a reset link to the email on file.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+<pre class="ff"><span class="tag">@AUTH-14</span>
+<span class="kw">Feature:</span> Log in with email and password
+
+  <span class="tag">@req-1</span>
+  <span class="kw">Scenario:</span> Valid credentials sign the user in
+    <span class="gv">Given</span> I have an account with email "kim@acme.com"
+    <span class="gv">When</span> I enter my email and password
+    <span class="gv">Then</span> I am signed in
+    <span class="gv">And</span> I land on the dashboard
+
+  <span class="tag">@req-2</span>
+  <span class="kw">Scenario:</span> Wrong password shows an error
+    <span class="gv">Given</span> I have an account with email "kim@acme.com"
+    <span class="gv">When</span> I enter my email and the wrong password
+    <span class="gv">Then</span> I see "Email or password is incorrect"
+    <span class="gv">And</span> I am not signed in</pre>
+  </section>
+</div>
+
+<!-- ─── Q&A ──────────────────────────────────────── -->
+<div class="wrap">
+  <div class="qa">
+
+    <div class="qa-row">
+      <div class="q">What happens if I change my mind mid-build?</div>
+      <div class="a">
+        <p>Cheap before the Gherkin is signed. Expensive after. If a change lands after sign-off, I re-open the ticket, we amend the scenarios together, I re-quote the points. Nothing is silently absorbed.</p>
+      </div>
+    </div>
+
+    <div class="qa-row">
+      <div class="q">Who decides what goes next?</div>
+      <div class="a">
+        <p>You do. I recommend an order every week with reasoning. You can always overrule. The Jira backlog is the source of truth. The "Next" line in the Friday note is my recommendation, not a decision.</p>
+      </div>
+    </div>
+
+    <!-- TRUST & VISIBILITY -->
+
+    <div class="qa-row">
+      <div class="q">How do I know you're on track without asking?</div>
+      <div class="a">
+        <p>Three surfaces, always current. The Jira board (live). The staging URL (updated on every PR). The Friday note (in writing, one page). If you want zero meetings that is fine. The trail is the record.</p>
+      </div>
+    </div>
+
+    <div class="qa-row">
+      <div class="q">How do you handle bad news?</div>
+      <div class="a">
+        <p>The moment I know. Not on Friday. If a REQ turns out to be impossible or a deadline is going to slip, you get a Slack message and a proposed re-plan the same day, framed as a yes/no.</p>
+      </div>
+    </div>
+
+    <div class="qa-row">
+      <div class="q">How do I know an AI output is trustworthy?</div>
+      <div class="a">
+        <p>Every generated line cites its source. Anything below a confidence threshold is quarantined to a review tray with the reason. This is the pattern I built at Emerald Path (UK accountancy AI gateway, 20 rounds of QA, citations grounded).</p>
+      </div>
+    </div>
+
+    <div class="qa-row">
+      <div class="q">Do you write tests?</div>
+      <div class="a">
+        <p>Yes, three suites, all keyed to a REQ so a red test names the requirement that failed.</p>
+        <ul>
+          <li><b class="num">1</b>. Cucumber + Playwright for the user flows.</li>
+          <li><b class="num">2</b>. Vitest for the small invariants.</li>
+          <li><b class="num">3</b>. Regression pull from last quarter's bugs.</li>
+        </ul>
+        <p class="m" style="margin-top:8px;">A test is never disabled to "make it pass". A flake is investigated as if it were real, once.</p>
+      </div>
+    </div>
+
+    <!-- AGENTS & MODELS -->
+
+    <div class="qa-row">
+      <div class="q">How many agents run on a ticket?</div>
+      <div class="a">
+        <p>Eight. Each is a Claude Code subagent with a scoped tool set. Model ids are fixed in the subagent front-matter, so the cheap one cannot silently escalate to the expensive one.</p>
+        <div class="proof">
+          <p class="plabel">The roster</p>
+          <div class="agents">
+            <div class="ag"><div class="top-row"><span class="name">intake</span><span class="model sonnet">sonnet 5.5</span></div><div class="job">Captures your idea into a working note.</div></div>
+            <div class="ag"><div class="top-row"><span class="name">ticket-writer</span><span class="model opus">opus 4.7</span></div><div class="job">Drafts the Jira story with Gherkin criteria.</div></div>
+            <div class="ag"><div class="top-row"><span class="name">spec-writer</span><span class="model opus">opus 4.7</span></div><div class="job">Turns the ticket into a .feature file.</div></div>
+            <div class="ag"><div class="top-row"><span class="name">test-planner</span><span class="model opus">opus 4.7</span></div><div class="job">Generates step defs and Playwright bindings.</div></div>
+            <div class="ag"><div class="top-row"><span class="name">builder</span><span class="model sonnet">sonnet 5.5</span></div><div class="job">Writes the code, one commit per plan-step.</div></div>
+            <div class="ag"><div class="top-row"><span class="name">test-runner</span><span class="model haiku">haiku 4.5</span></div><div class="job">Runs every suite, posts pass/fail to the PR.</div></div>
+            <div class="ag"><div class="top-row"><span class="name">reviewer</span><span class="model opus">opus 4.7</span></div><div class="job">Adversarial audit. Blocks merge if it breaks.</div></div>
+            <div class="ag"><div class="top-row"><span class="name">release-writer</span><span class="model sonnet">sonnet 5.5</span></div><div class="job">Drafts release note from the scenarios diff.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="qa-row">
+      <div class="q">Why per-agent model routing?</div>
+      <div class="a">
+        <p>Opus for planning, tests, review. Sonnet for build and release notes. Haiku for the loop and small fixes. You never spend Opus tokens where Haiku would answer, and you never get a Haiku answer where the stakes need Opus.</p>
+      </div>
+    </div>
+
+    <div class="qa-row">
+      <div class="q">Who reviews the code the AI writes?</div>
+      <div class="a">
+        <p>A different model to the one that wrote it. The <code>builder</code> is Sonnet 5.5; the <code>reviewer</code> is Opus 4.7. Different training, different blind spots. The reviewer blocks merge on any finding with a real failure scenario.</p>
+      </div>
+    </div>
+
+    <!-- CONTINUITY & OWNERSHIP -->
+
+    <div class="qa-row">
+      <div class="q">What if you disappear tomorrow?</div>
+      <div class="a">
+        <p>Three things survive without me. First, the agents live in <code>your/repo/.claude/agents/*.md</code>; another Claude Code operator can pick them up. Second, the <code>.feature</code> files are the spec, in your repo. Third, Jira has the full trail: every requirement, every decision, every review comment.</p>
+      </div>
+    </div>
+
+    <div class="qa-row">
+      <div class="q">Who owns the code and the agents?</div>
+      <div class="a">
+        <p>You. All IP is yours from day one, in your repo, under your license. I do not retain any part of it. The subagent files are plain markdown; you can read and modify them without me.</p>
+      </div>
+    </div>
+
+    <div class="qa-row">
+      <div class="q">Can your agents run without you?</div>
+      <div class="a">
+        <p>Yes. They are triggered by Jira status changes and GitHub events. Once wired, an intern or your own senior dev can move a ticket through the pipeline. My job over time is to make myself less necessary, not more.</p>
+      </div>
+    </div>
+
+    <!-- COST OF HIRING ME -->
+
+    <div class="qa-row">
+      <div class="q">How much of your time do I need per week?</div>
+      <div class="a">
+        <p>Roughly 45 minutes if nothing is on fire. Ticket sign-offs (two to five minutes each, batch on Monday), Friday note (90 seconds), one 30-minute call if you want it. Zero-meeting weeks are fine.</p>
+      </div>
+    </div>
+
+    <div class="qa-row">
+      <div class="q">What do you need me to buy?</div>
+      <div class="a">
+        <p>A Jira Software seat (about $8/mo). A Claude API key on your Anthropic account (you set the cap). GitHub you likely already have. That is the whole stack. Agents run against your keys, on your billing, so you see every token.</p>
+      </div>
+    </div>
+
+    <div class="qa-row">
+      <div class="q">How available are you?</div>
+      <div class="a">
+        <p>Cape Town (SAST, UTC+2). I overlap with EU mornings and US mid-afternoon. Response within 4 working hours on weekdays. Slack DMs and Jira mentions are equal priority. I do not answer at 2am, and I do not pretend to.</p>
+      </div>
+    </div>
+
+    <div class="qa-row">
+      <div class="q">What is out of scope for you?</div>
+      <div class="a">
+        <p>Design systems (I use your tokens or an open one). SEO strategy. Paid ads. Anything requiring a legal or accounting sign-off in a country I do not practice in. If you ask me to do these, I say no and refer you.</p>
+      </div>
+    </div>
+
+    <!-- PROOF -->
+
+    <div class="qa-row">
+      <div class="q">Have you built AI systems in production?</div>
+      <div class="a">
+        <p><span class="client">Emerald Path.</span> Full multi-tenant UK accountancy platform end to end in three months. Includes an AI gateway with citation-grounded proposals through 20 rounds of QA. HMRC MTD, Companies House, Xero and Sage integrations. FRS-102 iXBRL engine hitting 100% tag coverage on the Xero demo company.</p>
+      </div>
+    </div>
+
+    <div class="qa-row">
+      <div class="q">Have you scoped and shipped alone before?</div>
+      <div class="a">
+        <p><span class="client">Dixon AI.</span> Ran the same 10-stage pipeline shown here, at scale. Six production Claude Skills authored. Nine subagent definitions. 40+ concurrent worktrees at peak. Wrote my own specs and acceptance criteria in a fast-changing founder-led environment.</p>
+      </div>
+    </div>
+
+    <div class="qa-row">
+      <div class="q">Have you run product on regulated systems?</div>
+      <div class="a">
+        <p><span class="client">bOnline (3 years, Product Owner).</span> Payments, billing, fraud, credit control, AI chatbot. Scaled billing capacity 7x. Took the AI chatbot to 60% resolution leading a team of 5.</p>
+        <p><span class="client">LifeCheq.</span> Insurance and financial products, full SDLC in a regulated South African financial-services environment.</p>
+      </div>
+    </div>
+
+    <div class="qa-row">
+      <div class="q">Can I see the code?</div>
+      <div class="a">
+        <p>Some, under NDA. I will walk you through a live Emerald Path or Dixon AI screen on a call. I can hand you a sanitised subagent file and a sample <code>.feature</code> from either. Ask.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer class="wrap">
+  <div>© Ivi Malotana · Cape Town</div>
+  <div>ecosystem.html · one file, no build step</div>
+</footer>
+
+</body>
+</html>
