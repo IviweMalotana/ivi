@@ -221,6 +221,8 @@
   }
   .tk:hover { border-color: var(--ink); transform: translateY(-1px); }
   .tk.selected { border-color: var(--ink); background: var(--card-warm); }
+  .tk.walkable { border-color: var(--ok); box-shadow: 0 0 0 1px var(--ok) inset; }
+  .tk.walkable:hover { border-color: var(--ok); }
   .tk .tk-key {
     font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em;
     color: var(--faint); text-transform: uppercase;
@@ -806,7 +808,8 @@
   <h1 class="headline">Tickets move left to right. Every arrow triggers something.</h1>
   <p class="subhead">Six columns. A ticket does not reach <i>In Dev</i> until you sign off the
     Gherkin. It does not leave <i>Testing</i> until Playwright, unit and regression are all green.
-    Click any ticket to open it.</p>
+    The green-bordered ticket (<b>AIP-142</b>) is the walkable example in this demo. Click it to
+    open its detail page. Try the filter chips on the right.</p>
 
   <div class="board-head">
     <div class="selector">Board · <b>AIP · AI Product</b> · Sprint 12 · <b>28 open</b></div>
@@ -1528,6 +1531,9 @@
     ]
   };
 
+  // Render the board. Only the "hot" ticket (AIP-142) opens the fleshed-out
+  // detail view. Every other ticket flashes a small note explaining the demo
+  // uses AIP-142 as the walkable example.
   const board = document.getElementById('board');
   Object.entries(TICKETS).forEach(([col, tickets]) => {
     const c = document.createElement('div');
@@ -1537,38 +1543,113 @@
     body.className = 'col-body';
     tickets.forEach(t => {
       const tk = document.createElement('div');
-      tk.className = 'tk' + (t.hot ? ' selected' : '');
+      tk.className = 'tk' + (t.hot ? ' selected walkable' : '');
+      tk.dataset.kind = t.kind;
+      tk.dataset.who = t.who === '◆' ? 'bot' : t.who.toLowerCase();
       tk.innerHTML = `
-        <div class="tk-key">${t.key}</div>
+        <div class="tk-key">${t.key}${t.hot ? ' · <span style="color:var(--ok);font-weight:500;">walk this one</span>' : ''}</div>
         <div class="tk-title">${t.title}</div>
         <div class="tk-meta">
           <span class="tag ${t.kind}">${t.kind}</span>
           <span style="font-family:var(--mono);font-size:10px;color:var(--faint);">${t.pts} pt</span>
           <span class="assign${t.who === '◆' ? ' bot' : ''}">${t.who}</span>
         </div>`;
-      if (t.hot) tk.addEventListener('click', () => go(3));
-      else tk.addEventListener('click', () => go(3));
+      tk.addEventListener('click', () => {
+        if (t.hot) { go(3); return; }
+        flash(`AIP-142 is the walkable one in this demo. The rest are on the board so you can see the shape of a real sprint.`);
+      });
       body.appendChild(tk);
     });
     c.appendChild(body);
     board.appendChild(c);
   });
 
-  // Projects card → open board
-  document.querySelectorAll('#projects .project').forEach(p => {
-    p.addEventListener('click', () => go(2));
-  });
+  // Small toast for informational nudges.
+  function flash(msg) {
+    let t = document.getElementById('flash');
+    if (!t) {
+      t = document.createElement('div');
+      t.id = 'flash';
+      t.style.cssText = 'position:fixed;left:50%;bottom:32px;transform:translateX(-50%);background:#2D2929;color:#fff;padding:14px 22px;font-size:13px;letter-spacing:.02em;z-index:100;max-width:520px;line-height:1.5;box-shadow:0 6px 20px rgba(0,0,0,.15);opacity:0;transition:opacity .2s;';
+      document.body.appendChild(t);
+    }
+    t.textContent = msg;
+    requestAnimationFrame(() => { t.style.opacity = '1'; });
+    clearTimeout(t._timer);
+    t._timer = setTimeout(() => { t.style.opacity = '0'; }, 3200);
+  }
 
-  // Filter chips (visual only, not filtering — a demo prototype)
+  // Filter chips: actually filter the board by kind and by owner ("mine" = IV).
   document.querySelectorAll('.filters .chip').forEach(c => {
     c.addEventListener('click', () => {
       document.querySelectorAll('.filters .chip').forEach(x => x.classList.remove('active'));
       c.classList.add('active');
+      const label = c.textContent.trim().toLowerCase();
+      const tks = document.querySelectorAll('.tk');
+      let shown = 0;
+      tks.forEach(tk => {
+        const kind = tk.dataset.kind;
+        const who = tk.dataset.who;
+        const show =
+          label === 'all' ? true :
+          label === 'mine' ? who === 'iv' :
+          kind === label;
+        tk.style.display = show ? '' : 'none';
+        if (show) shown++;
+      });
+      // Update per-column counts to match the filter.
+      document.querySelectorAll('#board .col').forEach(col => {
+        const visible = col.querySelectorAll('.tk:not([style*="display: none"])').length;
+        const cnt = col.querySelector('.count');
+        if (cnt) cnt.textContent = visible;
+      });
     });
   });
 
-  // Keyboard: ← / →
+  // Projects card → open board.
+  document.querySelectorAll('#projects .project').forEach(p => {
+    p.addEventListener('click', () => go(2));
+  });
+
+  // Ticket status pipe: click a stage to advance/rewind the ticket. Live-updates
+  // the sidepane too so you can see the state actually change.
+  const pipe = document.querySelector('.status-pipe');
+  if (pipe) {
+    const pips = [...pipe.querySelectorAll('.pip')];
+    pips.forEach((pip, i) => {
+      pip.style.cursor = 'pointer';
+      pip.title = 'Click to move the ticket to this stage';
+      pip.addEventListener('click', () => {
+        pips.forEach((p2, j) => {
+          p2.classList.remove('done', 'current');
+          if (j < i) p2.classList.add('done');
+          if (j === i) p2.classList.add('current');
+        });
+        flash(`Status → ${pip.textContent.trim()}. Automation would post a comment on the ticket now.`);
+      });
+    });
+  }
+
+  // Requirement checkboxes: click to toggle accepted / pending.
+  document.querySelectorAll('.scenario-block').forEach(block => {
+    const box = block.querySelector('.scenario-head .box');
+    const state = block.querySelector('.scenario-head .state');
+    if (!box || !state) return;
+    box.style.cursor = 'pointer';
+    box.title = 'Click to toggle sign-off';
+    box.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const accepted = block.classList.contains('acc');
+      block.classList.toggle('acc', !accepted);
+      block.classList.toggle('pend', accepted);
+      box.textContent = accepted ? '' : '✓';
+      state.textContent = accepted ? 'Pending' : 'Accepted';
+    });
+  });
+
+  // Keyboard: ← / → to move between stages.
   document.addEventListener('keydown', (e) => {
+    if (e.target.matches('input, textarea')) return;
     const active = +document.querySelector('.stage.active').dataset.stage;
     if (e.key === 'ArrowRight' && active < 8) go(active + 1);
     if (e.key === 'ArrowLeft' && active > 0) go(active - 1);
