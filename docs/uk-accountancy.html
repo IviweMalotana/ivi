@@ -367,7 +367,7 @@
             <span class="badge">Xero API</span>
             <span class="badge">Sage API</span>
             <span class="badge">QuickBooks API</span>
-            <span class="badge">Claude (grounded citations)</span>
+            <span class="badge">AI gateway (grounded citations)</span>
             <span class="badge">Python + AWS Lambda</span>
           </div>
         </div>
@@ -416,7 +416,7 @@
       </div>
       <div class="stack-group">
         <h4>AI</h4>
-        <p><b>Claude Code, Claude Cowork, OpenAI Codex.</b> LLM gateway with grounded citation-backed generation. Per-phase model routing (Opus plans, Sonnet builds, Haiku runs). Six custom Claude Skills. Nine subagent definitions.</p>
+        <p><b>LLM gateway with grounded citation-backed generation.</b> Per-phase model routing (plans, builds, runs). Six custom Skills. Nine subagent definitions.</p>
       </div>
       <div class="stack-group">
         <h4>Integrations shipped</h4>
@@ -439,7 +439,7 @@
       <li><b>XSS sanitisation on all user-authored content</b> (pages, notes, ticket comments). Byte-identity HTML round-trip tests catch regressions in the sanitiser.</li>
       <li><b>API Gateway throttled with 429 retry and batching.</b> Prevents a runaway job from taking down the account.</li>
       <li><b>Every AI-generated line cites its source row.</b> Nothing client-facing sends without a partner tapping OK. See the guardrail below.</li>
-      <li><b>Production database backups + tenant-isolation audit</b> packaged as a reusable Claude Skill so a partner (or another dev) can run them without me.</li>
+      <li><b>Production database backups + tenant-isolation audit</b> packaged as a reusable Skill so a partner (or another dev) can run them without me.</li>
     </ul>
   </div>
 </section>
@@ -457,8 +457,8 @@
         <p class="built"><b>3 years at bOnline leading AI initiatives.</b> Led the team of 5 that took the <b>internal AI support chatbot to a 60% resolution rate</b> on live customer traffic. Also led the build of the <b>AI receptionist for inbound VOIP calls.</b> Both run on a structured knowledge base with the AI as the answerer. SOPs, service standards, templates and onboarding docs — same shape.</p>
         <ol class="steps">
           <li><b>Ingest your library.</b> SOPs, processes, values, service standards, templates, onboarding docs. One shared folder, one index.</li>
-          <li><b>Build the chatbot on Claude</b> with tools scoped to your knowledge base. Every answer cites the SOP paragraph it came from.</li>
-          <li><b>Wire it into where your team already works</b> (Slack, Teams, or a Claude.ai surface). No new app to learn.</li>
+          <li><b>Build the AI chatbot</b> with tools scoped to your knowledge base. Every answer cites the SOP paragraph it came from.</li>
+          <li><b>Wire it into where your team already works</b> (Slack, Teams, or a web assistant surface). No new app to learn.</li>
           <li><b>Track deflection weekly.</b> Same metric that got bOnline to 60%. Iterate on the top-10 unanswered questions.</li>
         </ol>
         <p class="timeline"><b>Time.</b> 5-7 working days once your library lands in a shared folder.</p>
@@ -473,11 +473,11 @@
     <h2 style="margin:0 0 18px;">2. AI financial reporting + Xero <span style="font-family:var(--mono);font-size:11px;color:var(--jira-blue);letter-spacing:0.08em;text-transform:uppercase;margin-left:8px;">start here</span></h2>
     <div class="project">
       <div class="col-ask">
-        <div class="ask">"Prototype a reporting solution that combines financial data from Xero with Claude/AI... retrieving structured financial information from Xero; monthly and YTD variance analysis; identifying unusual movements; generating first-draft management commentary; KPI and trend analysis; feeding into management accounts or board reporting packs."</div>
+        <div class="ask">"Prototype a reporting solution that combines financial data from Xero with AI... retrieving structured financial information from Xero; monthly and YTD variance analysis; identifying unusual movements; generating first-draft management commentary; KPI and trend analysis; feeding into management accounts or board reporting packs."</div>
       </div>
 
       <div class="col-do">
-        <p class="built"><b>Emerald Path already does this.</b> Pulls Xero via OAuth, categorises transactions with Claude, produces structured reports for month-end and year-end.</p>
+        <p class="built"><b>Emerald Path already does this.</b> Pulls Xero via OAuth, categorises transactions with grounded AI, produces structured reports for month-end and year-end.</p>
         <ol class="steps">
           <li><b>Xero OAuth + pull.</b> P&amp;L, YTD, budget for one pilot client.</li>
           <li><b>Variance analyzer.</b> Flag any line moving &gt; 15% or &gt; £5,000.</li>
@@ -490,7 +490,7 @@
 
     <div class="skill-card">
       <div class="skill-head">
-        <span class="file"><b>.claude/skills/month-end-commentary/SKILL.md</b></span>
+        <span class="file"><b>.skills/month-end-commentary/SKILL.md</b></span>
         <span class="tag">week 2</span>
       </div>
 <div class="skill-body"><span class="fm">---
@@ -643,7 +643,7 @@ You draft a first pass. A partner reads it before it goes out.
     <ul class="proof-list">
       <li><div><span class="client">Emerald Path (Dixon AI).</span><span class="about">UK accountancy platform built end to end in three months. Xero, Sage, QuickBooks, HMRC MTD, Companies House, Inform Direct, Croner-i, SmartSearch AML, Adobe Sign, DocuSign. AI gateway with sourced proposals through 20 rounds of QA. FRS-102 iXBRL engine at 100% tag coverage on the Xero demo company.</span></div></li>
       <li><div><span class="client">bOnline (3 years, Product Owner).</span><span class="about">Led team of five taking an AI chatbot to 60% resolution rate on live customer traffic. Also built the AI receptionist for inbound calls. Ran payments, billing, fraud, credit control end to end. Scaled billing capacity 7x. Introduced bOnline's first fraud, compliance and KYC frameworks.</span></div></li>
-      <li><div><span class="client">Dixon AI (in parallel with Emerald Path).</span><span class="about">Six production Claude Skills. Nine subagent definitions. 10-stage delivery pipeline. 40+ concurrent worktrees at peak. The .md files live in the repo. A partner can edit them without me.</span></div></li>
+      <li><div><span class="client">Dixon AI (in parallel with Emerald Path).</span><span class="about">Six production Skills. Nine subagent definitions. 10-stage delivery pipeline. 40+ concurrent worktrees at peak. The .md files live in the repo. A partner can edit them without me.</span></div></li>
       <li><div><span class="client">LifeCheq.</span><span class="about">Insurance and financial products, full SDLC in a regulated South African financial-services environment.</span></div></li>
     </ul>
   </div>
@@ -651,7 +651,7 @@ You draft a first pass. A partner reads it before it goes out.
 
 <footer class="wrap">
   <div>© Ivi Malotana · Cape Town</div>
-  <div>uk-accountancy-claude.html</div>
+  <div>uk-accountancy.html</div>
 </footer>
 
 </body>
