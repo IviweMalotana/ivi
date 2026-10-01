@@ -24,11 +24,11 @@ Cape Town
 
 ---
 
-**Prototype #2 first (AI + Xero reporting).** You said you're particularly interested. My closest reference (Emerald Path) already pulls Xero, categorises transactions with grounded AI, and produces reports. By end of week 2 a first-draft management commentary lands in a partner's inbox, a real output your team can react to. Projects 1 and 3 build off #2. Project 4 (discovery) runs in parallel from day 1.
+**Prototype #2 first (AI + Xero reporting).** You said you're particularly interested. My closest reference (Emerald Path) already pulls Xero, categorises transactions with grounded AI, and produces reports. By end of week 2 a first-draft management commentary lands in a partner's inbox. Projects 1 and 3 build off #2. Project 4 (discovery) runs in parallel from day 1.
 
 ---
 
-**Emerald Path** is the UK accountancy platform I built end to end in three months. It runs a firm's whole practice. Here it is in four steps.
+**Emerald Path** is the UK accountancy platform I built end to end in three months. It runs a firm's whole practice. Four steps.
 
 ### 1. The firm signs up. A tenant auto-bootstraps.
 
@@ -199,8 +199,6 @@ Never make up a number.
 | **Week 3** | Board deck + handover | Fill Skill for your existing template. Brand check enforcer. Handover doc so the team can add Skills without me. |
 
 ---
-
-**Where I've done this before.**
 
 **Emerald Path (Dixon AI).** UK accountancy platform built end to end in three months. Xero, Sage, QuickBooks, HMRC MTD, Companies House, Inform Direct, Croner-i, SmartSearch AML, Adobe Sign, DocuSign. AI gateway with sourced proposals through 20 rounds of QA. FRS-102 iXBRL engine at 100% tag coverage on the Xero demo company.
 
