@@ -3,465 +3,443 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ivi · Your four projects, mapped</title>
-<meta name="description" content="Your four projects, mapped to what I've built. Plus how the UK accountancy platform I built end-to-end actually works.">
+<title>Ivi · AI + Xero prototype proposal</title>
+<meta name="description" content="Your four projects, mapped to what I've built, as a proposal deck.">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
   :root {
-    --paper:    #ffffff;
-    --panel:    #f5f5f5;
-    --border:   #e5e5e5;
-    --border-2: #cccccc;
-    --ink:      #000000;
-    --ink-2:    #2D2929;
-    --muted:    #555555;
-    --faint:    #999999;
+    --cream:     #F0EDE5;
+    --cream-2:   #E8E4D9;
+    --ink:       #0A0A0A;
+    --ink-soft:  #1A1A1A;
+    --white:     #FFFFFF;
+    --page-bg:   #D4D4D0;
+    --muted:     #6B6B6B;
+    --muted-on-dark: #9E9A90;
+    --faint:     #B8B8B4;
+    --orange:    #FF6B00;
+    --rule:      #262626;
+    --rule-light:#D5D1C6;
 
-    --jira-blue:      #0052CC;
-    --jira-blue-soft: #DEEBFF;
-    --jira-bg:        #F4F5F7;
-    --jira-border:    #DFE1E6;
-    --jira-text:      #172B4D;
-    --jira-text-mid:  #5E6C84;
-
-    --ok:   #216E4E;
-    --ok-soft:  #E3FCEF;
-    --err:  #A33A3A;
-
+    --display: "Archivo Black", "Helvetica Neue", Arial, sans-serif;
     --body:    "Inter", "Helvetica Neue", Arial, sans-serif;
-    --display: "Space Grotesk", "Inter", "Helvetica Neue", Arial, sans-serif;
     --mono:    "JetBrains Mono", ui-monospace, monospace;
   }
 
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; }
   body {
-    background: var(--paper);
-    color: var(--ink-2);
+    background: var(--page-bg);
+    color: var(--ink);
     font-family: var(--body);
     line-height: 1.55;
     -webkit-font-smoothing: antialiased;
   }
-  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
 
-  header.top { border-bottom: 1px solid var(--border); padding: 16px 0; }
-  .top-inner { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
-  .brand {
-    font-family: var(--display); font-weight: 500;
-    font-size: 15px; letter-spacing: -0.01em; color: var(--ink);
-  }
-  .brand em { font-style: normal; color: var(--muted); }
-  .top .right { margin-left: auto; font-size: 12px; color: var(--muted); }
-  .top .right a { color: var(--muted); text-decoration: none; }
-  .top .right a:hover { color: var(--ink); }
+  /* ===== Deck layout ===== */
+  .deck { max-width: 1120px; margin: 0 auto; padding: 32px 24px 64px; }
+  .deck > .slide + .slide { margin-top: 24px; }
 
-  .hero { padding: 64px 0 24px; }
-  h1 {
-    font-family: var(--display); font-weight: 500;
-    font-size: clamp(32px, 4.6vw, 48px); letter-spacing: -0.02em;
-    margin: 0; line-height: 1.05; color: var(--ink);
-    max-width: 20ch; text-wrap: balance;
-  }
-  .lede {
-    font-size: 16px; color: var(--muted); max-width: 60ch; margin: 20px 0 0;
-  }
-  .lede b { color: var(--ink); font-weight: 500; }
-
-  .short-answer {
-    margin: 28px 0 0;
-    padding: 20px 22px;
-    border: 1px solid var(--ink);
-    background: var(--paper);
-  }
-  .short-answer .lbl {
-    font-family: var(--mono); font-size: 10.5px;
-    color: var(--muted); letter-spacing: 0.06em;
-    text-transform: uppercase; margin: 0 0 8px;
-  }
-  .short-answer h3 {
-    font-family: var(--display); font-weight: 500;
-    font-size: 20px; letter-spacing: -0.01em; margin: 0 0 8px; color: var(--ink);
-  }
-  .short-answer p { margin: 0; font-size: 14.5px; color: var(--ink-2); }
-
-  section.band { padding: 56px 0; border-top: 1px solid var(--border); }
-  section.band.warm { background: var(--panel); }
-  .section-head { margin: 0 0 24px; }
-  .section-eyebrow {
-    font-family: var(--mono); font-size: 10.5px;
-    color: var(--faint); letter-spacing: 0.06em;
-    text-transform: uppercase; margin: 0 0 6px;
-  }
-  h2 {
-    font-family: var(--display); font-weight: 500;
-    font-size: 26px; letter-spacing: -0.01em; margin: 0;
-    text-wrap: balance;
-  }
-  .section-intro {
-    font-size: 15px; color: var(--muted); margin: 10px 0 0; max-width: 62ch;
-  }
-  .section-intro b { color: var(--ink); font-weight: 500; }
-
-  /* Emerald Path walkthrough phases */
-  .phases { margin-top: 20px; }
-  .phase {
-    display: grid; grid-template-columns: 60px 1fr;
-    gap: 20px; padding: 22px 0;
-    border-top: 1px solid var(--border);
-    align-items: start;
-  }
-  .phase:first-child { border-top: 0; padding-top: 4px; }
-  .phase .n {
-    font-family: var(--display); font-weight: 500; font-size: 32px;
-    color: var(--ink); letter-spacing: -0.02em; line-height: 1;
-    padding-top: 4px;
-  }
-  .phase h3 {
-    font-family: var(--display); font-weight: 500;
-    font-size: 18px; color: var(--ink); margin: 0 0 6px; letter-spacing: -0.005em;
-  }
-  .phase p { font-size: 14px; color: var(--ink-2); margin: 0 0 10px; line-height: 1.6; }
-  .phase p b { color: var(--ink); font-weight: 500; }
-  .badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
-  .badge {
-    font-family: var(--mono); font-size: 10.5px;
-    padding: 3px 8px; background: var(--jira-blue-soft); color: var(--jira-blue);
-    letter-spacing: 0.02em;
-  }
-
-  /* Tech stack list */
-  .stack { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px 32px; margin-top: 12px; }
-  .stack-group h4 {
-    font-family: var(--mono); font-size: 10.5px;
-    color: var(--faint); letter-spacing: 0.08em;
-    text-transform: uppercase; margin: 0 0 8px; font-weight: 500;
-  }
-  .stack-group p { margin: 0; font-size: 13.5px; color: var(--ink-2); line-height: 1.65; }
-  .stack-group b { color: var(--ink); font-weight: 500; }
-
-  /* Precautions list */
-  .safe { margin: 8px 0 0; padding: 0; list-style: none; }
-  .safe li {
-    padding: 12px 0 12px 32px;
+  .slide {
     position: relative;
-    border-top: 1px solid var(--border);
-    font-size: 14px; color: var(--ink-2);
-    line-height: 1.55;
+    padding: 56px 56px;
+    min-height: 480px;
+    display: flex; flex-direction: column; justify-content: center;
+    overflow: hidden;
   }
-  .safe li:first-child { border-top: 0; }
-  .safe li::before {
-    content: "✓";
-    position: absolute; left: 0; top: 12px;
-    width: 22px; height: 22px;
-    background: var(--ok); color: #fff;
-    display: inline-flex; align-items: center; justify-content: center;
-    font-size: 13px; font-weight: 500;
-  }
-  .safe li:first-child::before { top: 0; }
-  .safe li b { color: var(--ink); font-weight: 500; }
+  .slide.dark  { background: var(--ink);   color: var(--white); }
+  .slide.light { background: var(--cream); color: var(--ink);   }
 
-  /* Project mapping cards */
+  /* Mini chrome: template-template label top-left + brand ribbon at bottom (deck feel) */
+  .chrome-tl, .chrome-br {
+    position: absolute;
+    font-family: var(--mono); font-size: 9.5px;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    opacity: 0.55;
+  }
+  .chrome-tl { top: 20px; left: 56px; }
+  .chrome-br { bottom: 20px; right: 56px; }
+  .orange-tab { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 72px; height: 10px; background: var(--orange); }
+
+  /* ===== Typography ===== */
+  .display, h1.display, h2.display, h3.display {
+    font-family: var(--display); font-weight: 400;
+    letter-spacing: -0.01em; line-height: 0.95;
+    text-transform: uppercase; margin: 0;
+  }
+  h1.display { font-size: clamp(56px, 9vw, 108px); }
+  h2.display { font-size: clamp(40px, 6vw, 72px); }
+  h3.display { font-size: clamp(26px, 3vw, 36px); }
+
+  .ghost { color: transparent; -webkit-text-stroke: 1.5px currentColor; opacity: 0.5; }
+
+  .eyebrow {
+    font-family: var(--mono); font-size: 10.5px;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin: 0 0 20px; opacity: 0.6;
+  }
+  .lede { font-size: 15px; line-height: 1.65; max-width: 60ch; margin: 24px 0 0; }
+  .lede b { font-weight: 600; }
+  .light .lede { color: #333; }
+  .dark .lede  { color: var(--muted-on-dark); }
+
+  .rule-h { height: 1px; background: currentColor; opacity: 0.15; margin: 24px 0; border: 0; }
+
+  /* ===== Numbered circle badges (01, 02, 03) ===== */
+  .num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 38px; height: 38px; border-radius: 50%;
+    font-family: var(--display); font-size: 14px;
+    letter-spacing: 0; line-height: 1;
+    background: var(--ink); color: var(--white);
+  }
+  .dark .num { background: var(--white); color: var(--ink); }
+  .num.ring { background: transparent; border: 1.5px solid currentColor; color: currentColor; }
+
+  /* ===== Scribble decoration ===== */
+  .scribble { position: absolute; stroke: currentColor; fill: none; stroke-width: 1.5; opacity: 0.65; }
+
+  /* ===== Checkmark lists ===== */
+  .checks { list-style: none; margin: 20px 0 0; padding: 0; }
+  .checks li {
+    position: relative; padding: 10px 0 10px 32px;
+    border-top: 1px solid var(--rule-light);
+    font-size: 13.5px; line-height: 1.55;
+  }
+  .dark .checks li { border-top-color: var(--rule); }
+  .checks li:first-child { border-top: 0; }
+  .checks li::before {
+    content: ""; position: absolute; left: 0; top: 14px;
+    width: 16px; height: 16px;
+    border: 1.5px solid currentColor; opacity: 0.9;
+    background:
+      linear-gradient(45deg, transparent 48%, currentColor 48%, currentColor 54%, transparent 54%) center/13px 2px no-repeat,
+      linear-gradient(-45deg, transparent 48%, currentColor 48%, currentColor 54%, transparent 54%) center/13px 2px no-repeat;
+    background-position: 2px 8px, 2px 2px;
+    background-size: 11px 2px, 7px 2px;
+  }
+  /* Simpler cleaner check with pure CSS */
+  .checks li::before {
+    content: ""; position: absolute; left: 0; top: 13px;
+    width: 16px; height: 16px; border: 1.5px solid currentColor;
+    background: transparent;
+  }
+  .checks li::after {
+    content: ""; position: absolute; left: 3px; top: 15px;
+    width: 10px; height: 5px;
+    border-left: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor;
+    transform: rotate(-45deg);
+  }
+  .checks li b { font-weight: 600; }
+
+  /* ===== Section layouts ===== */
+  .two-col {
+    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 48px; align-items: start;
+  }
+  .one-third-two {
+    display: grid; grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
+    gap: 48px; align-items: start;
+  }
+  .cols-4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+  .cols-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+  .cols-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
+
+  /* ===== Slide 1 (cover) ===== */
+  .cover h1 { max-width: 10ch; }
+  .cover .meta {
+    position: absolute; bottom: 56px; left: 56px; right: 56px;
+    display: flex; justify-content: space-between; align-items: flex-end;
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.7;
+  }
+  .cover .ivi-mark {
+    position: absolute; top: 56px; right: 56px;
+    font-family: var(--display); font-size: 18px;
+    letter-spacing: -0.01em; text-transform: lowercase;
+  }
+
+  /* ===== Contents ===== */
+  .contents-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 48px; margin-top: 16px; }
+  .contents-item { display: grid; grid-template-columns: 40px 1fr; align-items: baseline; gap: 14px; padding: 14px 0; border-top: 1px solid var(--rule-light); }
+  .contents-item .n2 { font-family: var(--display); font-size: 20px; letter-spacing: 0; }
+  .contents-item .t  { font-family: var(--display); font-size: 15px; letter-spacing: 0; text-transform: uppercase; }
+  .contents-item .d  { grid-column: 2; font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+
+  /* ===== Short answer / recommendation ===== */
+  .answer-card {
+    background: var(--white); color: var(--ink);
+    padding: 32px 36px; border: 1.5px solid var(--ink);
+    max-width: 640px;
+  }
+  .answer-card .label {
+    font-family: var(--mono); font-size: 10.5px;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted);
+    margin: 0 0 10px;
+  }
+  .answer-card h3 { font-family: var(--display); font-size: 22px; margin: 0 0 10px; text-transform: none; letter-spacing: -0.005em; }
+  .answer-card p  { margin: 0; font-size: 13.5px; color: #333; line-height: 1.6; }
+
+  /* ===== Service / project cards ===== */
+  .svc {
+    padding: 22px 20px; border-top: 1.5px solid currentColor;
+    display: flex; flex-direction: column; gap: 10px; min-height: 220px;
+  }
+  .svc .svc-num { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; }
+  .svc h4 { font-family: var(--display); font-size: 20px; margin: 0; letter-spacing: -0.005em; text-transform: uppercase; line-height: 1.05; }
+  .svc p { font-size: 12.5px; line-height: 1.6; margin: 0; opacity: 0.85; }
+
+  /* ===== Project blocks (deep) ===== */
   .project {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-    align-items: start;
+    display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr);
+    gap: 40px; align-items: start; margin-top: 20px;
   }
-  .col-h {
-    font-family: var(--mono); font-size: 10.5px;
-    color: var(--faint); letter-spacing: 0.06em;
-    text-transform: uppercase; margin: 0 0 8px;
+  .project .num-big {
+    font-family: var(--display); font-size: 96px; line-height: 0.9;
+    letter-spacing: -0.03em;
   }
-  .ask {
-    padding: 16px 18px;
-    background: var(--jira-bg);
-    border-left: 3px solid var(--jira-blue);
-    font-size: 13.5px; color: var(--jira-text);
-    line-height: 1.6; font-style: italic;
-    margin: 0 0 12px;
+  .project .ask {
+    font-size: 13px; line-height: 1.6; font-style: italic;
+    color: var(--muted); border-left: 2px solid currentColor;
+    padding-left: 14px; margin: 10px 0 0;
   }
-  .built {
-    font-size: 14.5px; color: var(--ink-2); margin: 0 0 14px;
-  }
-  .built b { color: var(--ink); font-weight: 500; }
+  .dark .project .ask { color: var(--muted-on-dark); }
+  .project h3 { font-family: var(--display); font-size: 26px; margin: 0 0 10px; letter-spacing: -0.005em; text-transform: uppercase; line-height: 1.05; }
+  .project .proof-line { font-size: 14px; margin: 0 0 14px; line-height: 1.6; }
+  .project .proof-line b { font-weight: 600; }
 
-  .steps {
-    list-style: none; padding: 0; margin: 6px 0 0;
-    counter-reset: step;
-  }
+  .steps { list-style: none; margin: 10px 0 0; padding: 0; counter-reset: s; }
   .steps li {
-    counter-increment: step;
-    position: relative;
-    padding: 8px 0 8px 32px;
-    font-size: 14px; color: var(--ink-2);
-    border-top: 1px solid var(--border);
+    counter-increment: s; position: relative;
+    padding: 10px 0 10px 36px; border-top: 1px solid var(--rule-light);
+    font-size: 13px; line-height: 1.6;
   }
-  .steps li:first-child { border-top: 0; padding-top: 0; }
+  .dark .steps li { border-top-color: var(--rule); }
+  .steps li:first-child { border-top: 0; padding-top: 4px; }
   .steps li::before {
-    content: counter(step);
-    position: absolute; left: 0; top: 8px;
-    width: 22px; height: 22px;
-    background: var(--ink); color: #fff;
-    display: inline-flex; align-items: center; justify-content: center;
-    font-family: var(--display); font-size: 12px; font-weight: 500;
+    content: counter(s, decimal-leading-zero);
+    position: absolute; left: 0; top: 10px;
+    font-family: var(--display); font-size: 13px; letter-spacing: 0;
   }
-  .steps li:first-child::before { top: 0; }
-  .steps li b { color: var(--ink); font-weight: 500; }
+  .steps li b { font-weight: 600; }
 
-  .timeline {
-    margin-top: 12px; padding-top: 10px; border-top: 1px dashed var(--border-2);
-    font-size: 12.5px; color: var(--muted);
+  /* ===== Walkthrough phases ===== */
+  .phase {
+    display: grid; grid-template-columns: 80px 1fr;
+    gap: 24px; padding: 24px 0;
+    border-top: 1px solid var(--rule-light);
   }
-  .timeline b { color: var(--ink); font-weight: 500; }
+  .dark .phase { border-top-color: var(--rule); }
+  .phase:first-of-type { border-top: 0; padding-top: 0; }
+  .phase .p-n { font-family: var(--display); font-size: 48px; line-height: 1; letter-spacing: -0.02em; }
+  .phase h4 { font-family: var(--display); font-size: 20px; margin: 0 0 8px; letter-spacing: -0.005em; text-transform: uppercase; line-height: 1.05; }
+  .phase p { font-size: 13.5px; line-height: 1.65; margin: 0 0 10px; }
+  .phase p b { font-weight: 600; }
+  .badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+  .badge {
+    font-family: var(--mono); font-size: 10px;
+    padding: 4px 9px; border: 1px solid currentColor;
+    letter-spacing: 0.04em; opacity: 0.9;
+  }
 
-  /* SKILL.md card */
-  .skill-card { border: 1px solid var(--border); background: var(--paper); margin-top: 18px; }
+  /* ===== Tech stack ===== */
+  .stack { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px 32px; margin-top: 20px; }
+  .stack-item h5 {
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em;
+    text-transform: uppercase; margin: 0 0 8px; opacity: 0.7; font-weight: 500;
+  }
+  .stack-item p { font-size: 12.5px; line-height: 1.65; margin: 0; }
+  .stack-item b { font-weight: 600; }
+
+  /* ===== SKILL.md card ===== */
+  .skill-card { border: 1.5px solid currentColor; margin-top: 20px; max-width: 820px; }
   .skill-head {
-    padding: 10px 14px; border-bottom: 1px solid var(--border);
-    background: var(--jira-bg);
+    padding: 10px 14px; border-bottom: 1.5px solid currentColor;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.04em;
     display: flex; justify-content: space-between; align-items: center;
-    font-family: var(--mono); font-size: 11.5px; color: var(--jira-text-mid);
   }
-  .skill-head .file b { color: var(--jira-text); font-weight: 500; }
-  .skill-head .tag { background: var(--jira-blue-soft); color: var(--jira-blue); font-size: 10px; padding: 2px 6px; letter-spacing: 0.04em; }
   .skill-body {
-    padding: 14px 18px 18px;
-    font-family: var(--mono); font-size: 12.5px; line-height: 1.7;
-    color: var(--ink-2); white-space: pre-wrap; overflow-x: auto;
+    padding: 16px 18px; font-family: var(--mono); font-size: 11.5px; line-height: 1.75;
+    white-space: pre-wrap; overflow-x: auto;
   }
-  .skill-body .fm { color: var(--jira-text-mid); }
-  .skill-body .h1, .skill-body .h2 { color: var(--ink); font-weight: 500; }
-  .skill-body .never { color: var(--err); }
-  .skill-body .always { color: var(--ok); }
-  .skill-body .code { color: var(--jira-blue); }
+  .skill-body .fm { opacity: 0.6; }
+  .skill-body .h1, .skill-body .h2 { font-weight: 600; }
+  .skill-body .never { color: var(--orange); }
+  .dark .skill-body .never { color: #FFB380; }
 
-  /* Guardrail diagram */
+  /* ===== Gate diagram ===== */
   .gate {
     display: grid;
-    grid-template-columns:
-      minmax(0, 1fr) 20px minmax(0, 1fr) 20px
-      minmax(0, 1fr) 20px minmax(0, 1fr) 20px minmax(0, 1fr);
-    gap: 0; margin: 12px 0 0;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 12px; margin-top: 24px;
   }
   .gate-step {
-    padding: 14px 12px; border: 1px solid var(--border); background: var(--paper);
-    display: flex; flex-direction: column; gap: 6px; min-width: 0;
+    padding: 16px 14px; border: 1.5px solid currentColor;
+    display: flex; flex-direction: column; gap: 8px; min-width: 0;
   }
   .gate-step .k {
-    font-family: var(--mono); font-size: 10px;
-    padding: 3px 7px; align-self: flex-start;
-    letter-spacing: 0.04em; text-transform: lowercase;
-    background: var(--jira-blue-soft); color: var(--jira-blue);
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em;
+    text-transform: uppercase; opacity: 0.7;
   }
-  .gate-step .k.gate-k { background: var(--ink); color: #fff; }
-  .gate-step .t {
-    font-family: var(--display); font-weight: 500; font-size: 14px;
-    color: var(--ink); line-height: 1.25; margin: 2px 0 0;
-  }
-  .gate-step .d { font-size: 12px; color: var(--muted); margin: 2px 0 0; line-height: 1.5; }
-  .gate-arrow { align-self: center; text-align: center; color: var(--faint); font-size: 16px; line-height: 1; }
+  .gate-step .t { font-family: var(--display); font-size: 14px; letter-spacing: -0.005em; text-transform: uppercase; line-height: 1.1; }
+  .gate-step.active { background: var(--white); color: var(--ink); }
 
-  /* Week plan */
-  .weeks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 16px; }
-  .week { padding: 16px 16px; border: 1px solid var(--border); background: var(--paper); }
-  .week .w-lbl {
-    font-family: var(--mono); font-size: 10.5px;
-    color: var(--jira-blue); letter-spacing: 0.06em;
-    text-transform: uppercase; margin: 0 0 6px;
-  }
-  .week h4 {
-    font-family: var(--display); font-weight: 500;
-    font-size: 15px; color: var(--ink); margin: 0 0 6px; letter-spacing: -0.005em;
-  }
-  .week p { font-size: 13px; color: var(--muted); margin: 0; line-height: 1.55; }
+  /* ===== Big-number proof row ===== */
+  .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px; margin: 20px 0 32px; }
+  .stat .n { font-family: var(--display); font-size: clamp(48px, 6vw, 76px); line-height: 1; letter-spacing: -0.02em; }
+  .stat .n .pct { font-size: 0.5em; }
+  .stat .lbl { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.65; margin-top: 8px; }
 
-  .proof-list { margin: 0; padding: 0; list-style: none; }
-  .proof-list li { padding: 16px 0; border-top: 1px solid var(--border); }
-  .proof-list li:first-child { border-top: 0; }
-  .proof-list .client {
-    font-family: var(--display); font-weight: 500;
-    font-size: 15px; color: var(--ink); margin-right: 8px;
-  }
-  .proof-list .about { font-size: 13.5px; color: var(--ink-2); }
+  .clients { list-style: none; margin: 0; padding: 0; }
+  .clients li { padding: 14px 0; border-top: 1px solid var(--rule-light); font-size: 13px; line-height: 1.55; }
+  .clients li:first-child { border-top: 0; }
+  .clients .name { font-family: var(--display); font-size: 15px; letter-spacing: -0.005em; text-transform: uppercase; margin-right: 10px; }
 
-  footer {
-    padding: 24px 0; border-top: 1px solid var(--border);
-    display: flex; justify-content: space-between;
-    font-size: 12px; color: var(--muted);
-    flex-wrap: wrap; gap: 12px;
+  /* ===== Contact / closing ===== */
+  .contact-rows { display: flex; flex-direction: column; gap: 14px; margin-top: 24px; }
+  .contact-row { display: grid; grid-template-columns: 44px 1fr; align-items: center; gap: 14px; font-size: 14px; }
+  .contact-row .ico {
+    width: 32px; height: 32px; border: 1.5px solid currentColor; border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-family: var(--mono); font-size: 13px;
   }
+  .contact-row a { color: inherit; text-decoration: none; }
+  .contact-row a:hover { text-decoration: underline; }
 
-  @media (max-width: 760px) {
-    .project { grid-template-columns: 1fr; gap: 16px; }
-    .stack { grid-template-columns: 1fr; }
-    .phase { grid-template-columns: 48px 1fr; gap: 14px; }
-    .phase .n { font-size: 24px; }
-    .gate { grid-template-columns: 1fr; grid-auto-rows: auto; }
-    .gate-arrow { padding: 4px 0; align-self: center; }
-    .weeks { grid-template-columns: 1fr; }
-    .hero { padding: 40px 0 16px; }
-    section.band { padding: 36px 0; }
+  .end-wrap { text-align: center; }
+  .end-wrap h1 { max-width: none; line-height: 0.9; }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 900px) {
+    .slide { padding: 40px 28px; min-height: unset; }
+    .chrome-tl { left: 28px; }
+    .chrome-br { right: 28px; }
+    .cover .meta { left: 28px; right: 28px; bottom: 28px; }
+    .cover .ivi-mark { right: 28px; top: 28px; }
+    .two-col, .one-third-two, .cols-4, .cols-3, .cols-2, .stack, .stats, .gate, .contents-list { grid-template-columns: 1fr; gap: 24px; }
+    .project { grid-template-columns: 1fr; gap: 20px; }
+    .project .num-big { font-size: 72px; }
+    .phase { grid-template-columns: 56px 1fr; gap: 16px; }
+    .phase .p-n { font-size: 36px; }
   }
 </style>
 </head>
 <body>
 
-<header class="top">
-  <div class="wrap top-inner">
-    <div class="brand">ivi · <em>your four projects, mapped</em></div>
-    <div class="right">
-      <a href="mailto:iivii.malotana@gmail.com">iivii.malotana@gmail.com</a>
+<div class="deck">
+
+  <!-- 1 · COVER -->
+  <section class="slide dark cover">
+    <div class="orange-tab"></div>
+    <div class="chrome-tl">proposal · one-pager</div>
+    <div class="ivi-mark">ivi</div>
+
+    <h1 class="display">AI + Xero<br>Prototype</h1>
+    <p class="lede" style="max-width: 56ch; opacity: 0.85;">Your four projects, mapped to what I've already built end to end.</p>
+
+    <div class="meta">
+      <span>Ivi Malotana · Cape Town</span>
+      <span>Clean · Direct · Shipped</span>
     </div>
-  </div>
-</header>
+  </section>
 
-<section class="wrap hero">
-  <h1>Prototype #2 first (AI + Xero reporting).</h1>
-  <div class="short-answer">
-    <p>My closest reference is Emerald Path, a UK accountancy platform I built end to end. It already pulls Xero, categorises transactions with grounded AI, and produces reports. Projects 1 and 3 build off #2. Project 4 (discovery) runs alongside.</p>
-  </div>
-</section>
+  <!-- 2 · CONTENTS -->
+  <section class="slide light">
+    <div class="chrome-tl">01</div>
+    <h2 class="display" style="margin-bottom: 8px;">Contents</h2>
+    <div class="contents-list">
+      <div class="contents-item"><div class="n2">01</div><div><div class="t">Short answer</div><div class="d">Which project to prototype first, and why.</div></div></div>
+      <div class="contents-item"><div class="n2">02</div><div><div class="t">The four projects</div><div class="d">What you asked for, mapped one-to-one.</div></div></div>
+      <div class="contents-item"><div class="n2">03</div><div><div class="t">Case study · Emerald Path</div><div class="d">The UK accountancy platform I built end to end.</div></div></div>
+      <div class="contents-item"><div class="n2">04</div><div><div class="t">Built with</div><div class="d">The stack behind it.</div></div></div>
+      <div class="contents-item"><div class="n2">05</div><div><div class="t">The month-end commentary skill</div><div class="d">A real SKILL.md you can read.</div></div></div>
+      <div class="contents-item"><div class="n2">06</div><div><div class="t">Already safe</div><div class="d">Eight precautions already live in Emerald Path.</div></div></div>
+      <div class="contents-item"><div class="n2">07</div><div><div class="t">How the AI stays safe</div><div class="d">The five-gate review flow for client work.</div></div></div>
+      <div class="contents-item"><div class="n2">08</div><div><div class="t">Proof</div><div class="d">Numbers and clients.</div></div></div>
+    </div>
+    <div class="chrome-br">contents</div>
+  </section>
 
-<section class="band">
-  <div class="wrap">
-    <p class="section-intro" style="margin:0 0 20px;max-width:62ch;"><b>Emerald Path.</b> UK accountancy platform I built end to end in three months.</p>
-
-    <div class="phases">
-      <div class="phase">
-        <div class="n">1</div>
-        <div>
-          <h3>Onboarding a client.</h3>
-          <p>Enter a company name. <b>Companies House pulls the directors, share structure, filing history.</b> <b>SmartSearch runs the AML check.</b> <b>Adobe Sign or DocuSign sends the engagement letter.</b> Billing kicks in on the firm's subscription.</p>
-          <div class="badges">
-            <span class="badge">Companies House API</span>
-            <span class="badge">Inform Direct</span>
-            <span class="badge">SmartSearch AML</span>
-            <span class="badge">Adobe Sign</span>
-            <span class="badge">DocuSign</span>
-          </div>
-        </div>
+  <!-- 3 · SHORT ANSWER -->
+  <section class="slide dark">
+    <div class="chrome-tl">02 · short answer</div>
+    <div class="two-col">
+      <div>
+        <p class="eyebrow">Recommendation</p>
+        <h2 class="display">Prototype<br><span class="ghost">#2 first.</span></h2>
       </div>
-
-      <div class="phase">
-        <div class="n">2</div>
-        <div>
-          <h3>The client's accounts data flows in.</h3>
-          <p><b>Xero, Sage or QuickBooks connect via OAuth</b> (frontend-callback pattern so keys never touch a shared server). Bank transactions land continuously. <b>The AI gateway categorises each transaction</b> against the firm's chart of accounts and proposes journals. Every AI proposal cites the source transaction row. <b>A partner reviews before anything books.</b></p>
-          <div class="badges">
-            <span class="badge">Xero API</span>
-            <span class="badge">Sage API</span>
-            <span class="badge">QuickBooks API</span>
-            <span class="badge">AI gateway (grounded citations)</span>
-            <span class="badge">Python + AWS Lambda</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="phase">
-        <div class="n">3</div>
-        <div>
-          <h3>Year-end. Statutory accounts, VAT, corporation tax, filed.</h3>
-          <p>The <b>FRS-102 statutory accounts engine</b> builds full accounts from the bookkeeping. The <b>iXBRL tagger reaches 100% coverage on the Xero demo company</b> (deterministic, chart-of-accounts driven, not AI-guessed). <b>CT600 corporation tax computes</b>. <b>VAT flows through HMRC MTD</b> (tested against agent, individual and org sandbox users first). <b>Croner-i</b> is wired in for tax law reference. Filed to HMRC and Companies House.</p>
-          <div class="badges">
-            <span class="badge">FRS-102 engine</span>
-            <span class="badge">iXBRL @ 100%</span>
-            <span class="badge">CT600</span>
-            <span class="badge">HMRC MTD</span>
-            <span class="badge">Companies House filing</span>
-            <span class="badge">Croner-i</span>
-            <span class="badge">IRIS Elements handoff</span>
-          </div>
-        </div>
+      <div class="answer-card">
+        <p class="label">AI + Xero reporting</p>
+        <h3>Emerald Path is the closest reference I have.</h3>
+        <p>It already pulls Xero, categorises transactions with grounded AI, and produces structured reports for month-end and year-end. Projects 1 and 3 build off #2. Project 4 (discovery) runs alongside.</p>
       </div>
     </div>
-  </div>
-</section>
+    <div class="chrome-br">02</div>
+  </section>
 
-<section class="band warm">
-  <div class="wrap">
-    <p class="section-intro" style="margin:0 0 20px;max-width:62ch;"><b>Built with.</b> Serverless-first. One operator runs the whole thing.</p>
-
-    <div class="stack">
-      <div class="stack-group">
-        <h4>Frontend</h4>
-        <p><b>React + TypeScript + Tailwind + Vite.</b> Mobile-responsive design system with tokens, decision tables and pre-commit checks. No-code page builder for firm-branded pages (draft / publish / version history).</p>
+  <!-- 4 · FOUR PROJECTS (summary cards) -->
+  <section class="slide light">
+    <div class="chrome-tl">03 · four projects</div>
+    <h2 class="display" style="margin-bottom: 24px;">Four projects.<br><span class="ghost">Mapped.</span></h2>
+    <div class="cols-4">
+      <div class="svc">
+        <span class="svc-num">01</span>
+        <h4>Internal<br>knowledge hub</h4>
+        <p><b>3 years at bOnline.</b> Led the team of 5 that took the internal AI support chatbot to a 60% resolution rate. Also led the build of the AI receptionist for inbound VOIP calls.</p>
       </div>
-      <div class="stack-group">
-        <h4>Backend</h4>
-        <p><b>Python 3.12 on AWS Lambda.</b> REST APIs, webhooks, event-driven pipelines on DynamoDB streams. C# .NET for interop where inherited.</p>
+      <div class="svc">
+        <span class="svc-num">02 · start here</span>
+        <h4>AI financial<br>reporting + Xero</h4>
+        <p><b>Emerald Path does this.</b> Pulls Xero via OAuth, categorises transactions with grounded AI, produces structured reports for month-end and year-end.</p>
       </div>
-      <div class="stack-group">
-        <h4>Data</h4>
-        <p><b>Aurora PostgreSQL + DynamoDB.</b> Per-tenant Postgres schemas with row-level security. Point-in-time restore on Aurora. DynamoDB pagination corrected across every query/scan site.</p>
+      <div class="svc">
+        <span class="svc-num">03</span>
+        <h4>Automated<br>board decks</h4>
+        <p><b>Emerald Path outputs follow the firm's own template, not a generic one.</b> Same pattern extends to PowerPoint (python-pptx) or Google Slides.</p>
       </div>
-      <div class="stack-group">
-        <h4>Infra</h4>
-        <p><b>AWS Serverless.</b> Lambda, Aurora, DynamoDB, Cognito, S3, CloudFront, WAF, CloudTrail, SES. SAM / CloudFormation IaC. eu-west-2. Dev, staging, production, plus satellite dev environments.</p>
-      </div>
-      <div class="stack-group">
-        <h4>AI</h4>
-        <p><b>LLM gateway with grounded citation-backed generation.</b> Per-phase model routing (plans, builds, runs). Six custom Skills. Nine subagent definitions.</p>
-      </div>
-      <div class="stack-group">
-        <h4>Integrations shipped</h4>
-        <p>Xero, Sage, QuickBooks, HMRC MTD, Companies House, Inform Direct, IRIS Elements, Croner-i, SmartSearch AML, Adobe Sign, DocuSign, Freshdesk, Sumsub, GitHub OAuth, Cognito.</p>
+      <div class="svc">
+        <span class="svc-num">04 · alongside</span>
+        <h4>Explore other<br>AI opportunities</h4>
+        <p><b>Dixon AI 10-stage pipeline.</b> Discovery first: shadow one partner, one manager, one associate. Rank by hours saved and blast radius.</p>
       </div>
     </div>
-  </div>
-</section>
+    <div class="chrome-br">04</div>
+  </section>
 
-<!-- Precautions -->
-<section class="band">
-  <div class="wrap">
-    <p class="section-intro" style="margin:0 0 20px;max-width:62ch;"><b>Already safe in Emerald Path.</b></p>
-
-    <ul class="safe">
-      <li><b>Three-layer tenant isolation.</b> Per-firm Postgres schema + row-level security + an authorizer that gates every API call by firm membership. Verified by E2E tests on every PR.</li>
-      <li><b>AWS WAF fronting the API.</b> Blocks the obvious classes (SQLi, XSS attempts, bad bots) before they reach the app.</li>
-      <li><b>Point-in-time restore on Aurora + CloudTrail on the account.</b> Rollback to any second in the last 35 days. Every action logged with actor + timestamp.</li>
-      <li><b>Password reset hardened against brute force and code enumeration.</b> Full BRD written before the code. Public writeup.</li>
-      <li><b>XSS sanitisation on all user-authored content</b> (pages, notes, ticket comments). Byte-identity HTML round-trip tests catch regressions in the sanitiser.</li>
-      <li><b>API Gateway throttled with 429 retry and batching.</b> Prevents a runaway job from taking down the account.</li>
-      <li><b>Every AI-generated line cites its source row.</b> Nothing client-facing sends without a partner tapping OK. See the guardrail below.</li>
-      <li><b>Production database backups + tenant-isolation audit</b> packaged as a reusable Skill so a partner (or another dev) can run them without me.</li>
-    </ul>
-  </div>
-</section>
-
-<!-- Project 1 · Internal knowledge hub -->
-<section class="band warm">
-  <div class="wrap">
-    <h2 style="margin:0 0 18px;">1. Internal knowledge hub</h2>
+  <!-- 5 · PROJECT 1 DEEP -->
+  <section class="slide dark">
+    <div class="chrome-tl">03 · project 01</div>
     <div class="project">
-      <div class="col-ask">
-        <div class="ask">"We have a growing library of SOPs, processes, company values, service standards, templates, onboarding information and internal documentation. We would like to create an effective AI-enabled internal knowledge system that our team can use."</div>
+      <div>
+        <div class="num-big">01</div>
+        <p class="ask">"We have a growing library of SOPs, processes, company values, service standards, templates, onboarding and internal documentation. We would like an AI-enabled internal knowledge system."</p>
       </div>
-
-      <div class="col-do">
-        <p class="built"><b>3 years at bOnline leading AI initiatives.</b> Led the team of 5 that took the <b>internal AI support chatbot to a 60% resolution rate</b> on live customer traffic. Also led the build of the <b>AI receptionist for inbound VOIP calls.</b> Both run on a structured knowledge base with the AI as the answerer. SOPs, service standards, templates and onboarding docs — same shape.</p>
+      <div>
+        <h3>Internal knowledge hub</h3>
+        <p class="proof-line"><b>3 years at bOnline leading AI initiatives.</b> Led the team of 5 that took the <b>internal AI support chatbot to a 60% resolution rate</b> on live customer traffic. Also led the build of the <b>AI receptionist for inbound VOIP calls.</b> Both run on a structured knowledge base with the AI as the answerer. SOPs, service standards, templates and onboarding docs — same shape.</p>
         <ol class="steps">
-          <li><b>Ingest your library.</b> SOPs, processes, values, service standards, templates, onboarding docs. One shared folder, one index.</li>
+          <li><b>Ingest your library.</b> One shared folder, one index.</li>
           <li><b>Build the AI chatbot</b> with tools scoped to your knowledge base. Every answer cites the SOP paragraph it came from.</li>
-          <li><b>Wire it into where your team already works</b> (Slack, Teams, or a web assistant surface). No new app to learn.</li>
+          <li><b>Wire it into where your team already works</b> (Slack, Teams, or a web assistant surface).</li>
           <li><b>Track deflection weekly.</b> Same metric that got bOnline to 60%. Iterate on the top-10 unanswered questions.</li>
         </ol>
       </div>
     </div>
-  </div>
-</section>
+    <div class="chrome-br">05</div>
+  </section>
 
-<!-- Project 2 · AI + Xero -->
-<section class="band">
-  <div class="wrap">
-    <h2 style="margin:0 0 18px;">2. AI financial reporting + Xero <span style="font-family:var(--mono);font-size:11px;color:var(--jira-blue);letter-spacing:0.08em;text-transform:uppercase;margin-left:8px;">start here</span></h2>
+  <!-- 6 · PROJECT 2 DEEP -->
+  <section class="slide light">
+    <div class="chrome-tl">03 · project 02 · start here</div>
     <div class="project">
-      <div class="col-ask">
-        <div class="ask">"Prototype a reporting solution that combines financial data from Xero with AI... retrieving structured financial information from Xero; monthly and YTD variance analysis; identifying unusual movements; generating first-draft management commentary; KPI and trend analysis; feeding into management accounts or board reporting packs."</div>
+      <div>
+        <div class="num-big">02</div>
+        <p class="ask">"Prototype a reporting solution that combines financial data from Xero with AI... variance analysis, unusual movements, first-draft management commentary, KPI and trend analysis, feeding into management accounts or board reporting packs."</p>
       </div>
-
-      <div class="col-do">
-        <p class="built"><b>Emerald Path already does this.</b> Pulls Xero via OAuth, categorises transactions with grounded AI, produces structured reports for month-end and year-end.</p>
+      <div>
+        <h3>AI financial reporting + Xero</h3>
+        <p class="proof-line"><b>Emerald Path already does this.</b> Pulls Xero via OAuth, categorises transactions with grounded AI, produces structured reports for month-end and year-end.</p>
         <ol class="steps">
           <li><b>Xero OAuth + pull.</b> P&amp;L, YTD, budget for one pilot client.</li>
           <li><b>Variance analyzer.</b> Flag any line moving &gt; 15% or &gt; £5,000.</li>
@@ -470,11 +448,163 @@
         </ol>
       </div>
     </div>
+    <div class="chrome-br">06</div>
+  </section>
 
-    <div class="skill-card">
-      <div class="skill-head">
-        <span class="file"><b>.skills/month-end-commentary/SKILL.md</b></span>
+  <!-- 7 · PROJECT 3 DEEP -->
+  <section class="slide dark">
+    <div class="chrome-tl">03 · project 03</div>
+    <div class="project">
+      <div>
+        <div class="num-big">03</div>
+        <p class="ask">"The objective is not generic AI-generated PowerPoint slides. We want consistent, professional outputs that follow our reporting methodology and brand, with our finance team reviewing and refining."</p>
       </div>
+      <div>
+        <h3>Automated reporting<br>and board decks</h3>
+        <p class="proof-line"><b>Emerald Path's outputs already follow the firm's own template, not a generic one.</b> FRS-102 accounts, iXBRL tags, CT600 comps all produced in the firm's format. Same pattern extends to PowerPoint (python-pptx) or Google Slides.</p>
+        <ol class="steps">
+          <li><b>Fingerprint your template.</b> Fonts, colours, layouts, section order, house language.</li>
+          <li><b>Build the fill Skill.</b> Takes the variance + commentary from Project 2 and drops them into the right template slots.</li>
+          <li><b>Brand check.</b> Blocks generic AI phrases. Enforces your section headings. Respects your voice guide.</li>
+          <li><b>Finance team reviews</b> in Slides or PPTX before it sends. Nothing autosend.</li>
+        </ol>
+      </div>
+    </div>
+    <div class="chrome-br">07</div>
+  </section>
+
+  <!-- 8 · PROJECT 4 DEEP -->
+  <section class="slide light">
+    <div class="chrome-tl">03 · project 04 · runs alongside</div>
+    <div class="project">
+      <div>
+        <div class="num-big">04</div>
+        <p class="ask">"We would also like you to understand how our outsourced finance business operates and help us identify other high-value opportunities for AI and automation."</p>
+      </div>
+      <div>
+        <h3>Explore other<br>AI opportunities</h3>
+        <p class="proof-line"><b>Dixon AI 10-stage pipeline.</b> Discovery first: map every workflow, rank by ROI.</p>
+        <ol class="steps">
+          <li><b>Shadow.</b> One partner, one manager, one associate. Daily / weekly / monthly work mapped.</li>
+          <li><b>Rank every candidate</b> by hours saved × frequency × blast radius if wrong.</li>
+          <li><b>One page per use case.</b> What it does, hours saved, risk, order to build.</li>
+        </ol>
+      </div>
+    </div>
+    <div class="chrome-br">08</div>
+  </section>
+
+  <!-- 9 · CASE STUDY · EMERALD PATH -->
+  <section class="slide dark">
+    <div class="chrome-tl">04 · case study</div>
+    <div class="one-third-two">
+      <div>
+        <p class="eyebrow">Case study</p>
+        <h2 class="display">Emerald<br>Path</h2>
+        <p class="lede">UK accountancy platform I built end to end in three months. Three steps.</p>
+      </div>
+      <div>
+        <div class="phase">
+          <div class="p-n">01</div>
+          <div>
+            <h4>Onboarding a client</h4>
+            <p>Enter a company name. <b>Companies House pulls the directors, share structure, filing history.</b> <b>SmartSearch runs the AML check.</b> <b>Adobe Sign or DocuSign sends the engagement letter.</b> Billing kicks in on the firm's subscription.</p>
+            <div class="badges">
+              <span class="badge">Companies House API</span>
+              <span class="badge">Inform Direct</span>
+              <span class="badge">SmartSearch AML</span>
+              <span class="badge">Adobe Sign</span>
+              <span class="badge">DocuSign</span>
+            </div>
+          </div>
+        </div>
+        <div class="phase">
+          <div class="p-n">02</div>
+          <div>
+            <h4>The client's accounts data flows in</h4>
+            <p><b>Xero, Sage or QuickBooks connect via OAuth</b> (frontend-callback pattern so keys never touch a shared server). Bank transactions land continuously. <b>The AI gateway categorises each transaction</b> against the firm's chart of accounts and proposes journals. Every AI proposal cites the source transaction row. <b>A partner reviews before anything books.</b></p>
+            <div class="badges">
+              <span class="badge">Xero API</span>
+              <span class="badge">Sage API</span>
+              <span class="badge">QuickBooks API</span>
+              <span class="badge">AI gateway</span>
+              <span class="badge">Python + AWS Lambda</span>
+            </div>
+          </div>
+        </div>
+        <div class="phase">
+          <div class="p-n">03</div>
+          <div>
+            <h4>Year-end filed</h4>
+            <p>The <b>FRS-102 statutory accounts engine</b> builds full accounts from the bookkeeping. The <b>iXBRL tagger reaches 100% coverage on the Xero demo company</b> (deterministic, chart-of-accounts driven, not AI-guessed). <b>CT600 corporation tax computes.</b> <b>VAT flows through HMRC MTD.</b> Filed to HMRC and Companies House.</p>
+            <div class="badges">
+              <span class="badge">FRS-102 engine</span>
+              <span class="badge">iXBRL @ 100%</span>
+              <span class="badge">CT600</span>
+              <span class="badge">HMRC MTD</span>
+              <span class="badge">Companies House filing</span>
+              <span class="badge">Croner-i</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="chrome-br">09</div>
+  </section>
+
+  <!-- 10 · BUILT WITH -->
+  <section class="slide light">
+    <div class="chrome-tl">05 · built with</div>
+    <div class="one-third-two">
+      <div>
+        <p class="eyebrow">Stack</p>
+        <h2 class="display">Built<br>with.</h2>
+        <p class="lede">Serverless-first. One operator runs the whole thing.</p>
+      </div>
+      <div class="stack">
+        <div class="stack-item">
+          <h5>Frontend</h5>
+          <p><b>React + TypeScript + Tailwind + Vite.</b> Mobile-responsive design system with tokens and pre-commit checks. No-code page builder for firm-branded pages.</p>
+        </div>
+        <div class="stack-item">
+          <h5>Backend</h5>
+          <p><b>Python 3.12 on AWS Lambda.</b> REST APIs, webhooks, event-driven pipelines on DynamoDB streams.</p>
+        </div>
+        <div class="stack-item">
+          <h5>Data</h5>
+          <p><b>Aurora PostgreSQL + DynamoDB.</b> Per-tenant Postgres schemas with row-level security. Point-in-time restore on Aurora.</p>
+        </div>
+        <div class="stack-item">
+          <h5>Infra</h5>
+          <p><b>AWS Serverless.</b> Lambda, Aurora, DynamoDB, Cognito, S3, CloudFront, WAF, CloudTrail, SES. SAM / CloudFormation IaC. eu-west-2.</p>
+        </div>
+        <div class="stack-item">
+          <h5>AI</h5>
+          <p><b>LLM gateway with grounded citation-backed generation.</b> Per-phase model routing. Six custom Skills. Nine subagent definitions.</p>
+        </div>
+        <div class="stack-item">
+          <h5>Integrations shipped</h5>
+          <p>Xero, Sage, QuickBooks, HMRC MTD, Companies House, Inform Direct, IRIS Elements, Croner-i, SmartSearch AML, Adobe Sign, DocuSign, Freshdesk, Sumsub, GitHub OAuth, Cognito.</p>
+        </div>
+      </div>
+    </div>
+    <div class="chrome-br">10</div>
+  </section>
+
+  <!-- 11 · THE MONTH-END COMMENTARY SKILL -->
+  <section class="slide dark">
+    <div class="chrome-tl">06 · the skill</div>
+    <div class="one-third-two">
+      <div>
+        <p class="eyebrow">Example skill</p>
+        <h2 class="display">Month-end<br>commentary.</h2>
+        <p class="lede">A real <code>SKILL.md</code>. Dropped in the repo, picked up by the pipeline. Partner edits it with no code.</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-head">
+          <span><b>.skills/month-end-commentary/SKILL.md</b></span>
+          <span>example</span>
+        </div>
 <div class="skill-body"><span class="fm">---
 name: month-end-commentary
 description: Draft a month-end commentary from a Xero P&amp;L.
@@ -491,7 +621,7 @@ You draft a first pass. A partner reads it before it goes out.
 
 - The month's P&amp;L, exported from Xero.
 - The client's engagement letter (tells you their industry).
-- The firm's voice guide at <span class="code">/voice.md</span>.
+- The firm's voice guide at /voice.md.
 
 <span class="h2">## What you do</span>
 
@@ -499,115 +629,122 @@ You draft a first pass. A partner reads it before it goes out.
    write ONE sentence about what changed. Tag it with the source row.
 2. Group the sentences under: Revenue, Gross margin, Overheads.
 3. Add an "outlook" line only if a trend runs three months.
-   Otherwise write <span class="code">"nothing to flag this month"</span>.
+   Otherwise write "nothing to flag this month".
 4. Keep every source row visible. Partner clicks to check.
 
 <span class="h2">## What you never do</span>
 
 - Invent a reason ("customer wins in Q3") unless it's in the notes file.
 - Use "significantly" without a number next to it.
-- <span class="always">Send it.</span> Hand back to the partner. Leave the ticket in <span class="code">"For review"</span>.</div>
-    </div>
-  </div>
-</section>
-
-<!-- Project 3 · Board decks -->
-<section class="band warm">
-  <div class="wrap">
-    <h2 style="margin:0 0 18px;">3. Automated reporting and board decks</h2>
-    <div class="project">
-      <div class="col-ask">
-        <div class="ask">"The objective is not generic AI-generated PowerPoint slides. We want consistent, professional outputs that follow our reporting methodology and brand, with our finance team reviewing and refining the final output."</div>
-      </div>
-
-      <div class="col-do">
-        <p class="built"><b>Emerald Path's outputs already follow the firm's own template, not a generic one.</b> FRS-102 accounts, iXBRL tags, CT600 comps all produced in the firm's format. Same pattern extends to PowerPoint (python-pptx) or Google Slides.</p>
-        <ol class="steps">
-          <li><b>Fingerprint your template.</b> Fonts, colours, layouts, section order, house language.</li>
-          <li><b>Build the fill Skill.</b> Takes the variance + commentary from Project 2 and drops them into the right template slots.</li>
-          <li><b>Brand check.</b> Blocks generic AI phrases. Enforces your section headings. Respects your voice guide.</li>
-          <li><b>Finance team reviews</b> in Slides or PPTX before it sends. Nothing autosend.</li>
-        </ol>
+- Send it. Hand back to the partner. Leave the ticket in "For review".</div>
       </div>
     </div>
-  </div>
-</section>
+    <div class="chrome-br">11</div>
+  </section>
 
-<!-- Project 4 · Explore -->
-<section class="band">
-  <div class="wrap">
-    <h2 style="margin:0 0 18px;">4. Explore other AI opportunities <span style="font-family:var(--mono);font-size:11px;color:var(--jira-blue);letter-spacing:0.08em;text-transform:uppercase;margin-left:8px;">runs alongside</span></h2>
-    <div class="project">
-      <div class="col-ask">
-        <div class="ask">"We would also like you to understand how our outsourced finance business operates and help us identify other high-value opportunities for AI and automation... client onboarding, month-end processes, financial review and QA, meeting preparation, action tracking, client queries, internal knowledge, proposals..."</div>
+  <!-- 12 · ALREADY SAFE -->
+  <section class="slide light">
+    <div class="chrome-tl">07 · already safe</div>
+    <div class="one-third-two">
+      <div>
+        <p class="eyebrow">Precautions</p>
+        <h2 class="display">Already<br>safe.</h2>
+        <p class="lede">Every item below is live in Emerald Path today.</p>
       </div>
-
-      <div class="col-do">
-        <p class="built"><b>Dixon AI 10-stage pipeline.</b> Discovery first: map every workflow, rank by ROI.</p>
-        <ol class="steps">
-          <li><b>Shadow.</b> One partner, one manager, one associate. Daily / weekly / monthly work mapped.</li>
-          <li><b>Rank every candidate</b> by hours saved × frequency × blast radius if wrong.</li>
-          <li><b>One page per use case.</b> What it does, hours saved, risk, order to build.</li>
-        </ol>
-      </div>
+      <ul class="checks">
+        <li><b>Three-layer tenant isolation.</b> Per-firm Postgres schema + row-level security + an authorizer that gates every API call by firm membership. Verified by E2E tests on every PR.</li>
+        <li><b>AWS WAF fronting the API.</b> Blocks SQLi, XSS attempts, bad bots before they reach the app.</li>
+        <li><b>Point-in-time restore on Aurora + CloudTrail on the account.</b> Rollback to any second in the last 35 days. Every action logged with actor + timestamp.</li>
+        <li><b>Password reset hardened against brute force and code enumeration.</b> Full BRD written before the code. Public writeup.</li>
+        <li><b>XSS sanitisation on all user-authored content.</b> Byte-identity HTML round-trip tests catch regressions in the sanitiser.</li>
+        <li><b>API Gateway throttled with 429 retry and batching.</b> Prevents a runaway job from taking down the account.</li>
+        <li><b>Every AI-generated line cites its source row.</b> Nothing client-facing sends without a partner tapping OK.</li>
+        <li><b>Production database backups + tenant-isolation audit</b> packaged as a reusable Skill a partner can run.</li>
+      </ul>
     </div>
-  </div>
-</section>
+    <div class="chrome-br">12</div>
+  </section>
 
-<!-- Reliability guardrail -->
-<section class="band warm">
-  <div class="wrap">
-    <p class="section-intro" style="margin:0 0 18px;max-width:62ch;"><b>How the AI stays safe on client work.</b> Every line cites a source. A partner taps OK before anything sends.</p>
-
+  <!-- 13 · HOW THE AI STAYS SAFE (GATE) -->
+  <section class="slide dark">
+    <div class="chrome-tl">08 · guardrail</div>
+    <p class="eyebrow">Review gate</p>
+    <h2 class="display" style="margin-bottom: 8px;">How the AI<br>stays safe.</h2>
+    <p class="lede">Every line cites a source. A partner taps OK before anything sends.</p>
     <div class="gate">
       <div class="gate-step">
-        <span class="k">1 · cite</span>
+        <span class="k">01 · cite</span>
         <div class="t">Every line points to a source.</div>
-        <div class="d">"Margin down 4pt" must link back to a P&amp;L row. No source, no send.</div>
       </div>
-      <span class="gate-arrow">→</span>
       <div class="gate-step">
-        <span class="k">2 · score</span>
+        <span class="k">02 · score</span>
         <div class="t">Confidence check.</div>
-        <div class="d">Anything the AI is unsure about gets a reason attached.</div>
       </div>
-      <span class="gate-arrow">→</span>
       <div class="gate-step">
-        <span class="k">3 · quarantine</span>
+        <span class="k">03 · quarantine</span>
         <div class="t">Held for review.</div>
-        <div class="d">Not hidden. Partner sees what the AI wanted to say and why it was held.</div>
       </div>
-      <span class="gate-arrow">→</span>
-      <div class="gate-step">
-        <span class="k gate-k">4 · human</span>
+      <div class="gate-step active">
+        <span class="k">04 · human</span>
         <div class="t">Partner taps OK.</div>
-        <div class="d">Accept, reject or rewrite. Every tap is logged.</div>
       </div>
-      <span class="gate-arrow">→</span>
       <div class="gate-step">
-        <span class="k">5 · send</span>
-        <div class="t">Send is locked if any line has no source.</div>
-        <div class="d">Locked on the server, not just the UI. No way around it.</div>
+        <span class="k">05 · send</span>
+        <div class="t">Locked server-side if any line has no source.</div>
       </div>
     </div>
-  </div>
-</section>
+    <div class="chrome-br">13</div>
+  </section>
 
-<section class="band">
-  <div class="wrap">
-    <ul class="proof-list">
-      <li><div><span class="client">Emerald Path (Dixon AI).</span><span class="about">UK accountancy platform built end to end in three months. Xero, Sage, QuickBooks, HMRC MTD, Companies House, Inform Direct, Croner-i, SmartSearch AML, Adobe Sign, DocuSign. AI gateway with sourced proposals through 20 rounds of QA. FRS-102 iXBRL engine at 100% tag coverage on the Xero demo company.</span></div></li>
-      <li><div><span class="client">bOnline (3 years, Product Owner).</span><span class="about">Led team of five taking an AI chatbot to 60% resolution rate on live customer traffic. Also built the AI receptionist for inbound calls. Ran payments, billing, fraud, credit control end to end. Scaled billing capacity 7x. Introduced bOnline's first fraud, compliance and KYC frameworks.</span></div></li>
-      <li><div><span class="client">Dixon AI (in parallel with Emerald Path).</span><span class="about">Six production Skills. Nine subagent definitions. 10-stage delivery pipeline. 40+ concurrent worktrees at peak. The .md files live in the repo. A partner can edit them without me.</span></div></li>
-      <li><div><span class="client">LifeCheq.</span><span class="about">Insurance and financial products, full SDLC in a regulated South African financial-services environment.</span></div></li>
+  <!-- 14 · PROOF -->
+  <section class="slide light">
+    <div class="chrome-tl">09 · proof</div>
+    <p class="eyebrow">Numbers</p>
+    <h2 class="display" style="margin-bottom: 24px;">Proof.</h2>
+    <div class="stats">
+      <div class="stat"><div class="n">60<span class="pct">%</span></div><div class="lbl">bOnline chatbot resolution</div></div>
+      <div class="stat"><div class="n">100<span class="pct">%</span></div><div class="lbl">iXBRL tag coverage (Xero demo)</div></div>
+      <div class="stat"><div class="n">7×</div><div class="lbl">bOnline billing capacity</div></div>
+      <div class="stat"><div class="n">3 yrs</div><div class="lbl">leading AI at bOnline</div></div>
+    </div>
+    <hr class="rule-h">
+    <ul class="clients">
+      <li><span class="name">Emerald Path (Dixon AI).</span>UK accountancy platform built end to end in three months. Xero, Sage, QuickBooks, HMRC MTD, Companies House, Inform Direct, Croner-i, SmartSearch AML, Adobe Sign, DocuSign. AI gateway with sourced proposals through 20 rounds of QA. FRS-102 iXBRL engine at 100% tag coverage on the Xero demo company.</li>
+      <li><span class="name">bOnline (3 years, Product Owner).</span>Led team of 5 taking an AI chatbot to 60% resolution rate on live customer traffic. Also led the build of the AI receptionist for inbound VOIP calls. Ran payments, billing, fraud, credit control end to end. Scaled billing capacity 7×. Introduced bOnline's first fraud, compliance and KYC frameworks.</li>
+      <li><span class="name">Dixon AI (alongside Emerald Path).</span>Six production Skills. Nine subagent definitions. 10-stage delivery pipeline. 40+ concurrent worktrees at peak. The .md files live in the repo. A partner can edit them without me.</li>
+      <li><span class="name">LifeCheq.</span>Insurance and financial products, full SDLC in a regulated South African financial-services environment.</li>
     </ul>
-  </div>
-</section>
+    <div class="chrome-br">14</div>
+  </section>
 
-<footer class="wrap">
-  <div>© Ivi Malotana · Cape Town</div>
-  <div>uk-accountancy.html</div>
-</footer>
+  <!-- 15 · GET IN TOUCH -->
+  <section class="slide dark">
+    <div class="chrome-tl">10 · get in touch</div>
+    <div class="two-col">
+      <div>
+        <p class="eyebrow">Contact</p>
+        <h2 class="display">Get in<br>touch.</h2>
+        <p class="lede">Prefer to see the Emerald Path gateway running than read about it? I'll screen share it on a call this week.</p>
+      </div>
+      <div class="contact-rows">
+        <div class="contact-row"><span class="ico">@</span><a href="mailto:iivii.malotana@gmail.com">iivii.malotana@gmail.com</a></div>
+        <div class="contact-row"><span class="ico">↗</span><a href="https://iviwemalotana.github.io/ivi/uk-accountancy.html">iviwemalotana.github.io/ivi/uk-accountancy.html</a></div>
+        <div class="contact-row"><span class="ico">◎</span><span>Cape Town, South Africa</span></div>
+      </div>
+    </div>
+    <div class="chrome-br">15</div>
+  </section>
+
+  <!-- 16 · THE END -->
+  <section class="slide dark end-wrap">
+    <div class="orange-tab"></div>
+    <div class="chrome-tl">end</div>
+    <h1 class="display">Thank<br>you.</h1>
+    <p class="lede" style="margin: 24px auto 0; opacity: 0.7;">Ivi Malotana · Cape Town · iivii.malotana@gmail.com</p>
+    <div class="chrome-br">16 / 16</div>
+  </section>
+
+</div>
 
 </body>
 </html>
