@@ -1,9 +1,5 @@
 # Ivi — AI/Claude Implementation Specialist · UK Outsourced Finance Firm
 
-Everything on one page in markdown. Cover letter at the top, then the full plan.
-
----
-
 ## Cover letter (paste on Upwork)
 
 You asked for examples of what applicants have built. Here they are, mapped to your four projects.
@@ -28,15 +24,11 @@ Cape Town
 
 ---
 
-## Short answer
-
-**Prototype #2 first (AI + Xero reporting).** You said you're particularly interested. My closest reference (Emerald Path, a UK accountancy platform I built end to end) already pulls Xero, categorises transactions with grounded AI, and produces reports. By end of week 2 you'd have a first-draft management commentary landing in a partner's inbox, a real output your team can react to. Projects 1 and 3 build off #2. Project 4 (discovery) runs in parallel from day 1.
+**Prototype #2 first (AI + Xero reporting).** You said you're particularly interested. My closest reference (Emerald Path) already pulls Xero, categorises transactions with grounded AI, and produces reports. By end of week 2 a first-draft management commentary lands in a partner's inbox, a real output your team can react to. Projects 1 and 3 build off #2. Project 4 (discovery) runs in parallel from day 1.
 
 ---
 
-## The system I built — Emerald Path
-
-Emerald Path is a white-label UK accountancy platform I built in three months. It runs a firm's whole practice: sign up a firm, onboard their client, pull the client's data, do the work, produce and file the year-end. Same shape you need.
+**Emerald Path** is the UK accountancy platform I built end to end in three months. It runs a firm's whole practice. Here it is in four steps.
 
 ### 1. The firm signs up. A tenant auto-bootstraps.
 
@@ -64,9 +56,7 @@ The **FRS-102 statutory accounts engine** builds full accounts from the bookkeep
 
 ---
 
-## Tech stack
-
-Boring on purpose. Every choice is a serverless-first, low-ops decision so one operator can run the whole thing without an infra team.
+**Built with.** Serverless-first. One operator can run the whole thing without an infra team.
 
 | Layer | What |
 |---|---|
@@ -79,9 +69,7 @@ Boring on purpose. Every choice is a serverless-first, low-ops decision so one o
 
 ---
 
-## How it stays safe
-
-You're an outsourced finance firm. Data confidentiality is not optional. These are already in Emerald Path today.
+**Already safe.** You're an outsourced finance firm. Everything below is in Emerald Path today.
 
 - [x] **Three-layer tenant isolation.** Per-firm Postgres schema + row-level security + an authorizer that gates every API call by firm membership. Verified by E2E tests on every PR.
 - [x] **AWS WAF fronting the API.** Blocks the obvious classes (SQLi, XSS attempts, bad bots) before they reach the app.
@@ -89,18 +77,16 @@ You're an outsourced finance firm. Data confidentiality is not optional. These a
 - [x] **Password reset hardened against brute force and code enumeration.** Full BRD written before the code. Public writeup.
 - [x] **XSS sanitisation on all user-authored content** (pages, notes, ticket comments). Byte-identity HTML round-trip tests catch regressions in the sanitiser.
 - [x] **API Gateway throttled with 429 retry and batching.** Prevents a runaway job from taking down the account.
-- [x] **Every AI-generated line cites its source row.** Nothing client-facing sends without a partner tapping OK. See the guardrail below.
+- [x] **Every AI-generated line cites its source row.** Nothing client-facing sends without a partner tapping OK.
 - [x] **Production database backups + tenant-isolation audit** packaged as a reusable Claude Skill so a partner (or another dev) can run them without me.
 
 ---
 
-## Project 1 of 4 · Internal knowledge hub
+## 1. Internal knowledge hub
 
-> **You said:** "We have a growing library of SOPs, processes, company values, service standards, templates, onboarding information and internal documentation. We would like to create an effective AI-enabled internal knowledge system that our team can use."
+> "We have a growing library of SOPs, processes, company values, service standards, templates, onboarding information and internal documentation. We would like to create an effective AI-enabled internal knowledge system that our team can use."
 
 **I've built this. For three years at bOnline I led AI initiatives end to end.** I led the team of five that took the **internal AI support chatbot from concept to a 60% resolution rate** on live customer traffic. I also led the build of the **AI receptionist that handles inbound customer calls** across bOnline's VOIP product. Both run on a structured knowledge base (product docs, pricing, policies, troubleshooting procedures) with the AI as the answerer. **Your SOPs, service standards, templates and onboarding docs are the same shape.** Same pattern, same guardrails, same deflection metric.
-
-**Steps**
 
 1. **Ingest your library.** SOPs, processes, values, service standards, templates, onboarding docs. One shared folder, one index.
 2. **Build the chatbot on Claude** with tools scoped to your knowledge base. Every answer cites the SOP paragraph it came from.
@@ -111,13 +97,11 @@ You're an outsourced finance firm. Data confidentiality is not optional. These a
 
 ---
 
-## Project 2 of 4 · AI financial reporting + Xero · start here
+## 2. AI financial reporting + Xero · start here
 
-> **You said:** "Prototype a reporting solution that combines financial data from Xero with Claude/AI... retrieving structured financial information from Xero; monthly and YTD variance analysis; identifying unusual movements; generating first-draft management commentary; KPI and trend analysis; feeding into management accounts or board reporting packs."
+> "Prototype a reporting solution that combines financial data from Xero with Claude/AI... retrieving structured financial information from Xero; monthly and YTD variance analysis; identifying unusual movements; generating first-draft management commentary; KPI and trend analysis; feeding into management accounts or board reporting packs."
 
 **I've built this.** Emerald Path (the platform walked through above) already pulls Xero via OAuth, categorises transactions with Claude, and produces structured reports for month-end and year-end. **This is your closest reference on my CV.**
-
-**Steps**
 
 1. **Xero OAuth + pull.** P&L, YTD, budget for one pilot client.
 2. **Variance analyzer.** Flag any line moving > 15% or > £5,000.
@@ -165,13 +149,11 @@ Never make up a number.
 
 ---
 
-## Project 3 of 4 · Automated reporting and board decks
+## 3. Automated reporting and board decks
 
-> **You said:** "The objective is not generic AI-generated PowerPoint slides. We want consistent, professional outputs that follow our reporting methodology and brand, with our finance team reviewing and refining the final output."
+> "The objective is not generic AI-generated PowerPoint slides. We want consistent, professional outputs that follow our reporting methodology and brand, with our finance team reviewing and refining the final output."
 
 **I've built this.** Emerald Path's reporting outputs follow the firm's own template, not a generic one. FRS-102 accounts, iXBRL tags, CT600 tax comps all produced in the firm's format. Same pattern extends to PowerPoint (python-pptx) or Google Slides for board decks.
-
-**Steps**
 
 1. **Fingerprint your template.** Fonts, colours, layouts, section order, house language.
 2. **Build the fill Skill.** Takes the variance + commentary from Project 2 and drops them into the right template slots.
@@ -182,13 +164,11 @@ Never make up a number.
 
 ---
 
-## Project 4 of 4 · Explore other AI opportunities · runs in parallel from day 1
+## 4. Explore other AI opportunities · in parallel from day 1
 
-> **You said:** "We would also like you to understand how our outsourced finance business operates and help us identify other high-value opportunities for AI and automation... client onboarding, month-end processes, financial review and QA, meeting preparation, action tracking, client queries, internal knowledge, proposals..."
+> "We would also like you to understand how our outsourced finance business operates and help us identify other high-value opportunities for AI and automation... client onboarding, month-end processes, financial review and QA, meeting preparation, action tracking, client queries, internal knowledge, proposals..."
 
 **I've built this.** At Dixon AI I ran a 10-stage pipeline that turns founder ideas into shipped features. The first three days are always discovery: mapping every workflow and ranking by ROI. Same approach applied to your firm.
-
-**Steps**
 
 1. **Three days shadowing.** One partner, one manager, one associate. Daily / weekly / monthly work mapped.
 2. **Rank every candidate** by hours saved × frequency × blast radius if wrong.
@@ -198,7 +178,7 @@ Never make up a number.
 
 ---
 
-## How I stop the AI being wrong on client work
+**How I stop the AI being wrong on client work.** Every line cites a source. Nothing sends without a partner tapping OK.
 
 | Step | What | Why |
 |---|---|---|
@@ -210,7 +190,7 @@ Never make up a number.
 
 ---
 
-## Weeks 1-3 · what lands, and when
+**Weeks 1-3.** What lands, and when.
 
 | Week | Focus | Delivered |
 |---|---|---|
@@ -220,7 +200,7 @@ Never make up a number.
 
 ---
 
-## Proof — where I've done this before
+**Where I've done this before.**
 
 **Emerald Path (Dixon AI).** UK accountancy platform built end to end in three months. Xero, Sage, QuickBooks, HMRC MTD, Companies House, Inform Direct, Croner-i, SmartSearch AML, Adobe Sign, DocuSign. AI gateway with sourced proposals through 20 rounds of QA. FRS-102 iXBRL engine at 100% tag coverage on the Xero demo company.
 
