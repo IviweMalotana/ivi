@@ -10,12 +10,12 @@ You asked for examples of what applicants have built. Here they are, mapped to y
 
 **3. Automated reporting and board decks.** Emerald Path outputs into structured documents that follow the firm's own template, not a generic one. Finance team reviews before send. Same pattern extends to your PowerPoint or Google Slides packs via python-pptx.
 
-**4. Explore AI opportunities.** At Dixon AI I ran a 10-stage pipeline that turns founder ideas into shipped features. The first three days are always discovery. Applied to your firm: I shadow one partner, one manager, one associate. I come back with 6-10 use cases ranked by hours saved and blast radius.
+**4. Explore AI opportunities.** At Dixon AI I ran a 10-stage pipeline that turns founder ideas into shipped features. Discovery first. Applied to your firm: I shadow one partner, one manager, one associate. I come back with 6-10 use cases ranked by hours saved and blast radius.
 
-I mapped all four step-by-step here, with a real `SKILL.md` and a working plan for weeks 1-3:
+I mapped all four step-by-step here, with a real `SKILL.md`:
 https://iviwemalotana.github.io/ivi/uk-accountancy.html
 
-**Which to prototype first: #2 (AI + Xero).** You said you're particularly interested. My Emerald Path reference is the closest match. And by end of week 2, a first-draft management commentary lands in a partner's inbox, a real output your finance team can react to.
+**Which to prototype first: #2 (AI + Xero).** You said you're particularly interested. My Emerald Path reference is the closest match. First-draft management commentary lands in a partner's inbox, a real output your finance team can react to.
 
 Rather see the Emerald Path gateway running than read about it? I'll screen share it on a call this week.
 
@@ -24,7 +24,7 @@ Cape Town
 
 ---
 
-**Prototype #2 first (AI + Xero reporting).** My closest reference is Emerald Path, a UK accountancy platform I built end to end. It already pulls Xero, categorises transactions with grounded AI, and produces reports. First-draft management commentary in a partner's inbox by end of week 2. Projects 1 and 3 build off #2. Project 4 (discovery) runs from day 1.
+**Prototype #2 first (AI + Xero reporting).** My closest reference is Emerald Path, a UK accountancy platform I built end to end. It already pulls Xero, categorises transactions with grounded AI, and produces reports. Projects 1 and 3 build off #2. Project 4 (discovery) runs alongside.
 
 ---
 
@@ -87,8 +87,6 @@ The **FRS-102 statutory accounts engine** builds full accounts from the bookkeep
 3. **Wire it into where your team already works** (Slack, Teams, or a web assistant surface). No new app to learn.
 4. **Track deflection weekly.** Same metric that got bOnline to 60%. Iterate on the top-10 unanswered questions.
 
-**Time.** 5-7 working days once your library lands in a shared folder.
-
 ---
 
 ## 2. AI financial reporting + Xero · start here
@@ -101,8 +99,6 @@ The **FRS-102 statutory accounts engine** builds full accounts from the bookkeep
 2. **Variance analyzer.** Flag any line moving > 15% or > £5,000.
 3. **Commentary generator.** One sentence per flagged line, tagged with the source row.
 4. **Structured output.** HTML or Markdown block that drops into your management accounts pack.
-
-**Time.** Working prototype for one pilot client by end of week 2.
 
 ### `.skills/month-end-commentary/SKILL.md`
 
@@ -154,21 +150,17 @@ Never make up a number.
 3. **Brand check.** Blocks generic AI phrases. Enforces your section headings. Respects your voice guide.
 4. **Finance team reviews** in Slides or PPTX before it sends. Nothing autosend.
 
-**Time.** 5 working days after Project 2's commentary works.
-
 ---
 
-## 4. Explore other AI opportunities · in parallel from day 1
+## 4. Explore other AI opportunities · runs alongside
 
 > "We would also like you to understand how our outsourced finance business operates and help us identify other high-value opportunities for AI and automation... client onboarding, month-end processes, financial review and QA, meeting preparation, action tracking, client queries, internal knowledge, proposals..."
 
-**Dixon AI 10-stage pipeline.** First three days are always discovery: map every workflow, rank by ROI.
+**Dixon AI 10-stage pipeline.** Discovery first: map every workflow, rank by ROI.
 
-1. **Three days shadowing.** One partner, one manager, one associate. Daily / weekly / monthly work mapped.
+1. **Shadow.** One partner, one manager, one associate. Daily / weekly / monthly work mapped.
 2. **Rank every candidate** by hours saved × frequency × blast radius if wrong.
 3. **One page per use case.** What it does, hours saved, risk, order to build.
-
-**Time.** Delivered by end of week 1, before I start the Project 2 build.
 
 ---
 
@@ -181,16 +173,6 @@ Never make up a number.
 | **3 · quarantine** | Held for review. | Not hidden. Partner sees what the AI wanted to say and why it was held. |
 | **4 · human** | Partner taps OK. | Accept, reject or rewrite. Every tap is logged. |
 | **5 · send** | Send is locked if any line has no source. | Locked on the server, not just the UI. No way around it. |
-
----
-
-**Weeks 1-3.**
-
-| Week | Focus | Delivered |
-|---|---|---|
-| **Week 1** | Discovery + first Skill | 3 days shadowing (partner, manager, associate). ROI map of 6-10 use cases. First Skill wired for a pilot client. |
-| **Week 2** | Xero + commentary prototype | Xero OAuth. Variance analyzer. Commentary generator with source-row citations. First draft in a partner's inbox by Friday. |
-| **Week 3** | Board deck + handover | Fill Skill for your existing template. Brand check enforcer. Handover doc so the team can add Skills without me. |
 
 ---
 
