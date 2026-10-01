@@ -1,4 +1,4 @@
-# Ivi — AI/Claude Implementation Specialist · UK Outsourced Finance Firm
+# Ivi — AI Implementation Specialist · UK Outsourced Finance Firm
 
 ## Cover letter (paste on Upwork)
 
@@ -13,7 +13,7 @@ You asked for examples of what applicants have built. Here they are, mapped to y
 **4. Explore AI opportunities.** At Dixon AI I ran a 10-stage pipeline that turns founder ideas into shipped features. The first three days are always discovery. Applied to your firm: I shadow one partner, one manager, one associate. I come back with 6-10 use cases ranked by hours saved and blast radius.
 
 I mapped all four step-by-step here, with a real `SKILL.md` and a working plan for weeks 1-3:
-https://iviwemalotana.github.io/ivi/uk-accountancy-claude.html
+https://iviwemalotana.github.io/ivi/uk-accountancy.html
 
 **Which to prototype first: #2 (AI + Xero).** You said you're particularly interested. My Emerald Path reference is the closest match. And by end of week 2, a first-draft management commentary lands in a partner's inbox, a real output your finance team can react to.
 
@@ -46,7 +46,7 @@ They enter a company name. **Companies House (via Inform Direct) pulls the compa
 
 **Xero, Sage or QuickBooks connect via OAuth** (frontend-callback pattern so keys never touch a shared server). Bank transactions land continuously. **The AI gateway categorises each transaction** against the firm's chart of accounts and proposes journals. Every AI proposal cites the source transaction row. **A partner reviews before anything books.**
 
-`Xero API` · `Sage API` · `QuickBooks API` · `Claude (grounded citations)` · `Python + AWS Lambda`
+`Xero API` · `Sage API` · `QuickBooks API` · `AI gateway (grounded citations)` · `Python + AWS Lambda`
 
 ### 4. Year-end. Statutory accounts, VAT, corporation tax, filed.
 
@@ -64,7 +64,7 @@ The **FRS-102 statutory accounts engine** builds full accounts from the bookkeep
 | **Backend** | Python 3.12 on AWS Lambda. REST APIs, webhooks, event-driven pipelines on DynamoDB streams. C# .NET for interop where inherited. |
 | **Data** | Aurora PostgreSQL + DynamoDB. Per-tenant Postgres schemas with row-level security. Point-in-time restore on Aurora. DynamoDB pagination corrected across every query/scan site. |
 | **Infra** | AWS Serverless. Lambda, Aurora, DynamoDB, Cognito, S3, CloudFront, WAF, CloudTrail, SES. SAM / CloudFormation IaC. eu-west-2. Dev, staging, production, plus satellite dev environments. |
-| **AI** | Claude Code, Claude Cowork, OpenAI Codex. LLM gateway with grounded citation-backed generation. Per-phase model routing (Opus plans, Sonnet builds, Haiku runs). Six custom Claude Skills. Nine subagent definitions. |
+| **AI** | LLM gateway with grounded citation-backed generation. Per-phase model routing (plans, builds, runs). Six custom Skills. Nine subagent definitions. |
 | **Integrations shipped** | Xero, Sage, QuickBooks, HMRC MTD, Companies House, Inform Direct, IRIS Elements, Croner-i, SmartSearch AML, Adobe Sign, DocuSign, Freshdesk, Sumsub, GitHub OAuth, Cognito. |
 
 ---
@@ -78,7 +78,7 @@ The **FRS-102 statutory accounts engine** builds full accounts from the bookkeep
 - [x] **XSS sanitisation on all user-authored content** (pages, notes, ticket comments). Byte-identity HTML round-trip tests catch regressions in the sanitiser.
 - [x] **API Gateway throttled with 429 retry and batching.** Prevents a runaway job from taking down the account.
 - [x] **Every AI-generated line cites its source row.** Nothing client-facing sends without a partner tapping OK.
-- [x] **Production database backups + tenant-isolation audit** packaged as a reusable Claude Skill so a partner (or another dev) can run them without me.
+- [x] **Production database backups + tenant-isolation audit** packaged as a reusable Skill so a partner (or another dev) can run them without me.
 
 ---
 
@@ -89,8 +89,8 @@ The **FRS-102 statutory accounts engine** builds full accounts from the bookkeep
 **3 years at bOnline leading AI initiatives.** Led the team of 5 that took the **internal AI support chatbot to a 60% resolution rate** on live customer traffic. Also led the build of the **AI receptionist for inbound VOIP calls.** Both run on a structured knowledge base with the AI as the answerer. SOPs, service standards, templates and onboarding docs — same shape.
 
 1. **Ingest your library.** SOPs, processes, values, service standards, templates, onboarding docs. One shared folder, one index.
-2. **Build the chatbot on Claude** with tools scoped to your knowledge base. Every answer cites the SOP paragraph it came from.
-3. **Wire it into where your team already works** (Slack, Teams, or a Claude.ai surface). No new app to learn.
+2. **Build the AI chatbot** with tools scoped to your knowledge base. Every answer cites the SOP paragraph it came from.
+3. **Wire it into where your team already works** (Slack, Teams, or a web assistant surface). No new app to learn.
 4. **Track deflection weekly.** Same metric that got bOnline to 60%. Iterate on the top-10 unanswered questions.
 
 **Time.** 5-7 working days once your library lands in a shared folder.
@@ -99,9 +99,9 @@ The **FRS-102 statutory accounts engine** builds full accounts from the bookkeep
 
 ## 2. AI financial reporting + Xero · start here
 
-> "Prototype a reporting solution that combines financial data from Xero with Claude/AI... retrieving structured financial information from Xero; monthly and YTD variance analysis; identifying unusual movements; generating first-draft management commentary; KPI and trend analysis; feeding into management accounts or board reporting packs."
+> "Prototype a reporting solution that combines financial data from Xero with AI... retrieving structured financial information from Xero; monthly and YTD variance analysis; identifying unusual movements; generating first-draft management commentary; KPI and trend analysis; feeding into management accounts or board reporting packs."
 
-**Emerald Path already does this.** Pulls Xero via OAuth, categorises transactions with Claude, produces structured reports for month-end and year-end.
+**Emerald Path already does this.** Pulls Xero via OAuth, categorises transactions with grounded AI, produces structured reports for month-end and year-end.
 
 1. **Xero OAuth + pull.** P&L, YTD, budget for one pilot client.
 2. **Variance analyzer.** Flag any line moving > 15% or > £5,000.
@@ -110,7 +110,7 @@ The **FRS-102 statutory accounts engine** builds full accounts from the bookkeep
 
 **Time.** Working prototype for one pilot client by end of week 2.
 
-### `.claude/skills/month-end-commentary/SKILL.md`
+### `.skills/month-end-commentary/SKILL.md`
 
 ```markdown
 ---
@@ -204,7 +204,7 @@ Never make up a number.
 
 **bOnline (3 years, Product Owner).** Led team of five taking an AI chatbot to 60% resolution rate on live customer traffic. Also led the build of the AI receptionist for inbound VOIP calls. Ran payments, billing, fraud, credit control end to end. Scaled billing capacity 7x. Introduced bOnline's first fraud, compliance and KYC frameworks.
 
-**Dixon AI (in parallel with Emerald Path).** Six production Claude Skills. Nine subagent definitions. 10-stage delivery pipeline. 40+ concurrent worktrees at peak. The `.md` files live in the repo. A partner can edit them without me.
+**Dixon AI (in parallel with Emerald Path).** Six production Skills. Nine subagent definitions. 10-stage delivery pipeline. 40+ concurrent worktrees at peak. The `.md` files live in the repo. A partner can edit them without me.
 
 **LifeCheq.** Insurance and financial products, full SDLC in a regulated South African financial-services environment.
 
