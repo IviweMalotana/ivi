@@ -331,23 +331,8 @@
       <div class="phase">
         <div class="n">1</div>
         <div>
-          <h3>The firm signs up. A tenant auto-bootstraps.</h3>
-          <p>A new firm creates an account. Behind the scenes: a per-firm Postgres schema is created, row-level security switches on, an authorizer starts gating every API call by membership. All traffic is fronted by AWS WAF. Point-in-time restore and CloudTrail are on from minute one. <b>The firm is isolated from every other firm on the platform, three layers deep.</b></p>
-          <div class="badges">
-            <span class="badge">AWS Cognito</span>
-            <span class="badge">Aurora Postgres</span>
-            <span class="badge">Row-level security</span>
-            <span class="badge">AWS WAF</span>
-            <span class="badge">SAM / CloudFormation</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="phase">
-        <div class="n">2</div>
-        <div>
-          <h3>The firm onboards a client.</h3>
-          <p>They enter a company name. <b>Companies House (via Inform Direct) pulls the company:</b> directors, share structure, filing history. <b>SmartSearch runs the AML check</b> in the background. <b>Adobe Sign or DocuSign sends the engagement letter</b> for signature. Billing kicks in on the firm's subscription with a partner revenue-share ledger keeping settlement clean.</p>
+          <h3>Onboarding a client.</h3>
+          <p>Enter a company name. <b>Companies House pulls the directors, share structure, filing history.</b> <b>SmartSearch runs the AML check.</b> <b>Adobe Sign or DocuSign sends the engagement letter.</b> Billing kicks in on the firm's subscription.</p>
           <div class="badges">
             <span class="badge">Companies House API</span>
             <span class="badge">Inform Direct</span>
@@ -359,7 +344,7 @@
       </div>
 
       <div class="phase">
-        <div class="n">3</div>
+        <div class="n">2</div>
         <div>
           <h3>The client's accounts data flows in.</h3>
           <p><b>Xero, Sage or QuickBooks connect via OAuth</b> (frontend-callback pattern so keys never touch a shared server). Bank transactions land continuously. <b>The AI gateway categorises each transaction</b> against the firm's chart of accounts and proposes journals. Every AI proposal cites the source transaction row. <b>A partner reviews before anything books.</b></p>
@@ -374,7 +359,7 @@
       </div>
 
       <div class="phase">
-        <div class="n">4</div>
+        <div class="n">3</div>
         <div>
           <h3>Year-end. Statutory accounts, VAT, corporation tax, filed.</h3>
           <p>The <b>FRS-102 statutory accounts engine</b> builds full accounts from the bookkeeping. The <b>iXBRL tagger reaches 100% coverage on the Xero demo company</b> (deterministic, chart-of-accounts driven, not AI-guessed). <b>CT600 corporation tax computes</b>. <b>VAT flows through HMRC MTD</b> (tested against agent, individual and org sandbox users first). <b>Croner-i</b> is wired in for tax law reference. Filed to HMRC and Companies House.</p>

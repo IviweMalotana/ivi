@@ -30,25 +30,19 @@ Cape Town
 
 **Emerald Path.** UK accountancy platform I built end to end in three months.
 
-### 1. The firm signs up. A tenant auto-bootstraps.
+### 1. Onboarding a client.
 
-A new firm creates an account. Behind the scenes: a per-firm Postgres schema is created, row-level security switches on, an authorizer starts gating every API call by membership. All traffic is fronted by AWS WAF. Point-in-time restore and CloudTrail are on from minute one. **The firm is isolated from every other firm on the platform, three layers deep.**
-
-`AWS Cognito` · `Aurora Postgres` · `Row-level security` · `AWS WAF` · `SAM / CloudFormation`
-
-### 2. The firm onboards a client.
-
-They enter a company name. **Companies House (via Inform Direct) pulls the company:** directors, share structure, filing history. **SmartSearch runs the AML check** in the background. **Adobe Sign or DocuSign sends the engagement letter** for signature. Billing kicks in on the firm's subscription with a partner revenue-share ledger keeping settlement clean.
+Enter a company name. **Companies House pulls the directors, share structure, filing history.** **SmartSearch runs the AML check.** **Adobe Sign or DocuSign sends the engagement letter.** Billing kicks in on the firm's subscription.
 
 `Companies House API` · `Inform Direct` · `SmartSearch AML` · `Adobe Sign` · `DocuSign`
 
-### 3. The client's accounts data flows in.
+### 2. The client's accounts data flows in.
 
 **Xero, Sage or QuickBooks connect via OAuth** (frontend-callback pattern so keys never touch a shared server). Bank transactions land continuously. **The AI gateway categorises each transaction** against the firm's chart of accounts and proposes journals. Every AI proposal cites the source transaction row. **A partner reviews before anything books.**
 
 `Xero API` · `Sage API` · `QuickBooks API` · `AI gateway (grounded citations)` · `Python + AWS Lambda`
 
-### 4. Year-end. Statutory accounts, VAT, corporation tax, filed.
+### 3. Year-end. Statutory accounts, VAT, corporation tax, filed.
 
 The **FRS-102 statutory accounts engine** builds full accounts from the bookkeeping. The **iXBRL tagger reaches 100% coverage on the Xero demo company** (deterministic, chart-of-accounts driven, not AI-guessed). **CT600 corporation tax computes.** **VAT flows through HMRC MTD** (tested against agent, individual and org sandbox users first). **Croner-i** is wired in for tax law reference. Filed to HMRC and Companies House.
 
